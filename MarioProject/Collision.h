@@ -14,6 +14,7 @@ class CCollision {
 
 	static bool IsOverlap(const RECT* obj1, const RECT* obj2);
 	static bool IsOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2);
+	
 	LPCOLLISIONEVENT SweptAABB(LPPHYSICALOBJECT objSrc, DWORD dt, LPPHYSICALOBJECT objDest);
 
 	// Find all the collision events between objSrc and objDests

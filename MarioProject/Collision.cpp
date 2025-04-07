@@ -6,6 +6,19 @@
 #define MIN_FLOAT -99999999999.0f
 #define MAX_FLOAT 99999999999.0f
 
+bool CCollision::IsOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2) {
+	return l1 < r2 && r1 > l2 && t1 < b2 && b1 > t2;
+}
+
+bool CCollision::IsOverlap(const RECT* obj1, const RECT* obj2) {
+	return IsOverlap(
+		static_cast<float>(obj1->left), static_cast<float>(obj1->top),
+		static_cast<float>(obj1->right), static_cast<float>(obj1->bottom),
+		static_cast<float>(obj2->left), static_cast<float>(obj2->top),
+		static_cast<float>(obj2->right), static_cast<float>(obj2->bottom)
+	);
+}
+
 void CCollision::SweptAABB(
 	float movingLeft, float movingTop, float movingRight, float movingBot,
 	float distanceX, float distanceY,
@@ -72,16 +85,18 @@ void CCollision::SweptAABB(RECT* movingObj, float distanceX, float distanceY, RE
 {
 	if (IsOverlap(movingObj, staticObj))
 	{
+		DebugOut(L"Overlaped");
 		time = 0.0f;
-		normalX = DirectionXAxisType::None;
 		normalY = DirectionYAxisType::None;
-		return;
+		normalX = DirectionXAxisType::None;
 	}
-
-	SweptAABB(
-		movingObj->left, movingObj->top, movingObj->right, movingObj->bottom, distanceX, distanceY, 
-		staticObj->left, staticObj->top, staticObj->right, staticObj->bottom, time, normalX, normalY
-	);
+	else
+	{
+		SweptAABB(
+			movingObj->left, movingObj->top, movingObj->right, movingObj->bottom, distanceX, distanceY,
+			staticObj->left, staticObj->top, staticObj->right, staticObj->bottom, time, normalX, normalY
+		);
+	}
 }
 
 LPCOLLISIONEVENT CCollision::SweptAABB(LPPHYSICALOBJECT objSrc, DWORD dt, LPPHYSICALOBJECT objDest)
@@ -109,12 +124,23 @@ LPCOLLISIONEVENT CCollision::SweptAABB(LPPHYSICALOBJECT objSrc, DWORD dt, LPPHYS
 	objSrc->GetBoundingBox(movingLeft, movingTop, movingRight, movingBot);
 	objDest->GetBoundingBox(staticLeft, staticTop, staticRight, staticBot);
 
-	CCollision::SweptAABB(
-		movingLeft, movingTop, movingRight, movingBot, 
-		distanceX, distanceY,
-		staticLeft, staticTop, staticRight, staticBot,
-		time, normalX, normalY
-	);
+	// Check overlapped collision
+	if (IsOverlap(movingLeft, movingTop, movingRight, movingBot, staticLeft, staticTop, staticRight, staticBot))
+	{
+		DebugOut(L"Overlaped");
+		time = 0.0f;
+		normalY = DirectionYAxisType::None;
+		normalX = DirectionXAxisType::None;
+	} 
+	else
+	{
+		CCollision::SweptAABB(
+			movingLeft, movingTop, movingRight, movingBot,
+			distanceX, distanceY,
+			staticLeft, staticTop, staticRight, staticBot,
+			time, normalX, normalY
+		);
+	}
 
 	return new CCollisionEvent(time, normalX, normalY, distanceX, distanceY, 
 		objDest, objSrc);
@@ -275,19 +301,6 @@ void CCollision::Process(LPINTERACTIVEOBJECT objSrc, DWORD dt, vector<LPPHYSICAL
 	}
 
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
-}
-
-bool CCollision::IsOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2) {
-	return l1 < r2 && r1 > l2 && t1 < b2 && b1 > t2;
-}
-
-bool CCollision::IsOverlap(const RECT* obj1, const RECT* obj2) {
-	return IsOverlap(
-		static_cast<float>(obj1->left), static_cast<float>(obj1->top),
-		static_cast<float>(obj1->right), static_cast<float>(obj1->bottom),
-		static_cast<float>(obj2->left), static_cast<float>(obj2->top),
-		static_cast<float>(obj2->right), static_cast<float>(obj2->bottom)
-	);
 }
 
 CCollision* CCollision::__instance = NULL;
