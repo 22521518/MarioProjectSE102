@@ -46,6 +46,9 @@ struct CCollisionEvent
 class CCollision
 {
 	static CCollision* __instance;
+	static bool IsOverlap(
+		float ml, float mt, float mr, float mb,
+		float sl, float st, float sr, float sb);
 public: 
 	static void SweptAABB(
 		float ml,			// move left 
@@ -82,6 +85,8 @@ public:
 		int filterY);
 
 	void Process(LPGAMEOBJECT objSrc, DWORD dt, vector<LPGAMEOBJECT>* coObjects);
+	void ProcecsCollisionX(LPGAMEOBJECT objSrc, float& x, float& y, float dx, float dy, LPCOLLISIONEVENT colX, bool setPosFlag = false);
+	void ProcecsCollisionY(LPGAMEOBJECT objSrc, float& x, float& y, float dx, float dy, LPCOLLISIONEVENT colY, bool setPosFlag = false);
 
 	static CCollision* GetInstance();
 };

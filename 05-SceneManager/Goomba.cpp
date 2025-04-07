@@ -69,7 +69,7 @@ void CGoomba::Render()
 	if (state == GOOMBA_STATE_DIE) 
 	{
 		aniId = ID_ANI_GOOMBA_DIE;
-	}
+	}	
 
 	CAnimations::GetInstance()->Get(aniId)->Render(x,y);
 	RenderBoundingBox();

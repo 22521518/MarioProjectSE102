@@ -22,6 +22,9 @@ protected:
 
 	void _ParseSection_ASSETS(string line);
 	void _ParseSection_OBJECTS(string line);
+	void _ParseSection_OBJECTS_WITH_LENGTH(string line);
+
+	void GetObjectSize(float& width, float& hieght, int type);
 
 	void LoadAssets(LPCWSTR assetFile);
 	

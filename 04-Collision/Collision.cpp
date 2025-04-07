@@ -19,6 +19,25 @@ CCollision* CCollision::GetInstance()
 	return __instance;
 }
 
+bool CCollision::isColliding(float srcL, float srcT, float srcR, float srcB,
+	float desL, float desT, float desR, float desB) {
+	float left = desL - srcR;
+	float top = desT - srcB;
+	float right = desR - srcL;
+	float bot = desB - srcT;
+
+	return !(left > 0 || right < 0 || top > 0 || bot < 0);
+}
+bool CCollision::isColliding(LPGAMEOBJECT objSrc, LPGAMEOBJECT objDest)
+{
+	float srcL, srcT, srcR, srcB;		// static object bbox
+	float desL, desT, desR, desB;		// moving object bbox
+	objDest->GetBoundingBox(desL, desT, desR, desB);
+	objSrc->GetBoundingBox(srcL, srcT, srcR, srcB);
+
+	return CCollision::isColliding(srcL, srcT, srcR, srcB, desL, desT, desR, desB);
+}
+
 /*
 	SweptAABB 
 */

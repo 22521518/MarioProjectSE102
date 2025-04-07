@@ -1,0 +1,37 @@
+[ASSETS]
+mario.txt
+goomba.txt
+coin.txt
+cloud.txt
+brick.txt
+
+[OBJECTS]
+// length, direct, gap
+# MARIO
+0	20	10	1	1
+
+# BRICK
+
+# Vertical column
+1	0	36	10	-1
+1	300	148	2	-1
+1	400	132	3	-1
+1	500	116	4	-1
+
+# Short, low platform
+1	16	136	2	1
+
+# Main ground
+1	0	180	70	1
+
+#Goomba
+2	200	40	3	1
+
+#COIN
+4	100	64	10	1
+
+#Platform
+5 	90	126	16	15	16	51000	52000	53000	1	1
+
+
+

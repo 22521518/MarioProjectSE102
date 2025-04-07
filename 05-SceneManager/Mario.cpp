@@ -40,13 +40,14 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	{
 		vy = 0;
 		if (e->ny < 0) isOnPlatform = true;
-	}
-	else 
-	if (e->nx != 0 && e->obj->IsBlocking())
-	{
-		vx = 0;
-	}
 
+		DebugOut(L"%d\n", isOnPlatform);
+	}
+	else
+		if (e->nx != 0 && e->obj->IsBlocking())
+		{
+			vx = 0;
+		}
 	if (dynamic_cast<CGoomba*>(e->obj))
 		OnCollisionWithGoomba(e);
 	else if (dynamic_cast<CCoin*>(e->obj))

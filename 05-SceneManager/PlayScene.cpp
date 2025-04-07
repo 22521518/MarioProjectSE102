@@ -2,6 +2,7 @@
 #include <fstream>
 #include "AssetIDs.h"
 
+#include "debug.h"
 #include "PlayScene.h"
 #include "Utils.h"
 #include "Textures.h"
@@ -92,6 +93,8 @@ void CPlayScene::_ParseSection_ANIMATIONS(string line)
 */
 void CPlayScene::_ParseSection_OBJECTS(string line)
 {
+	//_ParseSection_OBJECTS_WITH_LENGTH(line);
+	//return;
 	vector<string> tokens = split(line);
 
 	// skip invalid lines - an object set must have at least id, x, y
@@ -159,6 +162,133 @@ void CPlayScene::_ParseSection_OBJECTS(string line)
 
 
 	objects.push_back(obj);
+}
+
+void CPlayScene::_ParseSection_OBJECTS_WITH_LENGTH(string line)
+{
+	vector<string> tokens = split(line);
+
+	// skip invalid lines - an object set must have at least id, x, y
+	if (tokens.size() <= 2) return;
+
+	int object_type = atoi(tokens[0].c_str());
+	float x = (float)atof(tokens[1].c_str());
+	float y = (float)atof(tokens[2].c_str());
+	float length = 1, ndirection = 0, gap = 0;
+
+	if (tokens.size() > 3)
+	{
+		length = (float)atof(tokens[tokens.size() - 2].c_str());
+		ndirection = (float)atof(tokens[tokens.size() - 1].c_str());
+	}
+
+	CGameObject* obj = NULL;
+
+	for (int i = 0; i < length; i++) {
+		int posX = x;
+		int posY = y;
+		float w, h;
+		GetObjectSize(w, h, object_type);
+		if (ndirection > 0) // horizontal
+		{
+			posX += i * w;
+		}
+		else if (ndirection < 0) // vertical
+		{
+			posY += i * h;
+		}
+
+		switch (object_type)
+		{
+		case OBJECT_TYPE_MARIO:
+			if (player != NULL)
+			{
+				DebugOut(L"[ERROR] MARIO object was created before!\n");
+				return;
+			}
+			obj = new CMario(posX, posY);
+			player = (CMario*)obj;
+
+			DebugOut(L"[INFO] Player object has been created!\n");
+			break;
+		case OBJECT_TYPE_GOOMBA: obj = new CGoomba(posX, posY); break;
+		case OBJECT_TYPE_BRICK: obj = new CBrick(posX, posY); break;
+		case OBJECT_TYPE_COIN: obj = new CCoin(posX, posY); break;
+
+		case OBJECT_TYPE_PLATFORM:
+		{
+			float cell_width = (float)atof(tokens[3].c_str());
+			float cell_height = (float)atof(tokens[4].c_str());
+			int length = atoi(tokens[5].c_str());
+			int sprite_begin = atoi(tokens[6].c_str());
+			int sprite_middle = atoi(tokens[7].c_str());
+			int sprite_end = atoi(tokens[8].c_str());
+
+			obj = new CPlatform(
+				posX, posY,
+				cell_width, cell_height, length,
+				sprite_begin, sprite_middle, sprite_end
+			);
+
+			break;
+		}
+
+		case OBJECT_TYPE_PORTAL:
+		{
+			float r = (float)atof(tokens[3].c_str());
+			float b = (float)atof(tokens[4].c_str());
+			int scene_id = atoi(tokens[5].c_str());
+			obj = new CPortal(posX, posY, r, b, scene_id);
+		}
+		break;
+
+
+		default:
+			DebugOut(L"[ERROR] Invalid object type: %d\n", object_type);
+			return;
+		}
+
+		// General object setup
+		obj->SetPosition(posX, posY);
+		objects.push_back(obj);
+	}
+}
+
+void CPlayScene::GetObjectSize(float& width, float& hieght, int type)
+{
+	switch (type)
+	{
+	case OBJECT_TYPE_MARIO:
+	{
+		width = MARIO_BIG_BBOX_WIDTH;
+		hieght = MARIO_BIG_BBOX_HEIGHT;
+		return;
+	}
+	case OBJECT_TYPE_GOOMBA:
+	{
+		width = GOOMBA_BBOX_WIDTH;
+		hieght = GOOMBA_BBOX_HEIGHT;
+		return;
+	}
+	case OBJECT_TYPE_COIN:
+	{
+		width = COIN_WIDTH;
+		hieght = COIN_BBOX_HEIGHT;
+		return;
+	}
+	case OBJECT_TYPE_BRICK:
+	{
+		width = BRICK_BBOX_WIDTH;
+		hieght = BRICK_BBOX_HEIGHT;
+		return;
+	}
+	case OBJECT_TYPE_PLATFORM:
+	{
+		width = 16;
+		hieght = 16;
+		return;
+	}
+	}
 }
 
 void CPlayScene::LoadAssets(LPCWSTR assetFile)
@@ -257,6 +387,8 @@ void CPlayScene::Update(DWORD dt)
 	CGame *game = CGame::GetInstance();
 	cx -= game->GetBackBufferWidth() / 2;
 	cy -= game->GetBackBufferHeight() / 2;
+
+	DebugOut(L"Position of the camera: %f, %f\n", cx, cy);
 
 	if (cx < 0) cx = 0;
 

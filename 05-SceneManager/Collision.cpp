@@ -18,6 +18,11 @@ CCollision* CCollision::GetInstance()
 	return __instance;
 }
 
+bool CCollision::IsOverlap(float ml, float mt, float mr, float mb, float sl, float st, float sr, float sb)
+{
+	return ml < sr && sl < mr && mt < sb && st < sb;
+}
+
 /*
 	SweptAABB 
 */
@@ -95,7 +100,6 @@ void CCollision::SweptAABB(
 		ty_entry = dy_entry / dy;
 		ty_exit = dy_exit / dy;
 	}
-
 
 	if ((tx_entry < 0.0f && ty_entry < 0.0f) || tx_entry > 1.0f || ty_entry > 1.0f) return;
 
@@ -320,25 +324,23 @@ void CCollision::Process(LPGAMEOBJECT objSrc, DWORD dt, vector<LPGAMEOBJECT>* co
 				}
 			}
 		}
-		else
-		if (colX != NULL)
+		else if (colX != NULL)
 		{
 			x += colX->t * dx + colX->nx * BLOCK_PUSH_FACTOR;
 			y += dy;
 			objSrc->OnCollisionWith(colX);
 		}
-		else 
-			if (colY != NULL)
-			{
-				x += dx;
-				y += colY->t * dy + colY->ny * BLOCK_PUSH_FACTOR;
-				objSrc->OnCollisionWith(colY);
-			}
-			else // both colX & colY are NULL 
-			{
-				x += dx;
-				y += dy;
-			}
+		else  if (colY != NULL)
+		{
+			x += dx;
+			y += colY->t * dy + colY->ny * BLOCK_PUSH_FACTOR;
+			objSrc->OnCollisionWith(colY);
+		}
+		else // both colX & colY are NULL 
+		{
+			x += dx;
+			y += dy;
+		}
 
 		objSrc->SetPosition(x, y);
 	}
@@ -357,4 +359,33 @@ void CCollision::Process(LPGAMEOBJECT objSrc, DWORD dt, vector<LPGAMEOBJECT>* co
 
 
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+}
+
+void CCollision::ProcecsCollisionX(LPGAMEOBJECT objSrc, float& x, float& y, float dx, float dy, LPCOLLISIONEVENT colX, bool setPosFlag)
+{
+	if (colX == NULL) {
+		x += dx;
+		return;
+	}
+	x += colX->t * dx + colX->nx * BLOCK_PUSH_FACTOR;
+	if (setPosFlag) {
+		objSrc->SetPosition(x, y);
+	}
+	objSrc->SetPosition(x, y);
+	objSrc->OnCollisionWith(colX);
+}
+
+
+void CCollision::ProcecsCollisionY(LPGAMEOBJECT objSrc, float& x, float& y, float dx, float dy, LPCOLLISIONEVENT colY, bool setPosFlag)
+{
+	if (colY == NULL) {
+		y += dy;
+		return;
+	}
+	y += colY->t * dy + colY->ny * BLOCK_PUSH_FACTOR;
+
+	if (setPosFlag) {
+		objSrc->SetPosition(x, y);
+	}
+	objSrc->OnCollisionWith(colY);
 }

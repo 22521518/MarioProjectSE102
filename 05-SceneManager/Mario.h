@@ -14,7 +14,7 @@
 
 #define MARIO_JUMP_SPEED_Y		0.5f
 #define MARIO_JUMP_RUN_SPEED_Y	0.6f
-
+	
 #define MARIO_GRAVITY			0.002f
 
 #define MARIO_JUMP_DEFLECT_SPEED  0.4f
@@ -130,6 +130,7 @@ public:
 		ay = MARIO_GRAVITY; 
 
 		level = MARIO_LEVEL_BIG;
+
 		untouchable = 0;
 		untouchable_start = -1;
 		isOnPlatform = false;

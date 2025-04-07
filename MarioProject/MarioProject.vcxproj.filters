@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\WindowSetup">
+      <UniqueIdentifier>{8d3203e1-b102-4295-82de-d78a1b1b718e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WindowSetup">
+      <UniqueIdentifier>{be0c60a4-ac58-44fe-98d0-b6aa939151c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameInstance">
+      <UniqueIdentifier>{d54f1e93-5590-4bb3-83e7-79b151c489a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameInstance">
+      <UniqueIdentifier>{43603e33-c951-4e5c-829c-af080311c349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameAnimation">
+      <UniqueIdentifier>{d6072352-ae9c-4204-ac8e-689cb29bd70a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameAnimation">
+      <UniqueIdentifier>{72346155-a923-4c29-ae7b-f7b07afcbd62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utility">
+      <UniqueIdentifier>{4c04a3a1-3931-4974-86d4-5abfd2ee0e0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{225d57dc-4167-4cf4-82a0-196e65d6afee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectAbstract">
+      <UniqueIdentifier>{ecc73f71-917c-4ad8-8ce5-1f457e79aa39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectConcrete">
+      <UniqueIdentifier>{ce3b8abf-ebff-4113-b02c-14a0c9047be9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete">
+      <UniqueIdentifier>{f593a7de-7969-4d3d-b1f0-1c0a3c8f4a20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SpecialAbility">
+      <UniqueIdentifier>{1c399dc4-6aa7-4a9b-94cd-bc2a2a13e9bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SpecialAbility">
+      <UniqueIdentifier>{ec4c9278-4c3e-4d3d-b8d1-202c37347248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectAbstract">
+      <UniqueIdentifier>{67cd86e1-8db9-4ea7-aa7f-6cc0a37e80a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Collision">
+      <UniqueIdentifier>{6de03f97-2394-48c1-8512-48877d4fdd7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Collision">
+      <UniqueIdentifier>{81fc4986-f97b-4ac0-ba6e-1eaa76de915d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\KeyEventHandler">
+      <UniqueIdentifier>{b552a27b-1523-4994-a60c-c396d7bab21e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Settings">
+      <UniqueIdentifier>{84a7983e-09f0-46bd-8831-660a1da7e018}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Settings">
+      <UniqueIdentifier>{798ed6d4-5962-4a05-b9db-c5fe6136a3b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene">
+      <UniqueIdentifier>{4201d56b-6942-4f70-9b3d-61483df479d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{b31857cc-6dea-4396-a557-7243ffbad970}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AssetID">
+      <UniqueIdentifier>{155be051-12d3-44e5-8f74-24edf4e449ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Mario">
+      <UniqueIdentifier>{ec94a0ba-d94e-41ee-b3d5-921397c8ee8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectConcrete\Mario">
+      <UniqueIdentifier>{b3a0c1c8-f297-4a97-b78c-7ef2b4a45888}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Goomba">
+      <UniqueIdentifier>{0ebf307d-5058-4c6c-bfb3-25f19e8c3a9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectConcrete\Goomba">
+      <UniqueIdentifier>{c1317a08-f156-421e-b886-6020d1e5ee6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectConcrete\Brick">
+      <UniqueIdentifier>{98285bc5-b658-4ccc-a1f6-661b1875786a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Coin">
+      <UniqueIdentifier>{f8ac00b8-c5cb-492d-9553-326adfb16323}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectConcrete\Coin">
+      <UniqueIdentifier>{5d40e75d-214c-4466-a6e5-4a5d51115ff8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Platform">
+      <UniqueIdentifier>{a992344f-22f9-4acf-939b-72d4408b42c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectConcrete\Platform">
+      <UniqueIdentifier>{dc16b97c-db33-447e-900f-4269416731da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\KeyEventHandler">
+      <UniqueIdentifier>{23c715c8-0588-479d-8ad5-c1d79ac540d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Portal">
+      <UniqueIdentifier>{6817842b-6f6e-4cf0-b927-a5ba611820d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectConcrete\Portal">
+      <UniqueIdentifier>{406123b3-cb63-4b65-a570-e0cf5c939f5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectConcrete\Mario\MarioState">
+      <UniqueIdentifier>{5da132b1-cfe2-493e-87a5-2296a72f274b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Mario\MarioState">
+      <UniqueIdentifier>{bf29db4c-2963-408f-8434-cc3268293817}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Mario\MarioAsset">
+      <UniqueIdentifier>{4a4108b6-a02a-4348-9faf-22e89ccf6259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Brick">
+      <UniqueIdentifier>{aa331f5e-358f-4a7c-93af-0bf134021430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Brick\BrickAsset">
+      <UniqueIdentifier>{7af51f7c-a2b3-479b-8353-42b7c270e0a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Coin\CoinAsset">
+      <UniqueIdentifier>{d4f5dc10-3875-4363-8ed2-1bb43347a002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Platform\PlatformAsset">
+      <UniqueIdentifier>{7594929f-7b33-494d-b202-0ab2d245bb0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Goomba\GoombaAsset">
+      <UniqueIdentifier>{0d7bcbb1-6f8a-4b1c-8e94-5e538babc765}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debug.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="setup.cpp">
+      <Filter>Source Files\WindowSetup</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\GameInstance</Filter>
+    </ClCompile>
+    <ClCompile Include="gameLoop.cpp">
+      <Filter>Source Files\WindowSetup</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\GameAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures.cpp">
+      <Filter>Source Files\GameInstance</Filter>
+    </ClCompile>
+    <ClCompile Include="stringUtil.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\GameAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprites.cpp">
+      <Filter>Source Files\GameInstance</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationFrame.cpp">
+      <Filter>Source Files\GameAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\GameAnimation</Filter>
+    </ClCompile>
+    <ClCompile Include="Animations.cpp">
+      <Filter>Source Files\GameInstance</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicalObject.cpp">
+      <Filter>Source Files\GameObjectAbstract</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionEvent.cpp">
+      <Filter>Source Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="MarioPlayerKeyHandler.cpp">
+      <Filter>Source Files\KeyEventHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMap.cpp">
+      <Filter>Source Files\Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="GameKeyHandler.cpp">
+      <Filter>Source Files\KeyEventHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\GameObjectAbstract</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario.cpp">
+      <Filter>Source Files\GameObjectConcrete\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="Goomba.cpp">
+      <Filter>Source Files\GameObjectConcrete\Goomba</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Source Files\GameObjectConcrete\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Source Files\GameObjectConcrete\Coin</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Source Files\GameObjectConcrete\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Portal.cpp">
+      <Filter>Source Files\GameObjectConcrete\Portal</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\GameObjectAbstract</Filter>
+    </ClCompile>
+    <ClCompile Include="BigMarioState.cpp">
+      <Filter>Source Files\GameObjectConcrete\Mario\MarioState</Filter>
+    </ClCompile>
+    <ClCompile Include="MarioState.cpp">
+      <Filter>Source Files\GameObjectConcrete\Mario\MarioState</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallMarioState.cpp">
+      <Filter>Source Files\GameObjectConcrete\Mario\MarioState</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="setup.h">
+      <Filter>Header Files\WindowSetup</Filter>
+    </ClInclude>
+    <ClInclude Include="debug.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Header Files\WindowSetup</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\GameInstance</Filter>
+    </ClInclude>
+    <ClInclude Include="gameLoop.h">
+      <Filter>Header Files\WindowSetup</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures.h">
+      <Filter>Header Files\GameInstance</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\GameAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="stringUtil.h">
+      <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\GameAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprites.h">
+      <Filter>Header Files\GameInstance</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationFrame.h">
+      <Filter>Header Files\GameAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Header Files\GameAnimation</Filter>
+    </ClInclude>
+    <ClInclude Include="Animations.h">
+      <Filter>Header Files\GameInstance</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicalObject.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractiveObject.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialAbility.h">
+      <Filter>Header Files\SpecialAbility</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionEvent.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionType.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyEventHandler.h">
+      <Filter>Header Files\KeyEventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMap.h">
+      <Filter>Header Files\Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="GameKeyHandler.h">
+      <Filter>Header Files\KeyEventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioPlayerKeyHandler.h">
+      <Filter>Header Files\KeyEventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneKeyHandler.h">
+      <Filter>Header Files\KeyEventHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetIDs.h">
+      <Filter>Header Files\AssetID</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario.h">
+      <Filter>Header Files\GameObjectConcrete\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionIDs.h">
+      <Filter>Header Files\AssetID</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="Goomba.h">
+      <Filter>Header Files\GameObjectConcrete\Goomba</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationIDs.h">
+      <Filter>Header Files\AssetID</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticObject.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Header Files\GameObjectConcrete\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Header Files\GameObjectConcrete\Coin</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>Header Files\GameObjectConcrete\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Portal.h">
+      <Filter>Header Files\GameObjectConcrete\Portal</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioState.h">
+      <Filter>Header Files\GameObjectConcrete\Mario\MarioState</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallMarioState.h">
+      <Filter>Header Files\GameObjectConcrete\Mario\MarioState</Filter>
+    </ClInclude>
+    <ClInclude Include="BigMarioState.h">
+      <Filter>Header Files\GameObjectConcrete\Mario\MarioState</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioStateIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Mario\MarioAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioSpriteIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Mario\MarioAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioConfig.h">
+      <Filter>Header Files\GameObjectConcrete\Mario\MarioAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioAniIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Mario\MarioAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Brick\BrickAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickStateIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Brick\BrickAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinAniIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Coin\CoinAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinSpriteIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Coin\CoinAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinStateIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Coin\CoinAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="CloudSpriteIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Platform\PlatformAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="CloudPlatform.h">
+      <Filter>Header Files\GameObjectConcrete\Platform\PlatformAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="CollidableWithMario.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="GoombaAniIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Goomba\GoombaAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="GoombaConfig.h">
+      <Filter>Header Files\GameObjectConcrete\Goomba\GoombaAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="GoombaSpriteIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Goomba\GoombaAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="GoombaStateIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Goomba\GoombaAsset</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MarioProject.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

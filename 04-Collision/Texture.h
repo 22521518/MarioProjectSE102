@@ -33,10 +33,10 @@ public:
 		this->_height = desc.Height;
 	}
 
-	ID3D10ShaderResourceView* getShaderResourceView() { return this->_rsview; }
+	ID3D10ShaderResourceView* GetShaderResourceView() { return this->_rsview; }
 
-	int getWidth() { return this->_width; }
-	int getHeight() { return this->_height; }
+	int GetWidth() { return this->_width; }
+	int GetHeight() { return this->_height; }
 
 	~CTexture()
 	{

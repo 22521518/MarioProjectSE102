@@ -170,7 +170,7 @@ void CGame::Draw(float x, float y, LPTEXTURE tex, RECT* rect, float alpha)
 	D3DX10_SPRITE sprite;
 
 	// Set the sprite’s shader resource view
-	sprite.pTexture = tex->getShaderResourceView();
+	sprite.pTexture = tex->GetShaderResourceView();
 
 	if (rect == NULL)
 	{
@@ -182,19 +182,19 @@ void CGame::Draw(float x, float y, LPTEXTURE tex, RECT* rect, float alpha)
 		sprite.TexSize.x = 1.0f;
 		sprite.TexSize.y = 1.0f;
 
-		spriteWidth = tex->getWidth();
-		spriteHeight = tex->getHeight();
+		spriteWidth = tex->GetWidth();
+		spriteHeight = tex->GetHeight();
 	}
 	else
 	{
-		sprite.TexCoord.x = rect->left / (float)tex->getWidth();
-		sprite.TexCoord.y = rect->top / (float)tex->getHeight();
+		sprite.TexCoord.x = rect->left / (float)tex->GetWidth();
+		sprite.TexCoord.y = rect->top / (float)tex->GetHeight();
 
 		spriteWidth = (rect->right - rect->left + 1);
 		spriteHeight = (rect->bottom - rect->top + 1);
 
-		sprite.TexSize.x = spriteWidth / (float)tex->getWidth();
-		sprite.TexSize.y = spriteHeight / (float)tex->getHeight();
+		sprite.TexSize.x = spriteWidth / (float)tex->GetWidth();
+		sprite.TexSize.y = spriteHeight / (float)tex->GetHeight();
 	}
 
 	// Set the texture index. Single textures will use 0

@@ -46,6 +46,9 @@ struct CCollisionEvent
 class CCollision
 {
 	static CCollision* __instance;
+	static bool isColliding(LPGAMEOBJECT objSrc, LPGAMEOBJECT objDest);
+	static bool isColliding(float srcL, float srcT, float srcR, float srcB,
+		float desL, float desT, float desR, float desB);
 public: 
 	static void SweptAABB(
 		float ml,			// move left 
