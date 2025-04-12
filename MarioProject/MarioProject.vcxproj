@@ -176,6 +176,10 @@
     <ClInclude Include="CoinAniIDs.h" />
     <ClInclude Include="CoinStateIDs.h" />
     <ClInclude Include="CollidableWithMario.h" />
+    <ClInclude Include="Koopa.h" />
+    <ClInclude Include="KoopaConfig.h" />
+    <ClInclude Include="KoopaState.h" />
+    <ClInclude Include="KoopaStateIDs.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Portal.h" />
     <ClInclude Include="Coin.h" />

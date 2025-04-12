@@ -139,6 +139,12 @@
     <Filter Include="Header Files\GameObjectConcrete\Goomba\GoombaAsset">
       <UniqueIdentifier>{0d7bcbb1-6f8a-4b1c-8e94-5e538babc765}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Kooopa">
+      <UniqueIdentifier>{786107cb-e42c-425c-ae9b-221261cafcd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Kooopa\KoopaAsset">
+      <UniqueIdentifier>{77abe59b-02ba-4669-9dca-ea1a8f06d345}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -415,6 +421,18 @@
     </ClInclude>
     <ClInclude Include="GoombaStateIDs.h">
       <Filter>Header Files\GameObjectConcrete\Goomba\GoombaAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="Koopa.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa</Filter>
+    </ClInclude>
+    <ClInclude Include="KoopaState.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa</Filter>
+    </ClInclude>
+    <ClInclude Include="KoopaConfig.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="KoopaStateIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaAsset</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
