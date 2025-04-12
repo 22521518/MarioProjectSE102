@@ -23,6 +23,7 @@ public:
 	int GetRight() { return right; }
 	int GetBottom() { return bottom; }
 	void Draw(float x, float y);
+	void DrawOnScreen(float x, float y);
 };
 
 typedef CSprite* LPSPRITE;
