@@ -16,12 +16,12 @@ CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, Directi
 	this->isSitting = false;
 	this->isOnPlatform = false;
 
-	this->level = MARIO_LEVEL_BIG;
+	this->level = MARIO_LEVEL_SMALL;
 	this->untouchable = 0;
 	this->untouchable_start = -1;
 
 	this->coin = 0;
-	this->stateHandler = new CBigMarioState();
+	this->stateHandler = new CSmallMarioState();
 };
 
 void CMario::SetLevel(int level)
