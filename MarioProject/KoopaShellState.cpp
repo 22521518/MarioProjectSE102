@@ -24,7 +24,6 @@ CKoopaShellMoveState::CKoopaShellMoveState(LPKOOPA koopa, LPCOLLISIONEVENT e)
 {
     float vx = 0;
     int eNXValue = static_cast<int>(e->normalX);
-    if (!eNXValue) eNXValue = static_cast<int>(e->obj->);
     if (e != nullptr)
     {
         vx = -eNXValue * KOOPA_SHELL_SPEED;

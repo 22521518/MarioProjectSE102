@@ -9,6 +9,7 @@ class CGoomba; typedef CGoomba* LPGOOMBA;
 class CKoopa; typedef CKoopa* LPKOOPA;
 class CMarioState; typedef CMarioState* LPMARIOSTATE;
 class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
+class CBlockQ; typedef CBlockQ* LPBlockQ;
 
 struct CCollisionEvent; typedef CCollisionEvent* LPCOLLISIONEVENT;
 
@@ -59,6 +60,7 @@ public:
 	// mario with collidable mario obj
 	void OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e);
 	void OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e);
+	//void OnCollisionWithBlockQ (LPBlockQ coin, LPCOLLISIONEVENT e) {};
 	//void OnCollisionWithPortal(LPPORTAL portal, LPCOLLISIONEVENT e) {};
 
 	//Tri section

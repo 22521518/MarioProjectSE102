@@ -259,7 +259,7 @@
       <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
     </ClCompile>
     <ClCompile Include="RedKoopa.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -463,6 +463,9 @@
     </ClInclude>
     <ClInclude Include="RedKoopaState.h">
       <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaState</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockQ.h">
+      <Filter>Header Files\GameObjectConcrete\Brick</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -41,6 +41,7 @@ public:
 	virtual void RenderBoundingBox();
 	virtual void GetBoundingBox(RECT& rect);
 
+	DirectionXAxisType GetNX() { return this->nx; }
 	void SetAcceleration(float ax, float ay) { this->ax = ax, this->ay = ay; }
 	void GetAcceleration(float& ax, float& ay) const { ax = this->ax; ay = this->ay; }
 	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }

@@ -175,6 +175,7 @@
     <ClInclude Include="AssetIDs.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="BigMarioState.h" />
+    <ClInclude Include="BlockQ.h" />
     <ClInclude Include="BrickIDs.h" />
     <ClInclude Include="CloudPlatform.h" />
     <ClInclude Include="CoinAniIDs.h" />
