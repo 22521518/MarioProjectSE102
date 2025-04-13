@@ -4,15 +4,17 @@
 #define ID_TEX_ENEMY 10
 #define ID_TEX_MISC 20
 
-
 #define OBJECT_TYPE_MARIO	0
 #define OBJECT_TYPE_BRICK	1
 #define OBJECT_TYPE_GOOMBA	2
 #define OBJECT_TYPE_KOOPAS	3
 #define OBJECT_TYPE_COIN 4
 #define OBJECT_TYPE_PLATFORM 5
-
 #define OBJECT_TYPE_PORTAL	50
+
+#pragma region TRI_OBJ
+#define OBJECT_TYPE_RED_KPOOPA	10000
+#pragma endregion
 
 #define ID_SPRITE_MARIO 100000
 #define ID_SPRITE_BRICK 200000

@@ -145,6 +145,12 @@
     <Filter Include="Header Files\GameObjectConcrete\Kooopa\KoopaAsset">
       <UniqueIdentifier>{77abe59b-02ba-4669-9dca-ea1a8f06d345}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Kooopa\KoopaState">
+      <UniqueIdentifier>{19480203-70c9-4341-8522-349950a16335}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectConcrete\Koopa">
+      <UniqueIdentifier>{f335ccca-627c-4b09-bfb8-5e4987d048fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -242,6 +248,18 @@
     </ClCompile>
     <ClCompile Include="SmallMarioState.cpp">
       <Filter>Source Files\GameObjectConcrete\Mario\MarioState</Filter>
+    </ClCompile>
+    <ClCompile Include="Koopa.cpp">
+      <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
+    </ClCompile>
+    <ClCompile Include="KoopaShellState.cpp">
+      <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
+    </ClCompile>
+    <ClCompile Include="KoopaState.cpp">
+      <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
+    </ClCompile>
+    <ClCompile Include="RedKoopa.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -425,14 +443,26 @@
     <ClInclude Include="Koopa.h">
       <Filter>Header Files\GameObjectConcrete\Kooopa</Filter>
     </ClInclude>
-    <ClInclude Include="KoopaState.h">
-      <Filter>Header Files\GameObjectConcrete\Kooopa</Filter>
-    </ClInclude>
     <ClInclude Include="KoopaConfig.h">
       <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaAsset</Filter>
     </ClInclude>
     <ClInclude Include="KoopaStateIDs.h">
       <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="KoopaState.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaState</Filter>
+    </ClInclude>
+    <ClInclude Include="KoopaAniIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="RedKoopa.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa</Filter>
+    </ClInclude>
+    <ClInclude Include="KoopaShellState.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaState</Filter>
+    </ClInclude>
+    <ClInclude Include="RedKoopaState.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

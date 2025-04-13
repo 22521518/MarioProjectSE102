@@ -6,6 +6,7 @@
 class CPortal; typedef CPortal* LPPORTAL;
 class CCoin; typedef CCoin* LPCOIN;
 class CGoomba; typedef CGoomba* LPGOOMBA;
+class CKoopa; typedef CKoopa* LPKOOPA;
 class CMarioState; typedef CMarioState* LPMARIOSTATE;
 class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
 
@@ -59,6 +60,9 @@ public:
 	void OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e);
 	void OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e);
 	//void OnCollisionWithPortal(LPPORTAL portal, LPCOLLISIONEVENT e) {};
+
+	//Tri section
+	void OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e);
 
 	friend class CMarioState;
 	friend class CSmallMarioState;

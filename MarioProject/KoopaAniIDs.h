@@ -1,0 +1,11 @@
+#pragma once
+#include "AnimationIDs.h"
+#include "KoopaStateIDs.h"
+
+#pragma region RED_KOOPA
+// #define ID_ANI_RED_KOOPA 1000000
+#define ID_ANI_RED_KOOPA_WALKING_LEFT (ID_ANI_RED_KOOPA + 0)
+#define ID_ANI_RED_KOOPA_WALKING_RIGHT (ID_ANI_RED_KOOPA + 100)
+#define ID_ANI_RED_KOOPA_SHELL_IDLE (ID_ANI_RED_KOOPA + KOOPA_STATE_SHELL_IDLE)
+#define ID_ANI_RED_KOOPA_SHELL_MOVE (ID_ANI_RED_KOOPA + KOOPA_STATE_SHELL_MOVE)
+#pragma endregion

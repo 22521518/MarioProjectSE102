@@ -7,6 +7,7 @@
 #include "MarioAniIDs.h"
 #include "Collision.h"
 #include "Goomba.h"
+#include "Koopa.h"
 #include "Coin.h"
 #include "CollidableWithMario.h"
 
@@ -70,6 +71,31 @@ void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 }
 
 void CMario::OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e) { coin++; }
+
+void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
+{
+	
+	if (e->normalY == DirectionYAxisType::Top)
+	{
+		if (!koopa->IsShellState())
+		{
+			vy = -MARIO_JUMP_DEFLECT_SPEED;
+		}
+	}
+	else if (untouchable == 0 && !koopa->IsDeadState()) // hit by Goomba
+	{
+		if (level > MARIO_LEVEL_SMALL)
+		{
+			this->SetLevel(MARIO_LEVEL_SMALL);
+			StartUntouchable();
+		}
+		else
+		{
+			DebugOut(L">>> Mario DIE >>> \n");
+			//SetState(MARIO_STATE_DIE);
+		}
+	}
+}
 
 #pragma endregion
 

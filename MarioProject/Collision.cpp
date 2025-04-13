@@ -85,7 +85,6 @@ void CCollision::SweptAABB(RECT* movingObj, float distanceX, float distanceY, RE
 {
 	if (IsOverlap(movingObj, staticObj))
 	{
-		DebugOut(L"Overlaped");
 		time = 0.0f;
 		normalY = DirectionYAxisType::None;
 		normalX = DirectionXAxisType::None;
@@ -127,7 +126,6 @@ LPCOLLISIONEVENT CCollision::SweptAABB(LPPHYSICALOBJECT objSrc, DWORD dt, LPPHYS
 	// Check overlapped collision
 	if (IsOverlap(movingLeft, movingTop, movingRight, movingBot, staticLeft, staticTop, staticRight, staticBot))
 	{
-		DebugOut(L"Overlaped");
 		time = 0.0f;
 		normalY = DirectionYAxisType::None;
 		normalX = DirectionXAxisType::None;

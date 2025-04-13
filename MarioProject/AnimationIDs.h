@@ -8,3 +8,6 @@
 //#define ID_ANI 40000
 #define ID_ANI_GOOMBA 50000
 
+#pragma region TRI_OBJ
+#define ID_ANI_RED_KOOPA 1000000
+#pragma endregion

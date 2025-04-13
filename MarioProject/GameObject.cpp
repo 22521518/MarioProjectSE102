@@ -6,6 +6,8 @@
 #include "CloudPlatform.h"
 #include "Portal.h"
 
+#include "RedKoopa.h"
+
 #include "AssetIDs.h"
 
 using namespace std;
@@ -17,6 +19,7 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, ve
 	case OBJECT_TYPE_GOOMBA: return new CGoomba(x, y);
 	case OBJECT_TYPE_BRICK: return new CBrick(x, y);
 	case OBJECT_TYPE_COIN: return new CCoin(x, y);
+	case OBJECT_TYPE_RED_KPOOPA: return new CRedKoopa(x, y);
 	case OBJECT_TYPE_PLATFORM:
 	{
 
