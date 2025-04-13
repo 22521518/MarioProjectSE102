@@ -8,6 +8,7 @@ class CCoin; typedef CCoin* LPCOIN;
 class CGoomba; typedef CGoomba* LPGOOMBA;
 class CMarioState; typedef CMarioState* LPMARIOSTATE;
 class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
+class CBlockQ; typedef CBlockQ* LPBlockQ;
 
 struct CCollisionEvent; typedef CCollisionEvent* LPCOLLISIONEVENT;
 
@@ -58,6 +59,7 @@ public:
 	// mario with collidable mario obj
 	void OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e);
 	void OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e);
+	//void OnCollisionWithBlockQ (LPBlockQ coin, LPCOLLISIONEVENT e) {};
 	//void OnCollisionWithPortal(LPPORTAL portal, LPCOLLISIONEVENT e) {};
 
 	friend class CMarioState;

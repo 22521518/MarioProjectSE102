@@ -416,6 +416,9 @@
     <ClInclude Include="GoombaStateIDs.h">
       <Filter>Header Files\GameObjectConcrete\Goomba\GoombaAsset</Filter>
     </ClInclude>
+    <ClInclude Include="BlockQ.h">
+      <Filter>Header Files\GameObjectConcrete\Brick</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MarioProject.rc">

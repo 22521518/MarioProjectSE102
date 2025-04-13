@@ -176,6 +176,7 @@
     <ClInclude Include="CoinAniIDs.h" />
     <ClInclude Include="CoinStateIDs.h" />
     <ClInclude Include="CollidableWithMario.h" />
+    <ClInclude Include="BlockQ.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Portal.h" />
     <ClInclude Include="Coin.h" />
