@@ -82,7 +82,7 @@ void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
 		}
 	}
-	else if (untouchable == 0 && !koopa->IsDeadState()) // hit by Goomba
+	else if (untouchable == 0 && !koopa->IsDeadState())
 	{
 		if (level > MARIO_LEVEL_SMALL)
 		{

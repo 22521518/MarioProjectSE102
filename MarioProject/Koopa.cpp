@@ -1,5 +1,19 @@
+#include <algorithm>
+
 #include "Koopa.h"
 #include "CollisionEvent.h"
+
+bool CKoopa::IsOutOfTime(ULONGLONG time)
+{
+	return time > KOOPA_DIE_TIMEOUT;
+}
+
+bool CKoopa::IsNearOutOfTime(ULONGLONG time)
+{
+	ULONGLONG litmitTime = static_cast<ULONGLONG>(KOOPA_DIE_TIMEOUT * 0.70);
+	if (litmitTime < 1000) litmitTime = 1000;
+	return litmitTime < time  && time < KOOPA_DIE_TIMEOUT;
+}
 
 CKoopa::CKoopa(float x, float y, float vx, float vy, float ax, float ay, DirectionXAxisType nx, int state)
 	: CCharacter(x, y, vx, vy, ax, ay, nx, state)
@@ -18,12 +32,14 @@ void CKoopa::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	{
 		if (!this->IsShellState())
 		{
+			this->die_start = GetTickCount64();
 			this->SetState(KOOPA_STATE_SHELL_IDLE);
 		}
 	}
 	else if (this->IsShellIdle()) 
 	{
 		this->SetState(KOOPA_STATE_SHELL_MOVE, e);
+		this->die_start = -1;
 	}
 
 }
@@ -51,12 +67,20 @@ void CKoopa::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
 	this->stateHandler->Update(this, dt);
 
-	if (this->IsShellIdle() && (GetTickCount64() - die_start > KOOPA_DIE_TIMEOUT))
+	if (this->IsShellIdle())
 	{
-		this->SetState(KOOPA_STATE_WALKING);
-		this->y -= (KOOPA_BBOX_HEIGHT - SHELL_BBOX_HEIGHT) / 2;
-		die_start = -1;
-		return;
+		ULONGLONG timeFromDie = GetTickCount64() - die_start;
+		if (IsOutOfTime(timeFromDie))
+		{
+			this->SetState(KOOPA_STATE_WALKING);
+			this->y -= (KOOPA_BBOX_HEIGHT - SHELL_BBOX_HEIGHT) / 2;
+			die_start = -1;
+			return;
+		}
+		else if (IsNearOutOfTime(timeFromDie))
+		{
+			this->SetState(KOOPA_STATE_SHELL_IDLE_OUT_TIME);
+		}
 	}
 
 	CCharacter::Update(dt, coObjects);

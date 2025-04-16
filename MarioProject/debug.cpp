@@ -15,14 +15,20 @@ void DebugOut(const wchar_t* fmt, ...)
 	OutputDebugString(dbg_out);
 }
 
-void DebugOutObjectClassName(LPGAMEOBJECT obj)
-{
-	std::string className = std::string(typeid(*obj).name());
-	std::wstring wClassName(className.begin(), className.end());
-	DebugOut(L"Name %s\n", wClassName.c_str());
-}
-
-
+//template<typename T>
+//void DebugOutObjectClassName(T* obj)
+//{
+//	if (obj)
+//	{
+//		string className = typeid(*obj).name(); 
+//		wstring wClassName(className.begin(), className.end());
+//		OutputDebugStringW((L"Name: " + wClassName + L"\n").c_str());
+//	}
+//	else
+//	{
+//		OutputDebugStringW(L"Null pointer received\n");
+//	}
+//}
 
 void DebugOutTitle(const wchar_t* fmt, ...)
 {

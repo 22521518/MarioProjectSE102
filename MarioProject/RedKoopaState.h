@@ -1,6 +1,7 @@
 #pragma once
 #include "KoopaState.h"
 #include "Koopa.h"
+#include "KoopaAniIDs.h"
 
 class CRedKoopaState : public CKoopaState {
 public:
