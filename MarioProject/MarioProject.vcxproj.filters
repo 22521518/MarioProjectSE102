@@ -467,6 +467,9 @@
     <ClInclude Include="BlockQ.h">
       <Filter>Header Files\GameObjectConcrete\Brick</Filter>
     </ClInclude>
+    <ClInclude Include="RedKoopaShellState.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaState</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MarioProject.rc">

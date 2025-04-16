@@ -10,6 +10,10 @@
 class CKoopa :
 	public CCharacter, public CCollidableWithMario 
 {
+private:
+	bool IsOutOfTime(ULONGLONG time);
+	bool IsNearOutOfTime(ULONGLONG time);	
+
 protected:
 	LPKOOPASTATE stateHandler = NULL;
 	ULONGLONG die_start = -1;
@@ -43,11 +47,12 @@ public:
 	virtual void SetState(int state, LPCOLLISIONEVENT e) = 0;
 	virtual bool IsShellState() { return this->IsShellIdle() || this->IsShellMove(); }
 	virtual bool IsShellMove() { return this->state == KOOPA_STATE_SHELL_MOVE; }
-	virtual bool IsShellIdle() { return this->state == KOOPA_STATE_SHELL_IDLE; }
+	virtual bool IsShellIdle() { return (this->state == KOOPA_STATE_SHELL_IDLE || this->state == KOOPA_STATE_SHELL_IDLE_OUT_TIME); }
 
 	friend class CKoopaState;
 	friend class CRedKoopaState;
 	friend class CKoopaShellState;
+	friend class CKoopaShellMoveState;
 };
 
 typedef CKoopa* LPKOOPA;

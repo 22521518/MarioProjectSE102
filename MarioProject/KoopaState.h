@@ -10,7 +10,7 @@ class CKoopa; typedef CKoopa* LPKOOPA;
 
 class CKoopaState {
 protected:
-	void ChangeDirection(LPKOOPA koopa, ULONGLONG speed);
+	virtual void ChangeDirection(LPKOOPA koopa, float speed);
 public:
 	CKoopaState() {};
 	CKoopaState(LPKOOPA koopa);

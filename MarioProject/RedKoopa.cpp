@@ -1,4 +1,5 @@
 #include "RedKoopa.h"
+#include "RedKoopaShellState.h"
 
 void CRedKoopa::SetState(int state) 
 {
@@ -6,6 +7,9 @@ void CRedKoopa::SetState(int state)
 	{
 	case KOOPA_STATE_SHELL_IDLE:
 		this->stateHandler = new CRedKoopaShellIdleState(this);
+		break;
+	case KOOPA_STATE_SHELL_IDLE_OUT_TIME:
+		this->stateHandler = new CRedKoopaShellIdleStateRunOutOfTime(this);
 		break;
 	case KOOPA_STATE_SHELL_MOVE:
 		throw std::runtime_error("Invalid state passed !Move state should be in SetState(int, LPCOLLISIONEVENT)");
@@ -21,6 +25,7 @@ void CRedKoopa::SetState(int state, LPCOLLISIONEVENT e)
 {
 	if (state == KOOPA_STATE_SHELL_MOVE) {
 		this->stateHandler = new CRedKoopaShellMoveState(this, e);
+		this->state = state;
 	}
 	else 
 	{

@@ -5,11 +5,17 @@
 
 CKoopaShellState::CKoopaShellState(LPKOOPA koopa) 
 {
-	koopa->die_start = GetTickCount64();
-	if (!koopa->IsShellState())
-		koopa->y += (KOOPA_BBOX_HEIGHT - SHELL_BBOX_HEIGHT) / 2;
+    if (!koopa->IsShellState())
+    {
+        koopa->y += (KOOPA_BBOX_HEIGHT - SHELL_BBOX_HEIGHT) / 2;
+    }
 	koopa->SetSpeed(0, 0);
-	koopa->ay = 0;
+    koopa->SetAcceleration(0, KOOPA_GRAVITY);
+}
+
+void CKoopaShellState::Update(LPKOOPA koopa, DWORD dt)
+{
+    koopa->vy += koopa->ay * dt;
 }
 
 void CKoopaShellState::GetBoundingBox(float& width, float& height)
@@ -19,21 +25,24 @@ void CKoopaShellState::GetBoundingBox(float& width, float& height)
 }
 
 #pragma region SHELL_MOVE
+void CKoopaShellMoveState::ChangeDirection(LPKOOPA koopa, float speed)
+{
+    CKoopaState::ChangeDirection(koopa, KOOPA_SHELL_SPEED);
+}
+
 CKoopaShellMoveState::CKoopaShellMoveState(LPKOOPA koopa, LPCOLLISIONEVENT e)
     : CKoopaShellState(koopa)
 {
-    float vx = 0;
-    int eNXValue = static_cast<int>(e->normalX);
-    if (e != nullptr)
+    float vx = KOOPA_SHELL_SPEED;
+
+    if (e != nullptr && e->normalX != DirectionXAxisType::None)
     {
-        vx = -eNXValue * KOOPA_SHELL_SPEED;
+        int eNXValue = static_cast<int>(e->normalX);
+        vx *= -eNXValue ;
     
-    }
-    else
-    {
-        vx = KOOPA_SHELL_SPEED;
     }
 
     koopa->SetSpeed(vx, 0);
+    koopa->SetAcceleration(0, KOOPA_GRAVITY);
 }
 #pragma endregion

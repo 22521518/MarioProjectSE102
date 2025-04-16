@@ -1,13 +1,15 @@
 #include "Koopa.h"
+#include "debug.h"
 #include"PhysicalObject.h"
 #include "KoopaState.h"
 #include "CollisionEvent.h"
 
-void CKoopaState::ChangeDirection(LPKOOPA koopa, ULONGLONG speed)
+void CKoopaState::ChangeDirection(LPKOOPA koopa, float speed = KOOPA_WALKING_SPEED)
 {
 	int nxValue = static_cast<int>(koopa->nx);
+	nxValue = nxValue != 0 ? nxValue : 1;
 	koopa->nx = static_cast<DirectionXAxisType>(-nxValue);
-	koopa->vx = nxValue * speed;
+	koopa->vx = -nxValue * speed;
 }
 
 CKoopaState::CKoopaState(LPKOOPA koopa)
@@ -21,7 +23,6 @@ CKoopaState::CKoopaState(LPKOOPA koopa)
 void CKoopaState::Update(LPKOOPA koopa, DWORD dt)
 {
 	koopa->vy += koopa->ay * dt;
-	//koopa->vx += koopa->ax * dt;
 	koopa->vx += koopa->ax * dt;
 }
 
@@ -36,18 +37,9 @@ void CKoopaState::OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e)
 		koopa->vy = 0;
 	}
 	if (e->normalX != DirectionXAxisType::None)
-	{
-		
-		if (!koopa->IsShellState())
-		{
-			this->ChangeDirection(koopa, KOOPA_WALKING_SPEED);
-			koopa->SetState(KOOPA_STATE_WALKING);
-		}
-		else if (koopa->IsShellMove())
-		{
-			this->ChangeDirection(koopa, KOOPA_SHELL_SPEED);
-		}
-		
+	{	
+		this->ChangeDirection(koopa);
+		if (!koopa->IsShellState()) koopa->SetState(KOOPA_STATE_WALKING);
 	}
 }
 

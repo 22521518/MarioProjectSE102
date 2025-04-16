@@ -218,6 +218,7 @@
     <ClInclude Include="MarioConfig.h" />
     <ClInclude Include="MarioStateIDs.h" />
     <ClInclude Include="KoopaAniIDs.h" />
+    <ClInclude Include="RedKoopaShellState.h" />
     <ClInclude Include="RedKoopaState.h" />
     <ClInclude Include="StaticObject.h" />
     <ClInclude Include="PhysicalObject.h" />
