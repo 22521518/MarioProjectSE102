@@ -9,7 +9,6 @@ void CCharacter::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 
 void CCharacter::OnNoCollision(DWORD dt)
 {
-	float x, y;
-	this->GetPosition(x, y);
-	this->SetPosition(x + vx * dt, y + vy * dt);
+	this->x += this->vx * dt;
+	this->y += this->vy * dt;
 }
