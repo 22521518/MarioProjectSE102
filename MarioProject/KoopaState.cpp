@@ -24,6 +24,12 @@ void CKoopaState::ChangeDirection(LPKOOPA koopa, float speed)
 	if (!koopa->IsShellState()) koopa->SetState(KOOPA_STATE_WALKING);
 }
 
+void CKoopaState::OnNoCollision(LPKOOPA koopa, DWORD dt)
+{
+	koopa->x += koopa->vx * dt;
+	koopa->y += koopa->vy * dt;
+}
+
 void CKoopaState::OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e)
 {
 	if (!e->obj->IsBlocking()) return;

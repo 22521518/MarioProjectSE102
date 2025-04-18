@@ -17,6 +17,7 @@ public:
 	
 	virtual void ChangeDirection(LPKOOPA koopa, float speed = KOOPA_WALKING_SPEED);
 
+	virtual void OnNoCollision(LPKOOPA koopa, DWORD dt);
 	virtual void OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e);
 	virtual void GetBoundingBox(float& width, float& height);
 

@@ -10,7 +10,7 @@ CKoopaShellState::CKoopaShellState(LPKOOPA koopa)
         koopa->y += (KOOPA_BBOX_HEIGHT - SHELL_BBOX_HEIGHT) / 2;
     }
 	koopa->SetSpeed(0, 0);
-    koopa->SetAcceleration(0, KOOPA_GRAVITY);
+    koopa->SetAcceleration(0, SHELL_GRAVITY);
 }
 
 //void CKoopaShellState::Update(LPKOOPA koopa, DWORD dt)

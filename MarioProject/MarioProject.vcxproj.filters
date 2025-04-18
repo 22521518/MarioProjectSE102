@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -269,6 +270,18 @@
     </ClCompile>
     <ClCompile Include="CheckingEdgeObject.cpp">
       <Filter>Source Files\GameObjectAbstract</Filter>
+    </ClCompile>
+    <ClCompile Include="RedKoopaParatroopa.cpp">
+      <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
+    </ClCompile>
+    <ClCompile Include="RedKoopaParatroopaState.cpp">
+      <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
+    </ClCompile>
+    <ClCompile Include="GreenKoopaParatroopa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GreenKoopaParatroopaState.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -493,6 +506,27 @@
     </ClInclude>
     <ClInclude Include="InteractableWithEdge.h">
       <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="PlantEnemyConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlantEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckingDummyObject.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="RedKoopaParatroopa.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa</Filter>
+    </ClInclude>
+    <ClInclude Include="RedKoopaParatroopaState.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaState</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenKoopaParatroopa.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenKoopaParatroopaState.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

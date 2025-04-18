@@ -4,7 +4,7 @@
 #include "CollisionEvent.h"
 
 CCheckingEdgeObject::CCheckingEdgeObject(LPINTERACTABLEWITHEDGE obj, float x, float y, float vx, float vy, float ax, float ay, DirectionXAxisType nx, int state)
-	: CCharacter(x, y, vx, vy, ax, ay, nx, state)
+	: CCheckingDummyObject(x, y, vx, vy, ax, ay, nx, state)
 {
 	this->obj = obj;
 }
@@ -47,8 +47,6 @@ void CCheckingEdgeObject::GetBoundingBox(float& left, float& top, float& right, 
 
 void CCheckingEdgeObject::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
-	// this cause bug no collision (REMEMBER)
-	vy += ay * dt;
-	vx += ax * dt;
+	// without updating vecolity, it will cause bug no collision (REMEMBER)
 	CCharacter::Update(dt, coObjects);
 }

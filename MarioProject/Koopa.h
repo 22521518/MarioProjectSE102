@@ -15,6 +15,8 @@ private:
 	bool IsNearOutOfTime(ULONGLONG time);	
 
 protected:
+	DirectionYAxisType ny = DirectionYAxisType::Bottom;
+
 	LPKOOPASTATE stateHandler = NULL;
 	ULONGLONG die_start = -1;
 public:
@@ -33,8 +35,10 @@ public:
 
 	// interactive object method
 	//virtual void SetState(int state) = 0;
+	//virtual void OnNoCollision(DWORD dt) override; // use default
 	virtual void SetState(int state) { CInteractiveObject::SetState(state); };
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e) override;
+	virtual void SetState(int state) { CInteractiveObject::SetState(state); };
 
 	// character object method
 	virtual bool IsDeadState() override { return IsShellIdle(); }
@@ -50,6 +54,8 @@ public:
 
 	friend class CKoopaState;
 	friend class CRedKoopaState;
+	friend class CRedKoopaParatroopaState;
+	friend class CGreenKoopaParatroopaState;
 	friend class CGreenKoopaState;
 	friend class CKoopaShellState;
 	friend class CKoopaShellMoveState;
