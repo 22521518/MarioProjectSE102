@@ -77,7 +77,7 @@ void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 	
 	if (e->normalY == DirectionYAxisType::Top)
 	{
-		if (!koopa->IsShellState())
+		if (!koopa->IsShellState() || koopa->IsParatroopaState())
 		{
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
 		}

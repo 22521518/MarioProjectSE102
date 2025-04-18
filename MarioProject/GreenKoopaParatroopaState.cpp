@@ -4,8 +4,6 @@
 CGreenKoopaParatroopaState::CGreenKoopaParatroopaState(LPKOOPA koopa, int state)
 	: CKoopaState(koopa)
 {
-	DebugOut(L"Brom: (x, y)=(%f, %f), (vx, vy)=(%f, %f), (ax, ay)=(%f, %f)\n", koopa->x, koopa->y, koopa->vx, koopa->vy, koopa->ax, koopa->ay);
-
 	koopa->vy = -KOOPA_JUMP_VY;
 	this->state = state;
 }
@@ -23,11 +21,9 @@ void CGreenKoopaParatroopaState::OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT
 	if (!e->obj->IsBlocking()) return;
 	if (dynamic_cast<LPKOOPA>(e->obj)) return;
 
-	DebugOut(L"(x, y)=(%f, %f), (vx, vy)=(%f, %f), (ax, ay)=(%f, %f)\n", koopa->x, koopa->y, koopa->vx, koopa->vy, koopa->ax, koopa->ay);
 	
 	if (e->normalY == DirectionYAxisType::Top)
 	{
-		e->printInfo();
 		koopa->vy = -KOOPA_JUMP_VY;
 	} 
 	else 

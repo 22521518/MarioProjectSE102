@@ -38,7 +38,6 @@ public:
 	//virtual void OnNoCollision(DWORD dt) override; // use default
 	virtual void SetState(int state) { CInteractiveObject::SetState(state); };
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e) override;
-	virtual void SetState(int state) { CInteractiveObject::SetState(state); };
 
 	// character object method
 	virtual bool IsDeadState() override { return IsShellIdle(); }
@@ -51,6 +50,7 @@ public:
 	virtual bool IsShellState() { return this->IsShellIdle() || this->IsShellMove(); }
 	virtual bool IsShellMove() { return this->state == KOOPA_STATE_SHELL_MOVE; }
 	virtual bool IsShellIdle() { return (this->state == KOOPA_STATE_SHELL_IDLE || this->state == KOOPA_STATE_SHELL_IDLE_OUT_TIME); }
+	virtual bool IsParatroopaState() { DebugOut(L"JUmp!\n");  return this->state == KOOPA_STATE_PARATROOPA; }
 
 	friend class CKoopaState;
 	friend class CRedKoopaState;

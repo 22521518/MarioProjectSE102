@@ -1,5 +1,6 @@
 #include "RedKoopaParatroopa.h"
 #include "RedKoopaParatroopaState.h"
+#include "CollisionEvent.h"
 
 void CRedKoopaParatroopa::SetState(int state)
 {

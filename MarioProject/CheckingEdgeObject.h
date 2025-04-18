@@ -22,7 +22,6 @@ public:
 
 	virtual void Render() { RenderBoundingBox(); };
 	virtual bool IsDeadState() { return false; };
-	virtual void OnCollisionWith(LPCOLLISIONEVENT e);
 };
 
 typedef CCheckingEdgeObject* LPCHECKINGEDGEOBJECT;

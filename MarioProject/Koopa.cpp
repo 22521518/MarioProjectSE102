@@ -30,7 +30,11 @@ void CKoopa::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	mario->OnCollisionWithKoopa(this, e);
 	if (e->normalY == DirectionYAxisType::Top)
 	{
-		if (!this->IsShellState())
+		if (this->IsParatroopaState())
+		{
+			this->SetState(KOOPA_STATE_WALKING);
+		}
+		else if (!this->IsShellState())
 		{
 			this->die_start = GetTickCount64();
 			this->SetState(KOOPA_STATE_SHELL_IDLE);
@@ -41,7 +45,6 @@ void CKoopa::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 		this->SetState(KOOPA_STATE_SHELL_MOVE, e);
 		this->die_start = -1;
 	}
-
 }
 #pragma endregion
 
