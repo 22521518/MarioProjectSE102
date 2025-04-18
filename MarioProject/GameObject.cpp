@@ -7,7 +7,9 @@
 #include "Portal.h"
 
 #include "RedKoopa.h"
+#include "RedKoopaParatroopa.h"
 #include "GreenKoopa.h"
+#include "GreenKoopaParatroopa.h"
 
 #include "AssetIDs.h"
 
@@ -21,6 +23,8 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, ve
 	case OBJECT_TYPE_BRICK: return new CBrick(x, y);
 	case OBJECT_TYPE_COIN: return new CCoin(x, y);
 	case OBJECT_TYPE_RED_KPOOPA: return new CRedKoopa(x, y);
+	case OBJECT_TYPE_RED_KPOOPA_TROOPA: return new CRedKoopaParatroopa(x, y);
+	case OBJECT_TYPE_GREEN_KPOOPA_TROOPA: return new CGreenKoopaParatroopa(x, y);
 	case OBJECT_TYPE_GREEN_KPOOPA: return new CGreenKoopa(x, y);
 	case OBJECT_TYPE_PLATFORM:
 	{
