@@ -1,6 +1,7 @@
 #pragma once
 #include<Windows.h>
 #include<vector>
+#include "KoopaConfig.h"
 
 using namespace std;
 
@@ -10,12 +11,12 @@ class CKoopa; typedef CKoopa* LPKOOPA;
 
 class CKoopaState {
 protected:
-	virtual void ChangeDirection(LPKOOPA koopa, float speed);
 public:
 	CKoopaState() {};
 	CKoopaState(LPKOOPA koopa);
+	
+	virtual void ChangeDirection(LPKOOPA koopa, float speed = KOOPA_WALKING_SPEED);
 
-	virtual void Update(LPKOOPA koopa, DWORD dt);
 	virtual void OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e);
 	virtual void GetBoundingBox(float& width, float& height);
 

@@ -4,6 +4,8 @@
 void CCharacter::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
 	//return;
+	vy += ay * dt;
+	vx += ax * dt;
 	CCollision::GetInstance()->Process(this, dt, coObjects);
 }
 

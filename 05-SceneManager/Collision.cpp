@@ -243,6 +243,7 @@ void CCollision::Process(LPGAMEOBJECT objSrc, DWORD dt, vector<LPGAMEOBJECT>* co
 	// No collision detected
 	if (coEvents.size() == 0)
 	{
+		DebugOutObjectClassName(objSrc);
 		objSrc->OnNoCollision(dt);
 	}
 	else

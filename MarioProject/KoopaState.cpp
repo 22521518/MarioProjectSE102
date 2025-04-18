@@ -2,16 +2,10 @@
 #include "debug.h"
 #include"PhysicalObject.h"
 #include "KoopaState.h"
+#include "RedKoopaState.h"
 #include "CollisionEvent.h"
 
-void CKoopaState::ChangeDirection(LPKOOPA koopa, float speed = KOOPA_WALKING_SPEED)
-{
-	int nxValue = static_cast<int>(koopa->nx);
-	nxValue = nxValue != 0 ? nxValue : 1;
-	koopa->nx = static_cast<DirectionXAxisType>(-nxValue);
-	koopa->vx = -nxValue * speed;
-}
-
+#pragma region KOOPA_FAMILY
 CKoopaState::CKoopaState(LPKOOPA koopa)
 {
 	int nxValue = static_cast<int>(koopa->nx);
@@ -20,17 +14,21 @@ CKoopaState::CKoopaState(LPKOOPA koopa)
 	koopa->vx = nxValue * KOOPA_WALKING_SPEED;
 }
 
-void CKoopaState::Update(LPKOOPA koopa, DWORD dt)
+void CKoopaState::ChangeDirection(LPKOOPA koopa, float speed)
 {
-	koopa->vy += koopa->ay * dt;
-	koopa->vx += koopa->ax * dt;
+	int nxValue = static_cast<int>(koopa->nx);
+	nxValue = nxValue != 0 ? nxValue : 1;
+	koopa->nx = static_cast<DirectionXAxisType>(-nxValue);
+	koopa->vx = -nxValue * speed;
+
+	if (!koopa->IsShellState()) koopa->SetState(KOOPA_STATE_WALKING);
 }
 
 void CKoopaState::OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e)
 {
 	if (!e->obj->IsBlocking()) return;
 	if (dynamic_cast<LPKOOPA>(e->obj)) return;
-	if (dynamic_cast<LPCHARACTER>(e->obj)) return;
+
 
 	if (e->normalY != DirectionYAxisType::None)
 	{
@@ -39,7 +37,6 @@ void CKoopaState::OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e)
 	if (e->normalX != DirectionXAxisType::None)
 	{	
 		this->ChangeDirection(koopa);
-		if (!koopa->IsShellState()) koopa->SetState(KOOPA_STATE_WALKING);
 	}
 }
 
@@ -48,3 +45,4 @@ void CKoopaState::GetBoundingBox(float& width, float& height)
 	width = KOOPA_BBOX_WIDTH;
 	height = KOOPA_BBOX_HEIGHT;
 }
+#pragma endregion

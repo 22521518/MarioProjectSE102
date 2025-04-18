@@ -15,21 +15,6 @@ void DebugOut(const wchar_t* fmt, ...)
 	OutputDebugString(dbg_out);
 }
 
-//template<typename T>
-//void DebugOutObjectClassName(T* obj)
-//{
-//	if (obj)
-//	{
-//		string className = typeid(*obj).name(); 
-//		wstring wClassName(className.begin(), className.end());
-//		OutputDebugStringW((L"Name: " + wClassName + L"\n").c_str());
-//	}
-//	else
-//	{
-//		OutputDebugStringW(L"Null pointer received\n");
-//	}
-//}
-
 void DebugOutTitle(const wchar_t* fmt, ...)
 {
 	wchar_t s[1024];

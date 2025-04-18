@@ -33,12 +33,11 @@ public:
 
 	// interactive object method
 	//virtual void SetState(int state) = 0;
-	//virtual void OnNoCollision(DWORD dt) override; // use default
 	virtual void SetState(int state) { CInteractiveObject::SetState(state); };
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e) override;
 
 	// character object method
-	virtual bool IsDeadState() override { return IsShellIdle() || IsShellMove(); }
+	virtual bool IsDeadState() override { return IsShellIdle(); }
 
 	// collidable with mario interface
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e) override;
@@ -51,6 +50,7 @@ public:
 
 	friend class CKoopaState;
 	friend class CRedKoopaState;
+	friend class CGreenKoopaState;
 	friend class CKoopaShellState;
 	friend class CKoopaShellMoveState;
 };

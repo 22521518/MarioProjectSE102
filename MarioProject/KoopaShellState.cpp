@@ -13,10 +13,10 @@ CKoopaShellState::CKoopaShellState(LPKOOPA koopa)
     koopa->SetAcceleration(0, KOOPA_GRAVITY);
 }
 
-void CKoopaShellState::Update(LPKOOPA koopa, DWORD dt)
-{
-    koopa->vy += koopa->ay * dt;
-}
+//void CKoopaShellState::Update(LPKOOPA koopa, DWORD dt)
+//{
+//    koopa->vy += koopa->ay * dt;
+//}
 
 void CKoopaShellState::GetBoundingBox(float& width, float& height)
 {

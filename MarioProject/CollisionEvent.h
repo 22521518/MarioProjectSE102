@@ -29,4 +29,5 @@ struct CCollisionEvent
 		LPPHYSICALOBJECT obj = NULL, LPPHYSICALOBJECT src_obj = NULL);
 	int WasCollided();
 	static bool compare(CCollisionEvent*& a, CCollisionEvent*& b);
+	void printInfo();
 };

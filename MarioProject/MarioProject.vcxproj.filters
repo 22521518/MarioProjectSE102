@@ -261,6 +261,15 @@
     <ClCompile Include="RedKoopa.cpp">
       <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
     </ClCompile>
+    <ClCompile Include="GreenKoopa.cpp">
+      <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
+    </ClCompile>
+    <ClCompile Include="RedKoopaState.cpp">
+      <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckingEdgeObject.cpp">
+      <Filter>Source Files\GameObjectAbstract</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="setup.h">
@@ -469,6 +478,21 @@
     </ClInclude>
     <ClInclude Include="RedKoopaShellState.h">
       <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaState</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenKoopaState.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaState</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenKoopaShellState.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaState</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenKoopa.h">
+      <Filter>Header Files\GameObjectConcrete\Kooopa</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckingEdgeObject.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="InteractableWithEdge.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

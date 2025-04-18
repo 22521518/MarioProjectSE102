@@ -11,4 +11,6 @@ public:
 	{
 		return  koopa->nx == DirectionXAxisType::Left ? ID_ANI_RED_KOOPA_WALKING_LEFT : ID_ANI_RED_KOOPA_WALKING_RIGHT;
 	};
+
+	virtual void OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e) override;
 };

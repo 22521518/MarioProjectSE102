@@ -388,8 +388,6 @@ void CPlayScene::Update(DWORD dt)
 	cx -= game->GetBackBufferWidth() / 2;
 	cy -= game->GetBackBufferHeight() / 2;
 
-	DebugOut(L"Position of the camera: %f, %f\n", cx, cy);
-
 	if (cx < 0) cx = 0;
 
 	CGame::GetInstance()->SetCamPos(cx, 0.0f /*cy*/);

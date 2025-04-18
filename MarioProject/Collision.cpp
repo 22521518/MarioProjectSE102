@@ -2,6 +2,7 @@
 #include "Collision.h"
 #include "InteractiveObject.h"
 #include "Character.h"
+#include "CheckingEdgeObject.h"
 
 #define MIN_FLOAT -99999999999.0f
 #define MAX_FLOAT 99999999999.0f
@@ -151,6 +152,7 @@ void CCollision::Scan(LPPHYSICALOBJECT objSrc, DWORD dt,
 
 	for (UINT i = 0; i < objDests->size(); i++)
 	{
+		if (objSrc == objDests->at(i)) continue;
 		LPCOLLISIONEVENT e = SweptAABB(objSrc, dt, objDests->at(i));
 		if (e->WasCollided() == 1) 
 		{
@@ -161,7 +163,7 @@ void CCollision::Scan(LPPHYSICALOBJECT objSrc, DWORD dt,
 			delete e; // remember to delete the event if it is not a collision
 		}
 	}
-	//sort(coEvents.begin(), coEvents.end(), CCollisionEvent::compare);
+	sort(coEvents.begin(), coEvents.end(), CCollisionEvent::compare);
 }
 
 void CCollision::Filter(LPPHYSICALOBJECT objSrc, vector<LPCOLLISIONEVENT>& coEvents, LPCOLLISIONEVENT& colX, LPCOLLISIONEVENT& colY, int filterBlock, int filterX, int filterY)
@@ -228,6 +230,7 @@ void CCollision::ProcessCollisionY(LPINTERACTIVEOBJECT objSrc, float& positionX,
 
 void CCollision::Process(LPINTERACTIVEOBJECT objSrc, DWORD dt, vector<LPPHYSICALOBJECT>* coObjs)
 {
+	if (!objSrc) return;
 	vector<LPCOLLISIONEVENT> coEvents;
 	LPCOLLISIONEVENT colX = NULL;
 	LPCOLLISIONEVENT colY = NULL;
@@ -236,6 +239,7 @@ void CCollision::Process(LPINTERACTIVEOBJECT objSrc, DWORD dt, vector<LPPHYSICAL
 	{
 		Scan(objSrc, dt, coObjs, coEvents);
 	}
+
 	if (coEvents.size() == 0)
 	{
 		objSrc->OnNoCollision(dt);
@@ -295,6 +299,7 @@ void CCollision::Process(LPINTERACTIVEOBJECT objSrc, DWORD dt, vector<LPPHYSICAL
 	{
 		LPCOLLISIONEVENT e = coEvents[i];
 		if (e->isDeleted || e->obj->IsBlocking()) continue;  // blocking collisions were handled already, skip them
+		//e->printInfo();
 		objSrc->OnCollisionWith(e);
 	}
 
