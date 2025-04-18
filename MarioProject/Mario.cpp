@@ -167,8 +167,8 @@ void CMario::GetBoundingBox(float& left, float& top, float& right, float& bottom
 
 void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
-	vy += ay * dt;
-	vx += ax * dt;
+	//vy += ay * dt;
+	//vx += ax * dt;
 
 	if (abs(vx) > abs(maxVx)) vx = maxVx;
 

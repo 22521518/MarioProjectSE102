@@ -65,7 +65,8 @@ void CKoopa::GetBoundingBox(float& left, float& top, float& right, float& bottom
 }
 void CKoopa::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
-	this->stateHandler->Update(this, dt);
+	// 
+	//this->stateHandler->Update(this, dt);
 
 	if (this->IsShellIdle())
 	{

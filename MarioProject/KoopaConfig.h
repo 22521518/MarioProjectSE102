@@ -1,8 +1,8 @@
 #pragma once
 
-#define KOOPA_GRAVITY 0.002f
+#define KOOPA_GRAVITY 0.02f
 #define KOOPA_WALKING_SPEED 0.05f
-#define KOOPA_SHELL_SPEED 0.1f
+#define KOOPA_SHELL_SPEED 0.2f
 
 #define KOOPA_SHELL_TIMEOUT 3500
 #define KOOPA_DIE_TIMEOUT 5500	

@@ -40,8 +40,6 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	{
 		vy = 0;
 		if (e->ny < 0) isOnPlatform = true;
-
-		DebugOut(L"%d\n", isOnPlatform);
 	}
 	else
 		if (e->nx != 0 && e->obj->IsBlocking())

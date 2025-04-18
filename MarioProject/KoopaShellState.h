@@ -6,7 +6,7 @@ class CKoopaShellState :
 public:
 	CKoopaShellState() {};
 	CKoopaShellState(LPKOOPA koopa);
-	virtual void Update(LPKOOPA koopa, DWORD dt);
+	//virtual void Update(LPKOOPA koopa, DWORD dt);
 	virtual int GetAnimationID(LPKOOPA koopa) = 0;
 	virtual void GetBoundingBox(float& width, float& height);
 };

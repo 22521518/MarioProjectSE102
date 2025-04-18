@@ -11,4 +11,5 @@
 
 #pragma region TRI_OBJ
 #define ID_ANI_RED_KOOPA 1000000
+#define ID_ANI_GREEN_KOOPA 1001000
 #pragma endregion

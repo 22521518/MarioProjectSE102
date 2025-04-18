@@ -37,7 +37,6 @@ public:
 	virtual int IsBlocking() = 0;
 	virtual int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) = 0;
 
-	virtual void onHit() {};
 	virtual void RenderBoundingBox();
 	virtual void GetBoundingBox(RECT& rect);
 
