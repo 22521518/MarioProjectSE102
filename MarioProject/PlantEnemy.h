@@ -1,10 +1,10 @@
 ﻿#pragma once
-#include "Character.h"
+#include "Enemy.h"
 #include "PlantEnemyConfig.h"
 #include "CollidableWithMario.h"
 
 class CPlantEnemy :
-	public CCharacter, public CCollidableWithMario
+	public class CEnemy , public CCollidableWithMario
 {
 
 public:
