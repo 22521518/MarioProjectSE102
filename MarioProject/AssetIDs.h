@@ -27,3 +27,7 @@
 #define ID_SPRITE_GOOMBA 300000
 #define ID_SPRITE_COIN 400000
 #define ID_SPRITE_CLOUD 500000
+
+#pragma region THANH_OBJ
+#define OBJECT_TYPE_PLANT_ENEMY	6005000
+#pragma endregion

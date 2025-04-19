@@ -2,16 +2,21 @@
 #include "Enemy.h"
 #include "PlantEnemyConfig.h"
 #include "CollidableWithMario.h"
+#include "GameObject.h"
 
 class CPlantEnemy :
 	public CEnemy , public CCollidableWithMario
 {
-
+	LPGAMEOBJECT mario;
 public:
-	CPlantEnemy(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0, DirectionXAxisType nx = DirectionXAxisType::Left, int state = PLANT_STATE_HIDE)
+	CPlantEnemy(LPGAMEOBJECT mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0, DirectionXAxisType nx = DirectionXAxisType::Left, int state = PLANT_STATE_HIDE)
 		: CEnemy(x, y, vx, vy, ax, ay, nx, state)
 	{
+		this->mario = mario;
 		SetState(PLANT_STATE_HIDE);
+
+		float x, y;
+		mario->GetPosition(x, y);
 	};
 
 	// game object method
