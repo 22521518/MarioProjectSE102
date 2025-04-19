@@ -4,12 +4,12 @@
 #include "CollidableWithMario.h"
 
 class CPlantEnemy :
-	public class CEnemy , public CCollidableWithMario
+	public CEnemy , public CCollidableWithMario
 {
 
 public:
 	CPlantEnemy(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0, DirectionXAxisType nx = DirectionXAxisType::Left, int state = PLANT_STATE_HIDE)
-		: CCharacter(x, y, vx, vy, ax, ay, nx, state)
+		: CEnemy(x, y, vx, vy, ax, ay, nx, state)
 	{
 		SetState(PLANT_STATE_HIDE);
 	};

@@ -151,6 +151,9 @@
     <Filter Include="Source Files\GameObjectConcrete\Koopa">
       <UniqueIdentifier>{f335ccca-627c-4b09-bfb8-5e4987d048fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\PlantEnemy">
+      <UniqueIdentifier>{60779d45-f2a2-450a-bc61-b6b6b251ac17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -507,12 +510,6 @@
     <ClInclude Include="InteractableWithEdge.h">
       <Filter>Header Files\GameObjectAbstract</Filter>
     </ClInclude>
-    <ClInclude Include="PlantEnemyConfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PlantEnemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CheckingDummyObject.h">
       <Filter>Header Files\GameObjectAbstract</Filter>
     </ClInclude>
@@ -530,6 +527,12 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="PlantEnemy.h">
+      <Filter>Header Files\GameObjectConcrete\PlantEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="PlantEnemyConfig.h">
+      <Filter>Header Files\GameObjectConcrete\PlantEnemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
