@@ -191,6 +191,7 @@
     <ClInclude Include="CoinAniIDs.h" />
     <ClInclude Include="CoinStateIDs.h" />
     <ClInclude Include="CollidableWithMario.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="GreenKoopa.h" />
     <ClInclude Include="GreenKoopaParatroopa.h" />
     <ClInclude Include="GreenKoopaParatroopaState.h" />

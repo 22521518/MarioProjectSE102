@@ -528,6 +528,9 @@
     <ClInclude Include="GreenKoopaParatroopaState.h">
       <Filter>Header Files\GameObjectConcrete\Kooopa\KoopaState</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MarioProject.rc">

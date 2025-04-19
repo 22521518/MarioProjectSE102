@@ -1,5 +1,5 @@
 #pragma once
-#include "Character.h"
+#include "Enemy.h"
 #include "CollidableWithMario.h"
 #include "KoopaState.h"
 #include "KoopaShellState.h"
@@ -8,7 +8,7 @@
 #include "Goomba.h"
 
 class CKoopa :
-	public CCharacter, public CCollidableWithMario 
+	public CEnemy, public CCollidableWithMario
 {
 private:
 	bool IsOutOfTime(ULONGLONG time);

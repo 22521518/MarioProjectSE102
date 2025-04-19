@@ -4,7 +4,7 @@
 #include "MarioConfig.h"
 
 CGoomba::CGoomba(float x, float y, float vx, float vy, float ax, float ay, DirectionXAxisType nx, int state)
-	: CCharacter(x, y, vx, vy, ax, ay, nx, state)
+	: CEnemy(x, y, vx, vy, ax, ay, nx, state)
 {
 	this->die_start = -1;
 	SetState(GOOMBA_STATE_WALKING);
@@ -84,7 +84,7 @@ void CGoomba::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		return;
 	}
 
-	CCharacter::Update(dt, coObjects);	
+	CEnemy::Update(dt, coObjects);
 }
 #pragma endregion
 

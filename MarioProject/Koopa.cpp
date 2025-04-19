@@ -16,7 +16,7 @@ bool CKoopa::IsNearOutOfTime(ULONGLONG time)
 }
 
 CKoopa::CKoopa(float x, float y, float vx, float vy, float ax, float ay, DirectionXAxisType nx, int state)
-	: CCharacter(x, y, vx, vy, ax, ay, nx, state)
+	: CEnemy(x, y, vx, vy, ax, ay, nx, state)
 {
 	this->die_start = -1;
 	this->stateHandler = NULL;
@@ -87,7 +87,7 @@ void CKoopa::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		}
 	}
 
-	CCharacter::Update(dt, coObjects);
+	CEnemy::Update(dt, coObjects);
 }
 #pragma endregion
 

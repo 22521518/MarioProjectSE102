@@ -1,11 +1,11 @@
 #pragma once
-#include "Character.h"
+#include "Enemy.h"
 #include "GoombaConfig.h"
 #include "GoombaStateIDs.h"
 #include "CollidableWithMario.h"
 
 class CGoomba :
-	public CCharacter, public CCollidableWithMario
+	public CEnemy, public CCollidableWithMario
 {
 protected:
 	ULONGLONG die_start = -1;
