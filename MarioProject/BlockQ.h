@@ -37,7 +37,7 @@ public:
 		if (e->normalY == DirectionYAxisType::Bottom)
 		{
 			//player->coin++;
-			state = 0;
+			this->SetState(0);
 			//coinB->Delete();
 		}
 		/*else if ()

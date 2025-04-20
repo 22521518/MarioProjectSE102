@@ -61,7 +61,7 @@ public:
 		{
 			//
 		}*/
-		CInteractiveObject::SetState(state);
+		this->SetState(state);
 	};
 	//virtual void OnNoCollision(DWORD dt) override;
 	//virtual void OnCollisionWith(LPCOLLISIONEVENT e) override;
