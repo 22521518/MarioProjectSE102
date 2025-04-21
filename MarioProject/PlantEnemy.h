@@ -84,7 +84,7 @@ public:
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e) override
 	{
 		if (!e->obj->IsBlocking()) return;
-		if (dynamic_cast<LPPlantEnemy>(e->obj)) return;
+		if (dynamic_cast<LPPLANTENEMY>(e->obj)) return;
 
 		if (e->normalY != DirectionYAxisType::None)
 		{
@@ -99,4 +99,4 @@ public:
 	//virtual bool IsDeadState() override = 0;
 };
 
-typedef CPlantEnemy* LPPlantEnemy;
+typedef CPlantEnemy* LPPLANTENEMY;

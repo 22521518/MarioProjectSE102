@@ -10,6 +10,7 @@ class CKoopa; typedef CKoopa* LPKOOPA;
 class CMarioState; typedef CMarioState* LPMARIOSTATE;
 class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
 class CBlockQ; typedef CBlockQ* LPBlockQ;
+class CPlantEnemy; typedef CPlantEnemy* LPPLANTENEMY;
 
 struct CCollisionEvent; typedef CCollisionEvent* LPCOLLISIONEVENT;
 
@@ -62,7 +63,7 @@ public:
 	void OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e);
 	//void OnCollisionWithBlockQ (LPBlockQ coin, LPCOLLISIONEVENT e) {};
 	//void OnCollisionWithPortal(LPPORTAL portal, LPCOLLISIONEVENT e) {};
-	void OnCollisionWithPlant(LPPlantEnemy goomba, LPCOLLISIONEVENT e);
+	void OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e);
 	void OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e);
 
 	friend class CMarioState;

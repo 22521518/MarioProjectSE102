@@ -71,7 +71,7 @@ void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 		}
 	}
 }
-void CMario::OnCollisionWithPlant(LPPlantEnemy plant, LPCOLLISIONEVENT e)
+void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
 {
 	// jump on top >> kill ___ and deflect a bit 
 	if (e->normalY == DirectionYAxisType::Top)

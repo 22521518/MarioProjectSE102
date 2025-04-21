@@ -37,4 +37,4 @@ public:
 	};
 }
 
-typedef CPlantGreenPiranha* LPPlantGP;
+//typedef CPlantGreenPiranha* LPPlantGP;
