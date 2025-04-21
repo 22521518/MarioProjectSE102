@@ -18,7 +18,8 @@ public:
 	virtual void Render() override {
 		CAnimations* animations = CAnimations::GetInstance();
 		mario->GetPosition(Mx, My);
-		animations->Get(ID_ANI_PLANT_GP)->Render(x, y);
+		if (Mx - x > 0) animations->Get(ID_ANI_PLANT_GP_L)->Render(x, y);
+		else if (Mx - x < 0) animations->Get(ID_ANI_PLANT_GP_R)->Render(x, y);
 		//RenderBoundingBox()
 	};
 	// collidable with mario interface
