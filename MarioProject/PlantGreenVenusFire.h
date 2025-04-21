@@ -4,21 +4,23 @@
 #include "PlantEnemyConfig.h"
 #include "GameObject.h"
 
-class CPlantGreenPiranha :
+class CPlantGreenVenusFire :
 	public CPlantEnemy, public CCollidableWithMario
 {
 public:
-	CPlantGreenPiranha(LPGAMEOBJECT mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
+	CPlantGreenVenusFire(LPGAMEOBJECT mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left, int state = PLANT_STATE_HIDE)
 		: CPlantEnemy(mario, x, y, vx, vy, ax, ay, nx, state) {
+		lowerY = y;
+		upperY = y + 32;
 	};
 
 	// game object method
 	virtual void Render() override {
 		CAnimations* animations = CAnimations::GetInstance();
 		mario->GetPosition(Mx, My);
-		if (Mx - x > 0) animations->Get(ID_ANI_PLANT_GP_L)->Render(x, y);
-		else if (Mx - x < 0) animations->Get(ID_ANI_PLANT_GP_R)->Render(x, y);
+		if (Mx - x > 0) animations->Get(ID_ANI_PLANT_GVF_L)->Render(x, y);
+		else if (Mx - x < 0) animations->Get(ID_ANI_PLANT_GVF_R)->Render(x, y);
 		//RenderBoundingBox()
 	};
 	// collidable with mario interface
@@ -60,4 +62,4 @@ public:
 	};
 };
 
-typedef CPlantGreenPiranha* LPPLANTENEMY_GP;
+typedef CPlantGreenVenusFire* LPPLANTENEMY_GVF;

@@ -197,6 +197,7 @@
     <ClInclude Include="GreenKoopaParatroopaState.h" />
     <ClInclude Include="GreenKoopaShellState.h" />
     <ClInclude Include="GreenKoopaState.h" />
+    <ClInclude Include="PlantGreenVenusFire.h" />
     <ClInclude Include="PlantGreenPiranha.h" />
     <ClInclude Include="InteractableWithEdge.h" />
     <ClInclude Include="PlantEnemyConfig.h" />

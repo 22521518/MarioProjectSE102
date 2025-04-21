@@ -5,6 +5,7 @@
 #pragma region PLANT_BBOX
 #define PLANT_BBOX_WIDTH 16
 #define PLANT_BBOX_HEIGHT 24
+#define PLANT_SPEED 0.1f
 #pragma endregion
 #define ID_ANI_PLANT_GP_L 6005100 //Green Piranha Plant
 #define ID_ANI_PLANT_GP_R 6005110 //Green Piranha Plant
