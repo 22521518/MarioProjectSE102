@@ -11,11 +11,13 @@
 #include "GreenKoopa.h"
 #include "GreenKoopaParatroopa.h"
 
+#include "PlantGreenPiranha.h"
+
 #include "AssetIDs.h"
 
 using namespace std;
 
-CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, vector<string> tokens) {
+CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, vector<string> tokens, LPGAMEOBJECT player) {
 	switch (object_type)
 	{
 	case OBJECT_TYPE_MARIO: return new CMario(x, y);
@@ -41,7 +43,7 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, ve
 			sprite_begin, sprite_middle, sprite_end
 		);
 	}
-
+	case OBJECT_TYPE_PLANT_GP: return new CPlantGreenPiranha(player, x, y);
 	case OBJECT_TYPE_PORTAL:
 	{
 		float r = (float)atof(tokens[3].c_str());

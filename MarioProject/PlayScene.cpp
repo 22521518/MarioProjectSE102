@@ -101,7 +101,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line) {
 	float x = atof(tokens[1].c_str());
 	float y = atof(tokens[2].c_str());
 
-	LPGAMEOBJECT obj = CGameObject::CreateGameObject(object_type, x, y, tokens);
+	LPGAMEOBJECT obj = CGameObject::CreateGameObject(object_type, x, y, tokens, player);
 
 	if (obj == NULL) {
 		DebugOut(L"[ERROR] Failed to create player object!\n");

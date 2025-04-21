@@ -17,7 +17,7 @@ protected:
 
 public:
 	CGameObject(float x = 0, float y = 0) : CBaseObject(), x(x), y(y) {}
-	static CGameObject* CreateGameObject(int object_type, float x, float y, vector<string> tokens);
+	static CGameObject* CreateGameObject(int object_type, float x, float y, vector<string> , LPGAMEOBJECT);
 
 	virtual void Render() = 0;
 

@@ -62,6 +62,7 @@ public:
 	void OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e);
 	//void OnCollisionWithBlockQ (LPBlockQ coin, LPCOLLISIONEVENT e) {};
 	//void OnCollisionWithPortal(LPPORTAL portal, LPCOLLISIONEVENT e) {};
+	void OnCollisionWithPlant(LPPlantEnemy goomba, LPCOLLISIONEVENT e);
 	void OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e);
 
 	friend class CMarioState;

@@ -11,6 +11,8 @@
 #include "Coin.h"
 #include "CollidableWithMario.h"
 
+#include "PlantEnemy.h"
+
 CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, DirectionXAxisType nx, int state) : CCharacter(x, y, vx, vy, ax, ay, nx, state)
 {
 	this->maxVx = 0.0f;
@@ -56,6 +58,30 @@ void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 		}
 	}
 	else if (untouchable == 0 && !goomba->IsDeadState()) // hit by Goomba
+	{
+		if (level > MARIO_LEVEL_SMALL)
+		{
+			this->SetLevel(MARIO_LEVEL_SMALL);
+			StartUntouchable();
+		}
+		else
+		{
+			DebugOut(L">>> Mario DIE >>> \n");
+			SetState(MARIO_STATE_DIE);
+		}
+	}
+}
+void CMario::OnCollisionWithPlant(LPPlantEnemy plant, LPCOLLISIONEVENT e)
+{
+	// jump on top >> kill ___ and deflect a bit 
+	if (e->normalY == DirectionYAxisType::Top)
+	{
+		if (!plant->IsDeadState())
+		{
+			vy = -MARIO_JUMP_DEFLECT_SPEED;
+		}
+	}
+	else if (untouchable == 0 && !plant->IsDeadState()) // hit by ___
 	{
 		if (level > MARIO_LEVEL_SMALL)
 		{

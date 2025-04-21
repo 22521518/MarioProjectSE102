@@ -15,7 +15,6 @@ public:
 		: CEnemy(x, y, vx, vy, ax, ay, nx, state)
 	{
 		this->mario = mario;
-		SetState(PLANT_STATE_HIDE);
 		mario->GetPosition(Mx, My);
 	};
 
@@ -77,7 +76,11 @@ public:
 	{
 		this->SetState(state);
 	};
-	//virtual void OnNoCollision(DWORD dt) override;
+	virtual void OnNoCollision(DWORD dt) override
+	{
+		x += vx * dt;
+		y += vy * dt;
+	};
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e) override
 	{
 		if (!e->obj->IsBlocking()) return;
@@ -92,12 +95,8 @@ public:
 			vx = -vx;
 		}
 	};
-
-	// collidable with mario interface
-	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e) override
-	{
-		// die?
-	};
+	virtual bool IsDeadState() override { return this->state == PLANT_STATE_DIE; }
+	//virtual bool IsDeadState() override = 0;
 };
 
 typedef CPlantEnemy* LPPlantEnemy;

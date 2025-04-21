@@ -14,4 +14,5 @@
 #define PLANT_STATE_GO_UP 200
 #define PLANT_STATE_UP 300
 #define PLANT_STATE_GO_HIDE 400
+#define PLANT_STATE_DIE 500
 #pragma endregion
