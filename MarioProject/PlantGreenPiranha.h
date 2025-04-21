@@ -35,6 +35,6 @@ public:
 			}
 		}
 	};
-}
+};
 
 //typedef CPlantGreenPiranha* LPPlantGP;
