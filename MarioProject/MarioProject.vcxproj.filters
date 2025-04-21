@@ -534,6 +534,9 @@
     <ClInclude Include="PlantEnemyConfig.h">
       <Filter>Header Files\GameObjectConcrete\PlantEnemy</Filter>
     </ClInclude>
+    <ClInclude Include="PlantGreenPiranha.h">
+      <Filter>Header Files\GameObjectConcrete\PlantEnemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MarioProject.rc">
