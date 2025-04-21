@@ -8,6 +8,7 @@
 class CPlantEnemy :
 	public CEnemy , public CCollidableWithMario
 {
+protected:
 	LPGAMEOBJECT mario;
 	float Mx, My;
 public:
@@ -15,7 +16,6 @@ public:
 		: CEnemy(x, y, vx, vy, ax, ay, nx, state)
 	{
 		this->mario = mario;
-		mario->GetPosition(Mx, My);
 	};
 
 	// game object method

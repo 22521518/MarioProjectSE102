@@ -17,6 +17,7 @@ public:
 	// game object method
 	virtual void Render() override {
 		CAnimations* animations = CAnimations::GetInstance();
+		mario->GetPosition(Mx, My);
 		animations->Get(ID_ANI_PLANT_GP)->Render(x, y);
 		//RenderBoundingBox()
 	};
