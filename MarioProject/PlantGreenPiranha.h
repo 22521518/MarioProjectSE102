@@ -11,6 +11,8 @@ public:
 	CPlantGreenPiranha(LPGAMEOBJECT mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left, int state = PLANT_STATE_HIDE)
 		: CPlantEnemy(mario, x, y, vx, vy, ax, ay, nx, state) {
+		lowerY = y;
+		upperY = y + 24;
 	};
 
 	// game object method
