@@ -11,6 +11,7 @@ class CBlockQ : public CInteractiveObject, public CCollidableWithMario {
 protected:
 	LPGAMEOBJECT mario;
 	LPCOIN coinB;
+	float My;
 public:
 	CBlockQ(LPGAMEOBJECT mario, int state = BRICK_STATE_COIN, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left)
@@ -18,6 +19,7 @@ public:
 		this->mario = mario;
 		SetState(BRICK_STATE_COIN);
 		this->coinB = new CCoin(x, y);
+		My = y;
 	}
 
 	// game object method
@@ -32,8 +34,11 @@ public:
 		if (e->normalY == DirectionYAxisType::Bottom)
 		{
 			mario->OnCollisionWithCoin(coinB, e);
-			this->SetState(0);
-			coinB->Delete();
+			this->SetState(BRICK_STATE_EMPTY);
+			this->vy = BRICK_Q_SPEED;
+			this->ay = BRICK_Q_GAVITY;
+			coinB->SetSpeed(0, BRICK_Q_COIN_SPEED);
+			coinB->SetAcceleration(0, BRICK_Q_COIN_GAVITY);
 		}
 		/*else if ()
 		{
@@ -42,7 +47,16 @@ public:
 	};
 	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override
 	{
-		//not write yet
+		if (this->state != BRICK_STATE_EMPTY && this->y < My) {
+			this->vy = 0;
+			this->ay = 0;
+		}
+		float cx, cy;
+		coinB->GetPosition(cx, cy);
+		if (this->state != BRICK_STATE_EMPTY && cy < My) {
+			coinB->Delete();
+		}
+		CInteractiveObject::Update(dt, coObjects);
 	};
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) override
 	{
