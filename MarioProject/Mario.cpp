@@ -96,7 +96,10 @@ void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
 	}
 }
 
-void CMario::OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e) { coin++; }
+void CMario::OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e) {
+	coin++;
+	DebugOut(L"I GOT MORE COIN! \n");
+}
 
 void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 {

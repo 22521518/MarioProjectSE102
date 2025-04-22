@@ -7,11 +7,12 @@ objects\goomba.txt
 objects\cloud.txt
 objects\red_koopa.txt
 objects\green_koopa.txt
+objects\BlockQ_BlockW_BlockF.txt
 
 #
 [OBJECTS]
 # type	x	y	extra_settings per object type
-# type: 0 = Mario , 1 = Brick, 2 = Goomba, 3 = Koopas
+# type: 0 = Mario , 1 = Brick, 2 = Goomba, 3 = Koopas, 11 = ?Block Coin
 # See OBJECT_TYPE constants in AssetIDs.h
 
 # MARIO
@@ -55,6 +56,8 @@ objects\green_koopa.txt
 4	140	120
 4	160	120
 4	180	120
+
+11	180	50
 
 #Goomba
 #2	300	10

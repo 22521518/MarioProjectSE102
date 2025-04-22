@@ -34,9 +34,9 @@ public:
 		if (e->normalY == DirectionYAxisType::Bottom)
 		{
 			mario->OnCollisionWithCoin(coinB, e);
-			this->SetState(BRICK_STATE_EMPTY);
-			this->vy = BRICK_Q_SPEED;
-			this->ay = BRICK_Q_GAVITY;
+			//this->state = BRICK_STATE_EMPTY;
+			vy = BRICK_Q_SPEED;
+			ay = BRICK_Q_GAVITY;
 			coinB->SetSpeed(0, BRICK_Q_COIN_SPEED);
 			coinB->SetAcceleration(0, BRICK_Q_COIN_GAVITY);
 		}
@@ -83,11 +83,7 @@ public:
 
 		if (e->normalY != DirectionYAxisType::None)
 		{
-			vy = 0;
-		}
-		else if (e->normalX != DirectionXAxisType::None)
-		{
-			vx = -vx;
+			vy = BRICK_Q_SPEED;
 		}
 	};
 };
