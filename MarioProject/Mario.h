@@ -9,7 +9,7 @@ class CGoomba; typedef CGoomba* LPGOOMBA;
 class CKoopa; typedef CKoopa* LPKOOPA;
 class CMarioState; typedef CMarioState* LPMARIOSTATE;
 class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
-class CBlockQ; typedef CBlockQ* LPBlockQ;
+class CBlockQ; typedef CBlockQ* LPBLOCKQ;
 class CPlantEnemy; typedef CPlantEnemy* LPPLANTENEMY;
 
 struct CCollisionEvent; typedef CCollisionEvent* LPCOLLISIONEVENT;

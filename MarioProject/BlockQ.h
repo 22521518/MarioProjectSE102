@@ -56,7 +56,7 @@ public:
 		if (this->state != BRICK_STATE_EMPTY && cy < My) {
 			coinB->Delete();
 		}
-		CInteractiveObject::Update(dt, coObjects);
+		//CInteractiveObject::Update(dt, coObjects);
 	};
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) override
 	{
