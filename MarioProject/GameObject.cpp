@@ -12,6 +12,8 @@
 #include "GreenKoopaParatroopa.h"
 
 #include "PlantGreenPiranha.h"
+#include "BlockQ.h"
+#include "BrickStateIDs.h"
 
 #include "AssetIDs.h"
 
@@ -43,7 +45,6 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, ve
 			sprite_begin, sprite_middle, sprite_end
 		);
 	}
-	case OBJECT_TYPE_PLANT_GP: return new CPlantGreenPiranha(player, x, y);
 	case OBJECT_TYPE_PORTAL:
 	{
 		float r = (float)atof(tokens[3].c_str());
@@ -52,6 +53,9 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, ve
 		return new CPortal(x, y, r, b, scene_id);
 
 	}
+	case OBJECT_TYPE_PLANT_GP: return new CPlantGreenPiranha(player, x, y);
+	case OBJECT_TYPE_BLOCK_Q_COIN: return new CBlockQ(player, BRICK_STATE_COIN, x, y);
+	//case OBJECT_TYPE_BLOCK_Q_ITEM: return new CBlockQ(player, BRICK_STATE_ITEM, x, y);
 	default:
 		DebugOut(L"[ERROR] Invalid object type: %d\n", object_type);
 		return NULL;

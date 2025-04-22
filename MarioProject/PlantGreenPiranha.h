@@ -5,7 +5,7 @@
 #include "GameObject.h"
 
 class CPlantGreenPiranha :
-	public CPlantEnemy, public CCollidableWithMario
+	public CPlantEnemy
 {
 public:
 	CPlantGreenPiranha(LPGAMEOBJECT mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
@@ -24,18 +24,6 @@ public:
 		//RenderBoundingBox()
 	};
 	// collidable with mario interface
-	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
-	{
-		// jump on top >> kill ___ and deflect a bit 
-		mario->OnCollisionWithPlant(this, e);
-		if (e->normalY == DirectionYAxisType::Top)
-		{
-			if (!this->IsDeadState())
-			{
-				this->SetState(PLANT_STATE_DIE);
-			}
-		}
-	};
 	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override
 	{
 		//this->stateHandler->Update(this, dt);
@@ -48,6 +36,7 @@ public:
 		}
 		else if (this->state == PLANT_STATE_GO_UP) {
 			if (this->y >= upperY) SetState(PLANT_STATE_UP);
+			this->vy = 0;
 		}
 		else if (this->state == PLANT_STATE_UP) {
 			if (abs(this->y - Mx) > 800) {
@@ -57,6 +46,7 @@ public:
 		}
 		else if (this->state == PLANT_STATE_GO_HIDE) {
 			if (this->y <= lowerY) SetState(PLANT_STATE_HIDE);
+			this->vy = 0;
 		}
 		CEnemy::Update(dt, coObjects);
 	};

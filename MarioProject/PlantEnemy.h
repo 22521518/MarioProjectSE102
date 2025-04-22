@@ -28,17 +28,6 @@ public:
 	{
 		float boxHeight = PLANT_BBOX_HEIGHT;
 		float boxWidth = PLANT_BBOX_WIDTH;
-		/*switch (state)
-		{
-		case PLANT_STATE_HIDE:
-			boxHeight = 0;
-			break;
-		case PLANT_STATE_UP:
-			boxHeight = PLANT_BBOX_HEIGHT;
-			break;
-		default:
-			boxHeight = PLANT_BBOX_HEIGHT / 2; //Tạm thời để vậy
-		}*/
 		left = x - boxWidth / 2;
 		top = y - boxHeight / 2;
 		right = left + boxWidth;
@@ -74,6 +63,18 @@ public:
 		}
 	};
 	virtual bool IsDeadState() override { return this->state == PLANT_STATE_DIE; }
+	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
+	{
+		// jump on top >> kill ___ and deflect a bit 
+		mario->OnCollisionWithPlant(this, e);
+		if (e->normalY == DirectionYAxisType::Top)
+		{
+			if (!this->IsDeadState())
+			{
+				this->SetState(PLANT_STATE_DIE);
+			}
+		}
+	};
 	//virtual bool IsDeadState() override = 0;
 };
 
