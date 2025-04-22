@@ -540,6 +540,12 @@
     <ClInclude Include="PlantGreenVenusFire.h">
       <Filter>Header Files\GameObjectConcrete\PlantEnemy</Filter>
     </ClInclude>
+    <ClInclude Include="BlockW.h">
+      <Filter>Header Files\GameObjectConcrete\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="CBlockF.h">
+      <Filter>Header Files\GameObjectConcrete\Brick</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MarioProject.rc">
