@@ -15,5 +15,5 @@
 #pragma endregion
 #define BRICK_Q_COIN_SPEED 0.1f //need some check
 #define BRICK_Q_COIN_GAVITY 0.004f //need some check
-#define BRICK_Q_SPEED 0.05f //need some check
-#define BRICK_Q_GAVITY 0.004f //need some check
+#define BRICK_Q_SPEED 0.1f //need some check
+#define BRICK_Q_GAVITY 0.0004f //need some check

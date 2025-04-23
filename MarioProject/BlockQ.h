@@ -25,7 +25,8 @@ public:
 	// game object method
 	virtual void Render() override {
 		CAnimations* animations = CAnimations::GetInstance();
-		if (state == BRICK_STATE_EMPTY) animations->Get(ID_ANI_BLOCK_W)->Render(x, y);
+		if (state == BRICK_STATE_EMPTY || state == BRICK_STATE_EMPTYING)
+			animations->Get(ID_ANI_BLOCK_W)->Render(x, y);
 		else animations->Get(ID_ANI_BLOCK_Q)->Render(x, y);
 		RenderBoundingBox();
 	};
@@ -34,15 +35,14 @@ public:
 		if (e->normalY == DirectionYAxisType::Bottom)
 		{
 			if (!coinB->IsDeleted()) {
-				mario->OnCollisionWithCoin(coinB, e);
-				coinB->Delete();
 				coinB->Render();
+				coinB->SetSpeed(0, BRICK_Q_COIN_SPEED);
+				coinB->SetAcceleration(0, BRICK_Q_COIN_GAVITY);
+				coinB->Delete();
 			}
-			SetState(BRICK_STATE_EMPTY);
+			SetState(BRICK_STATE_EMPTYING);
 			vy = -BRICK_Q_SPEED;
 			ay = BRICK_Q_GAVITY;
-			coinB->SetSpeed(0, -BRICK_Q_COIN_SPEED);
-			coinB->SetAcceleration(0, BRICK_Q_COIN_GAVITY);
 		}
 		/*if (this->state != BRICK_STATE_EMPTY && this->y < My) {
 			this->vy = 0;
@@ -60,19 +60,14 @@ public:
 	};
 	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override
 	{
-		//vy += ay * dt;
-		//vx += ax * dt;
-		if (this->state != BRICK_STATE_EMPTY && this->y > My) {
+		this->vy += this->ay * dt;
+		this->vx += this->ax * dt;
+		this->x += this->vx * dt;
+		this->y += this->vy * dt;
+		if (this->y > My) {
 			this->vy = 0;
 			this->ay = 0;
 		}
-		float cx, cy;
-		coinB->GetPosition(cx, cy);
-		if (this->state != BRICK_STATE_EMPTY && cy > My) {
-			delete coinB;
-			*coinB = NULL;
-		}
-		//CInteractiveObject::Update(dt, coObjects);
 	};
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) override
 	{
@@ -89,26 +84,27 @@ public:
 	// interactive object method
 	virtual void OnNoCollision(DWORD dt) override
 	{
-		x += vx * dt;
-		y += vy * dt;
+		this->vy += this->ay * dt;
+		this->vx += this->ax * dt;
+		this->x += this->vx * dt;
+		this->y += this->vy * dt;
 	};
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e) override
 	{
 		if (!e->obj->IsBlocking()) return;
 		if (dynamic_cast<LPINTERACTIVEOBJECT>(e->obj)) return;
-
 		if (e->normalY != DirectionYAxisType::Bottom)
-		{
-			vy = BRICK_Q_SPEED;
-		}
-		else if (e->normalY != DirectionYAxisType::None)
 		{
 			vy = 0;
 		}
-		else if (e->normalX != DirectionXAxisType::None)
+		else
 		{
-			vx = 0;
+			vy = 0;
 		}
+	};
+	virtual void SetState(int state)
+	{
+		CInteractiveObject::SetState(state);
 	};
 };
 typedef CBlockQ* LPBLOCKQ;
