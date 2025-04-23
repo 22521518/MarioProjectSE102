@@ -18,7 +18,7 @@ public:
 		DirectionXAxisType nx = DirectionXAxisType::Left)
 		: CInteractiveObject(x, y, vx, vy, ax, ay, nx, state) {
 		this->mario = mario;
-		SetState(BRICK_STATE_COIN);
+		//SetState(BRICK_STATE_COIN);
 		this->coinB = new CBlockCoin(mario, state, x, y);
 		My = y;
 	}

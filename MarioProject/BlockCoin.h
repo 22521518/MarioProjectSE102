@@ -22,7 +22,7 @@ public:
 	}
 	// game object method
 	virtual void Render() override {
-		if (state == BRICK_STATE_COIN) {
+		if (state != BRICK_STATE_EMPTY) {
 			CAnimations* animations = CAnimations::GetInstance();
 			animations->Get(ID_ANI_COIN)->Render(x, y);
 			RenderBoundingBox();
@@ -30,8 +30,12 @@ public:
 	};
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	{
-		this->vy = -BRICK_Q_COIN_SPEED;
-		this->ay = BRICK_Q_COIN_GAVITY;
+		if (state == BRICK_STATE_COIN) {
+			if (state == BRICK_STATE_COIN) coinB->OnMarioCollide(mario, e);
+			this->vy = -BRICK_Q_COIN_SPEED;
+			this->ay = BRICK_Q_COIN_GAVITY;
+			SetState(BRICK_STATE_EMPTYING);
+		}
 	};
 	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override
 	{
