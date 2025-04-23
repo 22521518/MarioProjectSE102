@@ -25,29 +25,26 @@ public:
 	// game object method
 	virtual void Render() override {
 		CAnimations* animations = CAnimations::GetInstance();
-		if (state == BRICK_STATE_EMPTY) animations->Get(ID_ANI_BLOCK_E)->Render(x, y);
+		if (state == BRICK_STATE_EMPTY) animations->Get(ID_ANI_BLOCK_W)->Render(x, y);
 		else animations->Get(ID_ANI_BLOCK_Q)->Render(x, y);
-		//RenderBoundingBox()
+		RenderBoundingBox();
 	};
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	{
 		if (e->normalY == DirectionYAxisType::Bottom)
 		{
-			mario->OnCollisionWithCoin(coinB, e);
-			//this->state = BRICK_STATE_EMPTY;
-			vy = BRICK_Q_SPEED;
+			if (!coinB->IsDeleted()) {
+				mario->OnCollisionWithCoin(coinB, e);
+				coinB->Delete();
+				coinB->Render();
+			}
+			SetState(BRICK_STATE_EMPTY);
+			vy = -BRICK_Q_SPEED;
 			ay = BRICK_Q_GAVITY;
-			coinB->SetSpeed(0, BRICK_Q_COIN_SPEED);
+			coinB->SetSpeed(0, -BRICK_Q_COIN_SPEED);
 			coinB->SetAcceleration(0, BRICK_Q_COIN_GAVITY);
 		}
-		/*else if ()
-		{
-
-		}*/
-	};
-	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override
-	{
-		if (this->state != BRICK_STATE_EMPTY && this->y < My) {
+		/*if (this->state != BRICK_STATE_EMPTY && this->y < My) {
 			this->vy = 0;
 			this->ay = 0;
 		}
@@ -55,6 +52,25 @@ public:
 		coinB->GetPosition(cx, cy);
 		if (this->state != BRICK_STATE_EMPTY && cy < My) {
 			coinB->Delete();
+		}*/
+		/*else if ()
+		{
+
+		}*/
+	};
+	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override
+	{
+		//vy += ay * dt;
+		//vx += ax * dt;
+		if (this->state != BRICK_STATE_EMPTY && this->y > My) {
+			this->vy = 0;
+			this->ay = 0;
+		}
+		float cx, cy;
+		coinB->GetPosition(cx, cy);
+		if (this->state != BRICK_STATE_EMPTY && cy > My) {
+			delete coinB;
+			*coinB = NULL;
 		}
 		//CInteractiveObject::Update(dt, coObjects);
 	};
@@ -81,9 +97,17 @@ public:
 		if (!e->obj->IsBlocking()) return;
 		if (dynamic_cast<LPINTERACTIVEOBJECT>(e->obj)) return;
 
-		if (e->normalY != DirectionYAxisType::None)
+		if (e->normalY != DirectionYAxisType::Bottom)
 		{
 			vy = BRICK_Q_SPEED;
+		}
+		else if (e->normalY != DirectionYAxisType::None)
+		{
+			vy = 0;
+		}
+		else if (e->normalX != DirectionXAxisType::None)
+		{
+			vx = 0;
 		}
 	};
 };
