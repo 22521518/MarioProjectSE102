@@ -24,24 +24,14 @@ public:
 	virtual void Render() {};
 
 	// physical object method
-	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) override
-	{
-		float boxHeight = PLANT_BBOX_HEIGHT;
-		float boxWidth = PLANT_BBOX_WIDTH;
-		left = x - boxWidth / 2;
-		top = y - boxHeight / 2;
-		right = left + boxWidth;
-		bottom = top + boxHeight;
-	};
-
 	virtual int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) override { return 1; };
 	virtual int IsBlocking() override { return 0; };
 	virtual int IsCollidable() override { return 1; };
 
 	// interactive object method
-	virtual void SetState(int state) override
+	virtual void SetState(int state)
 	{
-		this->SetState(state);
+		CInteractiveObject::SetState(state);
 	};
 	virtual void OnNoCollision(DWORD dt) override
 	{

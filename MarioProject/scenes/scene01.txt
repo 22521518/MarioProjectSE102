@@ -8,6 +8,7 @@ objects\cloud.txt
 objects\red_koopa.txt
 objects\green_koopa.txt
 objects\BlockQ_BlockW_BlockF.txt
+objects\Plant_Green_Piranha.txt
 
 #
 [OBJECTS]
@@ -59,6 +60,9 @@ objects\BlockQ_BlockW_BlockF.txt
 
 #?Block
 11	180	50
+
+#Plant
+651	190	120
 
 #Goomba
 #2	300	10
