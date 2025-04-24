@@ -3,16 +3,20 @@
 #include "CollidableWithMario.h"
 #include "PlantEnemyConfig.h"
 #include "GameObject.h"
+#include "PlantFireBall.h"
 
-class CPlantGreenPiranha :
-	public CPlantEnemy
+class CPlantRedVenusFire :
+	public CPlantEnemy, public CCollidableWithMario
 {
+protected:
+	LPPLANTFIREBALL fire;
 public:
-	CPlantGreenPiranha(LPGAMEOBJECT mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
+	CPlantRedVenusFire(LPGAMEOBJECT mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left, int state = PLANT_STATE_HIDE)
 		: CPlantEnemy(mario, x, y, vx, vy, ax, ay, nx, state) {
 		lowerY = y;
-		upperY = y - PLANT_BBOX_HEIGHT_G;
+		upperY = y - PLANT_BBOX_HEIGHT_R;
+		fire = new CPlantFireBall(mario, x, y);
 	};
 
 	// game object method
@@ -20,15 +24,15 @@ public:
 		CAnimations* animations = CAnimations::GetInstance();
 		mario->GetPosition(Mx, My);
 		float XA = Mx - x;
-		if (My < y - PLANT_Y_U) animations->Get(ID_ANI_PLANT_GP_U)->Render(x, y);
-		else if (XA < 0) animations->Get(ID_ANI_PLANT_GP_L)->Render(x, y);
-		else if (XA > 0) animations->Get(ID_ANI_PLANT_GP_R)->Render(x, y);
+		if (My < y - PLANT_Y_U) animations->Get(ID_ANI_PLANT_RVF_U)->Render(x, y);
+		else if (XA < 0) animations->Get(ID_ANI_PLANT_RVF_L)->Render(x, y);
+		else if (XA > 0) animations->Get(ID_ANI_PLANT_RVF_R)->Render(x, y);
 		//RenderBoundingBox()
 	};
 	// physical object method
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) override
 	{
-		float boxHeight = PLANT_BBOX_HEIGHT_G;
+		float boxHeight = PLANT_BBOX_HEIGHT_R;
 		float boxWidth = PLANT_BBOX_WIDTH;
 		left = x - boxWidth / 2;
 		top = y - boxHeight / 2;
@@ -69,4 +73,4 @@ public:
 	};
 };
 
-typedef CPlantGreenPiranha* LPPLANTENEMY_GP;
+typedef CPlantRedVenusFire* LPPLANTENEMY_RVF;

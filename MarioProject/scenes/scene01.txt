@@ -8,7 +8,7 @@ objects\cloud.txt
 objects\red_koopa.txt
 objects\green_koopa.txt
 objects\BlockQ_BlockW_BlockF.txt
-objects\Plant_Green_Piranha.txt
+objects\Plant_Enemy.txt
 
 #
 [OBJECTS]

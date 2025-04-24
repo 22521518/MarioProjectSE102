@@ -537,7 +537,7 @@
     <ClInclude Include="PlantGreenPiranha.h">
       <Filter>Header Files\GameObjectConcrete\PlantEnemy</Filter>
     </ClInclude>
-    <ClInclude Include="PlantGreenVenusFire.h">
+    <ClInclude Include="PlantRedVenusFire.h">
       <Filter>Header Files\GameObjectConcrete\PlantEnemy</Filter>
     </ClInclude>
     <ClInclude Include="BlockW.h">
@@ -551,6 +551,9 @@
     </ClInclude>
     <ClInclude Include="BlockItem.h">
       <Filter>Header Files\GameObjectConcrete\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="PlantFireBall.h">
+      <Filter>Header Files\GameObjectConcrete\PlantEnemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
