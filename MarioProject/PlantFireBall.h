@@ -8,13 +8,11 @@
 class CPlantFireBall : public CInteractiveObject, public CCollidableWithMario {
 protected:
 	LPGAMEOBJECT mario;
-	float My;
 public:
 	CPlantFireBall(LPGAMEOBJECT mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left)
 		: CInteractiveObject(x, y, vx, vy, ax, ay, nx) {
 		this->mario = mario;
-		My = y;
 	}
 	// game object method
 	virtual void Render() override {

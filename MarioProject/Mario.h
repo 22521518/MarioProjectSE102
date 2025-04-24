@@ -11,6 +11,7 @@ class CMarioState; typedef CMarioState* LPMARIOSTATE;
 class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
 class CBlockQ; typedef CBlockQ* LPBLOCKQ;
 class CPlantEnemy; typedef CPlantEnemy* LPPLANTENEMY;
+class CPlantFireBall; typedef CPlantFireBall* LPPLANTFIREBALL;
 
 struct CCollisionEvent; typedef CCollisionEvent* LPCOLLISIONEVENT;
 
@@ -64,6 +65,7 @@ public:
 	//void OnCollisionWithBlockQ (LPBlockQ coin, LPCOLLISIONEVENT e) {};
 	//void OnCollisionWithPortal(LPPORTAL portal, LPCOLLISIONEVENT e) {};
 	void OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e);
+	void CollideFireBall(LPPLANTFIREBALL fire);
 	void OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e);
 
 	friend class CMarioState;

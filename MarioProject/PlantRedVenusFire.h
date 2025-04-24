@@ -4,28 +4,36 @@
 #include "PlantEnemyConfig.h"
 #include "GameObject.h"
 #include "PlantFireBall.h"
+#include "Collision.h"
 
 class CPlantRedVenusFire :
 	public CPlantEnemy, public CCollidableWithMario
 {
 protected:
 	LPPLANTFIREBALL fire;
+	LPMARIO mm;
+	bool IsFire;
 public:
 	CPlantRedVenusFire(LPGAMEOBJECT mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left, int state = PLANT_STATE_HIDE)
 		: CPlantEnemy(mario, x, y, vx, vy, ax, ay, nx, state) {
+		mm = (LPMARIO)mario;
 		lowerY = y;
 		upperY = y - PLANT_BBOX_HEIGHT_R;
-		fire = new CPlantFireBall(mario, x, y);
+		fire = new CPlantFireBall(mario, x, upperY);
+		IsFire = false;
 	};
 
 	// game object method
 	virtual void Render() override {
+		if(state == PLANT_STATE_UP) fire->Render();
 		CAnimations* animations = CAnimations::GetInstance();
 		mario->GetPosition(Mx, My);
 		float XA = Mx - x;
-		if (My < y - PLANT_Y_U) animations->Get(ID_ANI_PLANT_RVF_U)->Render(x, y);
+		/*if (My < y - PLANT_Y_U) animations->Get(ID_ANI_PLANT_RVF_U)->Render(x, y);
 		else if (XA < 0) animations->Get(ID_ANI_PLANT_RVF_L)->Render(x, y);
+		else if (XA > 0) animations->Get(ID_ANI_PLANT_RVF_R)->Render(x, y);*/
+		if (XA < 0) animations->Get(ID_ANI_PLANT_RVF_L)->Render(x, y);
 		else if (XA > 0) animations->Get(ID_ANI_PLANT_RVF_R)->Render(x, y);
 		//RenderBoundingBox()
 	};
@@ -45,8 +53,7 @@ public:
 		this->vx += this->ax * dt;
 		this->x += this->vx * dt;
 		this->y += this->vy * dt;
-		//this->stateHandler->Update(this, dt);
-		mario->GetPosition(Mx, My);
+		if (IsFire) mm->CollideFireBall(fire);
 		if (this->state == PLANT_STATE_HIDE) {
 			if (abs(this->x - Mx) < PLANT_HIDE_DISTANT) {
 				SetState(PLANT_STATE_GO_UP);
@@ -59,6 +66,21 @@ public:
 			this->y = upperY;
 		}
 		else if (this->state == PLANT_STATE_UP) {
+			float GOx, GOy;
+			fire->GetPosition(GOx, GOy);
+			GOx = GOx - x;
+			GOy = y - GOy;
+			float uy = sqrt((powf(GOx, (float)2) + powf(GOy, (float)2)));
+			if (uy > FIREBALL_COMEBACK || !IsFire) {
+				fire->SetPosition(x, y);
+				if (this->x >= Mx && this->y <= My)fire->SetSpeed(-FIREBALL_SPEED, FIREBALL_SPEED);
+				else if (this->x < Mx && this->y <= My)fire->SetSpeed(FIREBALL_SPEED, FIREBALL_SPEED);
+				else if (this->x >= Mx && this->y > My)fire->SetSpeed(-FIREBALL_SPEED, -FIREBALL_SPEED);
+				else if (this->x < Mx && this->y > My)fire->SetSpeed(FIREBALL_SPEED, -FIREBALL_SPEED);
+				IsFire = true;
+			}
+			mario->GetPosition(Mx, My);
+			
 			if (abs(this->x - Mx) > PLANT_HIDE_DISTANT) {
 				SetState(PLANT_STATE_GO_HIDE);
 				this->vy = PLANT_SPEED;
@@ -68,8 +90,23 @@ public:
 			SetState(PLANT_STATE_HIDE);
 			this->vy = 0;
 			this->y = lowerY;
+			fire->SetPosition(x, y);
+			IsFire = false;
 		}
+		fire->Update(dt, coObjects);
 		CEnemy::Update(dt, coObjects);
+	};
+	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
+	{
+		// jump on top >> kill ___ and deflect a bit 
+		mario->OnCollisionWithPlant(this, e);
+		if (e->normalY == DirectionYAxisType::Top)
+		{
+			if (!this->IsDeadState())
+			{
+				this->SetState(PLANT_STATE_DIE);
+			}
+		}
 	};
 };
 

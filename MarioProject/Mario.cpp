@@ -12,6 +12,7 @@
 #include "CollidableWithMario.h"
 
 #include "PlantEnemy.h"
+#include "PlantFireBall.h"
 
 CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, DirectionXAxisType nx, int state) : CCharacter(x, y, vx, vy, ax, ay, nx, state)
 {
@@ -95,6 +96,27 @@ void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
 		}
 	}
 }
+void CMario::CollideFireBall(LPPLANTFIREBALL fire)
+{
+	float l, t, r, b, Fl, Ft, Fr, Fb;
+	this->GetBoundingBox(l, t, r, b);
+	fire->GetBoundingBox(Fl, Ft, Fr, Fb);
+	if (l < Fr && r > Fl && t < Fb && b > Ft) {
+		if (this->IsUntouchable() == 0) // hit FIRE BALL!
+		{
+			if (this->GetLevel() > MARIO_LEVEL_SMALL)
+			{
+				this->SetLevel(MARIO_LEVEL_SMALL);
+				this->StartUntouchable();
+			}
+			else
+			{
+				DebugOut(L">>> Mario DIE >>> \n");
+				this->SetState(MARIO_STATE_DIE);
+			}
+		}
+	}
+};
 
 void CMario::OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e) {
 	coin++;
