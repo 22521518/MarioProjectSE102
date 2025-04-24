@@ -23,4 +23,5 @@
 #define ID_ANI_BLOCK_E 6001000
 #define ID_ANI_BLOCK_W 6002000
 #define ID_ANI_BLOCK_F 6003000
+#define ID_ANI_BLOCK_Q_ITEM 6000100
 #pragma endregion

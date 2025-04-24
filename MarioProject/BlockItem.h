@@ -1,56 +1,42 @@
 #pragma once
 #include "InteractiveObject.h"
-#include "BrickIDs.h"
 #include "CollidableWithMario.h"
-#include "BlockCoin.h"
-#include "BlockItem.h"
 #include "CollisionEvent.h"
 #include "BrickStateIDs.h"
 #include "GameObject.h"
-#include "CoinAniIDs.h"
+#include "BrickIDs.h"
 
-class CBlockQ : public CInteractiveObject, public CCollidableWithMario {
+class CBlockItem : public CInteractiveObject, public CCollidableWithMario {
 protected:
 	LPGAMEOBJECT mario;
-	LPBLOCKCOIN coinB;
-	LPBLOCKITEM itemB;
 	float My;
-	bool coinQ;
 public:
-	CBlockQ(LPGAMEOBJECT mario, int state = BRICK_STATE_COIN, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
+	CBlockItem(LPGAMEOBJECT mario, int state, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left)
 		: CInteractiveObject(x, y, vx, vy, ax, ay, nx, state) {
 		this->mario = mario;
-		//SetState(BRICK_STATE_COIN);
-		if (state == BRICK_STATE_COIN) {
-			this->coinB = new CBlockCoin(mario, state, x, y);
-			coinQ = true;
-		}
-		else {
-			this->itemB = new CBlockItem(mario, state, x, y);
-			coinQ = false;
-		}
 		My = y;
+		SetState(BRICK_STATE_ITEM);
 	}
-
 	// game object method
 	virtual void Render() override {
-		if (coinQ) coinB->Render();
-		else itemB->Render();
-		CAnimations* animations = CAnimations::GetInstance();
-		if (state == BRICK_STATE_EMPTY)
-			animations->Get(ID_ANI_BLOCK_E)->Render(x, y);
-		else animations->Get(ID_ANI_BLOCK_Q)->Render(x, y);
-		RenderBoundingBox();
+		if (state != BRICK_STATE_EMPTY) {
+			CAnimations* animations = CAnimations::GetInstance();
+			animations->Get(ID_ANI_BLOCK_Q_ITEM)->Render(x, y);
+			RenderBoundingBox();
+		}
 	};
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	{
-		if (e->normalY == DirectionYAxisType::Bottom)
+		if (state == BRICK_STATE_ITEM) {
+			this->vy = -BRICK_Q_COIN_SPEED;
+			this->ay = BRICK_Q_COIN_GAVITY;
+			//SetState(BRICK_STATE_EMPTY);
+		}
+		if (mario->GetLevel() == MARIO_LEVEL_SMALL)
 		{
-			SetState(BRICK_STATE_EMPTY);
-			if (coinQ) coinB->OnMarioCollide(mario, e);
-			vy = -BRICK_Q_SPEED;
-			ay = BRICK_Q_GAVITY;
+			mario->SetLevel(MARIO_LEVEL_BIG);
+			mario->StartUntouchable();
 		}
 	};
 	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override
@@ -59,12 +45,20 @@ public:
 		this->vx += this->ax * dt;
 		this->x += this->vx * dt;
 		this->y += this->vy * dt;
-		if (this->y > My) {
-			this->vy = 0;
-			this->ay = 0;
-			this->y = My;
+		if (this->y < My + BRICK_BBOX_HEIGHT) {
+			float mx, my;
+			mario->GetPosition(mx, my);
+			if (mx < this->x) {
+				this->vy = 0;
+				this->ay = 0;
+				this->vx = BRICK_Q_ITEM_SPEED;
+			}
+			else {
+				this->vy = 0;
+				this->ay = 0;
+				this->vx = -BRICK_Q_ITEM_SPEED;
+			}
 		}
-		coinB->Update(dt, coObjects);
 	};
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) override
 	{
@@ -104,4 +98,4 @@ public:
 		CInteractiveObject::SetState(state);
 	};
 };
-typedef CBlockQ* LPBLOCKQ;
+typedef CBlockItem* LPBLOCKITEM;

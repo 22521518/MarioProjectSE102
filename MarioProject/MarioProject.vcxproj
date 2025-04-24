@@ -200,6 +200,7 @@
     <ClInclude Include="BlockW.h" />
     <ClInclude Include="CBlockF.h" />
     <ClInclude Include="BlockCoin.h" />
+    <ClInclude Include="BlockItem.h" />
     <ClInclude Include="PlantGreenVenusFire.h" />
     <ClInclude Include="PlantGreenPiranha.h" />
     <ClInclude Include="InteractableWithEdge.h" />

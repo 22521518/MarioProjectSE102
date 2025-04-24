@@ -549,6 +549,9 @@
     <ClInclude Include="BlockCoin.h">
       <Filter>Header Files\GameObjectConcrete\Brick</Filter>
     </ClInclude>
+    <ClInclude Include="BlockItem.h">
+      <Filter>Header Files\GameObjectConcrete\Brick</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MarioProject.rc">
