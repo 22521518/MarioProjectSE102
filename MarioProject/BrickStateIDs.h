@@ -17,4 +17,5 @@
 #define BRICK_Q_COIN_GAVITY 0.001f
 #define BRICK_Q_SPEED 0.1f
 #define BRICK_Q_GAVITY 0.0004f
-#define BRICK_Q_ITEM_SPEED 0.1f //need some check
+#define BRICK_Q_ITEM_SPEED_X 0.03f //need some check
+#define BRICK_Q_ITEM_SPEED_Y 0.1f //need some check

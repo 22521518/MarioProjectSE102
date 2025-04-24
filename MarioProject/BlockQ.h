@@ -49,6 +49,7 @@ public:
 		{
 			SetState(BRICK_STATE_EMPTY);
 			if (coinQ) coinB->OnMarioCollide(mario, e);
+			else itemB->OnMarioCollide(mario, e);
 			vy = -BRICK_Q_SPEED;
 			ay = BRICK_Q_GAVITY;
 		}
@@ -64,7 +65,8 @@ public:
 			this->ay = 0;
 			this->y = My;
 		}
-		coinB->Update(dt, coObjects);
+		if (coinQ) coinB->Update(dt, coObjects);
+		else itemB->Update(dt, coObjects);
 	};
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) override
 	{

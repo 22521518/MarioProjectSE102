@@ -28,15 +28,16 @@ public:
 	};
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	{
-		if (state == BRICK_STATE_ITEM) {
-			this->vy = -BRICK_Q_COIN_SPEED;
-			this->ay = BRICK_Q_COIN_GAVITY;
-			//SetState(BRICK_STATE_EMPTY);
-		}
-		if (mario->GetLevel() == MARIO_LEVEL_SMALL)
+		if (mario->GetLevel() == MARIO_LEVEL_SMALL && state == BRICK_STATE_EMPTYING)
 		{
 			mario->SetLevel(MARIO_LEVEL_BIG);
 			mario->StartUntouchable();
+			SetState(BRICK_STATE_EMPTY);
+		}
+		if (state == BRICK_STATE_ITEM) {
+			this->vy = -BRICK_Q_COIN_SPEED;
+			this->ay = BRICK_Q_COIN_GAVITY;
+			SetState(BRICK_STATE_EMPTYING);
 		}
 	};
 	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override
@@ -45,19 +46,14 @@ public:
 		this->vx += this->ax * dt;
 		this->x += this->vx * dt;
 		this->y += this->vy * dt;
-		if (this->y < My + BRICK_BBOX_HEIGHT) {
+		if (this->y < My - BRICK_BBOX_HEIGHT) {
+			this->vy = 0;
+			this->ay = 0;
+			this->vy = BRICK_Q_ITEM_SPEED_Y;
 			float mx, my;
 			mario->GetPosition(mx, my);
-			if (mx < this->x) {
-				this->vy = 0;
-				this->ay = 0;
-				this->vx = BRICK_Q_ITEM_SPEED;
-			}
-			else {
-				this->vy = 0;
-				this->ay = 0;
-				this->vx = -BRICK_Q_ITEM_SPEED;
-			}
+			if (mx < this->x) this->vx = BRICK_Q_ITEM_SPEED_X;
+			else this->vx = -BRICK_Q_ITEM_SPEED_X;
 		}
 	};
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) override
@@ -69,7 +65,7 @@ public:
 	};
 
 	virtual int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) override { return 1; };
-	virtual int IsBlocking() override { return 1; };
+	virtual int IsBlocking() override { return 0; };
 	virtual int IsCollidable() override { return 1; };
 
 	// interactive object method
@@ -83,14 +79,15 @@ public:
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e) override
 	{
 		if (!e->obj->IsBlocking()) return;
-		if (dynamic_cast<LPINTERACTIVEOBJECT>(e->obj)) return;
-		if (e->normalY != DirectionYAxisType::Bottom)
+		if (dynamic_cast<CGoomba*>(e->obj)) return;
+
+		if (e->normalY != DirectionYAxisType::None)
 		{
 			vy = 0;
 		}
-		else
+		else if (e->normalX != DirectionXAxisType::None)
 		{
-			vy = 0;
+			vx = -vx;
 		}
 	};
 	virtual void SetState(int state)
