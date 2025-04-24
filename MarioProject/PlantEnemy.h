@@ -57,15 +57,7 @@ public:
 	{
 		// jump on top >> kill ___ and deflect a bit 
 		mario->OnCollisionWithPlant(this, e);
-		if (e->normalY == DirectionYAxisType::Top)
-		{
-			if (!this->IsDeadState())
-			{
-				this->SetState(PLANT_STATE_DIE);
-			}
-		}
 	};
-	//virtual bool IsDeadState() override = 0;
 };
 
 typedef CPlantEnemy* LPPLANTENEMY;

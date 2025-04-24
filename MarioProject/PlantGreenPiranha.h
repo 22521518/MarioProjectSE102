@@ -18,11 +18,7 @@ public:
 	// game object method
 	virtual void Render() override {
 		CAnimations* animations = CAnimations::GetInstance();
-		mario->GetPosition(Mx, My);
-		float XA = Mx - x;
-		if (My < y - PLANT_Y_U) animations->Get(ID_ANI_PLANT_GP_U)->Render(x, y);
-		else if (XA < 0) animations->Get(ID_ANI_PLANT_GP_L)->Render(x, y);
-		else if (XA > 0) animations->Get(ID_ANI_PLANT_GP_R)->Render(x, y);
+		animations->Get(ID_ANI_PLANT_GP_U)->Render(x, y);
 		//RenderBoundingBox()
 	};
 	// physical object method

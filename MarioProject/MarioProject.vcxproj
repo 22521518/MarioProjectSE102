@@ -201,6 +201,7 @@
     <ClInclude Include="CBlockF.h" />
     <ClInclude Include="BlockCoin.h" />
     <ClInclude Include="BlockItem.h" />
+    <ClInclude Include="PlantGreenVenusFire.h" />
     <ClInclude Include="PlantFireBall.h" />
     <ClInclude Include="PlantRedVenusFire.h" />
     <ClInclude Include="PlantGreenPiranha.h" />

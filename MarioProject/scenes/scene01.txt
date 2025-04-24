@@ -62,7 +62,7 @@ objects\Plant_Enemy.txt
 11	180	50
 
 #Plant
-653	190	120
+652	190	120
 
 #Goomba
 #2	300	10

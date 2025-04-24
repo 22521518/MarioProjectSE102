@@ -12,6 +12,7 @@
 #include "GreenKoopaParatroopa.h"
 
 #include "PlantGreenPiranha.h"
+#include "PlantGreenVenusFire.h"
 #include "PlantRedVenusFire.h"
 #include "BlockQ.h"
 #include "BrickStateIDs.h"
@@ -55,7 +56,7 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, ve
 
 	}
 	case OBJECT_TYPE_PLANT_GP: return new CPlantGreenPiranha(player, x, y);
-	//case OBJECT_TYPE_PLANT_GVF: return new CPlantGreenPiranha(player, x, y);
+	case OBJECT_TYPE_PLANT_GVF: return new CPlantGreenVenusFire(player, x, y);
 	case OBJECT_TYPE_PLANT_RVF: return new CPlantRedVenusFire(player, x, y);
 	case OBJECT_TYPE_BLOCK_Q_COIN: return new CBlockQ(player, BRICK_STATE_COIN, x, y);
 	case OBJECT_TYPE_BLOCK_Q_ITEM: return new CBlockQ(player, BRICK_STATE_ITEM, x, y);
