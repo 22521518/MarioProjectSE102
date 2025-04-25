@@ -80,5 +80,16 @@ public:
 	{
 		CInteractiveObject::SetState(state);
 	};
+	void WhereToShoot(LPPLANTENEMY plant) {
+		float Mx, My, Px, Py;
+		plant->GetPosition(Px, Py);
+		mario->GetPosition(Mx, My);
+		float GOx = Mx - Px, GOy = Py - My;
+		float rate = GOx / GOy;
+		float BY = sqrt(powf(FIREBALL_SPEED, (float)2) / (powf(rate, (float)2) + 1));
+		float BX = BY * rate;
+		if (Py <= My)this->SetSpeed(-BX, BY);
+		else if (Py > My)this->SetSpeed(BX, -BY);
+	};
 };
 typedef CPlantFireBall* LPPLANTFIREBALL;

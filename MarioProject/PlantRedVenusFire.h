@@ -70,10 +70,8 @@ public:
 			float uy = sqrt((powf(GOx, (float)2) + powf(GOy, (float)2)));
 			if (uy > FIREBALL_COMEBACK || !IsFire) {
 				fire->SetPosition(x, y);
-				if (this->x >= Mx && this->y <= My)fire->SetSpeed(-FIREBALL_SPEED, FIREBALL_SPEED);
-				else if (this->x < Mx && this->y <= My)fire->SetSpeed(FIREBALL_SPEED, FIREBALL_SPEED);
-				else if (this->x >= Mx && this->y > My)fire->SetSpeed(-FIREBALL_SPEED, -FIREBALL_SPEED);
-				else if (this->x < Mx && this->y > My)fire->SetSpeed(FIREBALL_SPEED, -FIREBALL_SPEED);
+				//this->WhereToShoot(fire);
+				fire->WhereToShoot(this);
 				IsFire = true;
 			}
 			mario->GetPosition(Mx, My);
