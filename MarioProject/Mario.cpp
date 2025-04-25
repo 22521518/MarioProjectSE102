@@ -120,7 +120,12 @@ void CMario::CollideFireBall(LPPLANTFIREBALL fire)
 
 void CMario::OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e) {
 	coin++;
+	this->coin++;
 	DebugOut(L"I GOT MORE COIN! \n");
+	if (this->coin >= 100) {
+		if (this->GetLevel() == MARIO_LEVEL_SMALL) this->SetLevel(MARIO_LEVEL_BIG);
+		this->coin = 0;
+	}
 }
 
 void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
