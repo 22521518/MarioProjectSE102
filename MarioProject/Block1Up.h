@@ -6,12 +6,12 @@
 #include "GameObject.h"
 #include "BrickIDs.h"
 
-class CBlockItem : public CInteractiveObject, public CCollidableWithMario {
+class CBlock1Up : public CInteractiveObject, public CCollidableWithMario {
 protected:
 	LPGAMEOBJECT mario;
 	float My;
 public:
-	CBlockItem(LPGAMEOBJECT mario, int state, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
+	CBlock1Up(LPGAMEOBJECT mario, int state, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left)
 		: CInteractiveObject(x, y, vx, vy, ax, ay, nx, state) {
 		this->mario = mario;
@@ -95,4 +95,4 @@ public:
 		CInteractiveObject::SetState(state);
 	};
 };
-typedef CBlockItem* LPBLOCKITEM;
+typedef CBlock1Up* LPBLOCK1UP;

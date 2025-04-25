@@ -26,16 +26,13 @@ public:
 
 	// game object method
 	virtual void Render() override {
-		if(state == PLANT_STATE_UP) fire->Render();
+		if(IsFire) fire->Render();
 		CAnimations* animations = CAnimations::GetInstance();
 		mario->GetPosition(Mx, My);
 		float XA = Mx - x;
-		/*if (My < y - PLANT_Y_U) animations->Get(ID_ANI_PLANT_RVF_U)->Render(x, y);
-		else if (XA < 0) animations->Get(ID_ANI_PLANT_RVF_L)->Render(x, y);
-		else if (XA > 0) animations->Get(ID_ANI_PLANT_RVF_R)->Render(x, y);*/
 		if (XA < 0) animations->Get(ID_ANI_PLANT_RVF_L)->Render(x, y);
 		else if (XA > 0) animations->Get(ID_ANI_PLANT_RVF_R)->Render(x, y);
-		//RenderBoundingBox()
+		RenderBoundingBox();
 	};
 	// physical object method
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) override
@@ -57,7 +54,7 @@ public:
 		if (this->state == PLANT_STATE_HIDE) {
 			if (abs(this->x - Mx) < PLANT_HIDE_DISTANT) {
 				SetState(PLANT_STATE_GO_UP);
-				this->vy = -PLANT_SPEED;
+				this->vy = -PLANT_SPEED_R;
 			}
 		}
 		else if (this->state == PLANT_STATE_GO_UP && this->y <= upperY) {
@@ -80,10 +77,9 @@ public:
 				IsFire = true;
 			}
 			mario->GetPosition(Mx, My);
-			
 			if (abs(this->x - Mx) > PLANT_HIDE_DISTANT) {
 				SetState(PLANT_STATE_GO_HIDE);
-				this->vy = PLANT_SPEED;
+				this->vy = PLANT_SPEED_R;
 			}
 		}
 		else if (this->state == PLANT_STATE_GO_HIDE && this->y >= lowerY) {
@@ -91,7 +87,7 @@ public:
 			this->vy = 0;
 			this->y = lowerY;
 			fire->SetPosition(x, y);
-			IsFire = false;
+			//IsFire = false;
 		}
 		fire->Update(dt, coObjects);
 		CEnemy::Update(dt, coObjects);

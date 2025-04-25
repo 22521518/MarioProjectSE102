@@ -9,6 +9,7 @@
 #define PLANT_FIREBALL_WIDTH 9
 #define PLANT_FIREBALL_HEIGHT 9
 #define PLANT_SPEED 0.02f
+#define PLANT_SPEED_R 0.04f
 #define FIREBALL_SPEED 0.02f
 #pragma endregion
 #define ID_ANI_PLANT_GVF_L 6005100 //Green Venus Fire Trap

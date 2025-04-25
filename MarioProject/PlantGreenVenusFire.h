@@ -26,13 +26,13 @@ public:
 
 	// game object method
 	virtual void Render() override {
-		if (state == PLANT_STATE_UP) fire->Render();
+		if (IsFire) fire->Render();
 		CAnimations* animations = CAnimations::GetInstance();
 		mario->GetPosition(Mx, My);
 		float XA = Mx - x;
 		if (XA < 0) animations->Get(ID_ANI_PLANT_GVF_L)->Render(x, y);
 		else if (XA > 0) animations->Get(ID_ANI_PLANT_GVF_R)->Render(x, y);
-		//RenderBoundingBox()
+		//RenderBoundingBox();
 	};
 	// physical object method
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) override
@@ -77,7 +77,6 @@ public:
 				IsFire = true;
 			}
 			mario->GetPosition(Mx, My);
-
 			if (abs(this->x - Mx) > PLANT_HIDE_DISTANT) {
 				SetState(PLANT_STATE_GO_HIDE);
 				this->vy = PLANT_SPEED;
@@ -88,7 +87,7 @@ public:
 			this->vy = 0;
 			this->y = lowerY;
 			fire->SetPosition(x, y);
-			IsFire = false;
+			//IsFire = false;
 		}
 		fire->Update(dt, coObjects);
 		CEnemy::Update(dt, coObjects);

@@ -549,7 +549,7 @@
     <ClInclude Include="BlockCoin.h">
       <Filter>Header Files\GameObjectConcrete\Brick</Filter>
     </ClInclude>
-    <ClInclude Include="BlockItem.h">
+    <ClInclude Include="Block1Up.h">
       <Filter>Header Files\GameObjectConcrete\Brick</Filter>
     </ClInclude>
     <ClInclude Include="PlantFireBall.h">

@@ -3,7 +3,7 @@
 #include "BrickIDs.h"
 #include "CollidableWithMario.h"
 #include "BlockCoin.h"
-#include "BlockItem.h"
+#include "Block1Up.h"
 #include "CollisionEvent.h"
 #include "BrickStateIDs.h"
 #include "GameObject.h"
@@ -13,7 +13,7 @@ class CBlockQ : public CInteractiveObject, public CCollidableWithMario {
 protected:
 	LPGAMEOBJECT mario;
 	LPBLOCKCOIN coinB;
-	LPBLOCKITEM itemB;
+	LPBLOCK1UP itemB;
 	float My;
 	bool coinQ;
 public:
@@ -27,7 +27,7 @@ public:
 			coinQ = true;
 		}
 		else {
-			this->itemB = new CBlockItem(mario, state, x, y);
+			this->itemB = new CBlock1Up(mario, state, x, y);
 			coinQ = false;
 		}
 		My = y;
