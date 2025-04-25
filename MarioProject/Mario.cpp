@@ -13,6 +13,7 @@
 
 #include "PlantEnemy.h"
 #include "PlantFireBall.h"
+#include "Block1Up.h"
 
 CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, DirectionXAxisType nx, int state) : CCharacter(x, y, vx, vy, ax, ay, nx, state)
 {
@@ -98,10 +99,7 @@ void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
 }
 void CMario::CollideFireBall(LPPLANTFIREBALL fire)
 {
-	float l, t, r, b, Fl, Ft, Fr, Fb;
-	this->GetBoundingBox(l, t, r, b);
-	fire->GetBoundingBox(Fl, Ft, Fr, Fb);
-	if (l < Fr && r > Fl && t < Fb && b > Ft) {
+	if (this->IsOverLapping(static_cast<LPINTERACTIVEOBJECT>(fire))) {
 		if (this->IsUntouchable() == 0) // hit FIRE BALL!
 		{
 			if (this->GetLevel() > MARIO_LEVEL_SMALL)
@@ -117,14 +115,37 @@ void CMario::CollideFireBall(LPPLANTFIREBALL fire)
 		}
 	}
 };
+void CMario::Collide1UP(LPBLOCK1UP fire)
+{
+	if (this->IsOverLapping(static_cast<LPINTERACTIVEOBJECT>(fire))) {
+		if (this->GetLevel() == MARIO_LEVEL_SMALL && fire->GetState() == BRICK_STATE_EMPTYING && fire->out)
+		{
+			this->y = this->y - MARIO_SMALL_BBOX_HEIGHT;
+			this->SetLevel(MARIO_LEVEL_BIG);
+			this->StartUntouchable();
+			fire->SetState(BRICK_STATE_EMPTY);
+		}
+	}
+};
+bool CMario::IsOverLapping(LPINTERACTIVEOBJECT a) {
+	float l, t, r, b, Fl, Ft, Fr, Fb;
+	this->GetBoundingBox(l, t, r, b);
+	a->GetBoundingBox(Fl, Ft, Fr, Fb);
+	if (l < Fr && r > Fl && t < Fb && b > Ft) return true;
+	else return false;
+}
 
 void CMario::OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e) {
 	coin++;
 	this->coin++;
 	DebugOut(L"I GOT MORE COIN! \n");
 	if (this->coin >= 100) {
-		if (this->GetLevel() == MARIO_LEVEL_SMALL) this->SetLevel(MARIO_LEVEL_BIG);
-		this->coin = 0;
+		if (this->GetLevel() == MARIO_LEVEL_SMALL) {
+			this->y = this->y - MARIO_SMALL_BBOX_HEIGHT;
+			this->SetLevel(MARIO_LEVEL_BIG);
+			this->StartUntouchable();
+			this->coin = 0;
+		}
 	}
 }
 

@@ -15,7 +15,7 @@ protected:
 	LPBLOCKCOIN coinB;
 	LPBLOCK1UP itemB;
 	float My;
-	bool coinQ;
+	bool coinQ = false, upQ = false;
 public:
 	CBlockQ(LPGAMEOBJECT mario, int state = BRICK_STATE_COIN, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left)
@@ -26,9 +26,9 @@ public:
 			this->coinB = new CBlockCoin(mario, state, x, y);
 			coinQ = true;
 		}
-		else {
+		else if (state == BRICK_STATE_1UP) {
 			this->itemB = new CBlock1Up(mario, state, x, y);
-			coinQ = false;
+			upQ = true;
 		}
 		My = y;
 	}
@@ -36,7 +36,7 @@ public:
 	// game object method
 	virtual void Render() override {
 		if (coinQ) coinB->Render();
-		else itemB->Render();
+		else if (upQ) itemB->Render();
 		CAnimations* animations = CAnimations::GetInstance();
 		if (state == BRICK_STATE_EMPTY)
 			animations->Get(ID_ANI_BLOCK_E)->Render(x, y);
@@ -49,13 +49,17 @@ public:
 		{
 			SetState(BRICK_STATE_EMPTY);
 			if (coinQ) coinB->OnMarioCollide(mario, e);
-			else itemB->OnMarioCollide(mario, e);
+			else if (upQ) itemB->OnMarioCollide(mario, e);
 			vy = -BRICK_Q_SPEED;
 			ay = BRICK_Q_GAVITY;
 		}
 	};
 	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override
 	{
+		if (coinQ) coinB->Update(dt, coObjects);
+		else if (upQ) {
+			itemB->Update(dt, coObjects);
+		}
 		this->vy += this->ay * dt;
 		this->vx += this->ax * dt;
 		this->x += this->vx * dt;
@@ -65,8 +69,6 @@ public:
 			this->ay = 0;
 			this->y = My;
 		}
-		if (coinQ) coinB->Update(dt, coObjects);
-		else itemB->Update(dt, coObjects);
 	};
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) override
 	{

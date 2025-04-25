@@ -59,7 +59,7 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, ve
 	case OBJECT_TYPE_PLANT_GVF: return new CPlantGreenVenusFire(player, x, y);
 	case OBJECT_TYPE_PLANT_RVF: return new CPlantRedVenusFire(player, x, y);
 	case OBJECT_TYPE_BLOCK_Q_COIN: return new CBlockQ(player, BRICK_STATE_COIN, x, y);
-	case OBJECT_TYPE_BLOCK_Q_ITEM: return new CBlockQ(player, BRICK_STATE_ITEM, x, y);
+	case OBJECT_TYPE_BLOCK_Q_ITEM: return new CBlockQ(player, BRICK_STATE_1UP, x, y);
 	default:
 		DebugOut(L"[ERROR] Invalid object type: %d\n", object_type);
 		return NULL;

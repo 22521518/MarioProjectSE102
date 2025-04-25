@@ -12,6 +12,7 @@ class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
 class CBlockQ; typedef CBlockQ* LPBLOCKQ;
 class CPlantEnemy; typedef CPlantEnemy* LPPLANTENEMY;
 class CPlantFireBall; typedef CPlantFireBall* LPPLANTFIREBALL;
+class CBlock1Up; typedef CBlock1Up* LPBLOCK1UP;
 
 struct CCollisionEvent; typedef CCollisionEvent* LPCOLLISIONEVENT;
 
@@ -66,7 +67,9 @@ public:
 	//void OnCollisionWithPortal(LPPORTAL portal, LPCOLLISIONEVENT e) {};
 	void OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e);
 	void CollideFireBall(LPPLANTFIREBALL fire);
+	void Collide1UP(LPBLOCK1UP fire);
 	void OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e);
+	bool IsOverLapping(LPINTERACTIVEOBJECT a);
 
 	friend class CMarioState;
 	friend class CSmallMarioState;
