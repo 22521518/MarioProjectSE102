@@ -513,9 +513,6 @@
     <ClInclude Include="CheckingEdgeObject.h">
       <Filter>Header Files\GameObjectAbstract</Filter>
     </ClInclude>
-    <ClInclude Include="InteractableWithEdge.h">
-      <Filter>Header Files\GameObjectAbstract</Filter>
-    </ClInclude>
     <ClInclude Include="CheckingDummyObject.h">
       <Filter>Header Files\GameObjectAbstract</Filter>
     </ClInclude>

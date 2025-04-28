@@ -1,7 +1,7 @@
 #pragma once
 #include "Koopa.h"
 #include "Goomba.h"
-#include "InteractableWithEdge.h"
+#include "CheckingEdgeObject.h"
 
 class CRedKoopa : public CKoopa, public CInteractableWithEdge
 {

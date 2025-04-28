@@ -10,6 +10,7 @@
 #include "Koopa.h"
 #include "Coin.h"
 #include "CollidableWithMario.h"
+#include "DestroyableObject.h"
 
 #include "PlantEnemy.h"
 #include "PlantFireBall.h"
@@ -69,7 +70,7 @@ void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 		else
 		{
 			DebugOut(L">>> Mario DIE >>> \n");
-			SetState(MARIO_STATE_DIE);
+			//SetState(MARIO_STATE_DIE);
 		}
 	}
 }
@@ -208,6 +209,11 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	LPCOLLIDABLEWITHMARIO obj = dynamic_cast<LPCOLLIDABLEWITHMARIO>(e->obj);
 	if (obj) {
 		obj->OnMarioCollide(this, e);
+	}
+
+	LPDESTROYABLEOBJECT destroyableObj = dynamic_cast<LPDESTROYABLEOBJECT>(e->obj);
+	if (destroyableObj && e->normalY == DirectionYAxisType::Bottom ) {
+		destroyableObj->OnDestroy();
 	}
 }
 #pragma endregion

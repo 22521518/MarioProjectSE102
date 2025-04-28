@@ -1,5 +1,5 @@
 #include "CheckingEdgeObject.h"
-#include "InteractableWithEdge.h"
+#include "CheckingEdgeObject.h"
 #include "debug.h"
 #include "CollisionEvent.h"
 

@@ -18,6 +18,7 @@ public:
 
 	// game object method
 	virtual void Render() override;
+	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override;
 
 	// physical object method
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) override;

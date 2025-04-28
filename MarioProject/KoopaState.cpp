@@ -12,6 +12,7 @@ CKoopaState::CKoopaState(LPKOOPA koopa)
 	koopa->nx = koopa->nx == DirectionXAxisType::Left ?
 		DirectionXAxisType::Left : DirectionXAxisType::Right;
 	koopa->vx = nxValue * KOOPA_WALKING_SPEED;
+	koopa->ay = KOOPA_GRAVITY;
 }
 
 void CKoopaState::ChangeDirection(LPKOOPA koopa, float speed)

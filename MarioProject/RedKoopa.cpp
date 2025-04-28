@@ -1,7 +1,6 @@
 #include "RedKoopa.h"
 #include "RedKoopaShellState.h"
 #include "RedKoopaState.h"
-#include "CheckingEdgeObject.h"
 
 void CRedKoopa::SetState(int state) 
 {

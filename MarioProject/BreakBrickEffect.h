@@ -9,6 +9,7 @@ public:
 
 	// game object method
 	virtual void Render() override;
+	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override;
 };
 
 typedef CBreakBrickEffect* LPBREAKBRICKEFFECT;

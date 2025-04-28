@@ -8,7 +8,7 @@ public:
 	CKoopaShellState(LPKOOPA koopa);
 	//virtual void Update(LPKOOPA koopa, DWORD dt);
 	virtual int GetAnimationID(LPKOOPA koopa) = 0;
-	virtual void GetBoundingBox(float& width, float& height);
+	virtual void GetBoundingBox(float& width, float& height) override;
 };
 
 class CKoopaShellMoveState :
@@ -19,6 +19,7 @@ public:
 	CKoopaShellMoveState() {};
 	CKoopaShellMoveState(LPKOOPA koopa, LPCOLLISIONEVENT e);
 	virtual int GetAnimationID(LPKOOPA koopa) = 0;
+	virtual void OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e) override;
 };
 
 typedef CKoopaShellState* LPKOOPASHELL;

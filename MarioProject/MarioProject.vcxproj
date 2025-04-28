@@ -209,7 +209,6 @@
     <ClInclude Include="PlantFireBall.h" />
     <ClInclude Include="PlantRedVenusFire.h" />
     <ClInclude Include="PlantGreenPiranha.h" />
-    <ClInclude Include="InteractableWithEdge.h" />
     <ClInclude Include="PlantEnemyConfig.h" />
     <ClInclude Include="PlantEnemy.h" />
     <ClInclude Include="RedKoopa.h" />
