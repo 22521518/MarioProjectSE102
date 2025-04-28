@@ -19,7 +19,6 @@ public:
 	CKoopaShellMoveState() {};
 	CKoopaShellMoveState(LPKOOPA koopa, LPCOLLISIONEVENT e);
 	virtual int GetAnimationID(LPKOOPA koopa) = 0;
-	virtual void OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e) override;
 };
 
 typedef CKoopaShellState* LPKOOPASHELL;

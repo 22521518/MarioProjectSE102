@@ -2,8 +2,6 @@
 #include "KoopaConfig.h"
 #include "CollisionEvent.h"
 #include "Koopa.h"
-#include "DestroyableObject.h"
-#include "Brick.h"
 
 CKoopaShellState::CKoopaShellState(LPKOOPA koopa) 
 {
@@ -46,31 +44,5 @@ CKoopaShellMoveState::CKoopaShellMoveState(LPKOOPA koopa, LPCOLLISIONEVENT e)
 
     koopa->SetSpeed(vx, 0);
     koopa->SetAcceleration(0, KOOPA_GRAVITY);
-}
-void CKoopaShellMoveState::OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e)
-{
-    if (!e->obj->IsBlocking()) return;
-    LPDESTROYABLEOBJECT destroyableObj = dynamic_cast<LPDESTROYABLEOBJECT>(e->obj);
-    if (destroyableObj) 
-    {
-        if (dynamic_cast<LPBRICK>(destroyableObj)) {
-            if (e->normalX != DirectionXAxisType::None) {
-                destroyableObj->OnDestroy();
-            }
-        }
-        else {
-            destroyableObj->OnDestroy();
-        }
-    }
-
-
-    if (e->normalY != DirectionYAxisType::None)
-    {
-        koopa->vy = 0;
-    }
-    if (e->normalX != DirectionXAxisType::None)
-    {
-        this->ChangeDirection(koopa, KOOPA_SHELL_SPEED);
-    }
 }
 #pragma endregion

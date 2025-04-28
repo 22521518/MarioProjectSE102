@@ -136,6 +136,7 @@
     <ClCompile Include="AnimationFrame.cpp" />
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="BigMarioState.cpp" />
+    <ClCompile Include="CheckingSideObject.cpp" />
     <ClCompile Include="DestroyableBrick.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CheckingEdgeObject.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="BigMarioState.h" />
     <ClInclude Include="BlockQ.h" />
     <ClInclude Include="BrickIDs.h" />
+    <ClInclude Include="CheckingSideObject.h" />
     <ClInclude Include="DestroyableBrick.h" />
     <ClInclude Include="CheckingDummyObject.h" />
     <ClInclude Include="CheckingEdgeObject.h" />

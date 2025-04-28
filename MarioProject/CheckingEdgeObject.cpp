@@ -15,10 +15,6 @@ void CCheckingEdgeObject::OnNoCollision(DWORD dt)
 	this->obj->OnEdgeBehavior(dt);
 }
 
-void CCheckingEdgeObject::OnCollisionWith(LPCOLLISIONEVENT e)
-{
-}
-
 void CCheckingEdgeObject::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
 	//			top

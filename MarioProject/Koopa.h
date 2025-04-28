@@ -6,9 +6,10 @@
 #include "KoopaConfig.h"
 #include "KoopaStateIDs.h"
 #include "Goomba.h"
+#include "CheckingSideObject.h"
 
 class CKoopa :
-	public CEnemy, public CCollidableWithMario
+	public CEnemy, public CCollidableWithMario, public CInteractableWithSideCollision
 {
 private:
 	bool IsOutOfTime(ULONGLONG time);
@@ -51,6 +52,11 @@ public:
 	virtual bool IsShellMove() { return this->state == KOOPA_STATE_SHELL_MOVE; }
 	virtual bool IsShellIdle() { return (this->state == KOOPA_STATE_SHELL_IDLE || this->state == KOOPA_STATE_SHELL_IDLE_OUT_TIME); }
 	virtual bool IsParatroopaState() { DebugOut(L"JUmp!\n");  return this->state == KOOPA_STATE_PARATROOPA; }
+
+	// interactive with side methods
+	virtual void OnSideCollisionBehavior(LPCOLLISIONEVENT e) override;
+	virtual void GetObjectBoundingBox(float& left, float& top, float& right, float& bottom) override;
+	virtual DirectionXAxisType GetObjectCurrentDirectionX() override;
 
 	friend class CKoopaState;
 	friend class CRedKoopaState;
