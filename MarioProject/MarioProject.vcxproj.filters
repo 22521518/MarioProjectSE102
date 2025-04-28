@@ -281,10 +281,16 @@
       <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
     </ClCompile>
     <ClCompile Include="GreenKoopaParatroopa.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
     </ClCompile>
     <ClCompile Include="GreenKoopaParatroopaState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameObjectConcrete\Koopa</Filter>
+    </ClCompile>
+    <ClCompile Include="DestroyableBrick.cpp">
+      <Filter>Source Files\GameObjectConcrete\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="BreakBrickEffect.cpp">
+      <Filter>Source Files\GameObjectConcrete\Brick</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -557,6 +563,15 @@
     </ClInclude>
     <ClInclude Include="PlantGreenVenusFire.h">
       <Filter>Header Files\GameObjectConcrete\PlantEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="DestroyableObject.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="BreakBrickEffect.h">
+      <Filter>Header Files\GameObjectConcrete\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="DestroyableBrick.h">
+      <Filter>Header Files\GameObjectConcrete\Brick</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

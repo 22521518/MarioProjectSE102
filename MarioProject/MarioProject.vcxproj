@@ -136,6 +136,7 @@
     <ClCompile Include="AnimationFrame.cpp" />
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="BigMarioState.cpp" />
+    <ClCompile Include="DestroyableBrick.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CheckingEdgeObject.cpp" />
     <ClCompile Include="GreenKoopa.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="RedKoopaParatroopaState.cpp" />
     <ClCompile Include="RedKoopaState.cpp" />
     <ClCompile Include="setup.cpp" />
+    <ClCompile Include="BreakBrickEffect.cpp" />
     <ClCompile Include="SmallMarioState.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Sprites.cpp" />
@@ -185,12 +187,14 @@
     <ClInclude Include="BigMarioState.h" />
     <ClInclude Include="BlockQ.h" />
     <ClInclude Include="BrickIDs.h" />
+    <ClInclude Include="DestroyableBrick.h" />
     <ClInclude Include="CheckingDummyObject.h" />
     <ClInclude Include="CheckingEdgeObject.h" />
     <ClInclude Include="CloudPlatform.h" />
     <ClInclude Include="CoinAniIDs.h" />
     <ClInclude Include="CoinStateIDs.h" />
     <ClInclude Include="CollidableWithMario.h" />
+    <ClInclude Include="DestroyableObject.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GreenKoopa.h" />
     <ClInclude Include="GreenKoopaParatroopa.h" />
@@ -246,6 +250,7 @@
     <ClInclude Include="RedKoopaParatroopaState.h" />
     <ClInclude Include="RedKoopaShellState.h" />
     <ClInclude Include="RedKoopaState.h" />
+    <ClInclude Include="BreakBrickEffect.h" />
     <ClInclude Include="StaticObject.h" />
     <ClInclude Include="PhysicalObject.h" />
     <ClInclude Include="GameObject.h" />

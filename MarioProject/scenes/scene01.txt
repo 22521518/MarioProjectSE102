@@ -2,6 +2,7 @@
 [ASSETS]
 objects\mario.txt
 objects\brick.txt
+objects\destroyable_brick.txt
 objects\coin.txt
 objects\goomba.txt
 objects\cloud.txt
@@ -20,16 +21,16 @@ objects\Plant_Enemy.txt
 0	150	30
 
 # BRICKS
-1	0	148
-1	0	164
-1	0	196
-1	0	180
-1	16	180
-1	32	180
-1	48	180
-1	64	180
-1	80	180
-1	96	180
+1020000	0	148
+1020000	0	164
+1020000	0	196
+1020000	0	180
+1020000	16	180
+1020000	32	180
+1020000	48	180
+1020000	64	180
+1020000	80	180
+1020000	96	180
 1	112	180
 1	128	180
 1	144	180
