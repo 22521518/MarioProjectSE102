@@ -1,4 +1,2 @@
 #pragma once
 #include "AnimationIDs.h"
-#define ID_ANI_BREAK_BRICK_EFFECT ID_ANI_BRICK + 1000000 + 1000
-#define ID_ANI_DESTROYABLE_BRICK ID_ANI_BRICK + 1000000 

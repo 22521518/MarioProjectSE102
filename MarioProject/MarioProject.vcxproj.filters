@@ -154,6 +154,15 @@
     <Filter Include="Header Files\GameObjectConcrete\PlantEnemy">
       <UniqueIdentifier>{60779d45-f2a2-450a-bc61-b6b6b251ac17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObjectConcrete\Items">
+      <UniqueIdentifier>{7a8eb3c6-55e8-4431-ba99-d7819bab0de0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Items">
+      <UniqueIdentifier>{0476e919-0f93-44ea-8fb7-b92a93df7d05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Items\ItemAsset">
+      <UniqueIdentifier>{dba2e17e-173a-4190-9079-863e48a09aed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -294,6 +303,9 @@
     </ClCompile>
     <ClCompile Include="CheckingSideObject.cpp">
       <Filter>Source Files\GameObjectAbstract</Filter>
+    </ClCompile>
+    <ClCompile Include="SuperLeaf.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -575,6 +587,21 @@
     </ClInclude>
     <ClInclude Include="CheckingSideObject.h">
       <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="SuperLeaf.h">
+      <Filter>Header Files\GameObjectConcrete\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\GameObjectConcrete\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemAniIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Items\ItemAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemStateIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Items\ItemAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemConfig.h">
+      <Filter>Header Files\GameObjectConcrete\Items\ItemAsset</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

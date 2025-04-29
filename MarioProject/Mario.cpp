@@ -37,8 +37,9 @@ void CMario::SetLevel(int level)
 		this->stateHandler = new CSmallMarioState();
 		y -= (MARIO_BIG_BBOX_HEIGHT - MARIO_SMALL_BBOX_HEIGHT) / 2;
 	}
-	else
+	else if (level == MARIO_LEVEL_BIG)
 	{
+		y -= (MARIO_BIG_BBOX_HEIGHT - MARIO_SMALL_BBOX_HEIGHT) / 2;
 		this->stateHandler = new CBigMarioState();
 	}
 	this->level = level;
@@ -143,7 +144,6 @@ void CMario::OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e) {
 	if (this->coin >= 100) {
 		if (this->GetLevel() == MARIO_LEVEL_SMALL) {
 			this->y = this->y - MARIO_SMALL_BBOX_HEIGHT;
-			this->SetLevel(MARIO_LEVEL_BIG);
 			this->StartUntouchable();
 			this->coin = 0;
 		}
@@ -194,6 +194,12 @@ void CMario::OnNoCollision(DWORD dt)
 
 void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 {
+	LPDESTROYABLEOBJECT destroyableObj = dynamic_cast<LPDESTROYABLEOBJECT>(e->obj);
+	if (destroyableObj && e->normalY == DirectionYAxisType::Bottom && this->GetLevel() > MARIO_LEVEL_SMALL)
+	{
+		destroyableObj->OnDestroy();
+	}
+
 	if (e->normalY != DirectionYAxisType::None && e->obj->IsBlocking())
 	{
 		vy = 0;
@@ -209,11 +215,6 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	LPCOLLIDABLEWITHMARIO obj = dynamic_cast<LPCOLLIDABLEWITHMARIO>(e->obj);
 	if (obj) {
 		obj->OnMarioCollide(this, e);
-	}
-
-	LPDESTROYABLEOBJECT destroyableObj = dynamic_cast<LPDESTROYABLEOBJECT>(e->obj);
-	if (destroyableObj && e->normalY == DirectionYAxisType::Bottom ) {
-		destroyableObj->OnDestroy();
 	}
 }
 #pragma endregion

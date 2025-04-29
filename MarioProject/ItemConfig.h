@@ -1,0 +1,11 @@
+#pragma once
+#pragma region SUPER_LEAFa
+#define SUPER_LEAF_BBOX_WIDTH 16
+#define SUPER_LEAF_BBOX_HEIGHT 14
+
+#define SUPER_LEAF_FALL_SPEED 0.025f
+#define SUPER_LEAF_FALL_GRAVITY 0.000005f
+#define SUPER_LEAF_SWAY_SPEED 0.005f
+#define SUPER_LEAF_SWAY_AMPLITUDE 20.0f
+
+#pragma endregion

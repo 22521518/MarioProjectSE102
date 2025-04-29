@@ -1,0 +1,5 @@
+#pragma once
+#include "AnimationIDs.h"
+
+#define ID_ANI_SUPER_LEAF_ITEM_LEFT ID_ANI_SUPER_LEAF_ITEM 
+#define ID_ANI_SUPER_LEAF_ITEM_RIGHT ID_ANI_SUPER_LEAF_ITEM + 100 
