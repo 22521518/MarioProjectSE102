@@ -30,8 +30,14 @@ public:
 		CAnimations* animations = CAnimations::GetInstance();
 		mario->GetPosition(Mx, My);
 		float XA = Mx - x;
-		if (XA < 0) animations->Get(ID_ANI_PLANT_RVF_L)->Render(x, y);
-		else if (XA > 0) animations->Get(ID_ANI_PLANT_RVF_R)->Render(x, y);
+		if (x > Mx) {
+			if (y < My) animations->Get(ID_ANI_PLANT_RVF_L_D)->Render(x, y);
+			else animations->Get(ID_ANI_PLANT_RVF_L_U)->Render(x, y);
+		}
+		else {
+			if (y < My) animations->Get(ID_ANI_PLANT_RVF_R_D)->Render(x, y);
+			else animations->Get(ID_ANI_PLANT_RVF_R_U)->Render(x, y);
+		}
 		RenderBoundingBox();
 	};
 	// physical object method

@@ -12,11 +12,15 @@
 #define PLANT_SPEED_R 0.04f
 #define FIREBALL_SPEED 0.02f
 #pragma endregion
-#define ID_ANI_PLANT_GVF_L 6005100 //Green Venus Fire Trap
-#define ID_ANI_PLANT_GVF_R 6005110 //Green Venus Fire Trap
+#define ID_ANI_PLANT_GVF_L_D 6005100 //Green Venus Fire Trap
+#define ID_ANI_PLANT_GVF_R_D 6005110 //Green Venus Fire Trap
+#define ID_ANI_PLANT_GVF_L_U 6005101 //Green Venus Fire Trap
+#define ID_ANI_PLANT_GVF_R_U 6005111 //Green Venus Fire Trap
 #define ID_ANI_PLANT_GP_U 6005120 //Green Piranha Plant
-#define ID_ANI_PLANT_RVF_L 6005300 //Red Venus Fire Trap
-#define ID_ANI_PLANT_RVF_R 6005310 //Red Venus Fire Trap
+#define ID_ANI_PLANT_RVF_L_D 6005300 //Red Venus Fire Trap
+#define ID_ANI_PLANT_RVF_R_D 6005310 //Red Venus Fire Trap
+#define ID_ANI_PLANT_RVF_L_U 6005301 //Red Venus Fire Trap
+#define ID_ANI_PLANT_RVF_R_U 6005311 //Red Venus Fire Trap
 #define ID_ANI_PLANT_RVF_D 6005320 //Red Venus Fire Trap
 #define ID_ANI_PLANT_FIREBALL 6005400 //Plant's Bullet
 #pragma region PLANT_STATE
