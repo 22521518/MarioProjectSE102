@@ -17,6 +17,7 @@ public:
 	virtual ~CMarioState() {}
 	virtual int GetAniId(LPMARIO mario) = 0;
 
+	virtual void GetBoundingBox(LPMARIO mario, float& width, float& height) = 0;
 	virtual void HandleStateChange(LPMARIO mario, int state);
 };
 

@@ -46,10 +46,9 @@ void CDestroyableBrick::GetBoundingBox(float& left, float& top, float& right, fl
 	left = top = right = bottom = 0;
 }
 
-void CDestroyableBrick::OnDestroy()
+void CDestroyableBrick::OnDestroy(LPCOLLISIONEVENT e)
 {
 	if (this->isDestroy) return;
-	DebugOut(L"Bump\n");
 	float left, top, right, bottom;
 	this->GetBoundingBox(left, top, right, bottom);
 

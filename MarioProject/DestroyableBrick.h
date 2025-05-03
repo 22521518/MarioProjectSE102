@@ -24,7 +24,7 @@ public:
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) override;
 
 	// destroyable object method
-	virtual void OnDestroy() override;
+	virtual void OnDestroy(LPCOLLISIONEVENT e) override;
 };
 
 typedef CDestroyableBrick* LPDESTROYABLEBRICK;

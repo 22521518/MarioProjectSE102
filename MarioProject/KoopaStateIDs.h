@@ -4,7 +4,7 @@
 #define KOOPA_BBOX_HEIGHT 26
 
 #define SHELL_BBOX_WIDTH 20
-#define SHELL_BBOX_HEIGHT 16
+#define SHELL_BBOX_HEIGHT 15
 #pragma endregion
 
 #pragma region KOOPA_STATE

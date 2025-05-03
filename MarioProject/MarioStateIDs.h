@@ -16,6 +16,7 @@
 #pragma region MARIO_LEVEL
 #define	MARIO_LEVEL_SMALL	1
 #define	MARIO_LEVEL_BIG		2
+#define MARIO_LEVEL_FLY		3
 #pragma endregion
 
 #pragma region MARIO_BBOX

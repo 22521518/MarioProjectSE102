@@ -136,6 +136,8 @@
     <ClCompile Include="AnimationFrame.cpp" />
     <ClCompile Include="Animations.cpp" />
     <ClCompile Include="BigMarioState.cpp" />
+    <ClCompile Include="BrickItem.cpp" />
+    <ClCompile Include="BrickSuperItem.cpp" />
     <ClCompile Include="CheckingSideObject.cpp" />
     <ClCompile Include="DestroyableBrick.cpp" />
     <ClCompile Include="Character.cpp" />
@@ -146,6 +148,8 @@
     <ClCompile Include="Koopa.cpp" />
     <ClCompile Include="KoopaShellState.cpp" />
     <ClCompile Include="KoopaState.cpp" />
+    <ClCompile Include="Mushroom.cpp" />
+    <ClCompile Include="OneUpMushroom.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="Coin.cpp" />
@@ -175,6 +179,7 @@
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="SuperLeaf.cpp" />
+    <ClCompile Include="SuperMushroom.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="stringUtil.cpp" />
@@ -188,7 +193,10 @@
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="BigMarioState.h" />
     <ClInclude Include="BlockQ.h" />
+    <ClInclude Include="BrickConfig.h" />
     <ClInclude Include="BrickIDs.h" />
+    <ClInclude Include="BrickItem.h" />
+    <ClInclude Include="BrickSuperItem.h" />
     <ClInclude Include="CheckingSideObject.h" />
     <ClInclude Include="DestroyableBrick.h" />
     <ClInclude Include="CheckingDummyObject.h" />
@@ -212,6 +220,8 @@
     <ClInclude Include="ItemAniIDs.h" />
     <ClInclude Include="ItemConfig.h" />
     <ClInclude Include="ItemStateIDs.h" />
+    <ClInclude Include="Mushroom.h" />
+    <ClInclude Include="OneUpMushroom.h" />
     <ClInclude Include="PlantGreenVenusFire.h" />
     <ClInclude Include="PlantFireBall.h" />
     <ClInclude Include="PlantRedVenusFire.h" />
@@ -275,6 +285,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Sprites.h" />
     <ClInclude Include="SuperLeaf.h" />
+    <ClInclude Include="SuperMushroom.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="stringUtil.h" />

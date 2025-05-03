@@ -34,7 +34,7 @@ void CKoopa::OnSideCollisionBehavior(LPCOLLISIONEVENT e)
 	if (destroyableObj)
 	{
 		if (dynamic_cast<LPBRICK>(destroyableObj) && e->normalX == DirectionXAxisType::None) return;
-		destroyableObj->OnDestroy();
+		destroyableObj->OnDestroy(e);
 	}
 	this->OnCollisionWith(e);
 }

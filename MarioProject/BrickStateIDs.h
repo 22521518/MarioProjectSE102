@@ -1,6 +1,9 @@
 #pragma once
 
-
+#pragma region Tri_BRICK_ITEM
+#define BRICK_STATE_ACTIVE 1001
+#define BRICK_STATE_INACTIVE 1000
+#pragma endregion
 
 #pragma region MARIO_BBOX
 #define BRICK_WIDTH 16

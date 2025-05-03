@@ -109,13 +109,7 @@ void CPlayScene::_ParseSection_OBJECTS(string line) {
 	}
 
 	if (object_type == OBJECT_TYPE_MARIO) {
-		DebugOut(L"[DEBUG] Type of player: %s\n", typeid(*obj).name());
-		if (!dynamic_cast<LPMARIO>(obj)) {
-			DebugOut(L"[ERROR] Object %d is not a Mario object!\n", object_type);
-		}
-		else {
 		this->InitPlayer(obj);
-		}
 	}
 
 	obj->SetPosition(x, y);
@@ -221,7 +215,7 @@ void CPlayScene::Update(DWORD dt)
 {
 	// TO-DO: This is a "dirty" way, need a more organized way 
 	vector<LPPHYSICALOBJECT> coObjects;
-	for (size_t i = 1; i < objects.size(); i++)
+	for (size_t i = 0; i < objects.size(); i++)
 	{
 		if (dynamic_cast<LPPHYSICALOBJECT>(objects[i])) {
 			coObjects.push_back(dynamic_cast<LPPHYSICALOBJECT>(objects[i]));

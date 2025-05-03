@@ -13,6 +13,9 @@ class CBlockQ; typedef CBlockQ* LPBLOCKQ;
 class CPlantEnemy; typedef CPlantEnemy* LPPLANTENEMY;
 class CPlantFireBall; typedef CPlantFireBall* LPPLANTFIREBALL;
 class CBlock1Up; typedef CBlock1Up* LPBLOCK1UP;
+class CSuperMushroom; typedef CSuperMushroom* LPSUPERMUSHROOM;
+class COneUpMushroom; typedef COneUpMushroom* LPONEUPMUSHROOM;
+class CBrickSuperItem; typedef CBrickSuperItem* LPBRICKSUPERITEM;
 
 struct CCollisionEvent; typedef CCollisionEvent* LPCOLLISIONEVENT;
 
@@ -63,6 +66,10 @@ public:
 	// mario with collidable mario obj
 	void OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e);
 	void OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e);
+	void OnCollisionWithSuperMushroom(LPSUPERMUSHROOM mushroom, LPCOLLISIONEVENT e);
+	void OnCollisionWithOneUpMushroom(LPONEUPMUSHROOM mushroom, LPCOLLISIONEVENT e);
+	void OnCollisionWithSuperItemBrick(LPBRICKSUPERITEM brick, LPCOLLISIONEVENT e);
+
 	//void OnCollisionWithBlockQ (LPBlockQ coin, LPCOLLISIONEVENT e) {};
 	//void OnCollisionWithPortal(LPPORTAL portal, LPCOLLISIONEVENT e) {};
 	void OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e);

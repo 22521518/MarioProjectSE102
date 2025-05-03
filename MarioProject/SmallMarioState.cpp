@@ -66,3 +66,9 @@ int CSmallMarioState::GetAniId(LPMARIO mario)
 
 	return aniId;
 }
+
+void CSmallMarioState::GetBoundingBox(LPMARIO mario, float& width, float& height)
+{
+	height = MARIO_SMALL_BBOX_HEIGHT;
+	width = MARIO_SMALL_BBOX_WIDTH;
+}

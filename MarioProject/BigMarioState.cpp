@@ -66,3 +66,17 @@ int CBigMarioState::GetAniId(LPMARIO mario)
 
 	return aniId;
 }
+
+void CBigMarioState::GetBoundingBox(LPMARIO mario, float& width, float& height)
+{
+	if (mario->isSitting)
+	{
+		height = MARIO_BIG_SITTING_BBOX_HEIGHT;
+		width = MARIO_BIG_SITTING_BBOX_WIDTH;
+	}
+	else
+	{
+		height = MARIO_BIG_BBOX_HEIGHT;
+		width = MARIO_BIG_BBOX_WIDTH;
+	}
+}

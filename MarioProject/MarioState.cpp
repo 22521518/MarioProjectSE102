@@ -43,6 +43,9 @@ void CMarioState::OnSit(LPMARIO mario)
 		mario->isSitting = true;
 		mario->vx = 0; 
 		mario->vy = 0.0f;
+
+		//float width, height;
+		//this->GetBoundingBox(mario, width, height);
 		//mario->y += MARIO_SIT_HEIGHT_ADJUST;
 	}
 }

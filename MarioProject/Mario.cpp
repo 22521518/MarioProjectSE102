@@ -11,6 +11,7 @@
 #include "Coin.h"
 #include "CollidableWithMario.h"
 #include "DestroyableObject.h"
+#include "BrickSuperItem.h"
 
 #include "PlantEnemy.h"
 #include "PlantFireBall.h"
@@ -32,16 +33,32 @@ CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, Directi
 
 void CMario::SetLevel(int level)
 {
-	if (level == MARIO_LEVEL_SMALL)
+	float left, top, right, bottom;
+	this->GetBoundingBox(left, top, right, bottom);
+	switch (level) {
+	case MARIO_LEVEL_SMALL:
 	{
-		this->stateHandler = new CSmallMarioState();
-		y -= (MARIO_BIG_BBOX_HEIGHT - MARIO_SMALL_BBOX_HEIGHT) / 2;
+		delete this->stateHandler;
+		this->stateHandler = new CSmallMarioState(); 
+		break;
 	}
-	else if (level == MARIO_LEVEL_BIG)
+	case MARIO_LEVEL_BIG:
 	{
-		y -= (MARIO_BIG_BBOX_HEIGHT - MARIO_SMALL_BBOX_HEIGHT) / 2;
+		delete this->stateHandler;
 		this->stateHandler = new CBigMarioState();
+		break;
 	}
+	case MARIO_LEVEL_FLY: 
+	{
+		break;
+	}
+	default:
+		break;
+	}
+
+	float currentHeight, currentWidth;
+	this->stateHandler->GetBoundingBox(this, currentWidth, currentHeight);
+	this->y = bottom - currentHeight / 2;
 	this->level = level;
 }
 
@@ -71,7 +88,7 @@ void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 		else
 		{
 			DebugOut(L">>> Mario DIE >>> \n");
-			//SetState(MARIO_STATE_DIE);
+			SetState(MARIO_STATE_DIE);
 		}
 	}
 }
@@ -150,6 +167,22 @@ void CMario::OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e) {
 	}
 }
 
+void CMario::OnCollisionWithSuperMushroom(LPSUPERMUSHROOM mushroom, LPCOLLISIONEVENT e)
+{
+	this->SetLevel(MARIO_LEVEL_BIG);
+}
+
+void CMario::OnCollisionWithOneUpMushroom(LPONEUPMUSHROOM mushroom, LPCOLLISIONEVENT e)
+{
+	this->SetLevel(MARIO_LEVEL_FLY);
+}
+
+void CMario::OnCollisionWithSuperItemBrick(LPBRICKSUPERITEM brick, LPCOLLISIONEVENT e)
+{
+	if (this->level == MARIO_LEVEL_BIG) brick->CreateSuperLeaf(e);
+	else if (this->level == MARIO_LEVEL_SMALL) brick->CreateSuperMushroom(e);
+}
+
 void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 {
 	
@@ -197,7 +230,7 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	LPDESTROYABLEOBJECT destroyableObj = dynamic_cast<LPDESTROYABLEOBJECT>(e->obj);
 	if (destroyableObj && e->normalY == DirectionYAxisType::Bottom && this->GetLevel() > MARIO_LEVEL_SMALL)
 	{
-		destroyableObj->OnDestroy();
+		destroyableObj->OnDestroy(e);
 	}
 
 	if (e->normalY != DirectionYAxisType::None && e->obj->IsBlocking())
@@ -206,7 +239,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		isOnPlatform = (e->normalY == DirectionYAxisType::Top) ? true : isOnPlatform;
 
 	}
-	else if (e->normalX != DirectionXAxisType::None && e->obj->IsBlocking())
+
+	if (e->normalX != DirectionXAxisType::None && e->obj->IsBlocking())
 	{
 		vx = 0;
 	}
@@ -224,24 +258,7 @@ void CMario::GetBoundingBox(float& left, float& top, float& right, float& bottom
 {
 	float bboxWidth = 0;
 	float bboxHeight = 0;
-	if (this->level == MARIO_LEVEL_BIG) 
-	{
-		if (this->isSitting) 
-		{
-			bboxHeight = MARIO_BIG_SITTING_BBOX_HEIGHT;
-			bboxWidth = MARIO_BIG_SITTING_BBOX_WIDTH;
-		}
-		else 
-		{
-			bboxHeight = MARIO_BIG_BBOX_HEIGHT;
-			bboxWidth = MARIO_BIG_BBOX_WIDTH;
-		}
-	}
-	else if (MARIO_LEVEL_SMALL)
-	{
-		bboxHeight = MARIO_SMALL_BBOX_HEIGHT;
-		bboxWidth = MARIO_SMALL_BBOX_WIDTH;
-	}
+	this->stateHandler->GetBoundingBox(this, bboxWidth, bboxHeight);
 
 	left = x - bboxWidth / 2;
 	top = y - bboxHeight / 2;

@@ -6,6 +6,9 @@
 #include "CloudPlatform.h"
 #include "Portal.h"
 
+#include "BrickSuperItem.h"
+#include "OneUpMushroom.h"
+#include "SuperMushroom.h"
 #include "SuperLeaf.h"
 #include "DestroyableBrick.h"
 #include "RedKoopa.h"
@@ -31,7 +34,14 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, ve
 	case OBJECT_TYPE_BRICK: return new CBrick(x, y);
 	case OBJECT_TYPE_DESTROYABLE_BRICK: return new CDestroyableBrick(x, y);
 	case OBJECT_TYPE_COIN: return new CCoin(x, y);
+	case OBJECT_TYPE_ITEM_BRICK: {
+		LPMARIO mario = dynamic_cast<LPMARIO>(player);
+		if (mario) return new CBrickSuperItem(mario, x, y);
+		break;
+	}
 	case OBJECT_TYPE_SUPER_LEAF_ITEM: return new CSuperLeaf(x, y);
+	case OBJECT_TYPE_SUPER_MUSHROOM_ITEM: return new CSuperMushroom(x, y);
+	case OBJECT_TYPE_ONE_UP_MUSHROOM_ITEM: return new COneUpMushroom(x, y);
 	case OBJECT_TYPE_RED_KPOOPA: return new CRedKoopa(x, y);
 	case OBJECT_TYPE_RED_KPOOPA_TROOPA: return new CRedKoopaParatroopa(x, y);
 	case OBJECT_TYPE_GREEN_KPOOPA_TROOPA: return new CGreenKoopaParatroopa(x, y);
