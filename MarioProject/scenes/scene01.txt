@@ -78,7 +78,7 @@ objects\super_items.txt
 12	180	50
 
 #Plant
-#653	190	140
+653	190	140
 
 #Goomba
 #2	300	10
