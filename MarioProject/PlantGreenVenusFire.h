@@ -75,7 +75,6 @@ public:
 			float uy = sqrt((powf(GOx, (float)2) + powf(GOy, (float)2)));
 			if (uy > FIREBALL_COMEBACK || !IsFire) {
 				fire->SetPosition(x, y);
-				//this->WhereToShoot(fire);
 				fire->WhereToShoot(this);
 				IsFire = true;
 			}
@@ -89,7 +88,7 @@ public:
 			SetState(PLANT_STATE_HIDE);
 			this->vy = 0;
 			this->y = lowerY;
-			fire->SetPosition(x, y);
+			//fire->SetPosition(x, y);
 			//IsFire = false;
 		}
 		fire->Update(dt, coObjects);
