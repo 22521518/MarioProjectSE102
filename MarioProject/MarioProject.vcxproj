@@ -184,6 +184,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="stringUtil.cpp" />
+    <ClCompile Include="TxtGameParser.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionIDs.h" />
@@ -208,7 +209,9 @@
     <ClInclude Include="CollidableWithMario.h" />
     <ClInclude Include="DestroyableObject.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="FileConfig.h" />
     <ClInclude Include="FlyMarioState.h" />
+    <ClInclude Include="GameParser.h" />
     <ClInclude Include="GreenKoopa.h" />
     <ClInclude Include="GreenKoopaParatroopa.h" />
     <ClInclude Include="GreenKoopaParatroopaState.h" />
@@ -291,6 +294,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="stringUtil.h" />
+    <ClInclude Include="TxtGameParser.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MarioProject.rc" />

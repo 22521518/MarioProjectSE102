@@ -25,10 +25,11 @@ wstring ToWSTR(string st)
 	wchar_t* wcstring = new wchar_t[newsize];
 	size_t convertedChars = 0;
 	mbstowcs_s(&convertedChars, wcstring, newsize, str, _TRUNCATE);
-
 	wstring wstr(wcstring);
 
-	// delete wcstring   // << can I ? 
+	// delete wcstring   // << can I ? --> Yes sir
+	delete[] wcstring;
+
 	return wstr;
 }
 
@@ -46,7 +47,9 @@ LPCWSTR ToLPCWSTR(string st)
 
 	wstring* w = new wstring(wcstring);
 
-	// delete wcstring   // << can I ? 
+	// delete wcstring   // << can I ? --> Yes sir
+	delete[] wcstring;
+
 	return w->c_str();
 }
 

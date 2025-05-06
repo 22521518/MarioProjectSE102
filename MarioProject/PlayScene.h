@@ -38,10 +38,11 @@ protected:
 	void _ParseSection_ANIMATIONS(string line);
 	void _ParseSection_ASSETS(string line);
 	void _ParseSection_OBJECTS(string line);
+	IGameParser* gameParser = NULL;
 
 	void LoadAssets(LPCWSTR assetFile);
 public:
-	CPlayScene(int id, LPCWSTR filePath);
+	CPlayScene(int id, LPCWSTR filePath, IGameParser* gameParser);
 	
 	virtual void Load();
 	virtual void Update(DWORD dt);

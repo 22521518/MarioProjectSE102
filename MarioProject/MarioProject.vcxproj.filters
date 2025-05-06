@@ -166,6 +166,9 @@
     <Filter Include="Header Files\GameObjectConcrete\Brick\BrickItem">
       <UniqueIdentifier>{ccf416bf-8fe5-47b9-b75d-4207e1607df1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameFileParser">
+      <UniqueIdentifier>{e3293828-8ba9-46bc-bc14-c5865e42a379}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -327,6 +330,9 @@
     </ClCompile>
     <ClCompile Include="FlyMarioState.cpp">
       <Filter>Source Files\GameObjectConcrete\Mario\MarioState</Filter>
+    </ClCompile>
+    <ClCompile Include="TxtGameParser.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -644,6 +650,15 @@
     </ClInclude>
     <ClInclude Include="FlyMarioState.h">
       <Filter>Header Files\GameObjectConcrete\Mario\MarioState</Filter>
+    </ClInclude>
+    <ClInclude Include="GameParser.h">
+      <Filter>Header Files\GameFileParser</Filter>
+    </ClInclude>
+    <ClInclude Include="FileConfig.h">
+      <Filter>Header Files\GameFileParser</Filter>
+    </ClInclude>
+    <ClInclude Include="TxtGameParser.h">
+      <Filter>Header Files\GameFileParser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

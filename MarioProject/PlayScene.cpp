@@ -4,9 +4,10 @@
 
 using namespace std;
 
-CPlayScene::CPlayScene(int id, LPCWSTR filePath) :
-	CScene(id, filePath)
+#pragma region PLAYSCENE_CONSTRUCTOR
+CPlayScene::CPlayScene(int id, LPCWSTR filePath, IGameParser* gameParser) : CScene(id, filePath)
 {
+	this->gameParser = gameParser;
 	this->player = NULL;
 	this->keyHandler = new CMarioPlayerKeyHandler(this);
 }
@@ -32,6 +33,7 @@ void CPlayScene::InitPlayer(LPGAMEOBJECT player) {
 	this->keyHandler = marioKeyHandler;
 	DebugOut(L"[INFO] Player object has been created!\n");
 }
+#pragma endregion
 
 #pragma region LOAD_RESOURCE
 #pragma region PARSE_SECTION

@@ -5,6 +5,8 @@
 #include "config.h"
 #include "debug.h"
 #include "stringUtil.h"
+#include "GameParser.h"
+#include "TxtGameParser.h"
 
 #include <fstream>
 #include <Windows.h>
@@ -18,13 +20,6 @@ using namespace std;
 
 #define DIRECTINPUT_VERSION 0x0800
 
-#define MAX_GAME_LINE 1024
-
-#define GAME_FILE_SECTION_UNKNOWN -1
-#define GAME_FILE_SECTION_SETTINGS 1
-#define GAME_FILE_SECTION_SCENES 2
-#define GAME_FILE_SECTION_TEXTURES 3
-
 using namespace std;
 
 class CGameKeyHandler;
@@ -35,6 +30,8 @@ class CGame
 	static CGame* __instance;
 	HWND hWnd = NULL;
 	HINSTANCE hInstance = NULL;
+
+	IGameParser* gameParser = NULL;
 
 	// Backbuffer width & height, will be set during Direct3D initialization
 	int backBufferWidth = 0;
@@ -64,14 +61,12 @@ class CGame
 	int currentScene;
 	int nextScene = -1;
 
-	// Parse text file
-	void _ParseSection_SETTINGS(string line);
-	void _ParseSection_SCENES(string line);
-	void _ParseSection_TEXTURES(string line);
+	// Parse data from file
+	void _ParseSection_SETTINGS(SettingConfig setting);
+	void _ParseSection_SCENES(vector<SceneConfig> scenes);
+	void _ParseSection_TEXTURES(vector<TextureConfig> textures);
 
-	void LoadDataSection(int section, string line);
-	int GetSection(string line);
-	CGame() {};
+	CGame() { gameParser = new TxtGameParser(); };
 
 public:
 	void Init(HWND hWnd, HINSTANCE hInstance);
