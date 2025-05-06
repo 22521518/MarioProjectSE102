@@ -14,7 +14,7 @@
 #pragma region PLAY_SCENE
 SpriteConfig TxtGameParser::_ParseSection_SPRITE(const string& line)
 {
-    SpriteConfig sprite;
+    SpriteConfig sprite{};
     vector<string> tokens = split(line);
     if (tokens.size() < 6)
     {
@@ -51,9 +51,9 @@ AnimationConfig TxtGameParser::_ParseSection_ANIMATION(const string& line)
 
     return ani;
 }
-void TxtGameParser::_ParseSection_ASSET(FilePlaySceneConfig& config, const string& lineAsset)
+void TxtGameParser::_ParseSection_ASSET(FilePlaySceneConfig& config, const string& assetPath)
 {
-    vector<string> tokens = split(lineAsset);
+    vector<string> tokens = split(assetPath);
     if (tokens.size() < 1) return;
 
     string filename = tokens[0];
@@ -95,7 +95,7 @@ void TxtGameParser::_ParseSection_ASSET(FilePlaySceneConfig& config, const strin
 }
 GameObjectConfig TxtGameParser::_ParseSection_OBJECT(const string& line)
 {
-    GameObjectConfig gObjectConfig;
+    GameObjectConfig gObjectConfig{};
     vector<string> tokens = split(line);
     if (tokens.size() < 2)
     {
@@ -125,7 +125,7 @@ GameObjectConfig TxtGameParser::_ParseSection_OBJECT(const string& line)
 }
 FilePlaySceneConfig TxtGameParser::_ParsePlaySceneFile(const string& filename)
 {
-    FilePlaySceneConfig config;
+    FilePlaySceneConfig config{};
     ifstream f(filename);
     if (!f.is_open())
     {
