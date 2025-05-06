@@ -325,6 +325,9 @@
     <ClCompile Include="BrickSuperItem.cpp">
       <Filter>Source Files\GameObjectConcrete\Brick</Filter>
     </ClCompile>
+    <ClCompile Include="FlyMarioState.cpp">
+      <Filter>Source Files\GameObjectConcrete\Mario\MarioState</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="setup.h">
@@ -638,6 +641,9 @@
     </ClInclude>
     <ClInclude Include="BrickSuperItem.h">
       <Filter>Header Files\GameObjectConcrete\Brick\BrickItem</Filter>
+    </ClInclude>
+    <ClInclude Include="FlyMarioState.h">
+      <Filter>Header Files\GameObjectConcrete\Mario\MarioState</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

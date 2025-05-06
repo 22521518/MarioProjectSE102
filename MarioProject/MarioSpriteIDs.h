@@ -3,12 +3,15 @@
 #include "ActionIDs.h"
 
 //#define ID_SPRITE_MARIO 100000
-#pragma region NORMAL_MARIO
-
+#define FLY_MARIO 10000000
 #define BIG_MARIO 10000
 #define SMALL_MARIO 20000
 #define DIE_MARIO 30000
 
+#pragma region FLY_MARIO
+#pragma endregion
+
+#pragma region BIG_MARIO
 // IDLE
 #define ID_SPRITE_MARIO_BIG (ID_SPRITE_MARIO + BIG_MARIO)
 #define ID_SPRITE_MARIO_BIG_IDLE (ID_SPRITE_MARIO_BIG + STATE_IDLE)

@@ -59,7 +59,6 @@ void CRedKoopa::OnEdgeBehavior(DWORD dt)
 {
 	if (this->isFirstLanded && !this->IsShellState())
 	{
-		DebugOut(L"Trigger Chi!!!: %d, %d\n", this->isFirstLanded, !this->IsShellState());
 	  	this->stateHandler->ChangeDirection(this);
 	}
 }

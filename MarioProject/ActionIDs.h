@@ -15,3 +15,4 @@
 #define STATE_JUMP 4000
 #define STATE_SIT 5000
 #define STATE_BRACE 6000
+#define STATE_ATTACK 7000

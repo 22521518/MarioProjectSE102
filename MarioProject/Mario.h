@@ -15,6 +15,7 @@ class CPlantFireBall; typedef CPlantFireBall* LPPLANTFIREBALL;
 class CBlock1Up; typedef CBlock1Up* LPBLOCK1UP;
 class CSuperMushroom; typedef CSuperMushroom* LPSUPERMUSHROOM;
 class COneUpMushroom; typedef COneUpMushroom* LPONEUPMUSHROOM;
+class CSuperLeaf; typedef CSuperLeaf* LPSUPERLEAF;
 class CBrickSuperItem; typedef CBrickSuperItem* LPBRICKSUPERITEM;
 
 struct CCollisionEvent; typedef CCollisionEvent* LPCOLLISIONEVENT;
@@ -29,6 +30,7 @@ class CMario : public CCharacter
 	BOOLEAN isOnPlatform;
 	int level;
 	int untouchable;
+	ULONGLONG flap_start;
 	ULONGLONG untouchable_start;
 
 	// score
@@ -63,9 +65,16 @@ public:
 	void StartUntouchable();
 	bool IsUntouchable() const { return this->untouchable != 0; }
 
+	// fly mario method
+	bool IsFlapping() const {
+		return flap_start > 0 && (GetTickCount64() - flap_start) < MARIO_FLAPPING_TIME;
+	}
+	void StartFlap();
+
 	// mario with collidable mario obj
 	void OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e);
 	void OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e);
+	void OnCollisionWithSuperLeaf(LPSUPERLEAF leaf, LPCOLLISIONEVENT e);
 	void OnCollisionWithSuperMushroom(LPSUPERMUSHROOM mushroom, LPCOLLISIONEVENT e);
 	void OnCollisionWithOneUpMushroom(LPONEUPMUSHROOM mushroom, LPCOLLISIONEVENT e);
 	void OnCollisionWithSuperItemBrick(LPBRICKSUPERITEM brick, LPCOLLISIONEVENT e);
@@ -81,6 +90,7 @@ public:
 	friend class CMarioState;
 	friend class CSmallMarioState;
 	friend class CBigMarioState;
+	friend class CFlyMarioState;
 
 	friend class CCollidableWithMario;
 };

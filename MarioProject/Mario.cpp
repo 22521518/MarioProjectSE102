@@ -1,5 +1,6 @@
 #include "Mario.h"
 #include "MarioState.h"
+#include "FlyMarioState.h"
 #include "BigMarioState.h"
 #include "SmallMarioState.h"
 #include "CollisionEvent.h"
@@ -26,13 +27,15 @@ CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, Directi
 	this->level = MARIO_LEVEL_SMALL;
 	this->untouchable = 0;
 	this->untouchable_start = -1;
+	this->flap_start = -1;
 
 	this->coin = 0;
 	this->stateHandler = new CSmallMarioState();
 };
 
-void CMario::SetLevel(int level)
+void CMario::SetLevel(int level)	
 {
+	if (this->level > MARIO_LEVEL_BIG) return;
 	float left, top, right, bottom;
 	this->GetBoundingBox(left, top, right, bottom);
 	switch (level) {
@@ -50,6 +53,8 @@ void CMario::SetLevel(int level)
 	}
 	case MARIO_LEVEL_FLY: 
 	{
+		delete this->stateHandler;
+		this->stateHandler = new CFlyMarioState();
 		break;
 	}
 	default:
@@ -67,6 +72,14 @@ void CMario::StartUntouchable() {
 	this->untouchable_start = GetTickCount64();
 }
 
+void CMario::StartFlap()
+{
+	if (this->level != MARIO_LEVEL_FLY) return;
+	DebugOut(L"Change: %d: %d\n", this->level, this->flap_start);
+	flap_start = GetTickCount64();
+	this->SetState(MARIO_FLY_FLAPPING);
+}
+
 #pragma region COLLIDABLE_MARIO_METHOD
 void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 {
@@ -80,7 +93,12 @@ void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 	}
 	else if (untouchable == 0 && !goomba->IsDeadState()) // hit by Goomba
 	{
-		if (level > MARIO_LEVEL_SMALL)
+		if (level > MARIO_LEVEL_BIG)
+		{
+			this->SetLevel(MARIO_LEVEL_BIG);
+			StartUntouchable();
+		}
+		else if (level > MARIO_LEVEL_SMALL)
 		{
 			this->SetLevel(MARIO_LEVEL_SMALL);
 			StartUntouchable();
@@ -104,7 +122,12 @@ void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
 	}
 	else if (untouchable == 0 && !plant->IsDeadState()) // hit by ___
 	{
-		if (level > MARIO_LEVEL_SMALL)
+		if (level > MARIO_LEVEL_BIG)
+		{
+			this->SetLevel(MARIO_LEVEL_BIG);
+			StartUntouchable();
+		}
+		else if (level > MARIO_LEVEL_SMALL)
 		{
 			this->SetLevel(MARIO_LEVEL_SMALL);
 			StartUntouchable();
@@ -118,19 +141,21 @@ void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
 }
 void CMario::CollideFireBall(LPPLANTFIREBALL fire)
 {
-	if (this->IsOverLapping(static_cast<LPINTERACTIVEOBJECT>(fire))) {
-		if (this->IsUntouchable() == 0) // hit FIRE BALL!
+	if (this->IsOverLapping(static_cast<LPINTERACTIVEOBJECT>(fire)) && untouchable == 0) {
+		if (level > MARIO_LEVEL_BIG)
 		{
-			if (this->GetLevel() > MARIO_LEVEL_SMALL)
-			{
-				this->SetLevel(MARIO_LEVEL_SMALL);
-				this->StartUntouchable();
-			}
-			else
-			{
-				DebugOut(L">>> Mario DIE >>> \n");
-				this->SetState(MARIO_STATE_DIE);
-			}
+			this->SetLevel(MARIO_LEVEL_BIG);
+			StartUntouchable();
+		}
+		else if (level > MARIO_LEVEL_SMALL)
+		{
+			this->SetLevel(MARIO_LEVEL_SMALL);
+			StartUntouchable();
+		}
+		else
+		{
+			DebugOut(L">>> Mario DIE >>> \n");
+			SetState(MARIO_STATE_DIE);
 		}
 	}
 };
@@ -167,6 +192,11 @@ void CMario::OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e) {
 	}
 }
 
+void CMario::OnCollisionWithSuperLeaf(LPSUPERLEAF leaf, LPCOLLISIONEVENT e)
+{
+	this->SetLevel(MARIO_LEVEL_FLY);
+}
+
 void CMario::OnCollisionWithSuperMushroom(LPSUPERMUSHROOM mushroom, LPCOLLISIONEVENT e)
 {
 	this->SetLevel(MARIO_LEVEL_BIG);
@@ -179,7 +209,7 @@ void CMario::OnCollisionWithOneUpMushroom(LPONEUPMUSHROOM mushroom, LPCOLLISIONE
 
 void CMario::OnCollisionWithSuperItemBrick(LPBRICKSUPERITEM brick, LPCOLLISIONEVENT e)
 {
-	if (this->level == MARIO_LEVEL_BIG) brick->CreateSuperLeaf(e);
+	if (this->level >= MARIO_LEVEL_BIG) brick->CreateSuperLeaf(e);
 	else if (this->level == MARIO_LEVEL_SMALL) brick->CreateSuperMushroom(e);
 }
 
@@ -195,7 +225,12 @@ void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 	}
 	else if (untouchable == 0 && !koopa->IsDeadState())
 	{
-		if (level > MARIO_LEVEL_SMALL)
+		if (level > MARIO_LEVEL_BIG)
+		{
+			this->SetLevel(MARIO_LEVEL_BIG);
+			StartUntouchable();
+		}
+		else if (level > MARIO_LEVEL_SMALL)
 		{
 			this->SetLevel(MARIO_LEVEL_SMALL);
 			StartUntouchable();
@@ -203,7 +238,7 @@ void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 		else
 		{
 			DebugOut(L">>> Mario DIE >>> \n");
-			//SetState(MARIO_STATE_DIE);
+			SetState(MARIO_STATE_DIE);
 		}
 	}
 }
@@ -213,6 +248,7 @@ void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 #pragma region INTERACTIVE_OBJECT_METHOD
 void CMario::SetState(int state)
 {
+	if (this->IsDeadState() || state == MARIO_STATE_DIE) return;
 	if (this->IsDeadState()) return;
 	this->stateHandler->HandleStateChange(this, state);
 	this->state = state;
@@ -237,7 +273,7 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	{
 		vy = 0;
 		isOnPlatform = (e->normalY == DirectionYAxisType::Top) ? true : isOnPlatform;
-
+		this->flap_start = -1;
 	}
 
 	if (e->normalX != DirectionXAxisType::None && e->obj->IsBlocking())
@@ -279,6 +315,7 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		untouchable_start = 0;
 		untouchable = 0;
 	}
+
 	CCharacter::Update(dt, coObjects);
 }
 #pragma endregion

@@ -5,14 +5,15 @@ typedef CMario* LPMARIO;
 
 class CMarioState
 {
-	void OnRun(LPMARIO mario, bool isLeft);
-	void OnWalk(LPMARIO mario, bool isLeft);
-	void OnJump(LPMARIO mario);
-	void OnReleaseJump(LPMARIO mario);
-	void OnSit(LPMARIO mario);
-	void OnReleaseSit(LPMARIO mario);
-	void OnIdle(LPMARIO mario);
-	void OnDie(LPMARIO mario);
+protected:
+	virtual void OnRun(LPMARIO mario, bool isLeft);
+	virtual void OnWalk(LPMARIO mario, bool isLeft);
+	virtual void OnJump(LPMARIO mario);
+	virtual void OnReleaseJump(LPMARIO mario);
+	virtual void OnSit(LPMARIO mario);
+	virtual void OnReleaseSit(LPMARIO mario);
+	virtual void OnIdle(LPMARIO mario);
+	virtual void OnDie(LPMARIO mario);
 public:
 	virtual ~CMarioState() {}
 	virtual int GetAniId(LPMARIO mario) = 0;

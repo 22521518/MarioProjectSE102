@@ -23,7 +23,7 @@ void CKeyMap::LoadDefault()
     //SetKey(ActionKey::Jump, DIK_S);
     //SetKey(ActionKey::Jump, DIK_SPACE);
     SetKey(ActionKey::Sit, DIK_DOWN);
-    //SetKey(ActionKey::Run, DIK_A);
+    SetKey(ActionKey::Run, DIK_K);
     //SetKey(ActionKey::Pause, DIK_Q);
     //SetKey(ActionKey::Reload, DIK_R);
     //SetKey(ActionKey::SetDie, DIK_0);

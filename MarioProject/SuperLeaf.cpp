@@ -38,11 +38,9 @@ void CSuperLeaf::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 
 void CSuperLeaf::OnCollisionWith(LPCOLLISIONEVENT e)
 {
-	DebugOutObjectClassName(e->obj);
 	LPMARIO mario = dynamic_cast<LPMARIO>(e->obj);
 	if (mario)
 	{
-		DebugOut(L"Mario Collision: %d\n", this->isDeleted);
 		this->OnMarioCollide(mario, e);
 		return;
 	}	
@@ -51,5 +49,5 @@ void CSuperLeaf::OnCollisionWith(LPCOLLISIONEVENT e)
 void CSuperLeaf::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 {
 	this->Delete();
-	//mario->OnCollisionWithLeaf(this, e)
+	mario->OnCollisionWithSuperLeaf(this, e);
 }

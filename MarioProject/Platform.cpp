@@ -74,7 +74,5 @@ void CPlatform::GetBoundingBox(RECT& rect)
 
 int CPlatform::IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny)
 {
-	if (nx == DirectionXAxisType::None && ny == DirectionYAxisType::Top) return 1;
-	else return 0;
-	//return nx == DirectionXAxisType::None && ny == DirectionYAxisType::Top;
+	return nx == DirectionXAxisType::None && ny == DirectionYAxisType::Top;
 }

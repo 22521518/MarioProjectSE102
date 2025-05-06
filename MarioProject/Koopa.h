@@ -51,7 +51,7 @@ public:
 	virtual bool IsShellState() { return this->IsShellIdle() || this->IsShellMove(); }
 	virtual bool IsShellMove() { return this->state == KOOPA_STATE_SHELL_MOVE; }
 	virtual bool IsShellIdle() { return (this->state == KOOPA_STATE_SHELL_IDLE || this->state == KOOPA_STATE_SHELL_IDLE_OUT_TIME); }
-	virtual bool IsParatroopaState() { DebugOut(L"JUmp!\n");  return this->state == KOOPA_STATE_PARATROOPA; }
+	virtual bool IsParatroopaState() { return this->state == KOOPA_STATE_PARATROOPA; }
 
 	// interactive with side methods
 	virtual void OnSideCollisionBehavior(LPCOLLISIONEVENT e) override;
