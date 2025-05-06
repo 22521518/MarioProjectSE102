@@ -2,8 +2,7 @@
 #include <vector>
 #include <string>
 #include <cstddef>
-#include <vector>
-#include <string>
+#include <unordered_map>
 
 #include "BaseObject.h"
 #include "debug.h"
@@ -17,7 +16,7 @@ protected:
 
 public:
 	CGameObject(float x = 0, float y = 0) : CBaseObject(), x(x), y(y) {}
-	static CGameObject* CreateGameObject(int object_type, float x, float y, vector<string> tokens, LPGAMEOBJECT player);
+	static CGameObject* CreateGameObject(int object_type, float x, float y, unordered_map<string, float> additionalFieldInfo, LPGAMEOBJECT player);
 
 	virtual void Render() = 0;
 

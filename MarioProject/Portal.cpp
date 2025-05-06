@@ -9,6 +9,17 @@ CPortal::CPortal(float l, float t, float r, float b, int scene_id)
 	height = b - t;
 }
 
+// for parsing txt file
+unordered_map<string, float> CPortal::GetAdditionalFieldInfo(vector<string> tokens)
+{
+	unordered_map<string, float> fieldInfo;
+	fieldInfo["r"] = (float)atof(tokens[3].c_str());
+	fieldInfo["b"] = (float)atof(tokens[4].c_str());
+	fieldInfo["scene_id"] = atoi(tokens[5].c_str());
+
+	return fieldInfo;
+}
+
 #pragma region COLLIDABLE_MARIO_METHOD
 void CPortal::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 {

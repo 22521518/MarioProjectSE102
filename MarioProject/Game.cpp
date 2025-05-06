@@ -13,7 +13,7 @@ void CGame::_ParseSection_SCENES(vector<SceneConfig> scenes)
 {
 	for (const SceneConfig sc : scenes)
 	{
-		this->scenes[sc.sceneID] = new CPlayScene(sc.sceneID, ToLPCWSTR(sc.scenePath));
+		this->scenes[sc.sceneID] = new CPlayScene(sc.sceneID, ToLPCWSTR(sc.scenePath), this->gameParser);
 	}
 }
 void CGame::_ParseSection_TEXTURES(vector<TextureConfig> textures)
@@ -29,7 +29,7 @@ void CGame::_ParseSection_TEXTURES(vector<TextureConfig> textures)
 void CGame::Load(LPCWSTR gameFile) {
 	DebugOut(L"[INFO] Start loading game file : %s\n", gameFile);
 
-	FileGameConfig gameData = gameParser->Parse(WSTRToString(gameFile));
+	FileGameConfig gameData = gameParser->_ParseGameConfigFile(WSTRToString(gameFile));
 	this->_ParseSection_SETTINGS(gameData.setting);
 	this->_ParseSection_SCENES(gameData.scenes);
 	this->_ParseSection_TEXTURES(gameData.textures);

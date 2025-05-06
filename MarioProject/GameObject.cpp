@@ -26,7 +26,7 @@
 
 using namespace std;
 
-CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, vector<string> tokens, LPGAMEOBJECT player) {
+CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, unordered_map<string, float> additionalFieldInfo, LPGAMEOBJECT player) {
 	switch (object_type)
 	{
 	case OBJECT_TYPE_MARIO: return new CMario(x, y);
@@ -48,12 +48,12 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, ve
 	case OBJECT_TYPE_GREEN_KPOOPA: return new CGreenKoopa(x, y);
 	case OBJECT_TYPE_PLATFORM:
 	{
-		float cell_width = (float)atof(tokens[3].c_str());
-		float cell_height = (float)atof(tokens[4].c_str());
-		int length = atoi(tokens[5].c_str());
-		int sprite_begin = atoi(tokens[6].c_str());
-		int sprite_middle = atoi(tokens[7].c_str());
-		int sprite_end = atoi(tokens[8].c_str());
+		float cell_width = additionalFieldInfo["cell_width"];
+		float cell_height = additionalFieldInfo["cell_height"];
+		int length = additionalFieldInfo["length"];
+		int sprite_begin = additionalFieldInfo["sprite_begin"];
+		int sprite_middle = additionalFieldInfo["sprite_middle"];
+		int sprite_end = additionalFieldInfo["sprite_end"];
 
 		return new CCloudPlatform(
 			x, y,
@@ -63,9 +63,9 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, ve
 	}
 	case OBJECT_TYPE_PORTAL:
 	{
-		float r = (float)atof(tokens[3].c_str());
-		float b = (float)atof(tokens[4].c_str());
-		int scene_id = atoi(tokens[5].c_str());
+		float r = additionalFieldInfo["r"];
+		float b = additionalFieldInfo["b"];
+		int scene_id = additionalFieldInfo["scene_id"];
 		return new CPortal(x, y, r, b, scene_id);
 
 	}

@@ -1,5 +1,8 @@
 #pragma once
+#include <unordered_map>
 #include "StaticObject.h"
+
+using namespace std;
 
 class CPlatform :
     public CStaticObject
@@ -13,6 +16,8 @@ public:
 	CPlatform(float x, float y,
 		float cell_width, float cell_height, int length,
 		int sprite_id_begin, int sprite_id_middle, int sprite_id_end);
+
+	static unordered_map<string, float> GetAdditionalFieldInfo(vector<string> tokens);
 	
 	// game object method
 	virtual void Render() override;

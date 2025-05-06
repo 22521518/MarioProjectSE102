@@ -11,6 +11,20 @@ CPlatform::CPlatform(float x, float y, float cell_width, float cell_height, int 
 	this->spriteIdEnd = sprite_id_end;
 }
 
+// for parsing txt file
+unordered_map<string, float> CPlatform::GetAdditionalFieldInfo(vector<string> tokens)
+{
+	unordered_map<string, float> fieldInfo;
+	fieldInfo["cell_width"] = (float)atof(tokens[3].c_str());
+	fieldInfo["cell_height"] = (float)atof(tokens[4].c_str());
+	fieldInfo["length"] = atoi(tokens[5].c_str());
+	fieldInfo["sprite_begin"] = atoi(tokens[6].c_str());
+	fieldInfo["sprite_middle"] = atoi(tokens[7].c_str());
+	fieldInfo["sprite_end"] = atoi(tokens[8].c_str());
+	
+	return fieldInfo;
+}
+
 void CPlatform::RenderBoundingBox()
 {
 	D3DXVECTOR3 p(x, y, 0);

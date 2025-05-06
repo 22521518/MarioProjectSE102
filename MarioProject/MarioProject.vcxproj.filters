@@ -169,6 +169,9 @@
     <Filter Include="Header Files\GameFileParser">
       <UniqueIdentifier>{e3293828-8ba9-46bc-bc14-c5865e42a379}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameFileParser">
+      <UniqueIdentifier>{4235079d-f3d0-44e7-bbe5-2ed3af801be1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -332,7 +335,7 @@
       <Filter>Source Files\GameObjectConcrete\Mario\MarioState</Filter>
     </ClCompile>
     <ClCompile Include="TxtGameParser.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameFileParser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

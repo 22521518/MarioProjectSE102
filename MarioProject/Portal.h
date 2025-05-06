@@ -12,7 +12,9 @@ protected:
 	float height;
 public:	
 	CPortal(float l, float t, float r, float b, int scene_id);
-	
+
+	static unordered_map<string, float> GetAdditionalFieldInfo(vector<string> tokens);
+
 	// game object method
 	virtual void Render();
 

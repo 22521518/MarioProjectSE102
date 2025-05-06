@@ -6,5 +6,6 @@
 class IGameParser {
 public:
     virtual ~IGameParser() {}
-    virtual FileGameConfig Parse(const std::string& filename) = 0;
+    virtual FileGameConfig _ParseGameConfigFile(const std::string& filename) = 0;
+    virtual FilePlaySceneConfig _ParsePlaySceneFile(const string& filename) = 0;
 };
