@@ -122,7 +122,7 @@ GameObjectConfig JsonGameParser::_ParseSection_OBJECT(const json& rawObject)
 						float value = prop["value"].get<float>();
 						//float value = stof(valueStr);
 						gameObject.additionalFieldInfo[name] = value;
-						DebugOut(L"    [PROP] %S = %.2f\n", name.c_str(), value);
+						//DebugOut(L"    [PROP] %S = %.2f\n", name.c_str(), value);
 					}
 					catch (const std::exception& e) 
 					{

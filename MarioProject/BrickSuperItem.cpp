@@ -3,6 +3,7 @@
 #include "SuperMushroom.h"
 #include "CollisionEvent.h"
 #include "BrickIDs.h"
+#include "BrickConfig.h"
 
 void CBrickSuperItem::CreateSuperLeaf(LPCOLLISIONEVENT e)
 {
@@ -10,7 +11,7 @@ void CBrickSuperItem::CreateSuperLeaf(LPCOLLISIONEVENT e)
 	e->obj->GetPosition(targetX, targetY);
 	DirectionXAxisType directionX = targetX > this->x ?
 		DirectionXAxisType::Left : DirectionXAxisType::Right;
-	items.push_back(new CSuperLeaf(this->x, this->y, directionX));
+	items.push_back(new CSuperLeaf(this->x, this->y - BRICK_BBOX_HEIGHT, directionX));
 }
 
 void CBrickSuperItem::CreateSuperMushroom(LPCOLLISIONEVENT e)

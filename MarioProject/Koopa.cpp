@@ -76,6 +76,10 @@ void CKoopa::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 #pragma endregion
 
 #pragma region INTERACTIVE_OBJECT_METHOD
+void CKoopa::SetState(int state)
+{
+	CInteractiveObject::SetState(state);
+}
 void CKoopa::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 	this->stateHandler->OnCollisionWith(this, e);

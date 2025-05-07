@@ -37,7 +37,7 @@ public:
 	// interactive object method
 	//virtual void SetState(int state) = 0;
 	//virtual void OnNoCollision(DWORD dt) override; // use default
-	virtual void SetState(int state) { CInteractiveObject::SetState(state); };
+	virtual void SetState(int state);
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e) override;
 
 	// character object method

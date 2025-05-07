@@ -18,11 +18,25 @@ void CRedKoopa::SetState(int state)
 		throw std::runtime_error("Invalid state passed !Move state should be in SetState(int, LPCOLLISIONEVENT)");
 		break;
 	case KOOPA_STATE_WALKING:
+		if (this->state == KOOPA_STATE_SHELL_IDLE_OUT_TIME)
+		{
+			float left, top, right, bottom;
+			this->GetBoundingBox(left, top, right, bottom);
+
+			delete this->stateHandler;
+			this->stateHandler = new CRedKoopaState(this);
+
+			float currentHeight, currentWidth;
+			this->stateHandler->GetBoundingBox(currentWidth, currentHeight);
+			this->y = bottom - currentHeight / 2;
+			break;
+		}
 		delete this->stateHandler;
 		this->stateHandler = new CRedKoopaState(this);
 		break;
 	}
-	this->state = state;
+	//this->state = state;
+	CKoopa::SetState(state);
 }
 
 void CRedKoopa::SetState(int state, LPCOLLISIONEVENT e)
@@ -30,7 +44,8 @@ void CRedKoopa::SetState(int state, LPCOLLISIONEVENT e)
 	if (state == KOOPA_STATE_SHELL_MOVE) {
 		delete this->stateHandler;
 		this->stateHandler = new CRedKoopaShellMoveState(this, e);
-		this->state = state;
+		//this->state = state;
+		CKoopa::SetState(state);
 	}
 	else 
 	{
