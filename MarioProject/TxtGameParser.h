@@ -11,7 +11,7 @@ public:
 	// Play Scene
 	SpriteConfig _ParseSection_SPRITE(const string& line);
 	AnimationConfig _ParseSection_ANIMATION(const string& line);
-	void _ParseSection_ASSET(FilePlaySceneConfig& config, const string& assetPath);
+	void _ParseSection_ASSET(FilePlaySceneConfig& config, const string& assetPath) override;
 	GameObjectConfig _ParseSection_OBJECT(const string& line);
 	FilePlaySceneConfig _ParsePlaySceneFile(const string& filename) override;
 

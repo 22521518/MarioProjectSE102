@@ -340,6 +340,9 @@
     <ClCompile Include="JsonGameParser.cpp">
       <Filter>Source Files\GameFileParser</Filter>
     </ClCompile>
+    <ClCompile Include="GameParserFactory.cpp">
+      <Filter>Source Files\GameFileParser</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="setup.h">
@@ -667,7 +670,10 @@
       <Filter>Header Files\GameFileParser</Filter>
     </ClInclude>
     <ClInclude Include="JsonGameParser.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\GameFileParser</Filter>
+    </ClInclude>
+    <ClInclude Include="GameParserFactory.h">
+      <Filter>Header Files\GameFileParser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

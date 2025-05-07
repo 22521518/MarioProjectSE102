@@ -143,6 +143,7 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CheckingEdgeObject.cpp" />
     <ClCompile Include="FlyMarioState.cpp" />
+    <ClCompile Include="GameParserFactory.cpp" />
     <ClCompile Include="GreenKoopa.cpp" />
     <ClCompile Include="GreenKoopaParatroopa.cpp" />
     <ClCompile Include="GreenKoopaParatroopaState.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="FileConfig.h" />
     <ClInclude Include="FlyMarioState.h" />
     <ClInclude Include="GameParser.h" />
+    <ClInclude Include="GameParserFactory.h" />
     <ClInclude Include="GreenKoopa.h" />
     <ClInclude Include="GreenKoopaParatroopa.h" />
     <ClInclude Include="GreenKoopaParatroopaState.h" />

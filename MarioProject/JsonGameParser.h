@@ -10,7 +10,7 @@ class JsonGameParser :
 public:
 	SpriteConfig _ParseSection_SPRITE(const json& rawSprite);
 	AnimationConfig _ParseSection_ANIMATION(const json& rawAnimation);
-	void _ParseSection_ASSET(FilePlaySceneConfig& config, const string& assetPath);
+	void _ParseSection_ASSET(FilePlaySceneConfig& config, const string& assetPath) override;
 	GameObjectConfig _ParseSection_OBJECT(const json& rawObject);
 	FilePlaySceneConfig _ParsePlaySceneFile(const string& filename) override;
 

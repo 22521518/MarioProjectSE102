@@ -6,7 +6,7 @@
 #include "debug.h"
 #include "stringUtil.h"
 #include "GameParser.h"
-#include "TxtGameParser.h"
+#include "GameParserFactory.h"
 
 #include <fstream>
 #include <Windows.h>
@@ -66,7 +66,7 @@ class CGame
 	void _ParseSection_SCENES(vector<SceneConfig> scenes);
 	void _ParseSection_TEXTURES(vector<TextureConfig> textures);
 
-	CGame() { gameParser = new TxtGameParser(); };
+	CGame() { gameParser = new GameParserFactory(); };
 
 public:
 	void Init(HWND hWnd, HINSTANCE hInstance);
