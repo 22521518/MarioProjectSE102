@@ -24,9 +24,8 @@ public:
 
 	// physical object method
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) override;
-	virtual void GetBoundingBox(RECT& rect) override;
-	virtual int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) override;
 	virtual void RenderBoundingBox() override;
+	virtual int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) override;
 };
 
 typedef CPlatform* LPPLATFORM;

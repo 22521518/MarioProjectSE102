@@ -147,6 +147,7 @@
     <ClCompile Include="GreenKoopa.cpp" />
     <ClCompile Include="GreenKoopaParatroopa.cpp" />
     <ClCompile Include="GreenKoopaParatroopaState.cpp" />
+    <ClCompile Include="GroundPlatform.cpp" />
     <ClCompile Include="JsonGameParser.cpp" />
     <ClCompile Include="Koopa.cpp" />
     <ClCompile Include="KoopaShellState.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="CBlockF.h" />
     <ClInclude Include="BlockCoin.h" />
     <ClInclude Include="Block1Up.h" />
+    <ClInclude Include="GroundPlatform.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemAniIDs.h" />
     <ClInclude Include="ItemConfig.h" />
@@ -237,6 +239,7 @@
     <ClInclude Include="PlantGreenPiranha.h" />
     <ClInclude Include="PlantEnemyConfig.h" />
     <ClInclude Include="PlantEnemy.h" />
+    <ClInclude Include="Platform9Sprite.h" />
     <ClInclude Include="RedKoopa.h" />
     <ClInclude Include="Koopa.h" />
     <ClInclude Include="KoopaConfig.h" />

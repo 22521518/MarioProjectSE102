@@ -343,6 +343,9 @@
     <ClCompile Include="GameParserFactory.cpp">
       <Filter>Source Files\GameFileParser</Filter>
     </ClCompile>
+    <ClCompile Include="GroundPlatform.cpp">
+      <Filter>Source Files\GameObjectConcrete\Platform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="setup.h">
@@ -674,6 +677,12 @@
     </ClInclude>
     <ClInclude Include="GameParserFactory.h">
       <Filter>Header Files\GameFileParser</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundPlatform.h">
+      <Filter>Header Files\GameObjectConcrete\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform9Sprite.h">
+      <Filter>Header Files\GameObjectConcrete\Platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

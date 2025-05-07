@@ -76,16 +76,6 @@ void CPlatform::GetBoundingBox(float& l, float& t, float& r, float& b)
 	b = t + this->cellHeight;
 }
 
-void CPlatform::GetBoundingBox(RECT& rect)
-{
-	float l, t, r, b;
-	GetBoundingBox(l, t, r, b);
-	rect.left = l;
-	rect.top = t;
-	rect.right = r;
-	rect.bottom = b;
-}
-
 int CPlatform::IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny)
 {
 	return nx == DirectionXAxisType::None && ny == DirectionYAxisType::Top;
