@@ -7,23 +7,25 @@ class CPlatform9Sprite : public CStaticObject {
 protected:
 	int length, height;				
 	float cellWidth, cellHeight; // Unit: cell 
-	int spriteIdTopLeft, spriteIdTopMiddle, spriteIdTopEnd,
-		spriteIdMidLeft, spriteIdMidMiddle, spriteIdMidEnd,
-	spriteIdBottomLeft, spriteIdBottomMiddle, spriteIdBottomEnd;
+	int spriteIdTopBegin, spriteIdTopMiddle, spriteIdTopEnd,
+		spriteIdMidBegin, spriteIdMidMiddle, spriteIdMidEnd,
+		spriteIdBotBegin, spriteIdBotMiddle, spriteIdBotEnd;
 public:
 	CPlatform9Sprite(float x = 0, float y = 0, int length = 1, int height = 1,
 		float cell_width = 16, float cell_height = 16,
-		int sprite_id_top_begin, int sprite_id_top_mid_topdle, int sprite_id_top_end,
-		int sprite_id_mid_begin, int sprite_id_mid_middle, int sprite_id_mid_end,
-		int sprite_id_bottom_begin, int sprite_id_bottom_middle, int sprite_id_bottom_end
+		int sprite_id_top_begin = 0, int sprite_id_top_middle = 0, int sprite_id_top_end = 0,
+		int sprite_id_mid_begin = 0, int sprite_id_mid_middle = 0, int sprite_id_mid_end = 0,
+		int sprite_id_bot_begin = 0, int sprite_id_bot_middle = 0, int sprite_id_bot_end = 0
 	);
 
 	static unordered_map<string, float> GetAdditionalFieldInfo(vector<string> tokens);
 
 	// game object method
 	virtual void Render() override;
+	void RenderByLayer(float xx, float yy, int spriteIdBegin, int spriteIdMiddle, int spriteIdEnd);
 
 	// physical object method
-	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) = 0;
+	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) override;
+	virtual void RenderBoundingBox() override;
 	virtual int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) = 0;
 };

@@ -6,6 +6,8 @@
 #include "CloudPlatform.h"
 #include "Portal.h"
 
+#include "SemisolidPlatform.h"
+#include "SolidPlatform.h"
 #include "BrickSuperItem.h"
 #include "OneUpMushroom.h"
 #include "SuperMushroom.h"
@@ -23,6 +25,7 @@
 #include "BrickStateIDs.h"
 
 #include "AssetIDs.h"
+#include "mapUtil.h"
 
 using namespace std;
 
@@ -46,14 +49,50 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	case OBJECT_TYPE_RED_KPOOPA_TROOPA: return new CRedKoopaParatroopa(x, y);
 	case OBJECT_TYPE_GREEN_KPOOPA_TROOPA: return new CGreenKoopaParatroopa(x, y);
 	case OBJECT_TYPE_GREEN_KPOOPA: return new CGreenKoopa(x, y);
+	case OBJECT_TYPE_SOLID_SEMISOLID_PLATFORM_9_SPRITE:
+	case OBJECT_TYPE_SOLID_SOLID_PLATFORM_9_SPRITE:
+	{
+		float cell_width = static_cast<int>(getOrDefault(additionalFieldInfo, "cell_width", 16.0f));
+		float cell_height = static_cast<int>(getOrDefault(additionalFieldInfo, "cell_height", 16.0f));
+
+		int height = static_cast<int>(getOrDefault(additionalFieldInfo, "height", 1.0f));
+		int length = static_cast<int>(getOrDefault(additionalFieldInfo, "length", 1.0f));
+
+		int sprite_id_top_begin = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_id_top_begin", 0.0f));
+		int sprite_id_top_middle = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_id_top_middle", 0.0f));
+		int sprite_id_top_end = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_id_top_end", 0.0f));
+
+		int sprite_id_mid_begin = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_id_mid_begin", 0.0f));
+		int sprite_id_mid_middle = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_id_mid_middle", 0.0f));
+		int sprite_id_mid_end = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_id_mid_end", 0.0f));
+
+		int sprite_id_bot_begin = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_id_bot_begin", 0.0f));
+		int sprite_id_bot_middle = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_id_bot_middle", 0.0f));
+		int sprite_id_bot_end = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_id_bot_end", 0.0f));
+		
+		if (object_type == OBJECT_TYPE_SOLID_SEMISOLID_PLATFORM_9_SPRITE)
+		{
+			return new CSemisolidPlatform(x, y, length, height, cell_width, cell_height,
+				sprite_id_top_begin, sprite_id_top_middle, sprite_id_top_end,
+				sprite_id_mid_begin, sprite_id_mid_middle, sprite_id_mid_end,
+				sprite_id_bot_begin, sprite_id_bot_middle, sprite_id_bot_end);
+		}
+		else if (object_type == OBJECT_TYPE_SOLID_SOLID_PLATFORM_9_SPRITE)
+		{
+			return new CSolidPlatform(x, y, length, height, cell_width, cell_height,
+				sprite_id_top_begin, sprite_id_top_middle, sprite_id_top_end,
+				sprite_id_mid_begin, sprite_id_mid_middle, sprite_id_mid_end,
+				sprite_id_bot_begin, sprite_id_bot_middle, sprite_id_bot_end);
+		}
+	}
 	case OBJECT_TYPE_PLATFORM:
 	{
-		float cell_width = additionalFieldInfo["cell_width"];
-		float cell_height = additionalFieldInfo["cell_height"];
-		int length = additionalFieldInfo["length"];
-		int sprite_begin = additionalFieldInfo["sprite_begin"];
-		int sprite_middle = additionalFieldInfo["sprite_middle"];
-		int sprite_end = additionalFieldInfo["sprite_end"];
+		float cell_width = static_cast<int>(getOrDefault(additionalFieldInfo, "cell_width", 16.0f));
+		float cell_height = static_cast<int>(getOrDefault(additionalFieldInfo, "cell_height", 16.0f));
+		int length = static_cast<int>(getOrDefault(additionalFieldInfo, "length", 1.0f));
+		int sprite_begin = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_begin", 0.0f));
+		int sprite_middle = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_middle", 0.0f));
+		int sprite_end = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_end", 0.0f));
 
 		return new CCloudPlatform(
 			x, y,
@@ -63,9 +102,9 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	}
 	case OBJECT_TYPE_PORTAL:
 	{
-		float r = additionalFieldInfo["r"];
-		float b = additionalFieldInfo["b"];
-		int scene_id = additionalFieldInfo["scene_id"];
+		float r = static_cast<int>(getOrDefault(additionalFieldInfo, "r", 0.0f));
+		float b = static_cast<int>(getOrDefault(additionalFieldInfo, "b", 0.0f));
+		int scene_id = static_cast<int>(getOrDefault(additionalFieldInfo, "scene_id", 0.0f));
 		return new CPortal(x, y, r, b, scene_id);
 
 	}

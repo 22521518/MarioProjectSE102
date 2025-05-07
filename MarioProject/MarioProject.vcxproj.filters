@@ -343,8 +343,11 @@
     <ClCompile Include="GameParserFactory.cpp">
       <Filter>Source Files\GameFileParser</Filter>
     </ClCompile>
-    <ClCompile Include="GroundPlatform.cpp">
+    <ClCompile Include="Platform9Sprite.cpp">
       <Filter>Source Files\GameObjectConcrete\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="mapUtil.cpp">
+      <Filter>Source Files\Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -678,11 +681,17 @@
     <ClInclude Include="GameParserFactory.h">
       <Filter>Header Files\GameFileParser</Filter>
     </ClInclude>
-    <ClInclude Include="GroundPlatform.h">
+    <ClInclude Include="SolidPlatform.h">
       <Filter>Header Files\GameObjectConcrete\Platform</Filter>
     </ClInclude>
     <ClInclude Include="Platform9Sprite.h">
       <Filter>Header Files\GameObjectConcrete\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="SemisolidPlatform.h">
+      <Filter>Header Files\GameObjectConcrete\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="mapUtil.h">
+      <Filter>Header Files\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

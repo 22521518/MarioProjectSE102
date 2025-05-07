@@ -1,8 +1,10 @@
 #include "GameParserFactory.h"
+#include "debug.h"
 
 void GameParserFactory::_ParseSection_ASSET(FilePlaySceneConfig& config, const string& assetPath)
 {
     auto parser = GameParserFactory::Create(assetPath);
+    DebugOut(L"loading file %s", assetPath.c_str());
     parser->_ParseSection_ASSET(config, assetPath);
 }
 

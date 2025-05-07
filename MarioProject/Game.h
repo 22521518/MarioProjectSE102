@@ -5,8 +5,7 @@
 #include "config.h"
 #include "debug.h"
 #include "stringUtil.h"
-#include "GameParser.h"
-#include "GameParserFactory.h"
+#include "FileConfig.h"
 
 #include <fstream>
 #include <Windows.h>
@@ -15,6 +14,7 @@
 #include <dinput.h>
 #include <unordered_map>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -30,8 +30,6 @@ class CGame
 	static CGame* __instance;
 	HWND hWnd = NULL;
 	HINSTANCE hInstance = NULL;
-
-	IGameParser* gameParser = NULL;
 
 	// Backbuffer width & height, will be set during Direct3D initialization
 	int backBufferWidth = 0;
@@ -66,7 +64,7 @@ class CGame
 	void _ParseSection_SCENES(vector<SceneConfig> scenes);
 	void _ParseSection_TEXTURES(vector<TextureConfig> textures);
 
-	CGame() { gameParser = new GameParserFactory(); };
+	CGame() {};
 
 public:
 	void Init(HWND hWnd, HINSTANCE hInstance);

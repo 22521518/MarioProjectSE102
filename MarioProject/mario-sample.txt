@@ -1,5 +1,5 @@
 [SETTINGS]
-start	1
+start	1000
 width	320
 height	240
 
@@ -10,7 +10,7 @@ height	240
 1	scenes\scene01.txt
 2	scenes\scene02.txt
 5	scenes\scene0005.txt
-1000	scenes\scene-zero.txt
+1000	scenes\stage0101.json
 
 # id	file 
 [TEXTURES]
@@ -20,3 +20,4 @@ height	240
 20	textures\misc.png
 30	textures\grassland_enemies.png
 40	textures\Floor.png
+50	textures\stage_tile.png

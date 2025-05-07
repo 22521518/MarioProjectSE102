@@ -36,13 +36,12 @@ protected:
 	LPGAMEOBJECT player;
 	vector<LPGAMEOBJECT> objects;
 
-	IGameParser* gameParser = NULL;
 	void _ParseSection_SPRITES(vector<SpriteConfig> sprites);
 	void _ParseSection_ANIMATIONS(vector<AnimationConfig> animations);
 	void _ParseSection_OBJECTS(vector<GameObjectConfig> gameObjects);
 	void LoadAssets(LPCWSTR assetFile);
 public:
-	CPlayScene(int id, LPCWSTR filePath, IGameParser* gameParser);
+	CPlayScene(int id, LPCWSTR filePath);
 	
 	virtual void Load();
 	virtual void Update(DWORD dt);

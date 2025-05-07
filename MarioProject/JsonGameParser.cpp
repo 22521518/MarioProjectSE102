@@ -1,4 +1,5 @@
 #include "JsonGameParser.h"
+#include "GameParserFactory.h"
 #include "AssetIDs.h"
 #include "Platform.h"
 #include "Portal.h"
@@ -115,17 +116,17 @@ GameObjectConfig JsonGameParser::_ParseSection_OBJECT(const json& rawObject)
 		if (rawObject.contains("properties") && rawObject["properties"].is_array()) {
 			for (const auto& prop : rawObject["properties"]) {
 				if (prop.contains("name") && prop.contains("value")) {
-					string name = prop["name"];
-					string valueStr = prop["value"];
 					try 
 					{
-						float value = stof(valueStr);
+						string name = prop["name"];
+						float value = prop["value"].get<float>();
+						//float value = stof(valueStr);
 						gameObject.additionalFieldInfo[name] = value;
 						DebugOut(L"    [PROP] %S = %.2f\n", name.c_str(), value);
 					}
 					catch (const std::exception& e) 
 					{
-						throw std::runtime_error("Invalid float property value: " + valueStr);
+						throw std::runtime_error("Invalid float property value: " + prop["value"]);
 					}
 				}
 				else {
@@ -159,7 +160,8 @@ FilePlaySceneConfig JsonGameParser::_ParsePlaySceneFile(const string& filename)
 			for (const string& assetPath : objectData["assets"])
 			{
 				try {
-					_ParseSection_ASSET(config, assetPath);
+					auto parser = GameParserFactory::Create(assetPath);
+					parser->_ParseSection_ASSET(config, assetPath);
 				}
 				catch (const std::exception& e) {
 					DebugOut(L"[ERROR] Failed to load asset: %S\n", e.what());
@@ -167,9 +169,9 @@ FilePlaySceneConfig JsonGameParser::_ParsePlaySceneFile(const string& filename)
 			}
 		}
 
-		if (objectData.contains("game_objects") && objectData["game_objects"].is_array())
+		if (objectData.contains("objects") && objectData["objects"].is_array())
 		{
-			for (auto& gameObject : objectData["game_objects"])
+			for (auto& gameObject : objectData["objects"])
 			{
 				try {
 					config.gameObjects.push_back(_ParseSection_OBJECT(gameObject));

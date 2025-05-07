@@ -1,48 +1,53 @@
 #pragma once
 
-#define ID_TEX_MARIO 0
-#define ID_TEX_ENEMY 10
-#define ID_TEX_MISC 20
+constexpr int ID_TEX_MARIO									= 0;
+constexpr int ID_TEX_ENEMY									= 10;
+constexpr int ID_TEX_MISC									= 20;
 
-constexpr auto OBJECT_TYPE_MARIO = 0;
-#define OBJECT_TYPE_BRICK	1
-#define OBJECT_TYPE_GOOMBA	2
-#define OBJECT_TYPE_KOOPAS	3
-#define OBJECT_TYPE_COIN 4
-#define OBJECT_TYPE_PLATFORM 5
-#define OBJECT_TYPE_PORTAL	50
+constexpr int OBJECT_TYPE_MARIO								= 0;
+constexpr int OBJECT_TYPE_BRICK								= 1;
+constexpr int OBJECT_TYPE_GOOMBA							= 2;
+constexpr int OBJECT_TYPE_KOOPAS							= 3;
+constexpr int OBJECT_TYPE_COIN								= 4;
+constexpr int OBJECT_TYPE_PLATFORM							= 5;
+constexpr int OBJECT_TYPE_PORTAL							= 50;
 
 #pragma region TRI_OBJ
-#define OBJECT_TYPE_ITEM_BRICK 2020000
+// platform
+constexpr int OBJECT_TYPE_SOLID_SEMISOLID_PLATFORM_9_SPRITE = 3e6;
+constexpr int OBJECT_TYPE_SOLID_SOLID_PLATFORM_9_SPRITE		= 3e6 + 1e3;
 
-#define OBJECT_TYPE_ONE_UP_MUSHROOM_ITEM 2002000
-#define OBJECT_TYPE_SUPER_MUSHROOM_ITEM 2001000
-#define OBJECT_TYPE_SUPER_LEAF_ITEM 2000000
+// item
+constexpr int OBJECT_TYPE_ITEM_BRICK						= 2e6 + 2e4;
+constexpr int OBJECT_TYPE_ONE_UP_MUSHROOM_ITEM				= 2e6 + 2e3;
+constexpr int OBJECT_TYPE_SUPER_MUSHROOM_ITEM				= 2e6 + 1e3;
+constexpr int OBJECT_TYPE_SUPER_LEAF_ITEM					= 2e6;
 
-#define OBJECT_TYPE_DESTROYABLE_BRICK 1000000 + 20000
+constexpr int OBJECT_TYPE_DESTROYABLE_BRICK					= 1e6 + 2e4;
 
-#define OBJECT_TYPE_RED_KPOOPA		1000000
-#define OBJECT_TYPE_GREEN_KPOOPA	1001000
+constexpr int OBJECT_TYPE_RED_KPOOPA						= 1e6;
+constexpr int OBJECT_TYPE_GREEN_KPOOPA						= 1e6 + 1e4;
 // fly
-#define OBJECT_TYPE_RED_KPOOPA_TROOPA	1002000
-#define OBJECT_TYPE_GREEN_KPOOPA_TROOPA	1003000
+constexpr int OBJECT_TYPE_RED_KPOOPA_TROOPA					= 1e6 + 2e3;
+constexpr int OBJECT_TYPE_GREEN_KPOOPA_TROOPA				= 1e6 + 3e3;
 #pragma endregion
 
-#define ID_SPRITE_MARIO 100000
-#define ID_SPRITE_BRICK 200000
-#define ID_SPRITE_GOOMBA 300000
-#define ID_SPRITE_COIN 400000
-#define ID_SPRITE_CLOUD 500000
+constexpr int ID_SPRITE_MARIO								= 1e5;
+constexpr int ID_SPRITE_BRICK								= 2e5;
+constexpr int ID_SPRITE_GOOMBA								= 3e5;
+constexpr int ID_SPRITE_COIN								= 4e5;
+constexpr int ID_SPRITE_CLOUD								= 5e5;
 
-#define ID_SPRITE_BLOCK_Q_COIN 211000
-#define ID_SPRITE_BLOCK_Q_ITEM 212000
+constexpr int ID_SPRITE_BLOCK_Q_COIN = 2e5 + 11e3;
+constexpr int ID_SPRITE_BLOCK_Q_ITEM = 2e5 + 12e3;
+
 #pragma region THANH_OBJ
-#define OBJECT_TYPE_PLANT_ENEMY	650
-#define OBJECT_TYPE_PLANT_GP	651
-#define OBJECT_TYPE_PLANT_GVF	652
-#define OBJECT_TYPE_PLANT_RVF	653
-#define OBJECT_TYPE_BLOCK_Q_COIN 11
-#define OBJECT_TYPE_BLOCK_Q_ITEM 12
-#define OBJECT_TYPE_BLOCK_W 13
-#define OBJECT_TYPE_BLOCK_F 14
+constexpr int OBJECT_TYPE_PLANT_ENEMY = 650;
+constexpr int OBJECT_TYPE_PLANT_GP = 651;
+constexpr int OBJECT_TYPE_PLANT_GVF = 652;
+constexpr int OBJECT_TYPE_PLANT_RVF = 653;
+constexpr int OBJECT_TYPE_BLOCK_Q_COIN = 11;
+constexpr int OBJECT_TYPE_BLOCK_Q_ITEM = 12;
+constexpr int OBJECT_TYPE_BLOCK_W = 13;
+constexpr int OBJECT_TYPE_BLOCK_F = 14;
 #pragma endregion

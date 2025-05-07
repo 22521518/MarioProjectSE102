@@ -1,13 +1,13 @@
 #include "PlayScene.h"
+#include "GameParserFactory.h"
 #include "Mario.h"
 #include "AssetIDs.h"
 
 using namespace std;
 
 #pragma region PLAYSCENE_CONSTRUCTOR
-CPlayScene::CPlayScene(int id, LPCWSTR filePath, IGameParser* gameParser) : CScene(id, filePath)
+CPlayScene::CPlayScene(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
-	this->gameParser = gameParser;
 	this->player = NULL;
 	this->keyHandler = new CMarioPlayerKeyHandler(this);
 }
@@ -87,7 +87,9 @@ void CPlayScene::Load()
 {
 	DebugOut(L"[INFO] Start loading scene from : %s \n", sceneFilePath);
 
-	FilePlaySceneConfig playSceneData = this->gameParser->_ParsePlaySceneFile(WSTRToString(sceneFilePath));
+	auto parser = GameParserFactory::Create(WSTRToString(sceneFilePath));
+	FilePlaySceneConfig playSceneData = parser->_ParsePlaySceneFile(WSTRToString(sceneFilePath));
+
 	_ParseSection_SPRITES(playSceneData.sprites);
 	_ParseSection_ANIMATIONS(playSceneData.animations);
 	_ParseSection_OBJECTS(playSceneData.gameObjects);
@@ -138,8 +140,10 @@ void CPlayScene::Render()
 {
 	for (size_t i = 0; i < objects.size(); i++)
 	{
+		if (objects[i] == this->player) continue;
 		objects[i]->Render();
 	}
+	this->player->Render();
 }
 
 void CPlayScene::Unload()

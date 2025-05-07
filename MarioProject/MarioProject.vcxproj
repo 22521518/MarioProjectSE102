@@ -147,14 +147,15 @@
     <ClCompile Include="GreenKoopa.cpp" />
     <ClCompile Include="GreenKoopaParatroopa.cpp" />
     <ClCompile Include="GreenKoopaParatroopaState.cpp" />
-    <ClCompile Include="GroundPlatform.cpp" />
     <ClCompile Include="JsonGameParser.cpp" />
     <ClCompile Include="Koopa.cpp" />
     <ClCompile Include="KoopaShellState.cpp" />
     <ClCompile Include="KoopaState.cpp" />
+    <ClCompile Include="mapUtil.cpp" />
     <ClCompile Include="Mushroom.cpp" />
     <ClCompile Include="OneUpMushroom.cpp" />
     <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Platform9Sprite.cpp" />
     <ClCompile Include="Portal.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="Goomba.cpp" />
@@ -225,7 +226,8 @@
     <ClInclude Include="CBlockF.h" />
     <ClInclude Include="BlockCoin.h" />
     <ClInclude Include="Block1Up.h" />
-    <ClInclude Include="GroundPlatform.h" />
+    <ClInclude Include="mapUtil.h" />
+    <ClInclude Include="SolidPlatform.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemAniIDs.h" />
     <ClInclude Include="ItemConfig.h" />
@@ -279,6 +281,7 @@
     <ClInclude Include="RedKoopaShellState.h" />
     <ClInclude Include="RedKoopaState.h" />
     <ClInclude Include="BreakBrickEffect.h" />
+    <ClInclude Include="SemisolidPlatform.h" />
     <ClInclude Include="StaticObject.h" />
     <ClInclude Include="PhysicalObject.h" />
     <ClInclude Include="GameObject.h" />

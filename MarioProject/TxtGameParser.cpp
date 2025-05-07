@@ -5,6 +5,7 @@
 #include <sstream>
 
 #include "TxtGameParser.h"
+#include "GameParserFactory.h"
 #include "debug.h"
 #include "stringUtil.h"      
 #include "AssetIDs.h"
@@ -149,7 +150,8 @@ FilePlaySceneConfig TxtGameParser::_ParsePlaySceneFile(const string& filename)
         try {
             if (section == "[ASSETS]")
             {
-                _ParseSection_ASSET(config, line);
+                auto parser = GameParserFactory::Create(line);
+                parser->_ParseSection_ASSET(config, line);
             }
             else if (section == "[OBJECTS]")
             {
