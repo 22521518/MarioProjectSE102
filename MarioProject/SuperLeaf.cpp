@@ -43,11 +43,11 @@ void CSuperLeaf::OnCollisionWith(LPCOLLISIONEVENT e)
 	{
 		this->OnMarioCollide(mario, e);
 		return;
-	}	
+	}
 }
 
 void CSuperLeaf::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 {
-	this->Delete();
 	mario->OnCollisionWithSuperLeaf(this, e);
+	this->Delete();
 }

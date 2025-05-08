@@ -3,6 +3,7 @@
 #include "InteractiveObject.h"
 #include "Character.h"
 #include "Mario.h"
+#include "Enemy.h"
 #include "CheckingEdgeObject.h"
 
 constexpr float MIN_FLOAT = -99999999999.0f;
@@ -153,7 +154,8 @@ void CCollision::Scan(LPPHYSICALOBJECT objSrc, DWORD dt,
 
 	for (UINT i = 0; i < objDests->size(); i++)
 	{
-		if (objSrc == objDests->at(i) || dynamic_cast<LPMARIO>(objDests->at(i))) continue;
+		if (objSrc == objDests->at(i) || 
+			(dynamic_cast<LPMARIO>(objDests->at(i)) && dynamic_cast<LPENEMY>(objSrc))) continue;
 		LPCOLLISIONEVENT e = SweptAABB(objSrc, dt, objDests->at(i));
 		if (e->WasCollided() == 1) 
 		{
