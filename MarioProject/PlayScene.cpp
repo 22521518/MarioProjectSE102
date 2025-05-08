@@ -125,13 +125,21 @@ void CPlayScene::Update(DWORD dt)
 		bool inX = objRight >= px - padX && objLeft <= px + padX;
 		bool inY = objBottom >= py - padY && objTop <= py + padY;
 
-        if (inX && inY) obj->MakeAlive();
-        else obj->Delete();
+		if (inX && inY)
+		{
+			obj->MakeAlive();
+			obj->MakeVisible();
+		}
+		else
+		{
+			obj->MakeInvisible();
+            obj->ResetState();
+		}
 
         if (!obj->IsDeleted()) {
             if (auto phys = dynamic_cast<LPPHYSICALOBJECT>(obj))
                 coObjects.push_back(phys);
-        } else if (obj != player) {
+        } else if (obj != player && !obj->IsRemovable()) {
             obj->ResetState();
         }
     }
@@ -142,7 +150,7 @@ void CPlayScene::Update(DWORD dt)
 	}
 
 	player->GetPosition(px, py);
-	player->SetPosition(px < 0 ? 0 : px, py);
+	//player->SetPosition(px < 0 ? 0 : px, py);
 
 	px += -screenWidth / 2;
 	py += -screenHeight / 2;
@@ -157,7 +165,7 @@ void CPlayScene::Render()
 {
 	for (size_t i = 0; i < objects.size(); i++)
 	{
-		if (objects[i]->IsDeleted()) continue;
+		if (objects[i]->IsDeleted() || !objects[i]->IsVisible()) continue;
 		if (objects[i] == this->player) continue;
 		objects[i]->Render();
 	}

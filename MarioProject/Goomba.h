@@ -26,7 +26,6 @@ public:
 
 	// interactive object method
 	virtual void SetState(int state) override;
-	//virtual void OnNoCollision(DWORD dt) override; // use default
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e) override;
 
 	// character object method

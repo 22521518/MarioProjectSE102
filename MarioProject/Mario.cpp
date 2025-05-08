@@ -181,15 +181,9 @@ bool CMario::IsOverLapping(LPINTERACTIVEOBJECT a) {
 
 void CMario::OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e) {
 	coin++;
-	this->coin++;
-	DebugOut(L"I GOT MORE COIN! \n");
-	if (this->coin >= 100) {
-		if (this->GetLevel() == MARIO_LEVEL_SMALL) {
-			this->y = this->y - MARIO_SMALL_BBOX_HEIGHT;
-			this->StartUntouchable();
-			this->coin = 0;
-		}
-	}
+	//DebugOut(L"I GOT MORE COIN! \n");
+	if (this->coin >= 100)
+		return;
 }
 
 void CMario::OnCollisionWithSuperLeaf(LPSUPERLEAF leaf, LPCOLLISIONEVENT e)

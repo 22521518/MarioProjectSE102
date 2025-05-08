@@ -21,7 +21,7 @@ void CKoopaState::ChangeDirection(LPKOOPA koopa, float speed)
 	nxValue = nxValue != 0 ? nxValue : 1;
 	koopa->nx = static_cast<DirectionXAxisType>(-nxValue);
 	koopa->vx = -nxValue * speed;
-
+		
 	if (!koopa->IsShellState()) koopa->SetState(KOOPA_STATE_WALKING);
 }
 

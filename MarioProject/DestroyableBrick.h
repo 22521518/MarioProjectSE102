@@ -10,6 +10,8 @@ class CDestroyableBrick : public CBrick, public CDestroyableObject
 	bool isDestroy = false;
 	int timeDestroy = -1;
 	vector<LPBREAKBRICKEFFECT> pieces;
+protected:
+	bool isRemovable = true;
 
 public:
 	CDestroyableBrick(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0)

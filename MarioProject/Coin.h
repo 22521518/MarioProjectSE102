@@ -8,7 +8,9 @@ class CCoin :
 protected:
 public:
 	CCoin(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0)
-		: CStaticObject(x, y, vx, vy, ax, ay) {}
+		: CStaticObject(x, y, vx, vy, ax, ay) {
+		isRemovable = true;
+	}
 	// game object method
 	virtual void Render() override;
 
