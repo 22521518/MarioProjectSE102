@@ -166,7 +166,6 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="KeyMap.cpp" />
     <ClCompile Include="Mario.cpp" />
-    <ClCompile Include="PhysicalObject.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="gameLoop.cpp" />

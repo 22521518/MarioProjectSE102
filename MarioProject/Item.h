@@ -5,6 +5,9 @@
 class CItem :
 	public CInteractiveObject, public CCollidableWithMario {
 	bool isActive = true;
+protected:
+	bool isRemovable = true;
+
 public:
 	CItem(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0, DirectionXAxisType nx = DirectionXAxisType::Left, int state = -1): CInteractiveObject(x, y, vx, vy, ax, ay, nx, state) {};
 
@@ -28,6 +31,8 @@ public:
 
 	virtual void SetActive(bool acitve) { this->isActive = acitve; }
 	bool GetActive() const { return this->isActive; }
+
+	void ResetState() override {}
 };
 
 typedef CItem* LPITEM;

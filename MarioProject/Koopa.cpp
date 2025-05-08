@@ -18,14 +18,6 @@ bool CKoopa::IsNearOutOfTime(ULONGLONG time)
 	return litmitTime < time  && time < KOOPA_DIE_TIMEOUT;
 }
 
-CKoopa::CKoopa(float x, float y, float vx, float vy, float ax, float ay, DirectionXAxisType nx, int state)
-	: CEnemy(x, y, vx, vy, ax, ay, nx, state)
-{
-	this->die_start = -1;
-	this->stateHandler = NULL;
-	SetState(state);
-}
-
 #pragma region SIDE_COLLISION_BEHAVIOR
 void CKoopa::OnSideCollisionBehavior(LPCOLLISIONEVENT e)
 {
@@ -82,6 +74,7 @@ void CKoopa::SetState(int state)
 }
 void CKoopa::OnCollisionWith(LPCOLLISIONEVENT e)
 {
+	if (dynamic_cast<LPMARIO>(e->obj)) return;
 	this->stateHandler->OnCollisionWith(this, e);
 }
 #pragma endregion

@@ -217,9 +217,6 @@
     <ClCompile Include="Animations.cpp">
       <Filter>Source Files\GameInstance</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicalObject.cpp">
-      <Filter>Source Files\GameObjectAbstract</Filter>
-    </ClCompile>
     <ClCompile Include="CollisionEvent.cpp">
       <Filter>Source Files\Collision</Filter>
     </ClCompile>

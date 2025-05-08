@@ -16,7 +16,8 @@ using namespace std;
 class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
 
 class CPhysicalObject : public CGameObject {
-
+	const float originVX, originVY, originAX, originAY;
+	DirectionXAxisType originNX;
 protected:
 	float vx = 0.0f, vy = 0.0f;
 	float ax = 0.0f, ay = 0.0f;
@@ -24,25 +25,32 @@ protected:
 
 public:
 	CPhysicalObject(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0, DirectionXAxisType nx = DirectionXAxisType::Left)
-		:CGameObject(x, y), vx(vx), vy(vy), ax(ax), ay(ay), nx(nx) {
-	};
+		:CGameObject(x, y), vx(vx), vy(vy), ax(ax), ay(ay), nx(nx), 
+		originVX(vx), originVY(vy), originAX(ax), originAY(ay), originNX(nx) {};
 
 	// game object method
 	virtual void Render() = 0;
 
 	// physical object method
-	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) = 0;
 	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) = 0;
 	virtual int IsCollidable() = 0;
 	virtual int IsBlocking() = 0;
 	virtual int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) = 0;
 
-	virtual void RenderBoundingBox();
-	virtual void GetBoundingBox(RECT& rect);
 
 	DirectionXAxisType GetNX() { return this->nx; }
 	void SetAcceleration(float ax, float ay) { this->ax = ax, this->ay = ay; }
 	void GetAcceleration(float& ax, float& ay) const { ax = this->ax; ay = this->ay; }
 	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
 	void GetSpeed(float& vx, float& vy) const { vx = this->vx; vy = this->vy; }
+
+	void ResetState() override
+	{ 
+		CGameObject::ResetState();
+		this->vx = originVX;
+		this->vy = originVY;
+		this->ax = originAX;
+		this->ay = originAY;
+		this->nx = originNX;
+	};
 };

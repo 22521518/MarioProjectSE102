@@ -2,10 +2,11 @@
 #include "Collision.h"
 #include "InteractiveObject.h"
 #include "Character.h"
+#include "Mario.h"
 #include "CheckingEdgeObject.h"
 
-#define MIN_FLOAT -99999999999.0f
-#define MAX_FLOAT 99999999999.0f
+constexpr float MIN_FLOAT = -99999999999.0f;
+constexpr float MAX_FLOAT = 99999999999.0f;
 
 bool CCollision::IsOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2) {
 	return l1 < r2 && r1 > l2 && t1 < b2 && b1 > t2;
@@ -152,7 +153,7 @@ void CCollision::Scan(LPPHYSICALOBJECT objSrc, DWORD dt,
 
 	for (UINT i = 0; i < objDests->size(); i++)
 	{
-		if (objSrc == objDests->at(i)) continue;
+		if (objSrc == objDests->at(i) || dynamic_cast<LPMARIO>(objDests->at(i))) continue;
 		LPCOLLISIONEVENT e = SweptAABB(objSrc, dt, objDests->at(i));
 		if (e->WasCollided() == 1) 
 		{

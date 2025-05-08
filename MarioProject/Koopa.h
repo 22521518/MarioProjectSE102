@@ -12,6 +12,8 @@ class CKoopa :
 	public CEnemy, public CCollidableWithMario, public CInteractableWithSideCollision
 {
 private:
+	const DirectionYAxisType originNY;
+
 	bool IsOutOfTime(ULONGLONG time);
 	bool IsNearOutOfTime(ULONGLONG time);	
 
@@ -21,7 +23,10 @@ protected:
 	LPKOOPASTATE stateHandler = NULL;
 	ULONGLONG die_start = -1;
 public:
-	CKoopa(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = KOOPA_GRAVITY, DirectionXAxisType nx = DirectionXAxisType::Left, int state = KOOPA_STATE_WALKING);
+	CKoopa(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = KOOPA_GRAVITY, DirectionXAxisType nx = DirectionXAxisType::Left, int state = KOOPA_STATE_WALKING) : CEnemy(x, y, vx, vy, ax, ay, nx, state), die_start(-1), stateHandler(nullptr), originNY(ny)
+	{
+		SetState(state);
+	};
 
 	// game object method
 	virtual void Render();
@@ -57,6 +62,14 @@ public:
 	virtual void OnSideCollisionBehavior(LPCOLLISIONEVENT e) override;
 	virtual void GetObjectBoundingBox(float& left, float& top, float& right, float& bottom) override;
 	virtual DirectionXAxisType GetObjectCurrentDirectionX() override;
+
+	void ResetState() override
+	{
+		CEnemy::ResetState();
+		this->die_start = -1;
+		this->ny = originNY;
+		SetState(this->state);
+	};
 
 	friend class CKoopaState;
 	friend class CRedKoopaState;

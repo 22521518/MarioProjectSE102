@@ -10,10 +10,10 @@ public:
 
 	// game object method
 	virtual void Render() = 0;
-
-	// physical object method
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) = 0;
 	virtual void GetBoundingBox(RECT& rect) override { CPhysicalObject::GetBoundingBox(rect); };
+
+	// physical object method
 	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override;
 
 	virtual int IsCollidable() { return 0; }

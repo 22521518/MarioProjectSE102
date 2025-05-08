@@ -38,17 +38,17 @@ void CPlayScene::InitPlayer(LPGAMEOBJECT player) {
 #pragma region LOAD_RESOURCE
 
 #pragma region CUSTOM_PARSE_SECTION
-void CPlayScene::_ParseSection_SPRITES(vector<SpriteConfig> sprites)
-{
-	for (const SpriteConfig sprite : sprites)
-	{
-		LPTEXTURE tex = CTextures::GetInstance()->Get(sprite.textureID);
-		if (tex == NULL) continue;
-		CSprites::GetInstance()->Add(sprite.spriteID, sprite.left, sprite.top, sprite.right, sprite.bottom, tex);
-	}
+void CPlayScene::_ParseSection_SPRITES(const vector<SpriteConfig>& sprites)  
+{  
+   for (const SpriteConfig& sprite : sprites)  
+   {  
+       LPTEXTURE tex = CTextures::GetInstance()->Get(sprite.textureID);  
+       if (tex == NULL) continue;  
+       CSprites::GetInstance()->Add(sprite.spriteID, sprite.left, sprite.top, sprite.right, sprite.bottom, tex);  
+   }  
 }
 
-void CPlayScene::_ParseSection_ANIMATIONS(vector<AnimationConfig> animations)
+void CPlayScene::_ParseSection_ANIMATIONS(const vector<AnimationConfig>& animations)
 {
 	for (const AnimationConfig animation : animations)
 	{
@@ -61,7 +61,7 @@ void CPlayScene::_ParseSection_ANIMATIONS(vector<AnimationConfig> animations)
 	}
 }
 
-void CPlayScene::_ParseSection_OBJECTS(vector<GameObjectConfig> gameObjects)
+void CPlayScene::_ParseSection_OBJECTS(const vector<GameObjectConfig>& gameObjects)
 {
 	for (const GameObjectConfig gameObject : gameObjects)
 	{
@@ -102,37 +102,54 @@ void CPlayScene::Load()
 #pragma region SCENE_MANAGEMENT
 void CPlayScene::Update(DWORD dt)
 {
-	// TO-DO: This is a "dirty" way, need a more organized way 
-	vector<LPPHYSICALOBJECT> coObjects;
-	for (size_t i = 0; i < objects.size(); i++)
-	{
-		if (dynamic_cast<LPPHYSICALOBJECT>(objects[i])) {
-			coObjects.push_back(dynamic_cast<LPPHYSICALOBJECT>(objects[i]));
-		}
-	}
-
-	for (size_t i = 0; i < objects.size(); i++)
-	{
-		if (dynamic_cast<LPPHYSICALOBJECT>(objects[i])) {
-			((LPPHYSICALOBJECT)objects[i])->Update(dt, &coObjects);
-		}
-	}
-
-	if (player == NULL) 
+	if (player == NULL)
 	{
 		DebugOut(L"[ERROR] Player object is NULL\n");
 		exit(0);
 		return;
 	};
 
-	float cx, cy;
-	player->GetPosition(cx, cy);
-	cx += -CGame::GetInstance()->GetBackBufferWidth() / 2;
-	cy += -CGame::GetInstance()->GetBackBufferHeight() / 2;
-	cx = cx < 0 ? 0 : cx;
+	float screenWidth = CGame::GetInstance()->GetBackBufferWidth();
+	float screenHeight = CGame::GetInstance()->GetBackBufferHeight();
+	float px, py;
+	player->GetPosition(px, py);
 
-	//CGame::GetInstance()->SetCamPos(cx, 0);
-	CGame::GetInstance()->SetCamPos(cx, cy);
+	// TO-DO: This is a "dirty" way, need a more organized way 
+	vector<LPPHYSICALOBJECT> coObjects;
+	for (auto obj : objects) {
+		float objLeft, objTop, objRight, objBottom;
+		obj->GetBoundingBox(objLeft, objTop, objRight, objBottom);
+
+		float padX = screenWidth;
+		float padY = screenHeight;
+		bool inX = objRight >= px - padX && objLeft <= px + padX;
+		bool inY = objBottom >= py - padY && objTop <= py + padY;
+
+        if (inX && inY) obj->MakeAlive();
+        else obj->Delete();
+
+        if (!obj->IsDeleted()) {
+            if (auto phys = dynamic_cast<LPPHYSICALOBJECT>(obj))
+                coObjects.push_back(phys);
+        } else if (obj != player) {
+            obj->ResetState();
+        }
+    }
+
+
+	for (auto phys : coObjects) {
+		phys->Update(dt, &coObjects);
+	}
+
+	player->GetPosition(px, py);
+	player->SetPosition(px < 0 ? 0 : px, py);
+
+	px += -screenWidth / 2;
+	py += -screenHeight / 2;
+	px = max(0, px);
+
+	//CGame::GetInstance()->SetCamPos(px, 0);
+	CGame::GetInstance()->SetCamPos(px, py);
 	PurgeDeletedObjects();
 }
 
@@ -140,6 +157,7 @@ void CPlayScene::Render()
 {
 	for (size_t i = 0; i < objects.size(); i++)
 	{
+		if (objects[i]->IsDeleted()) continue;
 		if (objects[i] == this->player) continue;
 		objects[i]->Render();
 	}
@@ -154,9 +172,8 @@ void CPlayScene::Unload()
 	objects.clear();
 	player = NULL;
 
-	// Beside objects, we need to clean up sprites, animations and te
+	// Beside objects, we need to clean up sprites, animations
 	CSprites::GetInstance()->Clear();
-	//CTextures::GetInstance()->Clear();
 	CAnimations::GetInstance()->Clear();
 
 	DebugOut(L"[INFO] Scene %d unloaded! \n", id);
@@ -178,7 +195,7 @@ void CPlayScene::PurgeDeletedObjects() {
 	vector<LPGAMEOBJECT>::iterator it;
 	for (it = objects.begin(); it != objects.end(); it++) {
 		LPGAMEOBJECT currentObj = *it;
-		if (currentObj->IsDeleted()) {
+		if (CBaseObject::IsDeleted(currentObj)) {
 			delete currentObj;
 			*it = NULL;
 		}

@@ -5,7 +5,6 @@
 CGame* CGame::__instance = NULL;
 
 #pragma region LOAD_RESOURCE
-#pragma region CUSTOM_PARSE_SECTION
 void CGame::_ParseSection_SETTINGS(SettingConfig setting)
 {
 	nextScene = setting.start;
@@ -25,7 +24,6 @@ void CGame::_ParseSection_TEXTURES(vector<TextureConfig> textures)
 		DebugOut(L"[INFO] Done loading texture %d, %s\n", tex.textureID, tex.texturePath.c_str());
 	}
 }
-#pragma endregion
 // Load game file
 void CGame::Load(LPCWSTR gameFile) {
 	DebugOut(L"[INFO] Start loading game file : %s\n", gameFile);
@@ -320,7 +318,7 @@ void CGame::ProcessKeyboard()
 		}
 		else
 		{
-			//DebugOut(L"[ERROR] DINPUT::GetDeviceState failed. Error: %d\n", hr);
+			DebugOut(L"[ERROR] DINPUT::GetDeviceState failed. Error: %d\n", hr);
 			return;
 		}
 	}

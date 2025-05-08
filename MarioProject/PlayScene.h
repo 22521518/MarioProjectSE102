@@ -36,9 +36,9 @@ protected:
 	LPGAMEOBJECT player;
 	vector<LPGAMEOBJECT> objects;
 
-	void _ParseSection_SPRITES(vector<SpriteConfig> sprites);
-	void _ParseSection_ANIMATIONS(vector<AnimationConfig> animations);
-	void _ParseSection_OBJECTS(vector<GameObjectConfig> gameObjects);
+	void _ParseSection_SPRITES(const vector<SpriteConfig>& sprites);
+	void _ParseSection_ANIMATIONS(const vector<AnimationConfig>& animations);
+	void _ParseSection_OBJECTS(const vector<GameObjectConfig>& gameObjects);
 	void LoadAssets(LPCWSTR assetFile);
 public:
 	CPlayScene(int id, LPCWSTR filePath);

@@ -35,6 +35,12 @@ public:
 	// collidable with mario interface
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e) override;
 
+	void ResetState() override
+	{
+		CEnemy::ResetState();
+		die_start = -1;
+	}
+
 };
 
 typedef CGoomba* LPGOOMBA;
