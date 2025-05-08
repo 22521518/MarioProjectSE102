@@ -1,5 +1,5 @@
 #include "DestroyableBrick.h"
-#include "BrickIDs.h"
+#include "BrickAniIDs.h"
 #include "BreakBrickEffect.h"
 
 void CDestroyableBrick::Render()

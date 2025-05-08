@@ -172,6 +172,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MarioPlayerKeyHandler.cpp" />
     <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="RedGoomba.cpp" />
     <ClCompile Include="RedKoopa.cpp" />
     <ClCompile Include="RedKoopaParatroopa.cpp" />
     <ClCompile Include="RedKoopaParatroopaState.cpp" />
@@ -199,7 +200,7 @@
     <ClInclude Include="BigMarioState.h" />
     <ClInclude Include="BlockQ.h" />
     <ClInclude Include="BrickConfig.h" />
-    <ClInclude Include="BrickIDs.h" />
+    <ClInclude Include="BrickAniIDs.h" />
     <ClInclude Include="BrickItem.h" />
     <ClInclude Include="BrickSuperItem.h" />
     <ClInclude Include="CheckingSideObject.h" />
@@ -226,6 +227,7 @@
     <ClInclude Include="BlockCoin.h" />
     <ClInclude Include="Block1Up.h" />
     <ClInclude Include="mapUtil.h" />
+    <ClInclude Include="RedGoomba.h" />
     <ClInclude Include="SolidPlatform.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemAniIDs.h" />

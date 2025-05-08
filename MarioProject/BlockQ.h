@@ -1,6 +1,6 @@
 #pragma once
 #include "InteractiveObject.h"
-#include "BrickIDs.h"
+#include "BrickAniIDs.h"
 #include "CollidableWithMario.h"
 #include "BlockCoin.h"
 #include "Block1Up.h"

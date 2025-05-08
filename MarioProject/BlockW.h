@@ -1,6 +1,6 @@
 #pragma once
 #include "Brick.h"
-#include "BrickIDs.h"
+#include "BrickAniIDs.h"
 #include "BrickStateIDs.h"
 
 class CBlockW : public CBrick {

@@ -25,9 +25,9 @@ constexpr int OBJECT_TYPE_SUPER_LEAF_ITEM					= 2e6;
 
 constexpr int OBJECT_TYPE_DESTROYABLE_BRICK					= 1e6 + 2e4;
 
+// enemy
 constexpr int OBJECT_TYPE_RED_KPOOPA						= 1e6;
 constexpr int OBJECT_TYPE_GREEN_KPOOPA						= 1e6 + 1e4;
-// fly
 constexpr int OBJECT_TYPE_RED_KPOOPA_TROOPA					= 1e6 + 2e3;
 constexpr int OBJECT_TYPE_GREEN_KPOOPA_TROOPA				= 1e6 + 3e3;
 #pragma endregion

@@ -2,7 +2,7 @@
 #include "SuperLeaf.h"
 #include "SuperMushroom.h"
 #include "CollisionEvent.h"
-#include "BrickIDs.h"
+#include "BrickAniIDs.h"
 #include "BrickConfig.h"
 
 void CBrickSuperItem::CreateSuperLeaf(LPCOLLISIONEVENT e)

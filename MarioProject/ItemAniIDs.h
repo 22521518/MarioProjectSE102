@@ -1,8 +1,9 @@
 #pragma once
-#include "AnimationIDs.h"
+//#include "AnimationIDs.h"
 
-#define ID_ANI_SUPER_LEAF_ITEM_LEFT ID_ANI_SUPER_LEAF_ITEM 
-#define ID_ANI_SUPER_LEAF_ITEM_RIGHT ID_ANI_SUPER_LEAF_ITEM + 100 
+constexpr int ID_ANI_SUPER_LEAF_ITEM		= 2e6;
+constexpr int ID_ANI_SUPER_LEAF_ITEM_LEFT	= 2e6;
+constexpr int ID_ANI_SUPER_LEAF_ITEM_RIGHT	= 2e6 + 100 ;
 
-//#define ID_ANI_SUPER_MUSHROOM_ITEM 2001000 
-//#define ID_ANI_ONE_UP_MUSHROOM_ITEM 2002000 
+constexpr int ID_ANI_SUPER_MUSHROOM_ITEM	= 2e6 + 1e3 ;
+constexpr int ID_ANI_ONE_UP_MUSHROOM_ITEM	= 2e6 + 2e3 ;

@@ -346,6 +346,9 @@
     <ClCompile Include="mapUtil.cpp">
       <Filter>Source Files\Utility</Filter>
     </ClCompile>
+    <ClCompile Include="RedGoomba.cpp">
+      <Filter>Source Files\GameObjectConcrete\Goomba</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="setup.h">
@@ -489,7 +492,7 @@
     <ClInclude Include="MarioAniIDs.h">
       <Filter>Header Files\GameObjectConcrete\Mario\MarioAsset</Filter>
     </ClInclude>
-    <ClInclude Include="BrickIDs.h">
+    <ClInclude Include="BrickAniIDs.h">
       <Filter>Header Files\GameObjectConcrete\Brick\BrickAsset</Filter>
     </ClInclude>
     <ClInclude Include="BrickStateIDs.h">
@@ -689,6 +692,9 @@
     </ClInclude>
     <ClInclude Include="mapUtil.h">
       <Filter>Header Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="RedGoomba.h">
+      <Filter>Header Files\GameObjectConcrete\Goomba</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

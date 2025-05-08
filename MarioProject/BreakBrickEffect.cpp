@@ -1,5 +1,5 @@
 #include "BreakBrickEffect.h"
-#include "BrickIDs.h"
+#include "BrickAniIDs.h"
 
 void CBreakBrickEffect::Render()
 {

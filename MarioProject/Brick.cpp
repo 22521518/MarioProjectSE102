@@ -1,5 +1,5 @@
 #include "Brick.h"
-#include "BrickIDs.h"
+#include "BrickAniIDs.h"
 #include "BrickStateIDs.h"
 
 void CBrick::Render()

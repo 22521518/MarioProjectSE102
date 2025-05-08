@@ -1,14 +1,6 @@
 #include "Goomba.h"
 #include "GoombaAniIDs.h"
 #include "Collision.h"
-#include "MarioConfig.h"
-
-CGoomba::CGoomba(float x, float y, float vx, float vy, float ax, float ay, DirectionXAxisType nx, int state)
-	: CEnemy(x, y, vx, vy, ax, ay, nx, state)
-{
-	this->die_start = -1;
-	SetState(GOOMBA_STATE_WALKING);
-};
 
 #pragma region COLLIDABLE_MARIO_METHOD
 void CGoomba::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
@@ -42,7 +34,7 @@ void CGoomba::SetState(int state)
 		vx = -GOOMBA_WALKING_SPEED;
 		break;
 	}
-	CInteractiveObject::SetState(state);
+	CEnemy::SetState(state);
 }
 
 void CGoomba::OnCollisionWith(LPCOLLISIONEVENT e)

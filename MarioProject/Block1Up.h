@@ -4,7 +4,7 @@
 #include "CollisionEvent.h"
 #include "BrickStateIDs.h"
 #include "GameObject.h"
-#include "BrickIDs.h"
+#include "BrickAniIDs.h"
 
 class CBlock1Up : public CInteractiveObject, public CCollidableWithMario {
 protected:

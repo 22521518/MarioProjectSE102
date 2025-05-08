@@ -1,38 +1,19 @@
 #pragma once
 #include "KoopaStateIDs.h"
 
-#define ID_ANI_MARIO 0
-#define ID_ANI_MARIO_SMALL 10000
-#define ID_ANI_MARIO_FLY 10000000
-#define ID_ANI_BRICK 20000
-#define ID_ANI_COIN 21000
-//#define ID_ANI 30000
-//#define ID_ANI 40000
-#define ID_ANI_GOOMBA 50000
+constexpr int ID_ANI_BRICK = 2e4;
+constexpr int ID_ANI_COIN = 21e3;
+//constexpr int ID_ANI = 30000;
+//constexpr int ID_ANI = 40000;
+constexpr int ID_ANI_GOOMBA = 5e4;
 
 #pragma region TRI_OBJ
-#define ID_ANI_RED_KOOPA 1000000
-#define ID_ANI_GREEN_KOOPA 1001000
-
-//fly
-#define ID_ANI_RED_KOOPA_TROOPA (ID_ANI_RED_KOOPA + KOOPA_STATE_PARATROOPA) // 1002000
-#define ID_ANI_GREEN_KOOPA_TROOPA (ID_ANI_GREEN_KOOPA + KOOPA_STATE_PARATROOPA) // 1003000
-
-#define ID_ANI_BREAK_BRICK_EFFECT ID_ANI_BRICK + 1000000 + 1000
-#define ID_ANI_DESTROYABLE_BRICK ID_ANI_BRICK + 1000000 
-
-#define ID_ANI_SUPER_LEAF_ITEM 2000000 
-#define ID_ANI_SUPER_MUSHROOM_ITEM 2001000 
-#define ID_ANI_ONE_UP_MUSHROOM_ITEM 2002000 
-
-#define ID_ANI_ITEM_BRICK 2020000
-#define ID_ANI_EMPTY_ITEM_BRICK 2020005
 #pragma endregion
 
 #pragma region THANH_OBJ
-#define ID_ANI_BLOCK_Q 6000000
-#define ID_ANI_BLOCK_E 6001000
-#define ID_ANI_BLOCK_W 6002000
-#define ID_ANI_BLOCK_F 6003000
-#define ID_ANI_BLOCK_Q_ITEM 6000100
+constexpr int ID_ANI_BLOCK_Q = 6000000;
+constexpr int ID_ANI_BLOCK_E = 6001000;
+constexpr int ID_ANI_BLOCK_W = 6002000;
+constexpr int ID_ANI_BLOCK_F = 6003000;
+constexpr int ID_ANI_BLOCK_Q_ITEM = 6000100;
 #pragma endregion
