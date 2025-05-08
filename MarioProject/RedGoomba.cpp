@@ -3,8 +3,12 @@
 
 void CRedGoomba::Render()
 {
-	int aniId = ID_ANI_RED_GOOMBA_WALKING;
-	if (state == GOOMBA_STATE_DIE)
+	int aniId = -1;
+	if (state == GOOMBA_STATE_WALKING)
+	{
+		aniId = ID_ANI_RED_GOOMBA_WALKING;
+	}
+	else if (state == GOOMBA_STATE_DIE)
 	{
 		aniId = ID_ANI_RED_GOOMBA_DIE;
 	}

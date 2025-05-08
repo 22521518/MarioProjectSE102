@@ -349,6 +349,9 @@
     <ClCompile Include="RedGoomba.cpp">
       <Filter>Source Files\GameObjectConcrete\Goomba</Filter>
     </ClCompile>
+    <ClCompile Include="RedParagoomba.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="setup.h">
@@ -695,6 +698,9 @@
     </ClInclude>
     <ClInclude Include="RedGoomba.h">
       <Filter>Header Files\GameObjectConcrete\Goomba</Filter>
+    </ClInclude>
+    <ClInclude Include="RedParagoomba.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

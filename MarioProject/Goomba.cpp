@@ -9,7 +9,11 @@ void CGoomba::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	mario->OnCollisionWithGoomba(this, e);
 	if (e->normalY == DirectionYAxisType::Top)
 	{
-		if (!this->IsDeadState())
+		if (state == GOOMBA_STATE_FLY)
+		{
+			this->SetState(GOOMBA_STATE_WALKING);
+		}
+		else if (!this->IsDeadState())
 		{
 			this->SetState(GOOMBA_STATE_DIE);
 		}
@@ -46,10 +50,10 @@ void CGoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 	{
 		vy = 0;
 	}
-	else if (e->normalX != DirectionXAxisType::None)
+	if (e->normalX != DirectionXAxisType::None)
 	{
 		vx = -vx;
-	}
+	}	
 }
 #pragma endregion
 
@@ -83,8 +87,12 @@ void CGoomba::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 #pragma region GAME_OBJECT_METHOD
 void CGoomba::Render()
 {
-	int aniId = ID_ANI_GOOMBA_WALKING;
-	if (state == GOOMBA_STATE_DIE)
+	int aniId = -1; 
+	if (state == GOOMBA_STATE_WALKING)
+	{
+		aniId = ID_ANI_GOOMBA_WALKING;
+	}
+	else if (state == GOOMBA_STATE_DIE)
 	{
 		aniId = ID_ANI_GOOMBA_DIE;
 	}

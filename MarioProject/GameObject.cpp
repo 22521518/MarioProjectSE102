@@ -17,6 +17,7 @@
 #include "RedKoopaParatroopa.h"
 #include "GreenKoopa.h"
 #include "GreenKoopaParatroopa.h"
+#include "RedParagoomba.h"
 
 #include "PlantGreenPiranha.h"
 #include "PlantGreenVenusFire.h"
@@ -34,6 +35,7 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	{
 	case OBJECT_TYPE_MARIO: return new CMario(x, y);
 	case OBJECT_TYPE_GOOMBA: return new CGoomba(x, y);
+	case OBJECT_TYPE_RED_PARAGOOMBA: return new CRedParagoomba(x, y);
 	case OBJECT_TYPE_BRICK: return new CBrick(x, y);
 	case OBJECT_TYPE_DESTROYABLE_BRICK: return new CDestroyableBrick(x, y);
 	case OBJECT_TYPE_COIN: return new CCoin(x, y);
@@ -45,10 +47,10 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	case OBJECT_TYPE_SUPER_LEAF_ITEM: return new CSuperLeaf(x, y);
 	case OBJECT_TYPE_SUPER_MUSHROOM_ITEM: return new CSuperMushroom(x, y);
 	case OBJECT_TYPE_ONE_UP_MUSHROOM_ITEM: return new COneUpMushroom(x, y);
-	case OBJECT_TYPE_RED_KPOOPA: return new CRedKoopa(x, y);
-	case OBJECT_TYPE_RED_KPOOPA_TROOPA: return new CRedKoopaParatroopa(x, y);
-	case OBJECT_TYPE_GREEN_KPOOPA_TROOPA: return new CGreenKoopaParatroopa(x, y);
-	case OBJECT_TYPE_GREEN_KPOOPA: return new CGreenKoopa(x, y);
+	case OBJECT_TYPE_RED_KOOPA: return new CRedKoopa(x, y);
+	case OBJECT_TYPE_RED_KOOPA_TROOPA: return new CRedKoopaParatroopa(x, y);
+	case OBJECT_TYPE_GREEN_KOOPA_TROOPA: return new CGreenKoopaParatroopa(x, y);
+	case OBJECT_TYPE_GREEN_KOOPA: return new CGreenKoopa(x, y);
 	case OBJECT_TYPE_SOLID_SEMISOLID_PLATFORM_9_SPRITE:
 	case OBJECT_TYPE_SOLID_SOLID_PLATFORM_9_SPRITE:
 	{

@@ -9,6 +9,7 @@
 		"objects\\goomba.txt",
 		"objects\\green_koopa.txt",
 		"objects\\red_koopa.txt",
+		"objects\\red_goomba.txt",
 		"objects\\mario.txt"
 	],
 	"objects":[
@@ -3203,7 +3204,7 @@
                  "type":"0",
                  "visible":true,
                  "width":16,
-                 "x":50,
+                 "x":1030,
                  "y":386
                 }, 
                 {
@@ -3995,5 +3996,16 @@
                  "width":32,
                  "x":2256,
                  "y":112
+                }, 
+                {
+                 "height":16,
+                 "id":543,
+                 "name":"enemy-red-paragoomba",
+                 "rotation":0,
+                 "type":"1050100",
+                 "visible":true,
+                 "width":11.625,
+                 "x":932,
+                 "y":376
                 }]
 }

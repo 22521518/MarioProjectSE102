@@ -26,10 +26,11 @@ constexpr int OBJECT_TYPE_SUPER_LEAF_ITEM					= 2e6;
 constexpr int OBJECT_TYPE_DESTROYABLE_BRICK					= 1e6 + 2e4;
 
 // enemy
-constexpr int OBJECT_TYPE_RED_KPOOPA						= 1e6;
-constexpr int OBJECT_TYPE_GREEN_KPOOPA						= 1e6 + 1e4;
-constexpr int OBJECT_TYPE_RED_KPOOPA_TROOPA					= 1e6 + 2e3;
-constexpr int OBJECT_TYPE_GREEN_KPOOPA_TROOPA				= 1e6 + 3e3;
+constexpr int OBJECT_TYPE_RED_KOOPA							= 1e6;
+constexpr int OBJECT_TYPE_GREEN_KOOPA						= 1e6 + 1e4;
+constexpr int OBJECT_TYPE_RED_KOOPA_TROOPA					= 1e6 + 2e3;
+constexpr int OBJECT_TYPE_GREEN_KOOPA_TROOPA				= 1e6 + 3e3;
+constexpr int OBJECT_TYPE_RED_PARAGOOMBA					= 1e6 + 5e4 + 100;
 #pragma endregion
 
 constexpr int ID_SPRITE_MARIO								= 1e5;
