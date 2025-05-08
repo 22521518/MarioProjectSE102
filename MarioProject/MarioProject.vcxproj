@@ -204,6 +204,7 @@
     <ClInclude Include="BrickAniIDs.h" />
     <ClInclude Include="BrickItem.h" />
     <ClInclude Include="BrickSuperItem.h" />
+    <ClInclude Include="CBonusScene.h" />
     <ClInclude Include="CheckingSideObject.h" />
     <ClInclude Include="DestroyableBrick.h" />
     <ClInclude Include="CheckingDummyObject.h" />

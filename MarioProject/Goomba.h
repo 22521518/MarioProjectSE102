@@ -33,6 +33,7 @@ public:
 
 	// character object method
 	bool IsDeadState() override { return this->state == GOOMBA_STATE_DIE; }
+	bool IsParaGoombaState() { return this->state == GOOMBA_STATE_FLY; }
 
 	// collidable with mario interface
 	void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e) override;

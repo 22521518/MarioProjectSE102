@@ -17,7 +17,8 @@ void CFlyMarioState::OnJump(LPMARIO mario)
 		}
 		else if (mario->IsFlapping() && mario->vy > 0)
 		{
-			mario->ay = 0;
+			mario->ay = -MARIO_GRAVITY * 1.2;
+			mario->vy = max(MARIO_MIN_VY, mario->vy);
 		}
 		else
 		{
@@ -42,7 +43,6 @@ int CFlyMarioState::GetAniId(LPMARIO mario)
 	int aniId = -1;
 	if (!mario->isOnPlatform)
 	{
-		DebugOut(L"flap: %d: %d\n", mario->IsFlapping(), mario->flap_start);
 		if (abs(mario->ax) == MARIO_ACCEL_RUN_X && mario->vy < 0)
 		{
 			if (mario->IsFlapping())

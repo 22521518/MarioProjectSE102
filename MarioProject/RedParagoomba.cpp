@@ -20,7 +20,6 @@ void CRedParagoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 
 	if (e->normalY == DirectionYAxisType::Top && GetTickCount64() - start_fly > GOOMBA_FLY_COOL_DOWN)
 	{
-		DebugOut(L"DM: %d, %d", GetTickCount64() - start_fly > GOOMBA_FLY_COOL_DOWN, start_fly);
 		this->vy = -GOOMBA_JUMP_VY;
 		start_fly = GetTickCount64();
 		int dir = static_cast<int>(this->nx);

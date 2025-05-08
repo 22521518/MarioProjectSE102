@@ -34,6 +34,10 @@ void CMarioPlayerKeyHandler::OnKeyDown(int keyCode)
 {
 		 mario->SetLevel(MARIO_LEVEL_BIG);
 	}
+	else if (keyCode == keyMap->GetKey(ActionKey::SetFly))
+	{
+		mario->SetLevel(MARIO_LEVEL_FLY);
+	}
 	else if (keyCode == keyMap->GetKey(ActionKey::SetDie)) 
 {
 		 mario->SetState(MARIO_STATE_DIE);

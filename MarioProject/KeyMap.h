@@ -19,6 +19,7 @@ enum class ActionKey
     Reload,
     SetSmall,
 	SetBig,
+	SetFly,
     SetDie,
     Run,
 };

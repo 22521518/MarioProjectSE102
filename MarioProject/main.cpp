@@ -4,12 +4,6 @@
 #include "GameKeyHandler.h"
 #include "KeyMap.h"
 
-void LoadResources() {
-	// Load textures
-	// Load sprites
-	// Load animations
-}
-
 int WINAPI WinMain(
 	_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,

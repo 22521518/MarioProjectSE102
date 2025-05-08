@@ -1,6 +1,7 @@
 {
 	"assets": [
 		"objects\\BlockQ_BlockW_BlockF.txt",
+		"objects\\Plant_Enemy.txt",
 		"objects\\platform.txt",
 		"objects\\super_items.txt",
 		"objects\\destroyable_brick.txt",
@@ -12,7 +13,18 @@
 		"objects\\red_goomba.txt",
 		"objects\\mario.txt"
 	],
-	"objects":[
+       "objects":[
+                {
+                 "height":16,
+                 "id":579,
+                 "name":"mario",
+                 "rotation":0,
+                 "type":"0",
+                 "visible":true,
+                 "width":16,
+                 "x":45,
+                 "y":379.333
+                }, 
                 {
                  "height":16,
                  "id":350,
@@ -3198,17 +3210,6 @@
                 }, 
                 {
                  "height":16,
-                 "id":439,
-                 "name":"mario",
-                 "rotation":0,
-                 "type":"0",
-                 "visible":true,
-                 "width":16,
-                 "x":1030,
-                 "y":386
-                }, 
-                {
-                 "height":16,
                  "id":447,
                  "name":"coin-block",
                  "rotation":0,
@@ -3626,8 +3627,52 @@
                  "y":388.636
                 }, 
                 {
+                 "height":16,
+                 "id":543,
+                 "name":"enemy-red-paragoomba",
+                 "rotation":0,
+                 "type":"1050100",
+                 "visible":true,
+                 "width":11.625,
+                 "x":932,
+                 "y":376
+                }, 
+                {
+                 "height":24,
+                 "id":545,
+                 "name":"ene-green-venus-fire",
+                 "rotation":0,
+                 "type":"652",
+                 "visible":true,
+                 "width":16,
+                 "x":1864.16666666667,
+                 "y":372.666666666667
+                }, 
+                {
+                 "height":24,
+                 "id":546,
+                 "name":"ene-green-piranha",
+                 "rotation":0,
+                 "type":"651",
+                 "visible":true,
+                 "width":16,
+                 "x":1799.83333333333,
+                 "y":391.25
+                }, 
+                {
+                 "height":32,
+                 "id":549,
+                 "name":"ene-red-venus-fire",
+                 "rotation":0,
+                 "type":"653",
+                 "visible":true,
+                 "width":16,
+                 "x":360.333333333333,
+                 "y":368.666666666667
+                }, 
+                {
                  "height":48,
-                 "id":537,
+                 "id":550,
                  "name":"pipe",
                  "properties":[
                         {
@@ -3689,7 +3734,7 @@
                 }, 
                 {
                  "height":32,
-                 "id":538,
+                 "id":551,
                  "name":"pipe",
                  "properties":[
                         {
@@ -3751,7 +3796,7 @@
                 }, 
                 {
                  "height":48,
-                 "id":539,
+                 "id":552,
                  "name":"pipe",
                  "properties":[
                         {
@@ -3813,7 +3858,7 @@
                 }, 
                 {
                  "height":32,
-                 "id":540,
+                 "id":553,
                  "name":"pipe-notop",
                  "properties":[
                         {
@@ -3875,7 +3920,7 @@
                 }, 
                 {
                  "height":32,
-                 "id":541,
+                 "id":554,
                  "name":"pipe",
                  "properties":[
                         {
@@ -3937,7 +3982,7 @@
                 }, 
                 {
                  "height":192,
-                 "id":542,
+                 "id":555,
                  "name":"pipe",
                  "properties":[
                         {
@@ -3999,13 +4044,40 @@
                 }, 
                 {
                  "height":16,
-                 "id":543,
-                 "name":"enemy-red-paragoomba",
+                 "id":576,
+                 "name":"port",
+                 "properties":[
+                        {
+                         "name":"bottom",
+                         "type":"float",
+                         "value":118
+                        }, 
+                        {
+                         "name":"right",
+                         "type":"float",
+                         "value":2280
+                        }, 
+                        {
+                         "name":"scene_id",
+                         "type":"float",
+                         "value":1001
+                        }],
                  "rotation":0,
-                 "type":"1050100",
+                 "type":"50",
                  "visible":true,
-                 "width":11.625,
-                 "x":932,
-                 "y":376
+                 "width":16,
+                 "x":2264,
+                 "y":102
+                }, 
+                {
+                 "height":16,
+                 "id":577,
+                 "name":"dummy",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":2328,
+                 "y":352
                 }]
 }

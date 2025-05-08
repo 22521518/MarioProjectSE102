@@ -67,6 +67,8 @@ void CPlayScene::_ParseSection_OBJECTS(const vector<GameObjectConfig>& gameObjec
 	{
 		LPGAMEOBJECT obj = CGameObject::CreateGameObject(gameObject.typeID, gameObject.x, gameObject.y, gameObject.additionalFieldInfo, player);
 
+		//if (!gameObject.typeID) return;
+
 		if (obj == NULL) {
 			DebugOut(L"[ERROR] Failed to create player object!\n");
 			return;

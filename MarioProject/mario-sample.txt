@@ -11,6 +11,7 @@ height	240
 2	scenes\scene02.txt
 5	scenes\scene0005.txt
 1000	scenes\stage0101.json
+1001	scenes\bonus0101.json
 
 # id	file 
 [TEXTURES]

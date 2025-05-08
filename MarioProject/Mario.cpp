@@ -86,7 +86,7 @@ void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 	// jump on top >> kill Goomba and deflect a bit 
 	if (e->normalY == DirectionYAxisType::Top)
 	{
-		if (!goomba->IsDeadState())
+		if (!goomba->IsDeadState() || goomba->IsParaGoombaState())
 		{
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
 		}

@@ -104,8 +104,8 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	}
 	case OBJECT_TYPE_PORTAL:
 	{
-		float r = static_cast<int>(getOrDefault(additionalFieldInfo, "r", 0.0f));
-		float b = static_cast<int>(getOrDefault(additionalFieldInfo, "b", 0.0f));
+		float r = static_cast<int>(getOrDefault(additionalFieldInfo, "right", 0.0f));
+		float b = static_cast<int>(getOrDefault(additionalFieldInfo, "bottom", 0.0f));
 		int scene_id = static_cast<int>(getOrDefault(additionalFieldInfo, "scene_id", 0.0f));
 		return new CPortal(x, y, r, b, scene_id);
 

@@ -29,6 +29,7 @@ void CKeyMap::LoadDefault()
     //SetKey(ActionKey::SetDie, DIK_0);
     //SetKey(ActionKey::SetSmall, DIK_1);
     SetKey(ActionKey::SetBig, DIK_2);
+    SetKey(ActionKey::SetFly, DIK_3);
 
     SetKey(ActionKey::MoveLeft, DIK_A);
     SetKey(ActionKey::MoveRight, DIK_D);

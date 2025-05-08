@@ -350,7 +350,7 @@
       <Filter>Source Files\GameObjectConcrete\Goomba</Filter>
     </ClCompile>
     <ClCompile Include="RedParagoomba.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameObjectConcrete\Goomba</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -701,6 +701,9 @@
     </ClInclude>
     <ClInclude Include="RedParagoomba.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CBonusScene.h">
+      <Filter>Header Files\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
