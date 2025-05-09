@@ -15,8 +15,7 @@ void CMushroom::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
 	if (this->state == MUSHROOM_STATE_IDLE) {
 		if (this->isGrowing) {
-			float riseAmount = MUSHROOM_GROW_SPEED * dt;
-			this->y -= riseAmount;
+			this->y -= MUSHROOM_GROW_SPEED * dt; // rising
 
 			if (this->startY - this->y >= MUSHROOM_RISE_DISTANCE) {
 				this->y = this->startY - MUSHROOM_RISE_DISTANCE;
@@ -24,9 +23,8 @@ void CMushroom::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 				this->startTime = GetTickCount64();
 			}
 		}
-
-		if (this->state == MUSHROOM_STATE_MOVE || !this->GetActive() || isGrowing) return;
-		if ((GetTickCount64() - startTime > MUSHROOM_GROW_WAIT_TIME)) {
+		if (isGrowing || !this->GetActive()) return;
+		if  ((GetTickCount64() - startTime > MUSHROOM_GROW_WAIT_TIME)) {
 
 			this->SetState(MUSHROOM_STATE_MOVE);
 		}

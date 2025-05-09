@@ -2,10 +2,11 @@
 #include "Enemy.h"
 #include "GoombaConfig.h"
 #include "GoombaStateIDs.h"
+#include "DestroyableObject.h"
 #include "CollidableWithMario.h"
 
 class CGoomba :
-	public CEnemy, public CCollidableWithMario
+	public CEnemy, public CCollidableWithMario, public CDestroyableObject
 {
 protected:
 	ULONGLONG die_start = -1;
@@ -37,6 +38,9 @@ public:
 
 	// collidable with mario interface
 	void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e) override;
+
+	// desttoyable object
+	void OnDestroy(LPCOLLISIONEVENT e) override { SetState(GOOMBA_STATE_DIE); }
 
 	// base game object
 	void ResetState() override

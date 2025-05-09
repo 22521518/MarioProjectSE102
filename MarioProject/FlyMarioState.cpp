@@ -22,7 +22,7 @@ void CFlyMarioState::OnJump(LPMARIO mario)
 		}
 		else
 		{
-			mario->ay = MARIO_GRAVITY;
+			mario->ay = MARIO_GRAVITY * 0.8;
 		}
 	}
 

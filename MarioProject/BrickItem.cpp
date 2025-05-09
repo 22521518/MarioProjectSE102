@@ -16,13 +16,13 @@ void CBrickItem::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 	this->x += this->vx * dt;
 	this->y += this->vy * dt;
 
-	if (this->y > this->startY)
+	if (this->y >= this->startY)
 	{
 		this->y = this->startY;
 		this->vy = this->ay = 0;
 		for (int i = 0; i < items.size(); i++) {
 			LPMUSHROOM mushroom = dynamic_cast<LPMUSHROOM>(items[i]);
-			if (mushroom)
+			if (mushroom && !mushroom->GetActive())
 			{
 				mushroom->Activate();
 			}

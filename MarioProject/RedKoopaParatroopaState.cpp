@@ -35,7 +35,6 @@ void CRedKoopaParatroopaState::OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e
 	if (!e->obj->IsBlocking()) return;
 	if (dynamic_cast<LPKOOPA>(e->obj)) return;
 
-
 	if (e->normalY != DirectionYAxisType::None)
 	{
 		koopa->vy = 0;

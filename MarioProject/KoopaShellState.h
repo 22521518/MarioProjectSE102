@@ -18,6 +18,7 @@ protected:
 public:
 	CKoopaShellMoveState() {};
 	CKoopaShellMoveState(LPKOOPA koopa, LPCOLLISIONEVENT e);
+	void OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e);
 	virtual int GetAnimationID(LPKOOPA koopa) = 0;
 };
 

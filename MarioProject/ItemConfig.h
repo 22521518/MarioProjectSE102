@@ -8,7 +8,7 @@ constexpr float MUSHROOM_BBOX_HEIGHT = 16;
 #pragma endregion
 
 #pragma region SUPER_LEAF_ITEM
-constexpr float SUPER_LEAF_FALL_SPEED = 0.025f;
+constexpr float SUPER_LEAF_FALL_SPEED = 0.0125f;
 constexpr float SUPER_LEAF_FALL_GRAVITY = 0.000005f;
 constexpr float SUPER_LEAF_SWAY_SPEED = 0.005f;
 constexpr float SUPER_LEAF_SWAY_AMPLITUDE = 30.0f;
@@ -16,7 +16,7 @@ constexpr float SUPER_LEAF_SWAY_AMPLITUDE = 30.0f;
 
 #pragma region MUSHROOM_ITEM
 constexpr float MUSHROOM_RISE_DISTANCE = MUSHROOM_BBOX_HEIGHT;
-constexpr float MUSHROOM_GROW_WAIT_TIME = 200;
+constexpr float MUSHROOM_GROW_WAIT_TIME = 100;
 constexpr float MUSHROOM_GROW_SPEED = 0.025f;
 
 constexpr float MUSHROOM_GRAVITY = 0.002f;

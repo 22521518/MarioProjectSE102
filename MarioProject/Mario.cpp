@@ -75,7 +75,6 @@ void CMario::StartUntouchable() {
 void CMario::StartFlap()
 {
 	if (this->level != MARIO_LEVEL_FLY) return;
-	DebugOut(L"Change: %d: %d\n", this->level, this->flap_start);
 	flap_start = GetTickCount64();
 	this->SetState(MARIO_FLY_FLAPPING);
 }
@@ -105,7 +104,6 @@ void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 		}
 		else
 		{
-			DebugOut(L">>> Mario DIE >>> \n");
 			SetState(MARIO_STATE_DIE);
 		}
 	}
@@ -134,7 +132,6 @@ void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
 		}
 		else
 		{
-			DebugOut(L">>> Mario DIE >>> \n");
 			SetState(MARIO_STATE_DIE);
 		}
 	}
@@ -154,7 +151,6 @@ void CMario::CollideFireBall(LPPLANTFIREBALL fire)
 		}
 		else
 		{
-			DebugOut(L">>> Mario DIE >>> \n");
 			SetState(MARIO_STATE_DIE);
 		}
 	}
@@ -203,16 +199,19 @@ void CMario::OnCollisionWithOneUpMushroom(LPONEUPMUSHROOM mushroom, LPCOLLISIONE
 
 void CMario::OnCollisionWithSuperItemBrick(LPBRICKSUPERITEM brick, LPCOLLISIONEVENT e)
 {
-	if (this->level >= MARIO_LEVEL_BIG) brick->CreateSuperLeaf(e);
-	else if (this->level == MARIO_LEVEL_SMALL) brick->CreateSuperMushroom(e);
+	if (this->level > MARIO_LEVEL_SMALL)
+	{
+		brick->CreateSuperLeaf(e);
+		return;
+	}
+	brick->CreateSuperMushroom(e);
 }
 
 void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 {
-	
 	if (e->normalY == DirectionYAxisType::Top)
 	{
-		if (!koopa->IsShellState() || koopa->IsParatroopaState())
+		if (!koopa->IsShellIdle() || koopa->IsParatroopaState())
 		{
 			vy = -MARIO_JUMP_DEFLECT_SPEED;
 		}
@@ -231,7 +230,6 @@ void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 		}
 		else
 		{
-			DebugOut(L">>> Mario DIE >>> \n");
 			SetState(MARIO_STATE_DIE);
 		}
 	}
@@ -242,8 +240,7 @@ void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 #pragma region INTERACTIVE_OBJECT_METHOD
 void CMario::SetState(int state)
 {
-	if (this->IsDeadState() || state == MARIO_STATE_DIE) return;
-	if (this->IsDeadState()) return;
+	StartUntouchable();
 	this->stateHandler->HandleStateChange(this, state);
 	this->state = state;
 	CInteractiveObject::SetState(state);
@@ -298,9 +295,6 @@ void CMario::GetBoundingBox(float& left, float& top, float& right, float& bottom
 
 void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
-	//vy += ay * dt;
-	//vx += ax * dt;
-
 	if (abs(vx) > abs(maxVx)) vx = maxVx;
 
 	// reset untouchable timer if untouchable time has passed
@@ -329,8 +323,6 @@ void CMario::Render()
 	}
 
 	animations->Get(aniId)->Render(x, y);
-
-	RenderBoundingBox();
 
 	DebugOutTitle(L"Coins: %d", coin);
 }

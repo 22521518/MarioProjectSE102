@@ -23,8 +23,6 @@ public:
 	virtual void GetObjectBoundingBox(float& left, float& top, float& right, float& bottom) { this->GetBoundingBox(left, top, right, bottom); };
 	virtual DirectionXAxisType GetObjectCurrentDirectionX() override { return this->nx; };
 
-	
-
 	friend class CRedKoopaState;
 };
 

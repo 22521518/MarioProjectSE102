@@ -16,8 +16,8 @@ void CCheckingSideObject::GetBoundingBox(float& left, float& top, float& right, 
 	DirectionXAxisType dir = this->obj->GetObjectCurrentDirectionX();
 
 	float oldLeft = left, oldRight = right, height = bottom - top;
-	bottom -= height / 2.0f;
-	top += height / 2.0f;
+	bottom -= 0.05f;
+	top += 0.05f;
 
 	const float CHECK_PADDING = 2.0f;
 	const float CHECK_WIDTH = 0.5f;

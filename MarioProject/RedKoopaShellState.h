@@ -2,7 +2,7 @@
 #include "KoopaShellState.h"
 #include "KoopaAniIDs.h"
 
-// Red Koopa
+// Red Koopa Idle Shell
 class CRedKoopaShellIdleState :
 	public CKoopaShellState {
 public:
@@ -11,6 +11,7 @@ public:
 	virtual int GetAnimationID(LPKOOPA koopa) { return ID_ANI_RED_KOOPA_SHELL_IDLE; }
 };
 
+// Red Koopa Idle Run Out Of Time Shell
 class CRedKoopaShellIdleStateRunOutOfTime :
 	public CKoopaShellState {
 public:
@@ -27,6 +28,7 @@ public:
 	virtual int GetAnimationID(LPKOOPA koopa) { return ID_ANI_RED_KOOPA_SHELL_IDLE_OUT_TIME_HOLD; }
 };
 
+// Red Koopa Moving Shell
 class CRedKoopaShellMoveState :
 	public CKoopaShellMoveState {
 public:

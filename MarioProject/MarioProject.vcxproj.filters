@@ -699,11 +699,11 @@
     <ClInclude Include="RedGoomba.h">
       <Filter>Header Files\GameObjectConcrete\Goomba</Filter>
     </ClInclude>
-    <ClInclude Include="RedParagoomba.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CBonusScene.h">
       <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="RedParagoomba.h">
+      <Filter>Header Files\GameObjectConcrete\Goomba</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

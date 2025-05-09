@@ -48,16 +48,12 @@ void CBrickSuperItem::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 		CBrickItem::OnMarioCollide(mario, e);
 	}
 }
-
+ 
 void CBrickSuperItem::OnDestroy(LPCOLLISIONEVENT e)
 {
 	if (!this->IsActive()) return;
-	if (e->normalY == DirectionYAxisType::Bottom)
-	{
-		this->Bouncing();
-		mario->OnCollisionWithSuperItemBrick(this, e);
-		CBrickItem::OnMarioCollide(mario, e);
-	}
+	mario->OnCollisionWithSuperItemBrick(this, e);
+	CBrickItem::OnMarioCollide(mario, e);
 }
 
 void CBrickSuperItem::Bouncing()

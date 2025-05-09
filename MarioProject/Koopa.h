@@ -6,10 +6,10 @@
 #include "KoopaConfig.h"
 #include "KoopaStateIDs.h"
 #include "Goomba.h"
-#include "CheckingSideObject.h"
+#include "DestroyableObject.h"
 
 class CKoopa :
-	public CEnemy, public CCollidableWithMario, public CInteractableWithSideCollision
+	public CEnemy, public CCollidableWithMario, public CDestroyableObject
 {
 private:
 	const DirectionYAxisType originNY;
@@ -29,27 +29,25 @@ public:
 	};
 
 	// game object method
-	virtual void Render();
+	void Render();
+	void GetBoundingBox(float& left, float& top, float& right, float& bottom) override;
 
 	// physical object method
-	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) override;
-	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override;
+	void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override;
 
-	virtual int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) override { return 1; };
-	virtual int IsBlocking() override { return 0; };
-	virtual int IsCollidable() override { return 1; };
+	int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) override { return 1; };
+	int IsBlocking() override { return 0; };
+	int IsCollidable() override { return 1; };
 
 	// interactive object method
-	//virtual void SetState(int state) = 0;
-	//virtual void OnNoCollision(DWORD dt) override; // use default
-	virtual void SetState(int state);
-	virtual void OnCollisionWith(LPCOLLISIONEVENT e) override;
+	void SetState(int state) override;
+	void OnCollisionWith(LPCOLLISIONEVENT e) override;
 
 	// character object method
-	virtual bool IsDeadState() override { return IsShellIdle(); }
+	bool IsDeadState() override { return IsShellIdle(); }
 
 	// collidable with mario interface
-	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e) override;
+	void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e) override;
 
 	// koopa method
 	virtual void SetState(int state, LPCOLLISIONEVENT e) = 0;
@@ -59,9 +57,11 @@ public:
 	virtual bool IsParatroopaState() { return this->state == KOOPA_STATE_PARATROOPA; }
 
 	// interactive with side methods
-	virtual void OnSideCollisionBehavior(LPCOLLISIONEVENT e) override;
-	virtual void GetObjectBoundingBox(float& left, float& top, float& right, float& bottom) override;
-	virtual DirectionXAxisType GetObjectCurrentDirectionX() override;
+	//virtual void OnSideCollisionBehavior(LPCOLLISIONEVENT e) override;
+	//virtual void GetObjectBoundingBox(float& left, float& top, float& right, float& bottom) override;
+	//virtual DirectionXAxisType GetObjectCurrentDirectionX() override;
+
+	void OnDestroy(LPCOLLISIONEVENT e) { this->Delete(); }
 
 	void ResetState() override
 	{

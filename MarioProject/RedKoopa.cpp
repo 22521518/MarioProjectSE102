@@ -7,17 +7,24 @@ void CRedKoopa::SetState(int state)
 	switch (state)
 	{
 	case KOOPA_STATE_SHELL_IDLE:
+	{
 		delete this->stateHandler;
 		this->stateHandler = new CRedKoopaShellIdleState(this);
 		break;
+	}
 	case KOOPA_STATE_SHELL_IDLE_OUT_TIME:
+	{
 		delete this->stateHandler;
 		this->stateHandler = new CRedKoopaShellIdleStateRunOutOfTime(this);
 		break;
+	}
 	case KOOPA_STATE_SHELL_MOVE:
+	{
 		throw std::runtime_error("Invalid state passed !Move state should be in SetState(int, LPCOLLISIONEVENT)");
 		break;
+	}
 	case KOOPA_STATE_WALKING:
+	{
 		if (this->state == KOOPA_STATE_SHELL_IDLE_OUT_TIME)
 		{
 			float left, top, right, bottom;
@@ -34,7 +41,7 @@ void CRedKoopa::SetState(int state)
 		delete this->stateHandler;
 		this->stateHandler = new CRedKoopaState(this);
 		break;
-	}
+	}}
 	//this->state = state;
 	CKoopa::SetState(state);
 }

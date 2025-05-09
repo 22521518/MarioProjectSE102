@@ -25,11 +25,13 @@ void CGoomba::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 #pragma region INTERACTIVE_OBJECT_METHOD
 void CGoomba::SetState(int state)
 {
+	float orgLeft = 0, orgTop = 0, orgRight = 0, orgBottom = 0;
+	this->GetBoundingBox(orgLeft, orgTop, orgRight, orgBottom);
 	switch (state)
 	{
 	case GOOMBA_STATE_DIE:
 		die_start = GetTickCount64();
-		y += (GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE) / 2;
+		//y += (GOOMBA_BBOX_HEIGHT - GOOMBA_BBOX_HEIGHT_DIE) / 2;
 		vx = 0;
 		vy = 0;
 		ay = 0;
@@ -39,6 +41,11 @@ void CGoomba::SetState(int state)
 		break;
 	}
 	CEnemy::SetState(state);
+
+	float left = 0, top = 0, right = 0, bottom = 0;
+	this->GetBoundingBox(left, top, right, bottom);
+	float height = bottom - top;
+	this->y = orgBottom - height / 2;
 }
 
 void CGoomba::OnCollisionWith(LPCOLLISIONEVENT e)

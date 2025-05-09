@@ -73,6 +73,11 @@ void CMarioState::OnDie(LPMARIO mario)
 void CMarioState::HandleStateChange(LPMARIO mario, int state)
 {
 	if (mario->state == MARIO_STATE_DIE) return;
+	if (state == MARIO_STATE_DIE)
+	{
+		//DebugOut(L">>> Mario DIE >>> \n");
+		//return;
+	}
 
 	switch (state)
 	{
