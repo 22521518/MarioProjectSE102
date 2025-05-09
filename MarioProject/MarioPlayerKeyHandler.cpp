@@ -6,80 +6,92 @@
 CMarioPlayerKeyHandler::CMarioPlayerKeyHandler(LPPLAYSCENE s) : CSceneKeyHandler(s)
 {
 	this->mario = dynamic_cast<CMario*>(s->GetPlayer());
-	if (this->mario == NULL) {
+	if (this->mario == NULL)
+	{
 		DebugOut(L"[ERROR] Mario object is NULL\n");
 	}
 }
 
 void CMarioPlayerKeyHandler::OnKeyDown(int keyCode)
 {
-	if (this->mario == NULL) {
+	if (this->mario == NULL)
+	{
 		DebugOut(L"[ERROR] Mario object is NULL\n");
 		return;
 	}
 
-	if (keyCode == keyMap->GetKey(ActionKey::Sit)) 
+	if (keyCode == keyMap->GetKey(ActionKey::Sit))
 	{
-		 mario->SetState(MARIO_STATE_SIT);
+		mario->SetState(MARIO_STATE_SIT);
 	}
-	else if (keyCode == keyMap->GetKey(ActionKey::Jump)) 
-{
-		 mario->SetState(MARIO_STATE_JUMP);
+	else if (keyCode == keyMap->GetKey(ActionKey::Jump))
+	{
+		mario->SetState(MARIO_STATE_JUMP);
 	}
-	else if (keyCode == keyMap->GetKey(ActionKey::SetSmall)) 
-{
-		 mario->SetLevel(MARIO_LEVEL_SMALL);
+	else if (keyCode == keyMap->GetKey(ActionKey::SetSmall))
+	{
+		mario->SetLevel(MARIO_LEVEL_SMALL);
 	}
-	else if (keyCode == keyMap->GetKey(ActionKey::SetBig)) 
-{
-		 mario->SetLevel(MARIO_LEVEL_BIG);
+	else if (keyCode == keyMap->GetKey(ActionKey::SetBig))
+	{
+		mario->SetLevel(MARIO_LEVEL_BIG);
 	}
 	else if (keyCode == keyMap->GetKey(ActionKey::SetFly))
 	{
 		mario->SetLevel(MARIO_LEVEL_FLY);
 	}
-	else if (keyCode == keyMap->GetKey(ActionKey::SetDie)) 
-{
-		 mario->SetState(MARIO_STATE_DIE);
+	else if (keyCode == keyMap->GetKey(ActionKey::SetDie))
+	{
+		mario->SetState(MARIO_STATE_DIE);
 	}
-	else if (keyCode == keyMap->GetKey(ActionKey::Reload)) 
-{
-		 //Reload();
+	else if (keyCode == keyMap->GetKey(ActionKey::Reload))
+	{
+		//Reload();
 	}
 }
 
+// On key relase
 void CMarioPlayerKeyHandler::OnKeyUp(int keyCode)
 {
-	if (this->mario == NULL) {
+	if (this->mario == NULL)
+	{
 		DebugOut(L"[ERROR] Mario object is NULL\n");
 		return;
 	}
-
-	if (keyCode == keyMap->GetKey(ActionKey::Jump)) {
-		 mario->SetState(MARIO_STATE_RELEASE_JUMP);
+	if (keyCode == keyMap->GetKey(ActionKey::Run))
+	{
+		this->mario->SetRunning(false);
+		this->mario->ReleaseHoldingItem();
 	}
-	else if (keyCode == keyMap->GetKey(ActionKey::Sit)) {
-		 mario->SetState(MARIO_STATE_SIT_RELEASE);
+	if (keyCode == keyMap->GetKey(ActionKey::Jump))
+	{
+		mario->SetState(MARIO_STATE_RELEASE_JUMP);
+	}
+	else if (keyCode == keyMap->GetKey(ActionKey::Sit))
+	{
+		mario->SetState(MARIO_STATE_SIT_RELEASE);
 	}
 
 }
 
+//On key pressed
 void CMarioPlayerKeyHandler::KeyState(BYTE* states)
 {
-	if (this->mario == NULL) {
+	if (this->mario == NULL)
+	{
 		DebugOut(L"[ERROR] Mario object is NULL\n");
 		return;
 	}
 
 	if (keyMap->IsActionPressed(states, ActionKey::MoveRight))
 	{
-		mario->SetState(keyMap->IsActionPressed(states, ActionKey::Run) 
-			 ? MARIO_STATE_RUNNING_RIGHT : MARIO_STATE_WALKING_RIGHT);
+		mario->SetState(keyMap->IsActionPressed(states, ActionKey::Run)
+			? MARIO_STATE_RUNNING_RIGHT : MARIO_STATE_WALKING_RIGHT);
 	}
 	else if (keyMap->IsActionPressed(states, ActionKey::MoveLeft))
 	{
-		mario->SetState(keyMap->IsActionPressed(states, ActionKey::Run) 
-		 ? MARIO_STATE_RUNNING_LEFT : MARIO_STATE_WALKING_LEFT);
+		mario->SetState(keyMap->IsActionPressed(states, ActionKey::Run)
+			? MARIO_STATE_RUNNING_LEFT : MARIO_STATE_WALKING_LEFT);
 	}
 	else
 	{
@@ -90,5 +102,9 @@ void CMarioPlayerKeyHandler::KeyState(BYTE* states)
 	if (keyMap->IsActionPressed(states, ActionKey::Sit))
 	{
 		mario->SetState(MARIO_STATE_SIT);
+	}
+	else if (keyMap->IsActionPressed(states, ActionKey::Run))
+	{
+		this->mario->SetRunning(true);
 	}
 }

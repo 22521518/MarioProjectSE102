@@ -705,6 +705,9 @@
     <ClInclude Include="RedParagoomba.h">
       <Filter>Header Files\GameObjectConcrete\Goomba</Filter>
     </ClInclude>
+    <ClInclude Include="HoldableWithMario.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MarioProject.rc">

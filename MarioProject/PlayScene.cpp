@@ -138,10 +138,10 @@ void CPlayScene::Update(DWORD dt)
             obj->ResetState();
 		}
 
-        if (!obj->IsDeleted()) {
+        if (!obj->IsDeleted() && obj->IsVisible()) {
             if (auto phys = dynamic_cast<LPPHYSICALOBJECT>(obj))
                 coObjects.push_back(phys);
-        } else if (obj != player && !obj->IsRemovable()) {
+        } else if (obj != player && !obj->IsRemovable() && !obj->IsVisible()) {
             obj->ResetState();
         }
     }

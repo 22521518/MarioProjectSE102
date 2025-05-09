@@ -26,7 +26,7 @@ public:
 
 	int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) override { return 1; };
 	int IsBlocking() override { return 0; };
-	int IsCollidable() override { return 1; };
+	int IsCollidable() override { return this->state != GOOMBA_STATE_DIE; };
 
 	// interactive object method
 	void SetState(int state) override;

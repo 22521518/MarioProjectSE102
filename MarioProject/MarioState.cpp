@@ -72,41 +72,55 @@ void CMarioState::OnDie(LPMARIO mario)
 
 void CMarioState::HandleStateChange(LPMARIO mario, int state)
 {
+	// DIE is the end state, cannot be changed! 
 	if (mario->state == MARIO_STATE_DIE) return;
-	if (state == MARIO_STATE_DIE)
-	{
-		//DebugOut(L">>> Mario DIE >>> \n");
-		//return;
-	}
-
 	switch (state)
 	{
 	case MARIO_STATE_RUNNING_RIGHT:
 	case MARIO_STATE_RUNNING_LEFT:
+	{
 		this->OnRun(mario, state == MARIO_STATE_RUNNING_LEFT);
-		return;
+		break;
+	}
 	case MARIO_STATE_WALKING_RIGHT:
 	case MARIO_STATE_WALKING_LEFT:
+	{
 		this->OnWalk(mario, state == MARIO_STATE_WALKING_LEFT);
-		return;
-	case MARIO_STATE_JUMP:
-		this->OnJump(mario);
-		return;
-	case MARIO_STATE_RELEASE_JUMP:
-		this->OnReleaseJump(mario);
-		return;
-	case MARIO_STATE_SIT:
-		this->OnSit(mario);
-		return;
-	case MARIO_STATE_SIT_RELEASE:
-		this->OnReleaseSit(mario);
-		return;
-
-	case MARIO_STATE_IDLE:
-		this->OnIdle(mario);
-		return;
-	case MARIO_STATE_DIE:
-		this->OnDie(mario);
-		return;
+		break;
 	}
+	case MARIO_STATE_JUMP:
+	{
+		this->OnJump(mario);
+		break;
+	}
+	case MARIO_STATE_RELEASE_JUMP:
+	{
+		this->OnReleaseJump(mario);
+		break;
+	}
+	case MARIO_STATE_SIT:
+	{
+		this->OnSit(mario);
+		break;
+	}
+	case MARIO_STATE_SIT_RELEASE:
+	{
+		this->OnReleaseSit(mario);
+		break;
+	}
+	case MARIO_STATE_IDLE:
+	{
+		this->OnIdle(mario);
+		break;
+	}
+	case MARIO_STATE_DIE:
+	{
+		return;
+		DebugOut(L">>> Mario DIE >>> \n");
+		this->OnDie(mario);
+		break;
+	}
+	default: return;
+	}
+	mario->state = state;
 }

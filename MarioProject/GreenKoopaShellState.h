@@ -19,14 +19,6 @@ public:
 	virtual int GetAnimationID(LPKOOPA koopa) { return ID_ANI_GREEN_KOOPA_SHELL_IDLE_OUT_TIME; }
 };
 
-class CGreenKoopaShellIdleStateRunOutOfTimeHold :
-	public CKoopaShellState {
-public:
-	CGreenKoopaShellIdleStateRunOutOfTimeHold(LPKOOPA koopa) : CKoopaShellState(koopa) {};
-
-	virtual int GetAnimationID(LPKOOPA koopa) { return ID_ANI_GREEN_KOOPA_SHELL_IDLE_OUT_TIME_HOLD; }
-};
-
 class CGreenKoopaShellMoveState :
 	public CKoopaShellMoveState {
 public:

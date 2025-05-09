@@ -242,6 +242,10 @@ void CCollision::Process(LPINTERACTIVEOBJECT objSrc, DWORD dt, vector<LPPHYSICAL
 	{
 		Scan(objSrc, dt, coObjs, coEvents);
 	}
+	else
+	{
+		//DebugOutObjectClassName(objSrc);
+	}
 
 	if (coEvents.size() == 0)
 	{

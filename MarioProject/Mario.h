@@ -2,7 +2,9 @@
 #include "Character.h"
 #include "MarioConfig.h"
 #include "MarioStateIDs.h"
+#include "HoldableWithMario.h"
 
+// object class
 class CPortal; typedef CPortal* LPPORTAL;
 class CCoin; typedef CCoin* LPCOIN;
 class CGoomba; typedef CGoomba* LPGOOMBA;
@@ -22,6 +24,8 @@ struct CCollisionEvent; typedef CCollisionEvent* LPCOLLISIONEVENT;
 
 class CMario : public CCharacter
 {
+	LPHOLDABLEWITHMARIO holdingItem = nullptr;
+	bool isRunning = false;
 	// physical state
 	float maxVx;
 
@@ -60,10 +64,15 @@ public:
 	virtual bool IsDeadState() override { return this->state == MARIO_STATE_DIE; }
 
 	// mario method
+	bool IsRunning() const { return this->isRunning; }
+	void SetRunning(bool run) { this->isRunning = run; }
 	void SetLevel(int level);
 	int GetLevel() const { return level; };
 	void StartUntouchable();
 	bool IsUntouchable() const { return this->untouchable != 0; }
+	
+	// release item with LPHOLDABLEWITHMARIO
+	void ReleaseHoldingItem();
 
 	// fly mario method
 	bool IsFlapping() const {

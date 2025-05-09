@@ -10,6 +10,7 @@
 #include "Goomba.h"
 #include "Koopa.h"
 #include "Coin.h"
+#include "Brick.h"
 #include "CollidableWithMario.h"
 #include "DestroyableObject.h"
 #include "BrickSuperItem.h"
@@ -35,6 +36,7 @@ CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, Directi
 
 void CMario::SetLevel(int level)	
 {
+	StartUntouchable();
 	if (this->level > MARIO_LEVEL_BIG) return;
 	float left, top, right, bottom;
 	this->GetBoundingBox(left, top, right, bottom);
@@ -72,6 +74,13 @@ void CMario::StartUntouchable() {
 	this->untouchable_start = GetTickCount64();
 }
 
+void CMario::ReleaseHoldingItem()
+{
+	if (!this->holdingItem) return;
+	this->holdingItem->OnMarioRelease(this);
+	this->holdingItem = nullptr;
+}
+
 void CMario::StartFlap()
 {
 	if (this->level != MARIO_LEVEL_FLY) return;
@@ -95,12 +104,10 @@ void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 		if (level > MARIO_LEVEL_BIG)
 		{
 			this->SetLevel(MARIO_LEVEL_BIG);
-			StartUntouchable();
 		}
 		else if (level > MARIO_LEVEL_SMALL)
 		{
 			this->SetLevel(MARIO_LEVEL_SMALL);
-			StartUntouchable();
 		}
 		else
 		{
@@ -123,12 +130,10 @@ void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
 		if (level > MARIO_LEVEL_BIG)
 		{
 			this->SetLevel(MARIO_LEVEL_BIG);
-			StartUntouchable();
 		}
 		else if (level > MARIO_LEVEL_SMALL)
 		{
 			this->SetLevel(MARIO_LEVEL_SMALL);
-			StartUntouchable();
 		}
 		else
 		{
@@ -142,12 +147,10 @@ void CMario::CollideFireBall(LPPLANTFIREBALL fire)
 		if (level > MARIO_LEVEL_BIG)
 		{
 			this->SetLevel(MARIO_LEVEL_BIG);
-			StartUntouchable();
 		}
 		else if (level > MARIO_LEVEL_SMALL)
 		{
 			this->SetLevel(MARIO_LEVEL_SMALL);
-			StartUntouchable();
 		}
 		else
 		{
@@ -221,12 +224,10 @@ void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 		if (level > MARIO_LEVEL_BIG)
 		{
 			this->SetLevel(MARIO_LEVEL_BIG);
-			StartUntouchable();
 		}
 		else if (level > MARIO_LEVEL_SMALL)
 		{
 			this->SetLevel(MARIO_LEVEL_SMALL);
-			StartUntouchable();
 		}
 		else
 		{
@@ -240,10 +241,7 @@ void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 #pragma region INTERACTIVE_OBJECT_METHOD
 void CMario::SetState(int state)
 {
-	StartUntouchable();
 	this->stateHandler->HandleStateChange(this, state);
-	this->state = state;
-	CInteractiveObject::SetState(state);
 }
 
 void CMario::OnNoCollision(DWORD dt)
@@ -255,7 +253,7 @@ void CMario::OnNoCollision(DWORD dt)
 void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 	LPDESTROYABLEOBJECT destroyableObj = dynamic_cast<LPDESTROYABLEOBJECT>(e->obj);
-	if (destroyableObj && e->normalY == DirectionYAxisType::Bottom && this->GetLevel() > MARIO_LEVEL_SMALL)
+	if (destroyableObj && e->normalY == DirectionYAxisType::Bottom && this->GetLevel() > MARIO_LEVEL_SMALL && dynamic_cast<LPBRICK>(destroyableObj))
 	{
 		destroyableObj->OnDestroy(e);
 	}
@@ -272,9 +270,15 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		vx = 0;
 	}
 
-	// replace the if else statement
 	LPCOLLIDABLEWITHMARIO obj = dynamic_cast<LPCOLLIDABLEWITHMARIO>(e->obj);
 	if (obj) {
+		LPHOLDABLEWITHMARIO holdableObj = dynamic_cast<LPHOLDABLEWITHMARIO>(obj);
+		if (holdableObj && holdableObj->IsHoldableState() && this->IsRunning())
+		{
+			holdableObj->OnMarioHold(this, e);
+			this->holdingItem = holdableObj;
+			return;
+		}
 		obj->OnMarioCollide(this, e);
 	}
 }
@@ -305,12 +309,31 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 	}
 
 	CCharacter::Update(dt, coObjects);
+
+	if (this->holdingItem)
+	{
+		float bboxWidth = 0;
+		float bboxHeight = 0;
+		this->stateHandler->GetBoundingBox(this, bboxWidth, bboxHeight);
+
+		int dir = static_cast<int>(this->nx);
+		this->holdingItem->SetObjectPosision(this->x + (bboxWidth - 2.0f) * dir, this->y);
+		if (!this->holdingItem->IsHoldableState())
+		{
+			this->ReleaseHoldingItem();
+		}
+	}
 }
 #pragma endregion
 
 #pragma region GAME_OBJECT_METHOD
 void CMario::Render()
 {
+	if (this->holdingItem)
+	{
+		this->holdingItem->RenderObject();
+	}
+
 	CAnimations* animations = CAnimations::GetInstance();
 	int aniId = -1;
 
