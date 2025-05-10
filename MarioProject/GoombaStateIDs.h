@@ -9,6 +9,6 @@ constexpr float GOOMBA_BBOX_HEIGHT_DIE = 7;
 
 #pragma region GOOMBA_STATE
 constexpr int GOOMBA_STATE_WALKING = 100;
-constexpr int GOOMBA_STATE_DIE = 666;
+constexpr int GOOMBA_STATE_DIE = -666;
 constexpr int GOOMBA_STATE_FLY = 300;
 #pragma endregion

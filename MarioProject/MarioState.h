@@ -15,6 +15,7 @@ protected:
 	virtual void OnIdle(LPMARIO mario);
 	virtual void OnDie(LPMARIO mario);
 public:
+	CMarioState() {}
 	virtual ~CMarioState() {}
 	virtual int GetAniId(LPMARIO mario) = 0;
 

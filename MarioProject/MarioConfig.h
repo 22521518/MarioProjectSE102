@@ -11,3 +11,4 @@ constexpr float MARIO_JUMP_DEFLECT_SPEED	= 0.4f;	//speed when mario jump on top 
 constexpr float MARIO_UNTOUCHABLE_TIME		= 1000;	//ms
 constexpr float MARIO_FLAPPING_TIME			= 300;	//ms
 constexpr float MARIO_MIN_VY				= MARIO_JUMP_RUN_SPEED_Y / 10;
+constexpr float MARIO_KICK_TIME				= 500;

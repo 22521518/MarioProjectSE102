@@ -20,6 +20,10 @@ void CRedParagoomba::SetState(int state)
 		return;
 	}
 	CRedGoomba::SetState(state);
+	if (state != GOOMBA_STATE_DIE);
+	int dir = static_cast<int>(this->nx);
+	this->ax = GOOMBA_ACCELERATION * dir;
+
 }
 
 void CRedParagoomba::OnCollisionWith(LPCOLLISIONEVENT e)
@@ -31,22 +35,31 @@ void CRedParagoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 	{
 		this->vy = -GOOMBA_JUMP_VY;
 		start_fly = GetTickCount64();
-		int dir = static_cast<int>(this->nx);
-		this->vx = dir * GOOMBA_WALKING_SPEED;
+		this->vx = static_cast<int>(this->nx) * GOOMBA_WALKING_SPEED;
 	}
-	else
+	else if (this->state == GOOMBA_STATE_FLY && e->normalY != DirectionYAxisType::None)
 	{
-		this->vx = GOOMBA_WALKING_SPEED;
-		int dir = static_cast<int>(this->nx);
-		this->vx *= dir;
+		LPPLAYSCENE ps = dynamic_cast<LPPLAYSCENE>(CGame::GetInstance()->GetCurrentScene());
+		// chasing mario
+		if (ps)
+		{
+			float marioX, marioY;
+			ps->GetPlayer()->GetPosition(marioX, marioY);
+			float distance = marioX - this->x;
+			this->ax = (distance > 0 ? 1 : -1) * GOOMBA_ACCELERATION;
+		}
+
 	}
+	this->nx = static_cast<DirectionXAxisType>(this->vx > 0 ? 1 : -1);
 	this->vy = min(0, this->vy);
+	if (abs(this->vx) > GOOMBA_MAX_SPEED) this->vx = static_cast<int>(this->nx) * GOOMBA_MAX_SPEED;
 
 	if (e->normalX != DirectionXAxisType::None)
 	{
 		int dir = static_cast<int>(this->nx);
 		this->nx = static_cast<DirectionXAxisType>(-dir);
 		this->vx = -dir * GOOMBA_WALKING_SPEED;
+		this->ax = vx * GOOMBA_ACCELERATION;
 	}
 }
 

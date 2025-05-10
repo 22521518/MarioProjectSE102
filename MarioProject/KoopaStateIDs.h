@@ -13,7 +13,7 @@ constexpr int KOOPA_STATE_SHELL_IDLE = 200;
 constexpr int KOOPA_STATE_SHELL_IDLE_OUT_TIME = 210;
 constexpr int KOOPA_STATE_SHELL_IDLE_OUT_TIME_HOLD = 211;
 constexpr int KOOPA_STATE_SHELL_MOVE = 300;
-constexpr int KOOPA_STATE_DIE = 666;
+constexpr int KOOPA_STATE_DIE = -666;
 constexpr int KOOPA_STATE_PARATROOPA = 2000;
 #pragma endregion
 

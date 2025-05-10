@@ -75,10 +75,24 @@ int CFlyMarioState::GetAniId(LPMARIO mario)
 		aniId = mario->nx == DirectionXAxisType::Right ?
 			ID_ANI_MARIO_FLY_SIT_RIGHT : ID_ANI_MARIO_FLY_SIT_LEFT;
 	}
-	else if (mario->vx == 0)
+	else if (mario->kick_start > 0 && GetTickCount64() - mario->kick_start < MARIO_KICK_TIME)
 	{
 		aniId = mario->nx == DirectionXAxisType::Right ?
-			ID_ANI_MARIO_FLY_IDLE_RIGHT : ID_ANI_MARIO_FLY_IDLE_LEFT;
+			ID_ANI_MARIO_FLY_KICK_RIGHT : ID_ANI_MARIO_FLY_KICK_LEFT;
+	}
+	else if (mario->vx == 0)
+	{
+		
+		if (mario->holdingItem)
+		{
+			aniId = mario->nx == DirectionXAxisType::Right ?
+				ID_ANI_MARIO_FLY_IDLE_HOLD_RIGHT : ID_ANI_MARIO_FLY_IDLE_HOLD_LEFT;
+		}
+		else
+		{
+			aniId = mario->nx == DirectionXAxisType::Right ?
+				ID_ANI_MARIO_FLY_IDLE_RIGHT : ID_ANI_MARIO_FLY_IDLE_LEFT;
+		}
 	}
 	else if (mario->vx > 0)
 	{
@@ -88,7 +102,8 @@ int CFlyMarioState::GetAniId(LPMARIO mario)
 		}
 		else if (mario->ax == MARIO_ACCEL_RUN_X)
 		{
-			aniId = ID_ANI_MARIO_FLY_RUNNING_RIGHT;
+			aniId = mario->holdingItem ? 
+				ID_ANI_MARIO_FLY_RUNNING_HOLD_RIGHT : ID_ANI_MARIO_FLY_RUNNING_RIGHT;
 		}
 		else if (mario->ax == MARIO_ACCEL_WALK_X)
 		{
@@ -103,7 +118,8 @@ int CFlyMarioState::GetAniId(LPMARIO mario)
 		}
 		else if (mario->ax == -MARIO_ACCEL_RUN_X)
 		{
-			aniId = ID_ANI_MARIO_FLY_RUNNING_LEFT;
+			aniId = mario->holdingItem ?
+				ID_ANI_MARIO_FLY_RUNNING_HOLD_LEFT : ID_ANI_MARIO_FLY_RUNNING_LEFT;
 		}
 		else if (mario->ax == -MARIO_ACCEL_WALK_X)
 		{

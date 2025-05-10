@@ -36,6 +36,7 @@ class CMario : public CCharacter
 	int untouchable;
 	ULONGLONG flap_start;
 	ULONGLONG untouchable_start;
+	ULONGLONG kick_start;
 
 	// score
 	int coin = 0;
@@ -73,6 +74,7 @@ public:
 	
 	// release item with LPHOLDABLEWITHMARIO
 	void ReleaseHoldingItem();
+	virtual void OnKick() { this->kick_start = GetTickCount64(); };
 
 	// fly mario method
 	bool IsFlapping() const {

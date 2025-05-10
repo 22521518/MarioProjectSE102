@@ -63,6 +63,7 @@ void CKoopa::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	}
 	else if (this->IsShellIdle() && GetTickCount64() - die_start > 50) 
 	{
+		mario->OnKick();
 		this->SetState(KOOPA_STATE_SHELL_MOVE, e);
 		this->die_start = -1;
 	}

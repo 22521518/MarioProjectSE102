@@ -29,6 +29,7 @@ CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, Directi
 	this->untouchable = 0;
 	this->untouchable_start = -1;
 	this->flap_start = -1;
+	this->kick_start = -1;
 
 	this->coin = 0;
 	this->stateHandler = new CSmallMarioState();
@@ -77,6 +78,7 @@ void CMario::StartUntouchable() {
 void CMario::ReleaseHoldingItem()
 {
 	if (!this->holdingItem) return;
+	this->OnKick();
 	this->holdingItem->OnMarioRelease(this);
 	this->holdingItem = nullptr;
 }

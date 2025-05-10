@@ -13,7 +13,7 @@
 		"objects\\red_goomba.txt",
 		"objects\\mario.txt"
 	],
-       "objects":[
+      "objects":[
                 {
                  "height":16,
                  "id":579,
@@ -2744,7 +2744,7 @@
                  "visible":true,
                  "width":16,
                  "x":360.333,
-                 "y":368.667
+                 "y":377.667
                 }, 
                 {
                  "height":48,

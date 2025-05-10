@@ -1,7 +1,7 @@
 #pragma once
 
 #pragma region MARIO_STATE
-constexpr int MARIO_STATE_DIE			= - 10;
+constexpr int MARIO_STATE_DIE			= -666;
 constexpr int MARIO_STATE_IDLE			= 0;
 constexpr int MARIO_STATE_WALKING_RIGHT = 100;
 constexpr int MARIO_STATE_WALKING_LEFT	= 200;
@@ -12,9 +12,9 @@ constexpr int MARIO_STATE_RUNNING_LEFT	= 500;
 constexpr int MARIO_STATE_SIT			= 600;
 constexpr int MARIO_STATE_SIT_RELEASE	= 601;
 
-constexpr int MARIO_FLY_STATE_ATTACK	= 7000;
-constexpr int MARIO_FLY_RELEASE			= 31000;
-constexpr int MARIO_FLY_FLAPPING		= 10000000 + 1;
+constexpr int MARIO_FLY_STATE_ATTACK	= 7e3;
+constexpr int MARIO_FLY_RELEASE			= 31e3;
+constexpr int MARIO_FLY_FLAPPING		= 1e7 + 1;
 #pragma endregion
 
 #pragma region MARIO_LEVEL
