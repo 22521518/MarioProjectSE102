@@ -90,7 +90,7 @@ void TxtGameParser::_ParseSection_ASSET(FilePlaySceneConfig& config, const strin
         }
         catch (const exception& e)
         {
-            DebugOut(L"[ERROR] Failed to parse line: %s\n", ToWSTR(line).c_str());
+            DebugOut(L"[ERROR] Failed to parse line: %s. Exception: %s\n", ToWSTR(line).c_str(), ToWSTR(e.what()).c_str());
         }
     }
 }
@@ -160,7 +160,7 @@ FilePlaySceneConfig TxtGameParser::_ParsePlaySceneFile(const string& filename)
         }
         catch (const exception& e)
         {
-            DebugOut(L"[ERROR] Failed to parse line: %s\n", ToWSTR(line).c_str());
+            DebugOut(L"[ERROR] Failed to parse line: %s. Exception: %s\n", ToWSTR(line).c_str(), ToWSTR(e.what()).c_str());
         }
     }
 
@@ -277,7 +277,7 @@ FileGameConfig TxtGameParser::_ParseGameConfigFile(const string& filename)
         }
         catch (const exception& e)
         {
-            DebugOut(L"[ERROR] Failed to parse line: %s\n", ToWSTR(line).c_str());
+            DebugOut(L"[ERROR] Failed to parse line: %s. Exception: %s\n", ToWSTR(line).c_str(), ToWSTR(e.what()).c_str());
         }
     }
 

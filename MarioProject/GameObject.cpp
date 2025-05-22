@@ -54,8 +54,8 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	case OBJECT_TYPE_SOLID_SEMISOLID_PLATFORM_9_SPRITE:
 	case OBJECT_TYPE_SOLID_SOLID_PLATFORM_9_SPRITE:
 	{
-		float cell_width = static_cast<int>(getOrDefault(additionalFieldInfo, "cell_width", 16.0f));
-		float cell_height = static_cast<int>(getOrDefault(additionalFieldInfo, "cell_height", 16.0f));
+		float cell_width = static_cast<float>(getOrDefault(additionalFieldInfo, "cell_width", 16.0f));
+		float cell_height = static_cast<float>(getOrDefault(additionalFieldInfo, "cell_height", 16.0f));
 
 		int height = static_cast<int>(getOrDefault(additionalFieldInfo, "height", 1.0f));
 		int length = static_cast<int>(getOrDefault(additionalFieldInfo, "length", 1.0f));
@@ -89,8 +89,8 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	}
 	case OBJECT_TYPE_PLATFORM:
 	{
-		float cell_width = static_cast<int>(getOrDefault(additionalFieldInfo, "cell_width", 16.0f));
-		float cell_height = static_cast<int>(getOrDefault(additionalFieldInfo, "cell_height", 16.0f));
+		float cell_width = static_cast<float>(getOrDefault(additionalFieldInfo, "cell_width", 16.0f));
+		float cell_height = static_cast<float>(getOrDefault(additionalFieldInfo, "cell_height", 16.0f));
 		int length = static_cast<int>(getOrDefault(additionalFieldInfo, "length", 1.0f));
 		int sprite_begin = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_begin", 0.0f));
 		int sprite_middle = static_cast<int>(getOrDefault(additionalFieldInfo, "sprite_middle", 0.0f));
@@ -104,8 +104,8 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	}
 	case OBJECT_TYPE_PORTAL:
 	{
-		float r = static_cast<int>(getOrDefault(additionalFieldInfo, "right", 0.0f));
-		float b = static_cast<int>(getOrDefault(additionalFieldInfo, "bottom", 0.0f));
+		float r = static_cast<float>(getOrDefault(additionalFieldInfo, "right", 0.0f));
+		float b = static_cast<float>(getOrDefault(additionalFieldInfo, "bottom", 0.0f));
 		int scene_id = static_cast<int>(getOrDefault(additionalFieldInfo, "scene_id", 0.0f));
 		return new CPortal(x, y, r, b, scene_id);
 
@@ -119,6 +119,7 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 		DebugOut(L"[ERROR] Invalid object type: %d\n", object_type);
 		return NULL;
 	}
+	return NULL;
 }
 
 void CGameObject::GetBoundingBox(RECT& rect)
@@ -134,7 +135,7 @@ void CGameObject::GetBoundingBox(RECT& rect)
 void CGameObject::RenderBoundingBox()
 {
 	D3DXVECTOR3 p(x, y, 0);
-	RECT rect;
+	RECT rect{};
 
 	LPTEXTURE bbox = CTextures::GetInstance()->Get(ID_TEX_BBOX);
 	float l, t, r, b;

@@ -13,9 +13,9 @@ CPortal::CPortal(float l, float t, float r, float b, int scene_id)
 unordered_map<string, float> CPortal::GetAdditionalFieldInfo(vector<string> tokens)
 {
 	unordered_map<string, float> fieldInfo;
-	fieldInfo["r"] = (float)atof(tokens[3].c_str());
-	fieldInfo["b"] = (float)atof(tokens[4].c_str());
-	fieldInfo["scene_id"] = atoi(tokens[5].c_str());
+	fieldInfo["r"] = static_cast<float>(atof(tokens[3].c_str()));
+	fieldInfo["b"] = static_cast<float>(atof(tokens[4].c_str()));
+	fieldInfo["scene_id"] = static_cast<float>(atof(tokens[5].c_str()));
 
 	return fieldInfo;
 }
@@ -32,7 +32,7 @@ void CPortal::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 void CPortal::RenderBoundingBox()
 {
 	D3DXVECTOR3 p(x, y, 0);
-	RECT rect;
+	RECT rect{};
 
 	LPTEXTURE bbox = CTextures::GetInstance()->Get(ID_TEX_BBOX);
 

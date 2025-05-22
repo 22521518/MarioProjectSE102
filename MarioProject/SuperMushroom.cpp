@@ -6,7 +6,6 @@
 
 void CSuperMushroom::Render()
 {
-	this->RenderBoundingBox();
 	CAnimations::GetInstance()->Get(ID_ANI_SUPER_MUSHROOM_ITEM)->Render(x, y);
 }
 

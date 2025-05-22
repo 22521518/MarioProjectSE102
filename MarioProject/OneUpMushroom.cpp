@@ -7,7 +7,6 @@
 
 void COneUpMushroom::Render()
 {
-	this->RenderBoundingBox();
 	CAnimations::GetInstance()->Get(ID_ANI_ONE_UP_MUSHROOM_ITEM)->Render(x, y);
 }
 

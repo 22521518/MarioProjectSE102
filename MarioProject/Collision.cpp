@@ -95,8 +95,12 @@ void CCollision::SweptAABB(RECT* movingObj, float distanceX, float distanceY, RE
 	else
 	{
 		SweptAABB(
-			movingObj->left, movingObj->top, movingObj->right, movingObj->bottom, distanceX, distanceY,
-			staticObj->left, staticObj->top, staticObj->right, staticObj->bottom, time, normalX, normalY
+			static_cast<float>(movingObj->left), static_cast<float>(movingObj->top),
+			static_cast<float>(movingObj->right), static_cast<float>(movingObj->bottom),
+			distanceX, distanceY,
+			static_cast<float>(staticObj->left), static_cast<float>(staticObj->top),
+			static_cast<float>(staticObj->right), static_cast<float>(staticObj->bottom),
+			time, normalX, normalY
 		);
 	}
 }

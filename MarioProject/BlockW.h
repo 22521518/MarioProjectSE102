@@ -14,6 +14,5 @@ public:
 	virtual void Render() override {
 		CAnimations* animations = CAnimations::GetInstance();
 		animations->Get(ID_ANI_BLOCK_W)->Render(x, y);
-		//RenderBoundingBox();
 	};
 };

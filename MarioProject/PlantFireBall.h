@@ -18,7 +18,6 @@ public:
 	virtual void Render() override {
 		CAnimations* animations = CAnimations::GetInstance();
 		animations->Get(ID_ANI_PLANT_FIREBALL)->Render(x, y);
-		RenderBoundingBox();
 	};
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	{

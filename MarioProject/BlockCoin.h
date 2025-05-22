@@ -25,7 +25,6 @@ public:
 		if (state != BRICK_STATE_EMPTY) {
 			CAnimations* animations = CAnimations::GetInstance();
 			animations->Get(ID_ANI_COIN)->Render(x, y);
-			RenderBoundingBox();
 		}
 	};
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)

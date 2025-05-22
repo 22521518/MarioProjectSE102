@@ -302,6 +302,7 @@ void CMario::GetBoundingBox(float& left, float& top, float& right, float& bottom
 void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
 	if (abs(vx) > abs(maxVx)) vx = maxVx;
+	this->ax = vy > 0 ? MARIO_FALL_GRAVITY : MARIO_GRAVITY;
 
 	// reset untouchable timer if untouchable time has passed
 	if (GetTickCount64() - untouchable_start > MARIO_UNTOUCHABLE_TIME)
@@ -310,6 +311,7 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		untouchable = 0;
 	}
 
+	CCollision::GetInstance()->Process(this, dt, coObjects);
 	CCharacter::Update(dt, coObjects);
 
 	if (this->holdingItem)

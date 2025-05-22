@@ -8,7 +8,6 @@
 
 void CSuperLeaf::Render()
 {
-	this->RenderBoundingBox();
 	int aniId = this->GetNX() == DirectionXAxisType::Right ?
 		ID_ANI_SUPER_LEAF_ITEM_RIGHT : ID_ANI_SUPER_LEAF_ITEM_LEFT;
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);

@@ -7,7 +7,7 @@
 #include "Collision.h"
 
 class CPlantRedVenusFire :
-	public CPlantEnemy, public CCollidableWithMario
+	public CPlantEnemy
 {
 protected:
 	LPPLANTFIREBALL fire;
@@ -38,7 +38,6 @@ public:
 			if (y < My) animations->Get(ID_ANI_PLANT_RVF_R_D)->Render(x, y);
 			else animations->Get(ID_ANI_PLANT_RVF_R_U)->Render(x, y);
 		}
-		RenderBoundingBox();
 	};
 	// physical object method
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) override

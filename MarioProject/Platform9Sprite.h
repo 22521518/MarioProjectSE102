@@ -22,7 +22,7 @@ public:
 
 	// game object method
 	virtual void Render() override;
-	void RenderByLayer(float xx, float yy, int spriteIdBegin, int spriteIdMiddle, int spriteIdEnd);
+	void RenderByLayer(float xx, float yy, int spriteIdBegin, int spriteIdMiddle, int spriteIdEnd) const;
 
 	// physical object method
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) override;

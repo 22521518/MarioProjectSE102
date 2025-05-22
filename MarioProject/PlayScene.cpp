@@ -111,8 +111,8 @@ void CPlayScene::Update(DWORD dt)
 		return;
 	};
 
-	float screenWidth = CGame::GetInstance()->GetBackBufferWidth();
-	float screenHeight = CGame::GetInstance()->GetBackBufferHeight();
+	float screenWidth = static_cast<float>(CGame::GetInstance()->GetBackBufferWidth());
+	float screenHeight = static_cast<float>(CGame::GetInstance()->GetBackBufferHeight());
 	float px, py;
 	player->GetPosition(px, py);
 

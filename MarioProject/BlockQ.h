@@ -12,14 +12,14 @@
 class CBlockQ : public CInteractiveObject, public CCollidableWithMario {
 protected:
 	LPGAMEOBJECT mario;
-	LPBLOCKCOIN coinB;
-	LPBLOCK1UP itemB;
+	LPBLOCKCOIN coinB = nullptr;
+	LPBLOCK1UP itemB = nullptr;
 	float My;
 	bool coinQ = false, upQ = false;
 public:
 	CBlockQ(LPGAMEOBJECT mario, int state = BRICK_STATE_COIN, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left)
-		: CInteractiveObject(x, y, vx, vy, ax, ay, nx, state) {
+		: CInteractiveObject(x, y, vx, vy, ax, ay, nx, state), coinB(nullptr), itemB(nullptr){
 		this->mario = mario;
 		//SetState(BRICK_STATE_COIN);
 		if (state == BRICK_STATE_COIN) {
@@ -41,7 +41,6 @@ public:
 		if (state == BRICK_STATE_EMPTY)
 			animations->Get(ID_ANI_BLOCK_E)->Render(x, y);
 		else animations->Get(ID_ANI_BLOCK_Q)->Render(x, y);
-		RenderBoundingBox();
 	};
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	{

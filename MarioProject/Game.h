@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Texture.h"
 #include "PlayScene.h"
 #include "config.h"
@@ -16,9 +15,10 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
-#define DIRECTINPUT_VERSION 0x0800
+//#define DIRECTINPUT_VERSION 0x0800
+#ifndef DIRECTINPUT_VERSION
+constexpr int DIRECTINPUT_VERSION = 0x0800;
+#endif
 
 using namespace std;
 

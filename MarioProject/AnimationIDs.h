@@ -1,11 +1,11 @@
 #pragma once
 #include "KoopaStateIDs.h"
 
-constexpr int ID_ANI_BRICK = 2e4;
-constexpr int ID_ANI_COIN = 21e3;
+constexpr int ID_ANI_BRICK = static_cast<int>(2e4);
+constexpr int ID_ANI_COIN = static_cast<int>(21e3);
 //constexpr int ID_ANI = 30000;
 //constexpr int ID_ANI = 40000;
-constexpr int ID_ANI_GOOMBA = 5e4;
+constexpr int ID_ANI_GOOMBA = static_cast<int>(5e4);
 
 #pragma region TRI_OBJ
 #pragma endregion

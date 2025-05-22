@@ -8,31 +8,31 @@ using namespace std;
 #pragma region PLAY_SCENE
 struct GameObjectConfig
 {
-    int typeID;
-    float x;
-    float y;
+    int typeID = 0;          
+    float x = 0.0f;          
+    float y = 0.0f;          
     unordered_map<string, float> additionalFieldInfo;
 };
 
-struct SpriteConfig 
+struct SpriteConfig
 {
-    int spriteID;
-    int textureID;
-    int left;
-    int top;
-    int right;
-    int bottom;
+    int spriteID = 0;        
+    int textureID = 0;       
+    int left = 0;            
+    int top = 0;             
+    int right = 0;           
+    int bottom = 0;          
 };
 
 struct AnimationFrameConfig
 {
-    int spriteID;
-    int frameTime;
+    int spriteID = 0;        
+    int frameTime = 0;       
 };
 
 struct AnimationConfig
 {
-    int animationID;
+    int animationID = 0;     
     vector<AnimationFrameConfig> animationFrames;
 };
 
@@ -47,21 +47,33 @@ struct FilePlaySceneConfig
 #pragma region GAME_STATE
 struct SettingConfig
 {
-    int start;
-    int width;
-    int height;
+    int start = 0;          
+    int width = 0;          
+    int height = 0;         
 };
 
 struct SceneConfig
 {
-    int sceneID;
-    string scenePath;
+    int sceneID = 0;        
+    string scenePath = "";  
+
+    // Default constructor
+    SceneConfig() = default;
+
+    // Constructor with parameters
+    SceneConfig(int id, const std::string& path) : sceneID(id), scenePath(path) {}
 };
 
 struct TextureConfig
 {
-    int textureID;
-    string texturePath;
+    int textureID = 0;      
+    string texturePath = "";
+
+    // Default constructor
+    TextureConfig() = default;
+
+    // Constructor with parameters
+    TextureConfig(int id, const std::string& path) : textureID(id), texturePath(path) {}
 };
 
 struct FileGameConfig
@@ -69,5 +81,13 @@ struct FileGameConfig
     SettingConfig setting;
     vector<SceneConfig> scenes;
     vector<TextureConfig> textures;
+
+    // Default constructor
+    FileGameConfig() = default;
+
+    // Constructor with parameters
+    FileGameConfig(const SettingConfig& settings, const vector<SceneConfig>& sc, const vector<TextureConfig>& tex)
+        : setting(settings), scenes(sc), textures(tex) {
+    }
 };
 #pragma endregion

@@ -25,7 +25,7 @@ public:
 	virtual int IsCollidable() override { return 1; };
 
 
-	virtual void Render() { RenderBoundingBox(); };
+	virtual void Render() { };
 	virtual bool IsDeadState() { return false; };
 };
 

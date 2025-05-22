@@ -7,7 +7,7 @@ class CMushroom :
     public CItem
 {
     bool isGrowing = false;
-    unsigned int startTime = -1;
+    ULONGLONG startTime = -1;
     float startY;
 public:
     CMushroom(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = MUSHROOM_GRAVITY, DirectionXAxisType nx = DirectionXAxisType::Left, int state = MUSHROOM_STATE_IDLE) : CItem(x, y, vx, vy, ax, ay, nx, state), startY(y) {

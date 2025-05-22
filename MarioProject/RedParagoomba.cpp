@@ -10,7 +10,7 @@ void CRedParagoomba::SetState(int state)
 		this->GetBoundingBox(orgLeft, orgTop, orgRight, orgBottom);
 
 		this->vy = -GOOMBA_JUMP_VY;
-		this->vx = -GOOMBA_WALKING_SPEED * 0.65;
+		this->vx = -GOOMBA_WALKING_SPEED * 0.65f;
 		CEnemy::SetState(state);
 
 		float left = 0, top = 0, right = 0, bottom = 0;
@@ -20,7 +20,7 @@ void CRedParagoomba::SetState(int state)
 		return;
 	}
 	CRedGoomba::SetState(state);
-	if (state != GOOMBA_STATE_DIE);
+	//if (state != GOOMBA_STATE_DIE);
 	int dir = static_cast<int>(this->nx);
 	this->ax = GOOMBA_ACCELERATION * dir;
 
@@ -70,7 +70,6 @@ void CRedParagoomba::Render()
 	{
 		aniId = ID_ANI_RED_PARA_GOOMBA;
 		CAnimations::GetInstance()->Get(aniId)->Render(x, y);
-		RenderBoundingBox();
 		return;
 	}
 	CRedGoomba::Render();

@@ -143,6 +143,5 @@ void CKoopa::Render()
 {
 	int aniId = this->stateHandler->GetAnimationID(this);
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
-	RenderBoundingBox();
 }
 #pragma endregion

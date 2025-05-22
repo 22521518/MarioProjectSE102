@@ -26,7 +26,6 @@ void CBrickSuperItem::CreateSuperMushroom(LPCOLLISIONEVENT e)
 void CBrickSuperItem::Render()
 {
 	if (!this->onBounce) CBrickItem::Render();
-	this->RenderBoundingBox();
 	int aniId = state == BRICK_STATE_ACTIVE ?
 		ID_ANI_ITEM_BRICK : ID_ANI_EMPTY_ITEM_BRICK;
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);

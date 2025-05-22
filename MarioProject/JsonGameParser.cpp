@@ -126,7 +126,7 @@ GameObjectConfig JsonGameParser::_ParseSection_OBJECT(const json& rawObject)
 					}
 					catch (const std::exception& e) 
 					{
-						throw std::runtime_error("Invalid float property value: " + prop["value"]);
+                        throw std::runtime_error("Invalid float property value: " + to_string(prop["value"].get<float>()) + "\n, error: " + e.what());
 					}
 				}
 				else {

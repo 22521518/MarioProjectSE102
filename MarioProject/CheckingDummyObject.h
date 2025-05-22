@@ -18,7 +18,7 @@ public:
 	virtual int IsBlocking() override { return 0; };
 	virtual int IsCollidable() override { return 1; };
 
-	virtual void Render() override { RenderBoundingBox(); }; // maybe you want to check where it is
+	virtual void Render() override { }; // maybe you want to check where it is
 	virtual bool IsDeadState() override { return false; }; // the must override method
 };
 

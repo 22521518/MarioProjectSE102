@@ -3,7 +3,7 @@
 class CRedParagoomba :
     public CRedGoomba
 {
-	int start_fly;
+	ULONGLONG start_fly;
 public:
 	CRedParagoomba(float x = 0, float y = 0, float vx = 0, float vy = -GOOMBA_JUMP_VY, float ax = GOOMBA_ACCELERATION, float ay = GOOMBA_GRAVITY, DirectionXAxisType nx = DirectionXAxisType::Left, int state = GOOMBA_STATE_FLY)
 		: CRedGoomba(x, y, vx, vy, ax, ay, nx, state) {

@@ -15,12 +15,12 @@ CPlatform::CPlatform(float x, float y, float cell_width, float cell_height, int 
 unordered_map<string, float> CPlatform::GetAdditionalFieldInfo(vector<string> tokens)
 {
 	unordered_map<string, float> fieldInfo;
-	fieldInfo["cell_width"] = (float)atof(tokens[3].c_str());
-	fieldInfo["cell_height"] = (float)atof(tokens[4].c_str());
-	fieldInfo["length"] = atoi(tokens[5].c_str());
-	fieldInfo["sprite_begin"] = atoi(tokens[6].c_str());
-	fieldInfo["sprite_middle"] = atoi(tokens[7].c_str());
-	fieldInfo["sprite_end"] = atoi(tokens[8].c_str());
+	fieldInfo["cell_width"] = static_cast<float>(atof(tokens[3].c_str()));
+	fieldInfo["cell_height"] = static_cast<float>(atof(tokens[4].c_str()));
+	fieldInfo["length"] = static_cast<float>(atof(tokens[5].c_str()));
+	fieldInfo["sprite_begin"] = static_cast<float>(atof(tokens[6].c_str()));
+	fieldInfo["sprite_middle"] = static_cast<float>(atof(tokens[7].c_str()));
+	fieldInfo["sprite_end"] = static_cast<float>(atof(tokens[8].c_str()));
 	
 	return fieldInfo;
 }
@@ -28,7 +28,7 @@ unordered_map<string, float> CPlatform::GetAdditionalFieldInfo(vector<string> to
 void CPlatform::RenderBoundingBox()
 {
 	D3DXVECTOR3 p(x, y, 0);
-	RECT rect;
+	RECT rect{};
 
 	LPTEXTURE bbox = CTextures::GetInstance()->Get(ID_TEX_BBOX);
 
@@ -43,7 +43,7 @@ void CPlatform::RenderBoundingBox()
 	float cx, cy;
 	CGame::GetInstance()->GetCamPos(cx, cy);
 
-	float xx = x - this->cellWidth / 2 + rect.right / 2;
+	float xx = x - this->cellWidth / 2.0f + rect.right / 2.0f;
 
 	CGame::GetInstance()->Draw(xx - cx, y - cy, bbox, nullptr, BBOX_ALPHA, rect.right - 1, rect.bottom - 1);
 }
@@ -64,7 +64,6 @@ void CPlatform::Render()
 	if (length > 1)
 		s->Get(this->spriteIdEnd)->Draw(xx, y);
 
-	//RenderBoundingBox();
 }
 
 void CPlatform::GetBoundingBox(float& l, float& t, float& r, float& b)
