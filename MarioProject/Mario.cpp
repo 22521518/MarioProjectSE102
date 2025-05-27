@@ -84,11 +84,21 @@ void CMario::ReleaseHoldingItem()
 	this->holdingItem = nullptr;
 }
 
+bool CMario::IsFlapping() const
+{
+	return flap_start > 1 && (GetTickCount64() - flap_start) < MARIO_FLAPPING_TIME;
+}
+
 void CMario::StartFlap()
 {
 	if (this->level != MARIO_LEVEL_FLY) return;
 	flap_start = GetTickCount64();
 	this->SetState(MARIO_FLY_FLAPPING);
+}
+
+bool CMario::CanFly()
+{
+	return vx >= MARIO_SPRINTNIG_SPEED || (running_start > 0 && GetTickCount64() - running_start > MARIO_TIME_POWER_P + MARIO_DURATION_POWER_P);
 }
 
 #pragma region COLLIDABLE_MARIO_METHOD
@@ -302,8 +312,25 @@ void CMario::GetBoundingBox(float& left, float& top, float& right, float& bottom
 
 void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
+	if (IsFlapping()) 
+	{
+		if (CanFly()) {
+			//DebugOut(L"I can fly!!\n");
+			vy = -MARIO_FLAP_BOOST * 6;
+			ay = MARIO_GRAVITY * 0.5f;
+		}
+		else
+		{
+			//DebugOut(L"I dropping!!\n");
+			ay = MARIO_FALL_GRAVITY * 0.65f;
+		}
+	}
+	else 
+	{
+		this->ay = vy > 0 ? MARIO_FALL_GRAVITY : MARIO_GRAVITY;
+	}
+
 	DebugOutTitle(L"speed: %f, max: %f, acc: %f, dir: %d, times %llu\n", vy, maxVx, ay, static_cast<int>(nx),  running_start);
-	this->ay = vy > 0 ? MARIO_FALL_GRAVITY : MARIO_GRAVITY;
 	vy += ay * dt;
 	vx += ax * dt;
 
@@ -343,6 +370,11 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		{
 			this->ReleaseHoldingItem();
 		}
+	}
+
+	if (flap_start > 1 && (GetTickCount64() - flap_start) >= MARIO_FLAPPING_TIME)
+	{
+		flap_start = 2;
 	}
 }
 #pragma endregion

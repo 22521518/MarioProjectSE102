@@ -32,6 +32,10 @@ constexpr int ID_ANI_MARIO_FLY_JUMP_RELEASE_FLAPPING_RIGHT = ID_ANI_MARIO_FLY_JU
 constexpr int ID_ANI_MARIO_FLY_SIT_RIGHT				= static_cast<int>(1e7 + MARIO_STATE_SIT);
 constexpr int ID_ANI_MARIO_FLY_SIT_LEFT					= static_cast<int>(1e7 + MARIO_STATE_SIT + 10);
 constexpr int ID_ANI_MARIO_FLY_ATTACK					= static_cast<int>(1e7 + MARIO_FLY_STATE_ATTACK);
+
+//AFTER FLAP ON AIR LEFT(500) & RIGHT(400)
+constexpr int ID_ANI_MARIO_FLY_JUMP_RUN_OPENARM_LEFT	= 10030503;
+constexpr int ID_ANI_MARIO_FLY_JUMP_RUN_OPENARM_RIGHT	= 10030403;
 #pragma endregion
 
 // constexpr int ID_ANI_MARIO 0;

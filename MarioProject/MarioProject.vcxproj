@@ -138,6 +138,7 @@
     <ClCompile Include="BigMarioState.cpp" />
     <ClCompile Include="BrickItem.cpp" />
     <ClCompile Include="BrickSuperItem.cpp" />
+    <ClCompile Include="CBackground.cpp" />
     <ClCompile Include="CheckingSideObject.cpp" />
     <ClCompile Include="DestroyableBrick.cpp" />
     <ClCompile Include="Character.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="BrickAniIDs.h" />
     <ClInclude Include="BrickItem.h" />
     <ClInclude Include="BrickSuperItem.h" />
+    <ClInclude Include="CBackground.h" />
     <ClInclude Include="CBonusScene.h" />
     <ClInclude Include="CheckingSideObject.h" />
     <ClInclude Include="DestroyableBrick.h" />

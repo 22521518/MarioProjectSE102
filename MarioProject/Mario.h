@@ -78,10 +78,9 @@ public:
 	virtual void OnKick() { this->kick_start = GetTickCount64(); };
 
 	// fly mario method
-	bool IsFlapping() const {
-		return flap_start > 0 && (GetTickCount64() - flap_start) < MARIO_FLAPPING_TIME;
-	}
+	bool IsFlapping() const;
 	void StartFlap();
+	bool CanFly();
 
 	// mario with collidable mario obj
 	void OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e);

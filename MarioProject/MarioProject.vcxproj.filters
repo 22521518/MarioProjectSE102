@@ -352,6 +352,9 @@
     <ClCompile Include="RedParagoomba.cpp">
       <Filter>Source Files\GameObjectConcrete\Goomba</Filter>
     </ClCompile>
+    <ClCompile Include="CBackground.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="setup.h">
@@ -707,6 +710,9 @@
     </ClInclude>
     <ClInclude Include="HoldableWithMario.h">
       <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="CBackground.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,6 @@ class CFlyMarioState :
     public CMarioState
 {
 protected:
-	virtual bool CanFly();
 	virtual void OnJump() override;
 	virtual void OnReleaseJump() override;
 public:
