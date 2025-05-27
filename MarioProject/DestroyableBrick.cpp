@@ -11,7 +11,7 @@ void CDestroyableBrick::Render()
 	}
 
 	if (GetTickCount64() - this->timeDestroy > 50000) {
-		this->timeDestroy = -1;
+		this->timeDestroy = 0;
 		for (int i = 0; i < pieces.size(); i++)
 		{
 			this->pieces[i]->Delete();

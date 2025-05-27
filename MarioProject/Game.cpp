@@ -1,4 +1,4 @@
-#include "Game.h"
+ #include "Game.h"
 #include "GameKeyHandler.h"
 #include "GameParserFactory.h"
 
@@ -135,7 +135,7 @@ void CGame::Draw(float x, float y, LPTEXTURE tex, RECT* rect, float alpha, int s
 
 void CGame::Draw(float x, float y, LPTEXTURE tex, int l, int t, int r, int b, float alpha, int sprite_width, int sprite_height)
 {
-	RECT rect;
+	RECT rect{};
 	rect.left = l;
 	rect.top = t;
 	rect.right = r;
@@ -279,7 +279,7 @@ void CGame::InitKeyboard()
 	// Set the buffer size to DINPUT_BUFFERSIZE (defined above) elements.
 	//
 	// The buffer size is a DWORD property associated with the device.
-	DIPROPDWORD dipdw;
+	DIPROPDWORD dipdw {};
 
 	dipdw.diph.dwSize = sizeof(DIPROPDWORD);
 	dipdw.diph.dwHeaderSize = sizeof(DIPROPHEADER);
@@ -420,7 +420,7 @@ void CGame::Init(HWND hWnd, HINSTANCE hInstance)
 	}
 
 	// Get the back buffer from the swapchain
-	ID3D10Texture2D* pBackBuffer;
+	ID3D10Texture2D* pBackBuffer = nullptr;
 	hr = pSwapChain->GetBuffer(0, __uuidof(ID3D10Texture2D), (LPVOID*)&pBackBuffer);
 	if (hr != S_OK)
 	{
@@ -442,7 +442,7 @@ void CGame::Init(HWND hWnd, HINSTANCE hInstance)
 	pD3DDevice->OMSetRenderTargets(1, &pRenderTargetView, NULL);
 
 	// create and set the viewport
-	D3D10_VIEWPORT viewPort;
+	D3D10_VIEWPORT viewPort{};
 	viewPort.Width = backBufferWidth;
 	viewPort.Height = backBufferHeight;
 	viewPort.MinDepth = 0.0f;
@@ -455,7 +455,7 @@ void CGame::Init(HWND hWnd, HINSTANCE hInstance)
 	//
 	//
 
-	D3D10_SAMPLER_DESC desc;
+	D3D10_SAMPLER_DESC desc {};
 	desc.Filter = D3D10_FILTER_MIN_MAG_POINT_MIP_LINEAR;
 	desc.AddressU = D3D10_TEXTURE_ADDRESS_CLAMP;
 	desc.AddressV = D3D10_TEXTURE_ADDRESS_CLAMP;

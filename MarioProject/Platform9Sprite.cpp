@@ -51,7 +51,7 @@ void CPlatform9Sprite::Render()
 	//layer top
 	float xx = x;
 	float yy = y;
-	this->RenderByLayer(xx, yy, this->spriteIdTopBegin, this->spriteIdTopMiddle, this->spriteIdTopEnd);
+	this->RenderByRow(xx, yy, this->spriteIdTopBegin, this->spriteIdTopMiddle, this->spriteIdTopEnd);
 
 	//layer bottom
 	if (this->height < 2) return;
@@ -61,14 +61,14 @@ void CPlatform9Sprite::Render()
 	for (int i = 1; i < this->height - 1; i++)
 	{
 		xx = x;
-		this->RenderByLayer(xx, yy, this->spriteIdMidBegin, this->spriteIdMidMiddle, this->spriteIdMidEnd);
+		this->RenderByRow(xx, yy, this->spriteIdMidBegin, this->spriteIdMidMiddle, this->spriteIdMidEnd);
 		yy += this->cellHeight;
 	}
 	xx = x;
-	this->RenderByLayer(xx, yy, this->spriteIdBotBegin, this->spriteIdBotMiddle, this->spriteIdBotEnd);
+	this->RenderByRow(xx, yy, this->spriteIdBotBegin, this->spriteIdBotMiddle, this->spriteIdBotEnd);
 }
 
-void CPlatform9Sprite::RenderByLayer(float xx, float yy, int spriteIdBegin, int spriteIdMiddle, int spriteIdEnd) const
+void CPlatform9Sprite::RenderByRow(float xx, float yy, int spriteIdBegin, int spriteIdMiddle, int spriteIdEnd) const
 {
 	CSprites::GetInstance()->Get(spriteIdBegin)->Draw(xx, yy);
 	if (length > 1)
@@ -81,7 +81,6 @@ void CPlatform9Sprite::RenderByLayer(float xx, float yy, int spriteIdBegin, int 
 		}
 		CSprites::GetInstance()->Get(spriteIdEnd)->Draw(xx, yy);
 	}
-
 }
 
 void CPlatform9Sprite::GetBoundingBox(float& l, float& t, float& r, float& b)

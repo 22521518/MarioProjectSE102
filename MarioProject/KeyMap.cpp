@@ -25,15 +25,22 @@ void CKeyMap::LoadDefault()
     //SetKey(ActionKey::Pause, DIK_Q);
     //SetKey(ActionKey::Reload, DIK_R);
     //SetKey(ActionKey::SetDie, DIK_0);
+
+    SetKey(ActionKey::MoveLeft, DIK_A);
+    SetKey(ActionKey::MoveRight, DIK_D);
+    SetKey(ActionKey::Sit, DIK_S);
+    SetKey(ActionKey::Jump, DIK_SPACE);
+    SetKey(ActionKey::Run, DIK_K);
+    
     SetKey(ActionKey::SetSmall, DIK_1);
     SetKey(ActionKey::SetBig, DIK_2);
     SetKey(ActionKey::SetFly, DIK_3);
 
-    SetKey(ActionKey::MoveLeft, DIK_LEFT);
-    SetKey(ActionKey::MoveRight, DIK_RIGHT);
-    SetKey(ActionKey::Sit, DIK_DOWN);
-    SetKey(ActionKey::Jump, DIK_S);
-    SetKey(ActionKey::Run, DIK_A);
+    //SetKey(ActionKey::MoveLeft, DIK_LEFT);
+    //SetKey(ActionKey::MoveRight, DIK_RIGHT);
+    //SetKey(ActionKey::Sit, DIK_DOWN);
+    //SetKey(ActionKey::Jump, DIK_S);
+    //SetKey(ActionKey::Run, DIK_A);
 
 
 }

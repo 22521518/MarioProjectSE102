@@ -25,14 +25,15 @@ CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, Directi
 	this->isSitting = false;
 	this->isOnPlatform = false;
 
-	this->level = MARIO_LEVEL_SMALL;
 	this->untouchable = 0;
-	this->untouchable_start = -1;
-	this->flap_start = -1;
-	this->kick_start = -1;
+	this->running_start = 0;
+	this->untouchable_start = 0;
+	this->flap_start = 0;
+	this->kick_start = 0;
 
 	this->coin = 0;
-	this->stateHandler = new CSmallMarioState();
+	this->level = MARIO_LEVEL_SMALL;
+	this->stateHandler = new CSmallMarioState(this);
 };
 
 void CMario::SetLevel(int level)	
@@ -45,19 +46,19 @@ void CMario::SetLevel(int level)
 	case MARIO_LEVEL_SMALL:
 	{
 		delete this->stateHandler;
-		this->stateHandler = new CSmallMarioState(); 
+		this->stateHandler = new CSmallMarioState(this); 
 		break;
 	}
 	case MARIO_LEVEL_BIG:
 	{
 		delete this->stateHandler;
-		this->stateHandler = new CBigMarioState();
+		this->stateHandler = new CBigMarioState(this);
 		break;
 	}
 	case MARIO_LEVEL_FLY: 
 	{
 		delete this->stateHandler;
-		this->stateHandler = new CFlyMarioState();
+		this->stateHandler = new CFlyMarioState(this);
 		break;
 	}
 	default:
@@ -65,7 +66,7 @@ void CMario::SetLevel(int level)
 	}
 
 	float currentHeight, currentWidth;
-	this->stateHandler->GetBoundingBox(this, currentWidth, currentHeight);
+	this->stateHandler->GetBoundingBox(currentWidth, currentHeight);
 	this->y = bottom - currentHeight / 2;
 	this->level = level;
 }
@@ -98,7 +99,7 @@ void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 	{
 		if (!goomba->IsDeadState() || goomba->IsParaGoombaState())
 		{
-			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			vy = vy > 0 ? -MARIO_JUMP_DEFLECT_SPEED : vy - MARIO_JUMP_DEFLECT_SPEED;
 		}
 	}
 	else if (untouchable == 0 && !goomba->IsDeadState()) // hit by Goomba
@@ -124,7 +125,7 @@ void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
 	{
 		if (!plant->IsDeadState())
 		{
-			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			vy = vy > 0 ? -MARIO_JUMP_DEFLECT_SPEED : vy - MARIO_JUMP_DEFLECT_SPEED;
 		}
 	}
 	else if (untouchable == 0 && !plant->IsDeadState()) // hit by ___
@@ -218,7 +219,7 @@ void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 	{
 		if (!koopa->IsShellIdle() || koopa->IsParatroopaState())
 		{
-			vy = -MARIO_JUMP_DEFLECT_SPEED;
+			vy = vy > 0 ? -MARIO_JUMP_DEFLECT_SPEED : vy - MARIO_JUMP_DEFLECT_SPEED;
 		}
 	}
 	else if (untouchable == 0 && !koopa->IsDeadState())
@@ -243,7 +244,7 @@ void CMario::OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e)
 #pragma region INTERACTIVE_OBJECT_METHOD
 void CMario::SetState(int state)
 {
-	this->stateHandler->HandleStateChange(this, state);
+	this->stateHandler->HandleStateChange(state);
 }
 
 void CMario::OnNoCollision(DWORD dt)
@@ -264,7 +265,7 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	{
 		vy = 0;
 		isOnPlatform = (e->normalY == DirectionYAxisType::Top) ? true : isOnPlatform;
-		this->flap_start = -1;
+		this->flap_start = 0;
 	}
 
 	if (e->normalX != DirectionXAxisType::None && e->obj->IsBlocking())
@@ -291,7 +292,7 @@ void CMario::GetBoundingBox(float& left, float& top, float& right, float& bottom
 {
 	float bboxWidth = 0;
 	float bboxHeight = 0;
-	this->stateHandler->GetBoundingBox(this, bboxWidth, bboxHeight);
+	this->stateHandler->GetBoundingBox(bboxWidth, bboxHeight);
 
 	left = x - bboxWidth / 2;
 	top = y - bboxHeight / 2;
@@ -301,8 +302,24 @@ void CMario::GetBoundingBox(float& left, float& top, float& right, float& bottom
 
 void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
-	if (abs(vx) > abs(maxVx)) vx = maxVx;
-	this->ax = vy > 0 ? MARIO_FALL_GRAVITY : MARIO_GRAVITY;
+	DebugOutTitle(L"speed: %f, max: %f, acc: %f, dir: %d, times %llu\n", vy, maxVx, ay, static_cast<int>(nx),  running_start);
+	this->ay = vy > 0 ? MARIO_FALL_GRAVITY : MARIO_GRAVITY;
+	vy += ay * dt;
+	vx += ax * dt;
+
+	
+	if (maxVx != 0 && (vx >= maxVx && static_cast<int>(nx) > 0) || (vx <= maxVx && static_cast<int>(nx) < 0)) {
+		vx = maxVx;
+	}
+
+	if (abs(vx) >= MARIO_RUNNING_SPEED) {
+		running_start = running_start == 0 ? GetTickCount64() : running_start;
+		if (GetTickCount64() - running_start > MARIO_TIME_POWER_P + MARIO_DURATION_POWER_P)
+			running_start = 0;
+	}
+	else {
+		running_start = 0;
+	}
 
 	// reset untouchable timer if untouchable time has passed
 	if (GetTickCount64() - untouchable_start > MARIO_UNTOUCHABLE_TIME)
@@ -312,13 +329,13 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 	}
 
 	CCollision::GetInstance()->Process(this, dt, coObjects);
-	CCharacter::Update(dt, coObjects);
+	//CCharacter::Update(dt, coObjects);
 
 	if (this->holdingItem)
 	{
 		float bboxWidth = 0;
 		float bboxHeight = 0;
-		this->stateHandler->GetBoundingBox(this, bboxWidth, bboxHeight);
+		this->stateHandler->GetBoundingBox(bboxWidth, bboxHeight);
 
 		int dir = static_cast<int>(this->nx);
 		this->holdingItem->SetObjectPosision(this->x + (bboxWidth - 2.0f) * dir, this->y);
@@ -346,11 +363,9 @@ void CMario::Render()
 		aniId = ID_ANI_MARIO_DIE;
 	}
 	else {
-		aniId = this->stateHandler->GetAniId(this);
+		aniId = this->stateHandler->GetAniId();
 	}
 
 	animations->Get(aniId)->Render(x, y);
-
-	DebugOutTitle(L"Coins: %d", coin);
 }
 #pragma endregion

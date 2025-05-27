@@ -65,7 +65,7 @@ void CKoopa::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	{
 		mario->OnKick();
 		this->SetState(KOOPA_STATE_SHELL_MOVE, e);
-		this->die_start = -1;
+		this->die_start = 0;
 	}
 }
 #pragma endregion
@@ -74,7 +74,6 @@ void CKoopa::OnMarioRelease(LPMARIO mario)
 {
 	if (this->state != KOOPA_STATE_WALKING) 
 	{
-		DebugOut(L"direction %d\n", mario->GetNX());
 		int curDir = static_cast<int>(mario->GetNX());
 		LPCOLLISIONEVENT e = new CCollisionEvent(0, static_cast<DirectionXAxisType>(-curDir), DirectionYAxisType::None, 0, 0,
 			nullptr, nullptr);
@@ -82,7 +81,7 @@ void CKoopa::OnMarioRelease(LPMARIO mario)
 		delete e;
 	}
 
-	this->die_start = -1;
+	this->die_start = 0;
 	this->isHeld = false;
 	float marioLeft = 0, marioTop = 0, marioRight = 0, marioBottom = 0;
 	mario->GetBoundingBox(marioLeft, marioTop, marioRight, marioBottom);
@@ -124,7 +123,7 @@ void CKoopa::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		{
 			this->SetState(KOOPA_STATE_WALKING);
 			this->y -= (KOOPA_BBOX_HEIGHT - SHELL_BBOX_HEIGHT) / 2;
-			die_start = -1;
+			die_start = 0;
 			return;
 		}
 		else if (IsNearOutOfTime(timeFromDie))

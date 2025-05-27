@@ -99,12 +99,12 @@ void CMarioPlayerKeyHandler::KeyState(BYTE* states)
 	}
 
 	// Sitting state has higher priority 
-	if (keyMap->IsActionPressed(states, ActionKey::Sit))
-	{
-		mario->SetState(MARIO_STATE_SIT);
-	}
-	else if (keyMap->IsActionPressed(states, ActionKey::Run))
+	if (keyMap->IsActionPressed(states, ActionKey::Run))
 	{
 		this->mario->SetRunning(true);
+	}
+	else if (keyMap->IsActionPressed(states, ActionKey::Sit))
+	{
+		mario->SetState(MARIO_STATE_SIT);
 	}
 }

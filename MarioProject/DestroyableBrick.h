@@ -8,7 +8,7 @@ typedef CBreakBrickEffect* LPBREAKBRICKEFFECT;
 class CDestroyableBrick : public CBrick, public CDestroyableObject
 {
 	bool isDestroy = false;
-	ULONGLONG timeDestroy = -1;
+	ULONGLONG timeDestroy = 0;
 	vector<LPBREAKBRICKEFFECT> pieces;
 protected:
 	bool isRemovable = true;

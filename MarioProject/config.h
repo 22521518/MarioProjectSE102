@@ -1,8 +1,8 @@
 #pragma once
 
-constexpr auto WINDOW_CLASS_NAME = L"MarioWindow"; // wchar_t* type
-constexpr auto MAIN_WINDOW_TITLE = L"Mario Project"; // wchar_t* type;
-constexpr auto WINDOW_ICON_PATH = L"mario.ico"; // wchar_t* type
+constexpr const wchar_t* WINDOW_CLASS_NAME = L"MarioWindow"; 
+constexpr const wchar_t* MAIN_WINDOW_TITLE = L"Mario Project";
+constexpr const wchar_t* WINDOW_ICON_PATH = L"mario.ico"; 
 
 constexpr int SCREEN_WIDTH = 320;              
 constexpr int SCREEN_HEIGHT = 240;             

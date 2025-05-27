@@ -3,12 +3,12 @@
 #include "MarioAniIDs.h"
 #include "MarioConfig.h"
 
-int CSmallMarioState::GetAniId(LPMARIO mario)
+int CSmallMarioState::GetAniId()
 {
 	int aniId = -1;
 	if (!mario->isOnPlatform)
 	{
-		if (abs(mario->ax) == MARIO_ACCEL_RUN_X)
+		if (abs(mario->ax) >= MARIO_ACCEL_RUN_X)
 		{
 			aniId = mario->nx == DirectionXAxisType::Right ?
 				ID_ANI_MARIO_SMALL_JUMP_RUN_RIGHT : ID_ANI_MARIO_SMALL_JUMP_RUN_LEFT;
@@ -48,12 +48,12 @@ int CSmallMarioState::GetAniId(LPMARIO mario)
 		{
 			aniId = ID_ANI_MARIO_SMALL_BRACE_RIGHT;
 		}
-		else if (mario->ax == MARIO_ACCEL_RUN_X)
+		else if (mario->ax >= MARIO_ACCEL_RUN_X)
 		{
-			aniId = mario->holdingItem ? 
+			aniId = mario->holdingItem ?
 				ID_ANI_MARIO_SMALL_RUNNING_HOLD_RIGHT : ID_ANI_MARIO_SMALL_RUNNING_RIGHT;
 		}
-		else if (mario->ax == MARIO_ACCEL_WALK_X)
+		else if (mario->ax >= MARIO_ACCEL_WALK_X)
 		{
 			aniId = ID_ANI_MARIO_SMALL_WALKING_RIGHT;
 		}
@@ -64,12 +64,12 @@ int CSmallMarioState::GetAniId(LPMARIO mario)
 		{
 			aniId = ID_ANI_MARIO_SMALL_BRACE_LEFT;
 		}
-		else if (mario->ax == -MARIO_ACCEL_RUN_X)
+		else if (mario->ax <= -MARIO_ACCEL_RUN_X)
 		{
 			aniId = mario->holdingItem ?
 				ID_ANI_MARIO_SMALL_RUNNING_HOLD_LEFT : ID_ANI_MARIO_SMALL_RUNNING_LEFT;
 		}
-		else if (mario->ax == -MARIO_ACCEL_WALK_X)
+		else if (mario->ax <= -MARIO_ACCEL_WALK_X)
 		{
 			aniId = ID_ANI_MARIO_SMALL_WALKING_LEFT;
 		}
@@ -80,7 +80,7 @@ int CSmallMarioState::GetAniId(LPMARIO mario)
 	return aniId;
 }
 
-void CSmallMarioState::GetBoundingBox(LPMARIO mario, float& width, float& height)
+void CSmallMarioState::GetBoundingBox(float& width, float& height)
 {
 	height = MARIO_SMALL_BBOX_HEIGHT;
 	width = MARIO_SMALL_BBOX_WIDTH;

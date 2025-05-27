@@ -4,9 +4,9 @@ class CSmallMarioState :
     public CMarioState
 {
 public:
-	CSmallMarioState() : CMarioState() {}
-	virtual int GetAniId(LPMARIO mario) override;
-	virtual void GetBoundingBox(LPMARIO mario, float& width, float& height) override;
+	CSmallMarioState(LPMARIO mario) : CMarioState(mario) {}
+	virtual int GetAniId() override;
+	virtual void GetBoundingBox(float& width, float& height) override;
 	~CSmallMarioState() {}
 };
 

@@ -13,6 +13,7 @@ int WINAPI WinMain(
 	HWND hWnd = CreateGameWindow(hInstance, nCmdShow, SCREEN_WIDTH, SCREEN_HEIGHT,
 		WINDOW_CLASS_NAME, MAIN_WINDOW_TITLE, WINDOW_ICON_PATH);
 
+	SetDebugWindow(hWnd);
 	CGame::GetInstance()->Init(hWnd, hInstance);
 	// Init keyboard
 	CGame::GetInstance()->InitKeyboard();

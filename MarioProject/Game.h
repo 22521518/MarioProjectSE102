@@ -16,9 +16,6 @@
 #include <vector>
 
 //#define DIRECTINPUT_VERSION 0x0800
-#ifndef DIRECTINPUT_VERSION
-constexpr int DIRECTINPUT_VERSION = 0x0800;
-#endif
 
 using namespace std;
 

@@ -34,6 +34,7 @@ class CMario : public CCharacter
 	BOOLEAN isOnPlatform;
 	int level;
 	int untouchable;
+	ULONGLONG running_start;
 	ULONGLONG flap_start;
 	ULONGLONG untouchable_start;
 	ULONGLONG kick_start;

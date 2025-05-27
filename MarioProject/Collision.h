@@ -6,7 +6,7 @@
 class CPhysicalObject;
 typedef CPhysicalObject* LPPHYSICALOBJECT;
 
-#define BLOCK_PUSH_FACTOR 0.1f
+constexpr float BLOCK_PUSH_FACTOR = 0.0001f;
 
 class CCollision {
 	static CCollision* __instance;

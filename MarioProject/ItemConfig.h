@@ -20,6 +20,6 @@ constexpr float MUSHROOM_GROW_WAIT_TIME = 100;
 constexpr float MUSHROOM_GROW_SPEED = 0.025f;
 
 constexpr float MUSHROOM_GRAVITY = 0.002f;
-constexpr float MUSHROOM_SPPED = 0.05f;
+constexpr float MUSHROOM_SPPED = 0.0625f;
 #pragma endregion
 

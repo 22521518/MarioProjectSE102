@@ -9,10 +9,10 @@ class CGoomba :
 	public CEnemy, public CCollidableWithMario, public CDestroyableObject
 {
 protected:
-	ULONGLONG die_start = -1;
+	ULONGLONG die_start = 0;
 
 public:
-	CGoomba(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = GOOMBA_GRAVITY, DirectionXAxisType nx = DirectionXAxisType::Left, int state = GOOMBA_STATE_WALKING) : CEnemy(x, y, vx, vy, ax, ay, nx, state), die_start(-1)
+	CGoomba(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = GOOMBA_GRAVITY, DirectionXAxisType nx = DirectionXAxisType::Left, int state = GOOMBA_STATE_WALKING) : CEnemy(x, y, vx, vy, ax, ay, nx, state), die_start(0)
 	{
 		SetState(GOOMBA_STATE_WALKING);
 	};;
@@ -40,13 +40,13 @@ public:
 	void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e) override;
 
 	// desttoyable object
-	void OnDestroy(LPCOLLISIONEVENT e) override { SetState(GOOMBA_STATE_DIE); }
+	void OnDestroy(LPCOLLISIONEVENT e) { this->state = GOOMBA_STATE_DIE; this->Delete(); }
 
 	// base game object
 	void ResetState() override
 	{
 		CEnemy::ResetState();
-		die_start = -1;
+		die_start = 0;
 	}
 
 };

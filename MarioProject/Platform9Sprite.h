@@ -21,11 +21,11 @@ public:
 	static unordered_map<string, float> GetAdditionalFieldInfo(vector<string> tokens);
 
 	// game object method
-	virtual void Render() override;
-	void RenderByLayer(float xx, float yy, int spriteIdBegin, int spriteIdMiddle, int spriteIdEnd) const;
+	void Render() override;
+	void RenderByRow(float xx, float yy, int spriteIdBegin, int spriteIdMiddle, int spriteIdEnd) const;
 
 	// physical object method
-	virtual void GetBoundingBox(float& l, float& t, float& r, float& b) override;
-	virtual void RenderBoundingBox() override;
-	virtual int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) = 0;
+	void GetBoundingBox(float& l, float& t, float& r, float& b) override;
+	void RenderBoundingBox() override;
+	int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) = 0;
 };

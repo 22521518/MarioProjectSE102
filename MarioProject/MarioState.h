@@ -6,21 +6,23 @@ typedef CMario* LPMARIO;
 class CMarioState
 {
 protected:
-	virtual void OnRun(LPMARIO mario, bool isLeft);
-	virtual void OnWalk(LPMARIO mario, bool isLeft);
-	virtual void OnJump(LPMARIO mario);
-	virtual void OnReleaseJump(LPMARIO mario);
-	virtual void OnSit(LPMARIO mario);
-	virtual void OnReleaseSit(LPMARIO mario);
-	virtual void OnIdle(LPMARIO mario);
-	virtual void OnDie(LPMARIO mario);
-public:
-	CMarioState() {}
-	virtual ~CMarioState() {}
-	virtual int GetAniId(LPMARIO mario) = 0;
+	LPMARIO mario = nullptr;
 
-	virtual void GetBoundingBox(LPMARIO mario, float& width, float& height) = 0;
-	virtual void HandleStateChange(LPMARIO mario, int state);
+	virtual void OnRun(bool isLeft);
+	virtual void OnWalk(bool isLeft);
+	virtual void OnJump();
+	virtual void OnReleaseJump();
+	virtual void OnSit();
+	virtual void OnReleaseSit();
+	virtual void OnIdle();
+	virtual void OnDie();
+public:
+	CMarioState(LPMARIO mario) { this->mario = mario; }
+	virtual ~CMarioState() {}
+	virtual int GetAniId() = 0;
+
+	virtual void GetBoundingBox(float& width, float& height) = 0;
+	virtual void HandleStateChange(int state);
 };
 
 typedef CMarioState* LPMARIOSTATE;

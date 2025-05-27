@@ -4,7 +4,6 @@
 #include "Koopa.h"
 #include "BrickSuperItem.h"
 #include "Brick.h"
-#include "CollisionEvent.h"
 
 CKoopaShellState::CKoopaShellState(LPKOOPA koopa) 
 {

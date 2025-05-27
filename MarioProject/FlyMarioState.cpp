@@ -3,33 +3,36 @@
 #include "MarioAniIDs.h"
 #include "MarioConfig.h"
 
-void CFlyMarioState::OnJump(LPMARIO mario)
+bool CFlyMarioState::CanFly()
 {
-	CMarioState::OnJump(mario);
+	return mario->maxVx < MARIO_SPRINTNIG_SPEED || GetTickCount64() - mario->running_start > MARIO_TIME_POWER_P + MARIO_DURATION_POWER_P;
+}
+
+void CFlyMarioState::OnJump()
+{
+	CMarioState::OnJump();
 	if (!mario->isOnPlatform)
 	{
 		mario->StartFlap();
 		//DebugOut(L"flap: %d: %d\n", mario->IsFlapping() , mario->flap_start);
-		if (mario->IsFlapping() && mario->vy < 0)
+		if (mario->IsFlapping() && mario->vy < 0 && CanFly())
 		{
-			mario->vy = -MARIO_JUMP_SPEED_Y;
-			mario->ay = 0;
+			mario->vy = -MARIO_FLAP_BOOST;
+			mario->ay = MARIO_GRAVITY * 0.5f;;
 		}
 		else if (mario->IsFlapping() && mario->vy > 0)
 		{
-			mario->ay = -MARIO_GRAVITY * 1.2;
-			mario->vy = max(MARIO_MIN_VY, mario->vy);
+			mario->ay = -MARIO_GRAVITY * 0.5f;
+			mario->vy = MARIO_MIN_VY > mario->vy ? MARIO_MIN_VY : mario->vy;
 		}
-		else
-		{
-			mario->ay = MARIO_GRAVITY * 0.8;
+		else {
+			mario->ay = MARIO_GRAVITY * 0.2f;
 		}
+		DebugOut(L"ay: %d, vy: %d\n", mario->ay , mario->vy);
 	}
-
-
 }
 
-void CFlyMarioState::OnReleaseJump(LPMARIO mario)
+void CFlyMarioState::OnReleaseJump()
 {
 	mario->ay = MARIO_GRAVITY;
 	if (mario->vy < 0)
@@ -38,7 +41,7 @@ void CFlyMarioState::OnReleaseJump(LPMARIO mario)
 	}
 }
 
-int CFlyMarioState::GetAniId(LPMARIO mario)
+int CFlyMarioState::GetAniId()
 {
 	int aniId = -1;
 	if (!mario->isOnPlatform)
@@ -82,7 +85,7 @@ int CFlyMarioState::GetAniId(LPMARIO mario)
 	}
 	else if (mario->vx == 0)
 	{
-		
+
 		if (mario->holdingItem)
 		{
 			aniId = mario->nx == DirectionXAxisType::Right ?
@@ -100,12 +103,12 @@ int CFlyMarioState::GetAniId(LPMARIO mario)
 		{
 			aniId = ID_ANI_MARIO_FLY_BRACE_RIGHT;
 		}
-		else if (mario->ax == MARIO_ACCEL_RUN_X)
+		else if (mario->ax >= MARIO_ACCEL_RUN_X)
 		{
-			aniId = mario->holdingItem ? 
+			aniId = mario->holdingItem ?
 				ID_ANI_MARIO_FLY_RUNNING_HOLD_RIGHT : ID_ANI_MARIO_FLY_RUNNING_RIGHT;
 		}
-		else if (mario->ax == MARIO_ACCEL_WALK_X)
+		else if (mario->ax >= MARIO_ACCEL_WALK_X)
 		{
 			aniId = ID_ANI_MARIO_FLY_WALKING_RIGHT;
 		}
@@ -116,12 +119,12 @@ int CFlyMarioState::GetAniId(LPMARIO mario)
 		{
 			aniId = ID_ANI_MARIO_FLY_BRACE_LEFT;
 		}
-		else if (mario->ax == -MARIO_ACCEL_RUN_X)
+		else if (mario->ax <= -MARIO_ACCEL_RUN_X)
 		{
 			aniId = mario->holdingItem ?
 				ID_ANI_MARIO_FLY_RUNNING_HOLD_LEFT : ID_ANI_MARIO_FLY_RUNNING_LEFT;
 		}
-		else if (mario->ax == -MARIO_ACCEL_WALK_X)
+		else if (mario->ax <= -MARIO_ACCEL_WALK_X)
 		{
 			aniId = ID_ANI_MARIO_FLY_WALKING_LEFT;
 		}
@@ -132,7 +135,7 @@ int CFlyMarioState::GetAniId(LPMARIO mario)
 	return aniId;
 }
 
-void CFlyMarioState::GetBoundingBox(LPMARIO mario, float& width, float& height)
+void CFlyMarioState::GetBoundingBox(float& width, float& height)
 {
 	if (mario->isSitting)
 	{
@@ -146,7 +149,7 @@ void CFlyMarioState::GetBoundingBox(LPMARIO mario, float& width, float& height)
 	}
 }
 
-void CFlyMarioState::HandleStateChange(LPMARIO mario, int state)
+void CFlyMarioState::HandleStateChange(int state)
 {
-	CMarioState::HandleStateChange(mario, state);
+	CMarioState::HandleStateChange(state);
 }

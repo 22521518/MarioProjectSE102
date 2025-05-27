@@ -19,15 +19,15 @@
 #include "FileConfig.h"
 using namespace std;
 
-#define SCENE_SECTION_UNKNOWN -1
-#define SCENE_SECTION_ASSETS	1
-#define SCENE_SECTION_OBJECTS	2
+constexpr int SCENE_SECTION_UNKNOWN = -1;
+constexpr int SCENE_SECTION_ASSETS = 1;
+constexpr int SCENE_SECTION_OBJECTS = 2;
 
-#define ASSETS_SECTION_UNKNOWN -1
-#define ASSETS_SECTION_SPRITES 1
-#define ASSETS_SECTION_ANIMATIONS 2
+constexpr int ASSETS_SECTION_UNKNOWN = -1;
+constexpr int ASSETS_SECTION_SPRITES = 1;
+constexpr int ASSETS_SECTION_ANIMATIONS = 2;
 
-#define MAX_SCENE_LINE 1024
+constexpr int MAX_SCENE_LINE = 1024;
 
 class CPlayScene :
     public CScene
