@@ -8,7 +8,7 @@ CMarioPlayerKeyHandler::CMarioPlayerKeyHandler(LPPLAYSCENE s) : CSceneKeyHandler
 	this->mario = dynamic_cast<CMario*>(s->GetPlayer());
 	if (this->mario == NULL)
 	{
-		DebugOut(L"[ERROR] Mario object is NULL\n");
+		DebugOut(L"[ERROR] MarioPlayerKeyHandler: Mario object is NULL\n");
 	}
 }
 
@@ -16,7 +16,7 @@ void CMarioPlayerKeyHandler::OnKeyDown(int keyCode)
 {
 	if (this->mario == NULL)
 	{
-		DebugOut(L"[ERROR] Mario object is NULL\n");
+		DebugOut(L"[ERROR] MarioPlayerKeyHandler: Mario object is NULL\n");
 		return;
 	}
 
@@ -55,7 +55,7 @@ void CMarioPlayerKeyHandler::OnKeyUp(int keyCode)
 {
 	if (this->mario == NULL)
 	{
-		DebugOut(L"[ERROR] Mario object is NULL\n");
+		DebugOut(L"[ERROR] MarioPlayerKeyHandler: Mario object is NULL\n");
 		return;
 	}
 	if (keyCode == keyMap->GetKey(ActionKey::Run))
@@ -79,7 +79,7 @@ void CMarioPlayerKeyHandler::KeyState(BYTE* states)
 {
 	if (this->mario == NULL)
 	{
-		DebugOut(L"[ERROR] Mario object is NULL\n");
+		DebugOut(L"[ERROR] MarioPlayerKeyHandler: Mario object is NULL\n");
 		return;
 	}
 

@@ -137,7 +137,8 @@ GameObjectConfig JsonGameParser::_ParseSection_OBJECT(const json& rawObject)
 	}
 	catch (const std::exception& e)
 	{
-		DebugOut(L"[ERROR] Exception while parsing GameObject: %S\n", e.what());
+		DebugOut(L"[ERROR] Exception while parsing GameObject: %S\n, %s, %s\n", e.what(), ToLPCWSTR(to_string(rawObject["type"])),
+			ToLPCWSTR(to_string(rawObject["name"])));
 		throw; // Rethrow to upper layer
 	}
 	return gameObject;

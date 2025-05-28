@@ -2,6 +2,7 @@
 #include "GameParserFactory.h"
 #include "Mario.h"
 #include "AssetIDs.h"
+#include "GameDecor.h"
 
 using namespace std;
 
@@ -79,7 +80,10 @@ void CPlayScene::_ParseSection_OBJECTS(const vector<GameObjectConfig>& gameObjec
 		}
 
 		obj->SetPosition(gameObject.x, gameObject.y);
-		objects.push_back(obj);
+
+		if (gameObject.typeID == OBJECT_TYPE_GAME_BACKGROUND_COLOR_9_SPRITE) colorBg.push_back(obj);
+		else if (dynamic_cast<LPGAMEDECOR>(obj)) decors.push_back(obj);
+		else objects.push_back(obj);
 	}
 }
 #pragma endregion
@@ -165,6 +169,8 @@ void CPlayScene::Update(DWORD dt)
 
 void CPlayScene::Render()
 {
+	for (size_t i = 0; i < colorBg.size(); i++) colorBg[i]->Render();
+	for (size_t i = 0; i < decors.size(); i++) decors[i]->Render();
 	for (size_t i = 0; i < objects.size(); i++)
 	{
 		if (objects[i]->IsDeleted() || !objects[i]->IsVisible()) continue;

@@ -35,6 +35,8 @@ class CPlayScene :
 protected:
 	LPGAMEOBJECT player;
 	vector<LPGAMEOBJECT> objects;
+	vector<LPGAMEOBJECT> decors;
+	vector<LPGAMEOBJECT> colorBg;
 
 	void _ParseSection_SPRITES(const vector<SpriteConfig>& sprites);
 	void _ParseSection_ANIMATIONS(const vector<AnimationConfig>& animations);

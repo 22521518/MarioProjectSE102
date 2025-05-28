@@ -13,6 +13,11 @@ constexpr int OBJECT_TYPE_PLATFORM							= 5;
 constexpr int OBJECT_TYPE_PORTAL							= 50;
 
 #pragma region TRI_OBJ
+// background
+
+constexpr int OBJECT_TYPE_GAME_BACKGROUND_9_SPRITE = static_cast <int>(5e6 + 800);
+constexpr int OBJECT_TYPE_GAME_BACKGROUND_COLOR_9_SPRITE = static_cast <int>(5e6 + 900);
+
 // platform
 constexpr int OBJECT_TYPE_SOLID_SEMISOLID_PLATFORM_9_SPRITE = static_cast<int>(3e6);
 constexpr int OBJECT_TYPE_SOLID_SOLID_PLATFORM_9_SPRITE		= static_cast<int>(3e6 + 1e3);

@@ -6,6 +6,7 @@
 #include "CloudPlatform.h"
 #include "Portal.h"
 
+#include "GameBackground9Sprite.h"
 #include "SemisolidPlatform.h"
 #include "SolidPlatform.h"
 #include "BrickSuperItem.h"
@@ -53,6 +54,8 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	case OBJECT_TYPE_GREEN_KOOPA: return new CGreenKoopa(x, y);
 	case OBJECT_TYPE_SOLID_SEMISOLID_PLATFORM_9_SPRITE:
 	case OBJECT_TYPE_SOLID_SOLID_PLATFORM_9_SPRITE:
+	case OBJECT_TYPE_GAME_BACKGROUND_9_SPRITE:
+	case OBJECT_TYPE_GAME_BACKGROUND_COLOR_9_SPRITE:
 	{
 		float cell_width = static_cast<float>(getOrDefault(additionalFieldInfo, "cell_width", 16.0f));
 		float cell_height = static_cast<float>(getOrDefault(additionalFieldInfo, "cell_height", 16.0f));
@@ -82,6 +85,13 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 		else if (object_type == OBJECT_TYPE_SOLID_SOLID_PLATFORM_9_SPRITE)
 		{
 			return new CSolidPlatform(x, y, length, height, cell_width, cell_height,
+				sprite_id_top_begin, sprite_id_top_middle, sprite_id_top_end,
+				sprite_id_mid_begin, sprite_id_mid_middle, sprite_id_mid_end,
+				sprite_id_bot_begin, sprite_id_bot_middle, sprite_id_bot_end);
+		}
+		else if (object_type == OBJECT_TYPE_GAME_BACKGROUND_9_SPRITE || object_type == OBJECT_TYPE_GAME_BACKGROUND_COLOR_9_SPRITE)
+		{
+			return new CGameBackground9Sprite(x, y, length, height, cell_width, cell_height,
 				sprite_id_top_begin, sprite_id_top_middle, sprite_id_top_end,
 				sprite_id_mid_begin, sprite_id_mid_middle, sprite_id_mid_end,
 				sprite_id_bot_begin, sprite_id_bot_middle, sprite_id_bot_end);

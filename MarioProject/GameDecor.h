@@ -1,7 +1,8 @@
 #pragma once
 #include "GameObject.h"
-class CGameBackground :
+class CGameDecor :
     public CGameObject
 {
 };
 
+typedef CGameDecor* LPGAMEDECOR;

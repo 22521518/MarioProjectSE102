@@ -138,7 +138,7 @@
     <ClCompile Include="BigMarioState.cpp" />
     <ClCompile Include="BrickItem.cpp" />
     <ClCompile Include="BrickSuperItem.cpp" />
-    <ClCompile Include="CBackground.cpp" />
+    <ClCompile Include="GameBackground9Sprite.cpp" />
     <ClCompile Include="CheckingSideObject.cpp" />
     <ClCompile Include="DestroyableBrick.cpp" />
     <ClCompile Include="Character.cpp" />
@@ -205,7 +205,7 @@
     <ClInclude Include="BrickAniIDs.h" />
     <ClInclude Include="BrickItem.h" />
     <ClInclude Include="BrickSuperItem.h" />
-    <ClInclude Include="CBackground.h" />
+    <ClInclude Include="GameBackground9Sprite.h" />
     <ClInclude Include="CBonusScene.h" />
     <ClInclude Include="CheckingSideObject.h" />
     <ClInclude Include="DestroyableBrick.h" />
@@ -219,6 +219,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FileConfig.h" />
     <ClInclude Include="FlyMarioState.h" />
+    <ClInclude Include="GameDecor.h" />
     <ClInclude Include="GameParser.h" />
     <ClInclude Include="GameParserFactory.h" />
     <ClInclude Include="GreenKoopa.h" />
@@ -298,7 +299,6 @@
     <ClInclude Include="gameLoop.h" />
     <ClInclude Include="MarioPlayerKeyHandler.h" />
     <ClInclude Include="PlayScene.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneKeyHandler.h" />
     <ClInclude Include="setup.h" />
