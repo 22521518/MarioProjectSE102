@@ -90,5 +90,10 @@ public:
 		if (Py <= My)this->SetSpeed(-BX, BY);
 		else if (Py > My)this->SetSpeed(BX, -BY);
 	};
+	float Distant(LPPLANTENEMY plant) {
+		float Px, Py;
+		plant->GetPosition(Px, Py);
+		return sqrt(powf((x - Px), (float)2) + powf((Py - y), (float)2));
+	};
 };
 typedef CPlantFireBall* LPPLANTFIREBALL;

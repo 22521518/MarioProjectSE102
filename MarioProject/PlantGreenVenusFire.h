@@ -56,9 +56,9 @@ public:
 		this->y += this->vy * dt;
 		if (IsFire) mm->CollideFireBall(fire);
 		if (this->state == PLANT_STATE_HIDE) {
-			if (abs(this->x - Mx) < PLANT_HIDE_DISTANT) {
+			if (abs(this->x - Mx) < PLANT_HIDE_DISTANT && (fire->Distant(this) > FIREBALL_COMEBACK || !IsFire)) {
 				SetState(PLANT_STATE_GO_UP);
-				this->vy = -PLANT_SPEED;
+				this->vy = -PLANT_SPEED_R;
 			}
 		}
 		else if (this->state == PLANT_STATE_GO_UP && this->y <= upperY) {
@@ -67,20 +67,15 @@ public:
 			this->y = upperY;
 		}
 		else if (this->state == PLANT_STATE_UP) {
-			float GOx, GOy;
-			fire->GetPosition(GOx, GOy);
-			GOx = GOx - x;
-			GOy = y - GOy;
-			float uy = sqrt((powf(GOx, (float)2) + powf(GOy, (float)2)));
-			if (uy > FIREBALL_COMEBACK || !IsFire) {
+			if (fire->Distant(this) > FIREBALL_COMEBACK || !IsFire) {
 				fire->SetPosition(x, y);
 				fire->WhereToShoot(this);
 				IsFire = true;
 			}
 			mario->GetPosition(Mx, My);
-			if (abs(this->x - Mx) > PLANT_HIDE_DISTANT) {
+			if (abs(this->x - Mx) > PLANT_HIDE_DISTANT || fire->Distant(this) > PLANT_FIREBALL_HIDE_DISTANT) {
 				SetState(PLANT_STATE_GO_HIDE);
-				this->vy = PLANT_SPEED;
+				this->vy = PLANT_SPEED_R;
 			}
 		}
 		else if (this->state == PLANT_STATE_GO_HIDE && this->y >= lowerY) {
