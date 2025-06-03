@@ -1,5 +1,4 @@
 #pragma once
-#include "Texture.h"
 #include "PlayScene.h"
 #include "config.h"
 #include "debug.h"
@@ -18,9 +17,8 @@
 //#define DIRECTINPUT_VERSION 0x0800
 
 using namespace std;
-
-class CGameKeyHandler;
-typedef CGameKeyHandler* LPGAMEKEYHANDLER;
+class CTexture; typedef CTexture* LPTEXTURE;
+class CGameKeyHandler; typedef CGameKeyHandler* LPGAMEKEYHANDLER;
 
 class CGame
 {

@@ -5,7 +5,7 @@
 
 CMarioPlayerKeyHandler::CMarioPlayerKeyHandler(LPPLAYSCENE s) : CSceneKeyHandler(s)
 {
-	this->mario = dynamic_cast<CMario*>(s->GetPlayer());
+	this->mario = dynamic_cast<CMario*>(CPlayScene::GetPlayer());
 	if (this->mario == NULL)
 	{
 		DebugOut(L"[ERROR] MarioPlayerKeyHandler: Mario object is NULL\n");

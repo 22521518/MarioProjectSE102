@@ -10,7 +10,6 @@
 #include "Animations.h"
 #include "Sprites.h"
 #include "MarioPlayerKeyHandler.h"
-#include "PhysicalObject.h"
 #include "GameObject.h"
 #include "stringUtil.h"
 #include "debug.h"
@@ -29,11 +28,12 @@ constexpr int ASSETS_SECTION_ANIMATIONS = 2;
 
 constexpr int MAX_SCENE_LINE = 1024;
 
+class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
 class CPlayScene :
     public CScene
 {
 protected:
-	LPGAMEOBJECT player;
+	static LPGAMEOBJECT mainPlayer;
 	vector<LPGAMEOBJECT> objects;
 	vector<LPGAMEOBJECT> decors;
 	vector<LPGAMEOBJECT> colorBg;
@@ -53,11 +53,12 @@ public:
 	void InitPlayer(LPGAMEOBJECT player);
 
 	// Object management
+	void CheckObjectInPlayerArea(vector<LPPHYSICALOBJECT>* coObjects);
 	static bool IsGameObjectDeleted(const LPGAMEOBJECT& o);
 	void PurgeDeletedObjects();
 	void Clear();
 
-	LPGAMEOBJECT GetPlayer() const { return player; }
+	static LPGAMEOBJECT GetPlayer();
 
 };
 

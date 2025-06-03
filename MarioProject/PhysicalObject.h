@@ -9,11 +9,8 @@
 #include "Textures.h"
 
 using namespace std;
-
-#define ID_TEX_BBOX -100		// special texture to draw object bounding box
-#define BBOX_ALPHA 0.25f		// Bounding box transparency
-
-class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
+constexpr int ID_TEX_BBOX = -100;		// special texture to draw object bounding box
+constexpr float BBOX_ALPHA = 0.25f;		// Bounding box transparency
 
 class CPhysicalObject : public CGameObject {
 	const float originVX, originVY, originAX, originAY;
@@ -54,3 +51,4 @@ public:
 		this->nx = originNX;
 	};
 };
+typedef CPhysicalObject* LPPHYSICALOBJECT;

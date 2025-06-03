@@ -1,6 +1,8 @@
- #include "Game.h"
+#include "Game.h"
 #include "GameKeyHandler.h"
 #include "GameParserFactory.h"
+#include "Texture.h"
+#include "Textures.h"
 
 CGame* CGame::__instance = NULL;
 

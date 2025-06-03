@@ -44,7 +44,7 @@ void CRedParagoomba::OnCollisionWith(LPCOLLISIONEVENT e)
 		if (ps)
 		{
 			float marioX, marioY;
-			ps->GetPlayer()->GetPosition(marioX, marioY);
+			CPlayScene::GetPlayer()->GetPosition(marioX, marioY);
 			float distance = marioX - this->x;
 			this->ax = (distance > 0 ? 1 : -1) * GOOMBA_ACCELERATION;
 		}

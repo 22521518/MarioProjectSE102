@@ -42,6 +42,7 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	case OBJECT_TYPE_COIN: return new CCoin(x, y);
 	case OBJECT_TYPE_ITEM_BRICK: {
 		LPMARIO mario = dynamic_cast<LPMARIO>(player);
+		int ani_id_active = static_cast<int>(getOrDefault(additionalFieldInfo, "ani_id_active", ID_ANI_ITEM_BRICK));
 		if (mario) return new CBrickSuperItem(mario, x, y);
 		break;
 	}

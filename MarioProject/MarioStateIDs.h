@@ -25,7 +25,7 @@ constexpr int MARIO_LEVEL_FLY			= 3;
 
 #pragma region MARIO_BBOX
 constexpr float MARIO_FLY_BBOX_WIDTH			= 22;
-constexpr float MARIO_FLY_BBOX_HEIGHT			= 28;
+constexpr float MARIO_FLY_BBOX_HEIGHT			= 27;
 constexpr float MARIO_FLY_SITTING_BBOX_WIDTH	= 14;
 constexpr float MARIO_FLY_SITTING_BBOX_HEIGHT	= 18;
 

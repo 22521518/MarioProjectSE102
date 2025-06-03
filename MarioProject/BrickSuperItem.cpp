@@ -2,8 +2,14 @@
 #include "SuperLeaf.h"
 #include "SuperMushroom.h"
 #include "CollisionEvent.h"
-#include "BrickAniIDs.h"
 #include "BrickConfig.h"
+
+unordered_map<string, float> CBrickSuperItem::GetAdditionalFieldInfo(vector<string> tokens)
+{
+	unordered_map<string, float> fieldInfo;
+
+	return fieldInfo;
+}
 
 void CBrickSuperItem::CreateSuperLeaf(LPCOLLISIONEVENT e)
 {
@@ -27,7 +33,7 @@ void CBrickSuperItem::Render()
 {
 	if (!this->onBounce) CBrickItem::Render();
 	int aniId = state == BRICK_STATE_ACTIVE ?
-		ID_ANI_ITEM_BRICK : ID_ANI_EMPTY_ITEM_BRICK;
+		aniIdActive : aniIdEmpty;
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
 }
 

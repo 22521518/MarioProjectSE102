@@ -1,16 +1,12 @@
 {
   "assets": [
     "objects\\BlockQ_BlockW_BlockF.txt",
-    "objects\\Plant_Enemy.txt",
     "objects\\platform.txt",
     "objects\\super_items.txt",
     "objects\\destroyable_brick.txt",
     "objects\\pipe.txt",
     "objects\\coin.txt",
-    "objects\\goomba.txt",
-    "objects\\green_koopa.txt",
     "objects\\red_koopa.txt",
-    "objects\\red_goomba.txt",
     "objects\\background.txt",
     "objects\\mario.txt"
   ],
