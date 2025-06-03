@@ -26,7 +26,6 @@ class CMario : public CCharacter
 {
 	LPHOLDABLEWITHMARIO holdingItem = nullptr;
 	bool isRunning = false;
-	// physical state
 	float maxVx;
 
 	// mario state
@@ -38,6 +37,7 @@ class CMario : public CCharacter
 	ULONGLONG flap_start;
 	ULONGLONG untouchable_start;
 	ULONGLONG kick_start;
+	ULONGLONG attack_start;
 
 	// score
 	int coin = 0;
@@ -81,6 +81,8 @@ public:
 	bool IsFlapping() const;
 	void StartFlap();
 	bool CanFly();
+	bool IsAttacking() const;
+	void StartAttack();
 
 	// mario with collidable mario obj
 	void OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e);
@@ -102,6 +104,7 @@ public:
 	friend class CSmallMarioState;
 	friend class CBigMarioState;
 	friend class CFlyMarioState;
+	friend class CMarioPlayerKeyHandler;
 
 	friend class CCollidableWithMario;
 };

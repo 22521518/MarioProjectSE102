@@ -83,10 +83,20 @@ void CMarioPlayerKeyHandler::KeyState(BYTE* states)
 		return;
 	}
 
+	if (keyMap->IsActionPressed(states, ActionKey::Run)) {
+		if (mario->level == MARIO_LEVEL_FLY && !mario->IsAttacking() && !mario->IsRunning())
+		{
+			mario->StartAttack();
+			mario->SetState(keyMap->IsActionPressed(states, ActionKey::Run)
+				? MARIO_STATE_RUNNING_LEFT : MARIO_STATE_WALKING_LEFT);
+		}
+	}
+
 	if (keyMap->IsActionPressed(states, ActionKey::MoveRight))
 	{
 		mario->SetState(keyMap->IsActionPressed(states, ActionKey::Run)
 			? MARIO_STATE_RUNNING_RIGHT : MARIO_STATE_WALKING_RIGHT);
+		
 	}
 	else if (keyMap->IsActionPressed(states, ActionKey::MoveLeft))
 	{

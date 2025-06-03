@@ -12,7 +12,7 @@ constexpr int MARIO_STATE_RUNNING_LEFT	= 500;
 constexpr int MARIO_STATE_SIT			= 600;
 constexpr int MARIO_STATE_SIT_RELEASE	= 601;
 
-constexpr int MARIO_FLY_STATE_ATTACK	= static_cast<int>(7e3);
+constexpr int MARIO_FLY_STATE_ATTACK		= static_cast<int>(7e3);
 constexpr int MARIO_FLY_RELEASE			= static_cast<int>(31e3);
 constexpr int MARIO_FLY_FLAPPING		= static_cast<int>(1e7 + 1);
 #pragma endregion
@@ -24,7 +24,9 @@ constexpr int MARIO_LEVEL_FLY			= 3;
 #pragma endregion
 
 #pragma region MARIO_BBOX
-constexpr float MARIO_FLY_BBOX_WIDTH			= 22;
+constexpr float MARIO_FLY_ATTACK_BBOX_WIDTH = 24;
+
+constexpr float MARIO_FLY_BBOX_WIDTH			= 14;
 constexpr float MARIO_FLY_BBOX_HEIGHT			= 27;
 constexpr float MARIO_FLY_SITTING_BBOX_WIDTH	= 14;
 constexpr float MARIO_FLY_SITTING_BBOX_HEIGHT	= 18;

@@ -5,13 +5,13 @@ class CFlyMarioState :
     public CMarioState
 {
 protected:
-	virtual void OnJump() override;
-	virtual void OnReleaseJump() override;
+	void OnRun (bool isLeft) override;
+	void OnJump() override;
+	void OnReleaseJump() override;
 public:
 	CFlyMarioState(LPMARIO mario) : CMarioState(mario) {}
-	virtual int GetAniId() override;
-	virtual void GetBoundingBox(float& width, float& height) override;
-	virtual void HandleStateChange(int state) override;
+	int GetAniId() override;
+	void GetBoundingBox(float& width, float& height) override;
 	
 	~CFlyMarioState() {}
 };

@@ -30,6 +30,7 @@ CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, Directi
 	this->untouchable_start = 0;
 	this->flap_start = 0;
 	this->kick_start = 0;
+	this->attack_start = 0;
 
 	this->coin = 0;
 	this->level = MARIO_LEVEL_SMALL;
@@ -96,11 +97,21 @@ void CMario::StartFlap()
 	this->SetState(MARIO_FLY_FLAPPING);
 }
 
+void CMario::StartAttack() {
+	if (this->level < MARIO_LEVEL_FLY) return;
+	attack_start = GetTickCount64();
+}
+
 bool CMario::CanFly()
 {
 	return vx >= MARIO_SPRINTNIG_SPEED || (running_start > 0 && GetTickCount64() - running_start > MARIO_TIME_POWER_P + MARIO_DURATION_POWER_P);
 }
 
+bool CMario::IsAttacking() const
+{
+	return attack_start > 1 && (GetTickCount64() - attack_start) < MARIO_ATTACK_FRAME_TIME + MARIO_ATTACK_CD_TIME;
+}
+	
 #pragma region COLLIDABLE_MARIO_METHOD
 void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 {
@@ -292,7 +303,15 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 			this->holdingItem = holdableObj;
 			return;
 		}
-		obj->OnMarioCollide(this, e);
+
+		LPDESTROYABLEOBJECT desObj = dynamic_cast<LPDESTROYABLEOBJECT>(obj);
+		if (this->IsAttacking() && obj != nullptr) {
+			desObj->OnDestroy(e);
+		}
+		else
+		{
+			obj->OnMarioCollide(this, e);
+		}
 	}
 }
 #pragma endregion
@@ -319,10 +338,13 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 			vy = -MARIO_FLAP_BOOST * 6;
 			ay = MARIO_GRAVITY * 0.5f;
 		}
-		else
+		else if (vy > 0)
 		{
 			//DebugOut(L"I dropping!!\n");
 			ay = MARIO_FALL_GRAVITY * 0.65f;
+		}
+		else {
+			this->ay = vy > 0 ? MARIO_FALL_GRAVITY : MARIO_GRAVITY;
 		}
 	}
 	else 
@@ -330,7 +352,7 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		this->ay = vy > 0 ? MARIO_FALL_GRAVITY : MARIO_GRAVITY;
 	}
 
-	DebugOutTitle(L"speed: %f, max: %f, acc: %f, dir: %d, times %llu\n", vy, maxVx, ay, static_cast<int>(nx),  running_start);
+	DebugOutTitle(L"speed: %f, max: %f, acc: %f, dir: %d, times %llu\n", vy, maxVx, ay, IsFlapping(), running_start);
 	vy += ay * dt;
 	vx += ax * dt;
 

@@ -3,13 +3,18 @@
 #include "MarioAniIDs.h"
 #include "MarioConfig.h"
 
+void CFlyMarioState::OnRun(bool isLeft)
+{
+	if (!mario->isOnPlatform) return;
+	CMarioState::OnRun(isLeft);
+}
+
 void CFlyMarioState::OnJump()
 {
 	CMarioState::OnJump();
-	if (!mario->isOnPlatform)
-	{
-		mario->StartFlap();
-	}
+	if (!mario->isOnPlatform) return;
+	mario->StartFlap();
+
 }
 
 void CFlyMarioState::OnReleaseJump()
@@ -69,6 +74,10 @@ int CFlyMarioState::GetAniId()
 				ID_ANI_MARIO_FLY_JUMP_RELEASE_RIGHT : ID_ANI_MARIO_FLY_JUMP_RELEASE_LEFT;
 		}
 	}
+	else if (mario->state == MARIO_FLY_STATE_ATTACK) 
+	{
+
+	}
 	else if (mario->isSitting)
 	{
 		aniId = isRight ?
@@ -87,14 +96,23 @@ int CFlyMarioState::GetAniId()
 			aniId = isRight ?
 				ID_ANI_MARIO_FLY_IDLE_HOLD_RIGHT : ID_ANI_MARIO_FLY_IDLE_HOLD_LEFT;
 		}
+		else if (mario->IsAttacking())
+		{
+			aniId = ID_ANI_MARIO_FLY_ATTACK;
+		}
 		else
 		{
 			aniId = isRight ?
 				ID_ANI_MARIO_FLY_IDLE_RIGHT : ID_ANI_MARIO_FLY_IDLE_LEFT;
 		}
 	}
-	else if (mario->vx > 0)
+	else if (mario->IsAttacking())
 	{
+		aniId = ID_ANI_MARIO_FLY_ATTACK;
+	}
+	else if (mario->vx > 0) // right
+	{
+		
 		if (mario->ax < 0)
 		{
 			aniId = ID_ANI_MARIO_FLY_BRACE_RIGHT;
@@ -109,7 +127,7 @@ int CFlyMarioState::GetAniId()
 			aniId = ID_ANI_MARIO_FLY_WALKING_RIGHT;
 		}
 	}
-	else // vx < 0
+	else //left
 	{
 		if (mario->ax > 0)
 		{
@@ -133,6 +151,11 @@ int CFlyMarioState::GetAniId()
 
 void CFlyMarioState::GetBoundingBox(float& width, float& height)
 {
+	if (mario->IsAttacking()) 
+	{
+		height = MARIO_FLY_BBOX_HEIGHT;
+		width = MARIO_FLY_BBOX_WIDTH + 10;
+	}
 	if (mario->isSitting)
 	{
 		height = MARIO_FLY_SITTING_BBOX_HEIGHT;
@@ -143,9 +166,4 @@ void CFlyMarioState::GetBoundingBox(float& width, float& height)
 		height = MARIO_FLY_BBOX_HEIGHT;
 		width = MARIO_FLY_BBOX_WIDTH;
 	}
-}
-
-void CFlyMarioState::HandleStateChange(int state)
-{
-	CMarioState::HandleStateChange(state);
 }
