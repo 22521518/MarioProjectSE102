@@ -55,7 +55,7 @@ public:
 		this->vx += this->ax * dt;
 		this->x += this->vx * dt;
 		this->y += this->vy * dt;
-		if (IsFire) mm->CollideFireBall(fire);
+		if (IsFire) mm->CollideBullet(fire);
 		if (this->state == PLANT_STATE_HIDE) {
 			if (abs(this->x - Mx) < PLANT_HIDE_DISTANT && (fire->Distant(this) > FIREBALL_COMEBACK || !IsFire)) {
 				SetState(PLANT_STATE_GO_UP);
@@ -92,7 +92,7 @@ public:
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	{
 		// jump on top >> kill ___ and deflect a bit 
-		mario->OnCollisionWithPlant(this, e);
+		mario->OnCollisionWithEnemy(this, e);
 		if (e->normalY == DirectionYAxisType::Top)
 		{
 			if (!this->IsDeadState())

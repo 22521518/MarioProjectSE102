@@ -13,6 +13,7 @@ class CMarioState; typedef CMarioState* LPMARIOSTATE;
 class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
 class CBlockQ; typedef CBlockQ* LPBLOCKQ;
 class CPlantEnemy; typedef CPlantEnemy* LPPLANTENEMY;
+class CEnemy; typedef CEnemy* LPENEMY;
 class CPlantFireBall; typedef CPlantFireBall* LPPLANTFIREBALL;
 class CBlock1Up; typedef CBlock1Up* LPBLOCK1UP;
 class CSuperMushroom; typedef CSuperMushroom* LPSUPERMUSHROOM;
@@ -100,8 +101,11 @@ public:
 
 	//void OnCollisionWithBlockQ (LPBlockQ coin, LPCOLLISIONEVENT e) {};
 	//void OnCollisionWithPortal(LPPORTAL portal, LPCOLLISIONEVENT e) {};
-	void OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e);
-	void CollideFireBall(LPPLANTFIREBALL fire);
+	//
+	//void OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e);
+	void OnCollisionWithEnemy(LPENEMY goomba, LPCOLLISIONEVENT e);
+	//void CollideFireBall(LPPLANTFIREBALL fire);
+	void CollideBullet(LPINTERACTIVEOBJECT fire);
 	void Collide1UP(LPBLOCK1UP fire);
 	void OnCollisionWithKoopa(LPKOOPA koopa, LPCOLLISIONEVENT e);
 	bool IsOverLapping(LPINTERACTIVEOBJECT a);

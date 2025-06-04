@@ -1,0 +1,20 @@
+#pragma once
+#include "AnimationIDs.h"
+
+#pragma region PLANT_BBOX
+#define BOOMERANG_BROTHER_BBOX_WIDTH 16
+#define BOOMERANG_BROTHER_BBOX_HEIGHT 24
+#define BOOMERANG_WIDTH 9
+#define BOOMERANG_HEIGHT 9
+#define BOOMERANG_BROTHER_SPEED 0.01f
+#define BOOMERANG_SPEED 0.02f
+#pragma endregion
+#define ID_ANI_BOOMMERANG_BROTHER_L 6100000
+#define ID_ANI_BOOMMERANG_BROTHER_R 6100010
+#define ID_ANI_BOOMMERANG 6100010
+#pragma region PLANT_STATE
+#define BB_STATE_NO_HIT 100
+#define BB_STATE_HIT_ONE 200
+#define BB_STATE_DIE 300
+#pragma endregion
+#define BOOMMERANG_COMEBACK 128

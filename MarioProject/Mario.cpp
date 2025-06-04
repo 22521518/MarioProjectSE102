@@ -146,17 +146,17 @@ void CMario::OnCollisionWithGoomba(LPGOOMBA goomba, LPCOLLISIONEVENT e)
 		}
 	}
 }
-void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
+void CMario::OnCollisionWithEnemy(LPENEMY goomba, LPCOLLISIONEVENT e)
 {
 	// jump on top >> kill ___ and deflect a bit 
 	if (e->normalY == DirectionYAxisType::Top)
 	{
-		if (!plant->IsDeadState())
+		if (!goomba->IsDeadState())
 		{
 			vy = vy > 0 ? -MARIO_JUMP_DEFLECT_SPEED : vy - MARIO_JUMP_DEFLECT_SPEED;
 		}
 	}
-	else if (untouchable == 0 && !plant->IsDeadState()) // hit by ___
+	else if (untouchable == 0 && !goomba->IsDeadState()) // hit by ???
 	{
 		if (level > MARIO_LEVEL_BIG)
 		{
@@ -172,7 +172,7 @@ void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
 		}
 	}
 }
-void CMario::CollideFireBall(LPPLANTFIREBALL fire)
+void CMario::CollideBullet(LPINTERACTIVEOBJECT fire)
 {
 	if (this->IsOverLapping(static_cast<LPINTERACTIVEOBJECT>(fire)) && untouchable == 0) {
 		if (level > MARIO_LEVEL_BIG)
@@ -189,6 +189,49 @@ void CMario::CollideFireBall(LPPLANTFIREBALL fire)
 		}
 	}
 };
+//void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
+//{
+//	// jump on top >> kill ___ and deflect a bit 
+//	if (e->normalY == DirectionYAxisType::Top)
+//	{
+//		if (!plant->IsDeadState())
+//		{
+//			vy = vy > 0 ? -MARIO_JUMP_DEFLECT_SPEED : vy - MARIO_JUMP_DEFLECT_SPEED;
+//		}
+//	}
+//	else if (untouchable == 0 && !plant->IsDeadState()) // hit by ___
+//	{
+//		if (level > MARIO_LEVEL_BIG)
+//		{
+//			this->SetLevel(MARIO_LEVEL_BIG);
+//		}
+//		else if (level > MARIO_LEVEL_SMALL)
+//		{
+//			this->SetLevel(MARIO_LEVEL_SMALL);
+//		}
+//		else
+//		{
+//			SetState(MARIO_STATE_DIE);
+//		}
+//	}
+//}
+//void CMario::CollideFireBall(LPPLANTFIREBALL fire)
+//{
+//	if (this->IsOverLapping(static_cast<LPINTERACTIVEOBJECT>(fire)) && untouchable == 0) {
+//		if (level > MARIO_LEVEL_BIG)
+//		{
+//			this->SetLevel(MARIO_LEVEL_BIG);
+//		}
+//		else if (level > MARIO_LEVEL_SMALL)
+//		{
+//			this->SetLevel(MARIO_LEVEL_SMALL);
+//		}
+//		else
+//		{
+//			SetState(MARIO_STATE_DIE);
+//		}
+//	}
+//};
 void CMario::Collide1UP(LPBLOCK1UP fire)
 {
 	if (this->IsOverLapping(static_cast<LPINTERACTIVEOBJECT>(fire))) {

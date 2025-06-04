@@ -56,7 +56,7 @@ public:
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 	{
 		// jump on top >> kill ___ and deflect a bit 
-		mario->OnCollisionWithPlant(this, e);
+		mario->OnCollisionWithEnemy(this, e);
 	};
 };
 

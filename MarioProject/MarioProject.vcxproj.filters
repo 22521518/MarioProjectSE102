@@ -190,6 +190,9 @@
     <Filter Include="Header Files\Scene\SceneConfig">
       <UniqueIdentifier>{58f033b2-150a-4ed4-8933-a62df73576da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\BoomerangBrother">
+      <UniqueIdentifier>{88f90523-2581-48c6-9cd1-a459bdc03bae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -761,6 +764,15 @@
     </ClInclude>
     <ClInclude Include="CameraConfig.h">
       <Filter>Header Files\Scene\SceneConfig</Filter>
+    </ClInclude>
+    <ClInclude Include="Boomerang.h">
+      <Filter>Header Files\GameObjectConcrete\BoomerangBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomerangBrother.h">
+      <Filter>Header Files\GameObjectConcrete\BoomerangBrother</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomerangBrotherConfig.h">
+      <Filter>Header Files\GameObjectConcrete\BoomerangBrother</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

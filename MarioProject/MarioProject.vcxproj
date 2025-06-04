@@ -235,6 +235,9 @@
     <ClInclude Include="CBlockF.h" />
     <ClInclude Include="BlockCoin.h" />
     <ClInclude Include="Block1Up.h" />
+    <ClInclude Include="BoomerangBrother.h" />
+    <ClInclude Include="Boomerang.h" />
+    <ClInclude Include="BoomerangBrotherConfig.h" />
     <ClInclude Include="HoldableWithMario.h" />
     <ClInclude Include="HUDBackground9Sprite.h" />
     <ClInclude Include="HUDConfig.h" />
