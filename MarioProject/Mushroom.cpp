@@ -46,9 +46,11 @@ void CMushroom::OnNoCollision(DWORD dt)
 
 void CMushroom::OnCollisionWith(LPCOLLISIONEVENT e)
 {
+	DebugOutObjectClassName(e->obj);
 	LPMARIO mario = dynamic_cast<LPMARIO>(e->obj);
-	if (mario)
+	if (mario || CPlayScene::GetPlayer() == e->obj)
 	{
+		this->Delete();
 		this->OnMarioCollide(mario, e);
 		return;
 	}

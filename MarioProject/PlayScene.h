@@ -55,10 +55,11 @@ protected:
 public:
 	CPlayScene(int id, LPCWSTR filePath);
 	
-	virtual void Load();
-	virtual void Update(DWORD dt);
-	virtual void Render();
-	virtual void Unload();
+	void Load() override;
+	void Update(DWORD dt) override;
+	void UpdateCamera(DWORD dt) override;
+	void Render() override;
+	void Unload() override;
 
 	void InitPlayer(LPGAMEOBJECT player);
 

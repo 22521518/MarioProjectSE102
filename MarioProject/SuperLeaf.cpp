@@ -11,6 +11,7 @@ void CSuperLeaf::Render()
 	int aniId = this->GetNX() == DirectionXAxisType::Right ?
 		ID_ANI_SUPER_LEAF_ITEM_RIGHT : ID_ANI_SUPER_LEAF_ITEM_LEFT;
 	CAnimations::GetInstance()->Get(aniId)->Render(x, y);
+	RenderBoundingBox();
 }
 
 void CSuperLeaf::GetBoundingBox(float& left, float& top, float& right, float& bottom)
@@ -37,9 +38,12 @@ void CSuperLeaf::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 
 void CSuperLeaf::OnCollisionWith(LPCOLLISIONEVENT e)
 {
+	DebugOutObjectClassName(e->obj);
 	LPMARIO mario = dynamic_cast<LPMARIO>(e->obj);
-	if (mario)
+	
+	if (mario || CPlayScene::GetPlayer() == e->obj)
 	{
+		this->Delete();
 		this->OnMarioCollide(mario, e);
 		return;
 	}
@@ -48,5 +52,4 @@ void CSuperLeaf::OnCollisionWith(LPCOLLISIONEVENT e)
 void CSuperLeaf::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 {
 	mario->OnCollisionWithSuperLeaf(this, e);
-	this->Delete();
 }

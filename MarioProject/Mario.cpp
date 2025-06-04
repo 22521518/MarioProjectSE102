@@ -31,6 +31,7 @@ CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, Directi
 	this->flap_start = 0;
 	this->kick_start = 0;
 	this->attack_start = 0;
+	this->power_p_start = 0;
 
 	this->coin = 0;
 	this->level = MARIO_LEVEL_SMALL;
@@ -282,14 +283,6 @@ void CMario::OnNoCollision(DWORD dt)
 
 void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 {
-	LPDESTROYABLEOBJECT destroyableObj = dynamic_cast<LPDESTROYABLEOBJECT>(e->obj);
-	if (destroyableObj && (
-		(e->normalY == DirectionYAxisType::Bottom && this->GetLevel() > MARIO_LEVEL_SMALL && dynamic_cast<LPBRICK>(destroyableObj)) 
-			|| this->IsAttacking()))
-	{
-		destroyableObj->OnDestroy(e);
-	}
-
 	if (e->normalY != DirectionYAxisType::None && e->obj->IsBlocking())
 	{
 		vy = 0;
@@ -301,6 +294,14 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	if (e->normalX != DirectionXAxisType::None && e->obj->IsBlocking())
 	{
 		vx = 0;
+	}
+
+	LPDESTROYABLEOBJECT destroyableObj = dynamic_cast<LPDESTROYABLEOBJECT>(e->obj);
+	if (destroyableObj && (
+		(e->normalY == DirectionYAxisType::Bottom && this->GetLevel() > MARIO_LEVEL_SMALL && dynamic_cast<LPBRICK>(destroyableObj))
+		|| this->IsAttacking()))
+	{
+		destroyableObj->OnDestroy(e);
 	}
 
 	LPCOLLIDABLEWITHMARIO obj = dynamic_cast<LPCOLLIDABLEWITHMARIO>(e->obj);
@@ -319,7 +320,8 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		}
 		else
 		{
-			obj->OnMarioCollide(this, e);
+			if (!untouchable)
+				obj->OnMarioCollide(this, e);
 		}
 	}
 }
@@ -381,7 +383,7 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 	}
 
 	// reset untouchable timer if untouchable time has passed
-	if (GetTickCount64() - untouchable_start > MARIO_UNTOUCHABLE_TIME)
+	if (GetTickCount64() - untouchable_start > MARIO_UNTOUCHABLE_TIME && untouchable_start > 0)
 	{
 		untouchable_start = 0;
 		untouchable = 0;
@@ -400,6 +402,12 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		this->holdingItem->SetObjectPosision(this->x + (bboxWidth - 2.0f) * dir, this->y);
 		if (!this->holdingItem->IsHoldableState())
 		{
+
+			untouchable_start = MARIO_UNTOUCHABLE_TIME - 200;
+			untouchable = 1;
+			int dir = static_cast<int>(this->nx);
+			this->holdingItem->SetObjectPosision(this->x + (bboxWidth + 20.0f) * dir, this->y);
+			//this->holdingItem->SetObjectPosision(this->x + (bboxWidth + 12.0f) * dir, this->y);
 			this->ReleaseHoldingItem();
 		}
 	}

@@ -41,7 +41,6 @@ CKoopaShellMoveState::CKoopaShellMoveState(LPKOOPA koopa, LPCOLLISIONEVENT e)
     {
         int eNXValue = static_cast<int>(e->normalX);
         vx *= -eNXValue ;
-    
     }
 
     koopa->SetSpeed(vx, 0);

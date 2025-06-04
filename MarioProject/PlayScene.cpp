@@ -126,14 +126,20 @@ void CPlayScene::Update(DWORD dt)
 	};
 
 	// TO-DO: This is a "dirty" way, need a more organized way 
+	LPPHYSICALOBJECT physMain = dynamic_cast<LPPHYSICALOBJECT>(CPlayScene::mainPlayer);
 	vector<LPPHYSICALOBJECT> coObjects;
+	coObjects.push_back(physMain);
 	CheckObjectInPlayerArea(&coObjects);
-
-	dynamic_cast<LPPHYSICALOBJECT>(CPlayScene::mainPlayer)->Update(dt, &coObjects);
+	
 	for (auto phys : coObjects) {
 		phys->Update(dt, &coObjects);
 	}
+	UpdateCamera(dt);
+	PurgeDeletedObjects();
+}
 
+void CPlayScene::UpdateCamera(DWORD dt)
+{
 	float screenWidth = static_cast<float>(CGame::GetInstance()->GetBackBufferWidth());
 	float screenHeight = static_cast<float>(CGame::GetInstance()->GetBackBufferHeight());
 	float px, py;
@@ -159,9 +165,7 @@ void CPlayScene::Update(DWORD dt)
 	px = max(CAM_BOUND_LEFT, px);
 
 	hud->SetPosition(px, py);
-	//CGame::GetInstance()->SetCamPos(px, 0);
 	CGame::GetInstance()->SetCamPos(px, py);
-	PurgeDeletedObjects();
 }
 
 void CPlayScene::CheckObjectInPlayerArea(vector<LPPHYSICALOBJECT>* coObjects) {

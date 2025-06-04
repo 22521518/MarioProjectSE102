@@ -15,6 +15,7 @@ public:
 	virtual void Load() = 0;
 	virtual void Unload() = 0;
 	virtual void Update(DWORD dt) = 0;
+	virtual void UpdateCamera(DWORD dt) = 0;
 	virtual void Render() = 0;
 
 	LPKEYEVENTHANDLER GetKeyEventHandler() const { return keyHandler; }
