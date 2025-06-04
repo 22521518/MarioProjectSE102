@@ -8,13 +8,9 @@ protected:
 		spriteIdMidBegin, spriteIdMidMiddle, spriteIdMidEnd,
 		spriteIdBotBegin, spriteIdBotMiddle, spriteIdBotEnd;
 public:
-	static CHUDBackground9Sprite* FromSingleSprite(float x, float y, int length, int height, float cell_width, float cell_height, int sprite_id);
-	CHUDBackground9Sprite(float x = 0, float y = 0, int length = 1, int height = 1,
-		float cell_width = 16, float cell_height = 16,
-		int sprite_id_top_begin = 0, int sprite_id_top_middle = 0, int sprite_id_top_end = 0,
-		int sprite_id_mid_begin = 0, int sprite_id_mid_middle = 0, int sprite_id_mid_end = 0,
-		int sprite_id_bot_begin = 0, int sprite_id_bot_middle = 0, int sprite_id_bot_end = 0
-	);;
+	CHUDBackground9Sprite(float offX = 0, float offY = 0) : CHUDObject(offX, offY) {};
+	static CHUDBackground9Sprite* FromSingleSprite(float x, float y, int length, int height, float cell_width, float cell_height, int sprite_id, float offX = 0, float offY = 0);
+	CHUDBackground9Sprite(float x, float y, int length, int height, float cell_width, float cell_height, int sprite_id_top_begin, int sprite_id_top_middle, int sprite_id_top_end, int sprite_id_mid_begin, int sprite_id_mid_middle, int sprite_id_mid_end, int sprite_id_bot_begin, int sprite_id_bot_middle, int sprite_id_bot_end, float offX = 0, float offY = 0);
 	void GetBoundingBox(float& left, float& top, float& right, float& bottom) override {};
 	void Render() override;
 	void RenderByRow(float xx, float yy, int spriteIdBegin, int spriteIdMiddle, int spriteIdEnd) const;

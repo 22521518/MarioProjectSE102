@@ -36,11 +36,14 @@ class CPlayScene :
     public CScene
 {
 private:
-	ULONGLONG coins = 0;
-	ULONGLONG time_remaining = 0;
-	ULONGLONG scores = 0;
-	ULONGLONG lives = 0;
-	LPHUDCONTAINER hud;	
+	UINT coins = 0;
+	UINT time_remaining = 300;
+	ULONG scores = 0;
+	UINT lives = 10;
+	UINT world = 1;
+	LPHUDCONTAINER hud;
+	
+	ULONGLONG time_start;
 
 protected:
 	static LPGAMEOBJECT mainPlayer;

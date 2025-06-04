@@ -16,8 +16,9 @@ LPGAMEOBJECT CPlayScene::GetPlayer() { return mainPlayer; }
 #pragma region PLAYSCENE_CONSTRUCTOR
 CPlayScene::CPlayScene(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
+	this->time_start = GetTickCount64();
 	this->keyHandler = new CMarioPlayerKeyHandler(this);
-	this->hud = new CHUDContainer(&time_remaining, &scores, &lives, &coins);
+	this->hud = new CHUDContainer(&time_remaining, &scores, &lives, &coins, &world);
 }
 
 void CPlayScene::InitPlayer(LPGAMEOBJECT player) {
@@ -96,6 +97,9 @@ void CPlayScene::_ParseSection_OBJECTS(const vector<GameObjectConfig>& gameObjec
 		else objects.push_back(obj);
 	}
 }
+void CPlayScene::LoadAssets(LPCWSTR assetFile)
+{
+}
 #pragma endregion
 
 #pragma region LOAD_SETTING
@@ -118,6 +122,7 @@ void CPlayScene::Load()
 #pragma region SCENE_MANAGEMENT
 void CPlayScene::Update(DWORD dt)
 {
+	time_remaining = static_cast<int>(MAX_TIME_SCENE - (GetTickCount64() - time_start));
 	if (CPlayScene::mainPlayer == nullptr)
 	{
 		DebugOut(L"[ERROR] Player object is nullptr\n");
@@ -152,7 +157,7 @@ void CPlayScene::UpdateCamera(DWORD dt)
 	CGame::GetInstance()->GetCamPos(cx, cy);
 
 	if (((mario->GetPowerPStart() > 0) || (mario->CanFly() && mario->IsFlapping())) ||
-		(cy < CAM_BOUND_BOTTOM))
+		(cy < CAM_BOUND_BOTTOM + 20))
 	{
 		py += -screenHeight / 2;
 	}
@@ -160,7 +165,7 @@ void CPlayScene::UpdateCamera(DWORD dt)
 		py = max(CAM_BOUND_TOP, py);
 	}
 
-	py = min(CAM_BOUND_BOTTOM, py);
+	py = min(CAM_BOUND_BOTTOM + 20, py);
 	px += -screenWidth / 2;
 	px = max(CAM_BOUND_LEFT, px);
 

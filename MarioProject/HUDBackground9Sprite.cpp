@@ -1,17 +1,14 @@
 #include "HUDBackground9Sprite.h"
 #include "Sprites.h"
 
-CHUDBackground9Sprite* CHUDBackground9Sprite::FromSingleSprite(float x, float y, int length, int height, float cell_width, float cell_height, int sprite_id)
+CHUDBackground9Sprite* CHUDBackground9Sprite::FromSingleSprite(float x, float y, int length, int height, float cell_width, float cell_height, int sprite_id, float offX, float offY)
 {
 	return new CHUDBackground9Sprite(x, y, length, height, cell_width, cell_height,
-		sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id);
+		sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, offX, offY);
 }
 
-CHUDBackground9Sprite::CHUDBackground9Sprite(float x, float y, int length, int height, float cell_width, float cell_height, int sprite_id_top_begin, int sprite_id_top_middle, int sprite_id_top_end, int sprite_id_mid_begin, int sprite_id_mid_middle, int sprite_id_mid_end, int sprite_id_bot_begin, int sprite_id_bot_middle, int sprite_id_bot_end)
+CHUDBackground9Sprite::CHUDBackground9Sprite(float x, float y, int length, int height, float cell_width, float cell_height, int sprite_id_top_begin, int sprite_id_top_middle, int sprite_id_top_end, int sprite_id_mid_begin, int sprite_id_mid_middle, int sprite_id_mid_end, int sprite_id_bot_begin, int sprite_id_bot_middle, int sprite_id_bot_end, float offX, float offY) : CHUDObject(offX, offY)
 {
-	//this->offsetX = -cell_width * 5.f;
-	this->offsetX = 0;
-	this->offsetY = 0;
 
 	this->length = length;
 	this->height = height;

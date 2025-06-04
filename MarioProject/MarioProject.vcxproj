@@ -138,6 +138,7 @@
     <ClCompile Include="BigMarioState.cpp" />
     <ClCompile Include="BrickItem.cpp" />
     <ClCompile Include="BrickSuperItem.cpp" />
+    <ClCompile Include="FontSpriteIDs.h" />
     <ClCompile Include="GameBackground9Sprite.cpp" />
     <ClCompile Include="CheckingSideObject.cpp" />
     <ClCompile Include="DestroyableBrick.cpp" />
@@ -150,7 +151,9 @@
     <ClCompile Include="GreenKoopaParatroopaState.cpp" />
     <ClCompile Include="HUDBackground9Sprite.cpp" />
     <ClCompile Include="HUDContainer.cpp" />
+    <ClCompile Include="HUDObject.cpp" />
     <ClCompile Include="HUDScoreboard.cpp" />
+    <ClCompile Include="HUDWorld.h" />
     <ClCompile Include="JsonGameParser.cpp" />
     <ClCompile Include="Koopa.cpp" />
     <ClCompile Include="KoopaShellState.cpp" />
@@ -186,6 +189,7 @@
     <ClCompile Include="BreakBrickEffect.cpp" />
     <ClCompile Include="SmallMarioState.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SpriteFont.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="SuperLeaf.cpp" />
@@ -209,6 +213,7 @@
     <ClInclude Include="BrickItem.h" />
     <ClInclude Include="BrickSuperItem.h" />
     <ClInclude Include="CameraConfig.h" />
+    <ClInclude Include="FontConfig.h" />
     <ClInclude Include="GameBackground9Sprite.h" />
     <ClInclude Include="CBonusScene.h" />
     <ClInclude Include="CheckingSideObject.h" />
@@ -240,11 +245,15 @@
     <ClInclude Include="BoomerangBrotherConfig.h" />
     <ClInclude Include="HoldableWithMario.h" />
     <ClInclude Include="HUDBackground9Sprite.h" />
+    <ClInclude Include="HUDCoin.h" />
     <ClInclude Include="HUDConfig.h" />
     <ClInclude Include="HUDContainer.h" />
+    <ClInclude Include="HUDLives.h" />
     <ClInclude Include="HUDObject.h" />
+    <ClInclude Include="HUDScore.h" />
     <ClInclude Include="HUDScoreboard.h" />
     <ClInclude Include="HUDSpriteIDs.h" />
+    <ClInclude Include="HUDTime.h" />
     <ClInclude Include="mapUtil.h" />
     <ClInclude Include="RedGoomba.h" />
     <ClInclude Include="RedParagoomba.h" />
@@ -303,6 +312,7 @@
     <ClInclude Include="RedKoopaState.h" />
     <ClInclude Include="BreakBrickEffect.h" />
     <ClInclude Include="SemisolidPlatform.h" />
+    <ClInclude Include="SpriteFont.h" />
     <ClInclude Include="StaticObject.h" />
     <ClInclude Include="PhysicalObject.h" />
     <ClInclude Include="GameObject.h" />

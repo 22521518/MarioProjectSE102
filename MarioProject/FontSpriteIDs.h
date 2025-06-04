@@ -1,0 +1,39 @@
+#pragma once
+
+constexpr int ID_SPRITE_CHAR_0 = 4000100;
+constexpr int ID_SPRITE_CHAR_1 = 4000101;
+constexpr int ID_SPRITE_CHAR_2 = 4000102;
+constexpr int ID_SPRITE_CHAR_3 = 4000103;
+constexpr int ID_SPRITE_CHAR_4 = 4000104;
+constexpr int ID_SPRITE_CHAR_5 = 4000105;
+constexpr int ID_SPRITE_CHAR_6 = 4000106;
+constexpr int ID_SPRITE_CHAR_7 = 4000107;
+constexpr int ID_SPRITE_CHAR_8 = 4000108;
+constexpr int ID_SPRITE_CHAR_9 = 4000109;
+
+constexpr int ID_SPRITE_CHAR_A = 4000111;
+constexpr int ID_SPRITE_CHAR_B = 4000112;
+constexpr int ID_SPRITE_CHAR_C = 4000113;
+constexpr int ID_SPRITE_CHAR_D = 4000114;
+constexpr int ID_SPRITE_CHAR_E = 4000115;
+constexpr int ID_SPRITE_CHAR_F = 4000116;
+constexpr int ID_SPRITE_CHAR_G = 4000117;
+constexpr int ID_SPRITE_CHAR_H = 4000118;
+constexpr int ID_SPRITE_CHAR_I = 4000119;
+constexpr int ID_SPRITE_CHAR_J = 4000120;
+constexpr int ID_SPRITE_CHAR_K = 4000121;
+constexpr int ID_SPRITE_CHAR_L = 4000122;
+constexpr int ID_SPRITE_CHAR_M = 4000123;
+constexpr int ID_SPRITE_CHAR_N = 4000124;
+constexpr int ID_SPRITE_CHAR_O = 4000125;
+constexpr int ID_SPRITE_CHAR_P = 4000126;
+constexpr int ID_SPRITE_CHAR_Q = 4000127;
+constexpr int ID_SPRITE_CHAR_R = 4000128;
+constexpr int ID_SPRITE_CHAR_S = 4000129;
+constexpr int ID_SPRITE_CHAR_T = 4000130;
+constexpr int ID_SPRITE_CHAR_U = 4000131;
+constexpr int ID_SPRITE_CHAR_V = 4000132;
+constexpr int ID_SPRITE_CHAR_W = 4000133;
+constexpr int ID_SPRITE_CHAR_X = 4000134;
+constexpr int ID_SPRITE_CHAR_Y = 4000135;
+constexpr int ID_SPRITE_CHAR_Z = 4000136;

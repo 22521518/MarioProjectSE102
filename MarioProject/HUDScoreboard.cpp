@@ -1,16 +1,15 @@
 #include "HUDScoreboard.h"
 #include "HUDConfig.h"
-#include "HUDSpriteIDs.h"
+#include "HUDWorld.h"
 #include "Sprites.h"
 
-CHUDScoreboard::CHUDScoreboard(ULONGLONG* time, ULONGLONG* score, ULONGLONG* life, ULONGLONG* coin)
+CHUDScoreboard::CHUDScoreboard(UINT* time, ULONG* score, UINT* life, UINT* coin, UINT* world, float offX, float offY) : CHUDObject(offX, offY)
 {
-	this->backgroundId = ID_SPRITE_HUD_SCORE_BACKGROUND;
-	this->offsetX = 14.f, this->offsetY = 8.f;
-	this->time_remain = time;
-	this->scores = score;
-	this->lives = life;
-	this->coins = coin;
+	items.push_back(CHUDObject::CreateHUDWorld(world));
+	items.push_back(CHUDObject::CreateHUDLives(life));
+	items.push_back(CHUDObject::CreateHUDScores(score));
+	items.push_back(CHUDObject::CreateHUDTimes(time));
+	items.push_back(CHUDObject::CreateHUDCoins(coin));
 }
 
 void CHUDScoreboard::Render()

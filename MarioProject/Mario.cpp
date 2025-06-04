@@ -153,7 +153,7 @@ void CMario::OnCollisionWithEnemy(LPENEMY goomba, LPCOLLISIONEVENT e)
 	{
 		if (!goomba->IsDeadState())
 		{
-			vy = vy > 0 ? -MARIO_JUMP_DEFLECT_SPEED : vy - MARIO_JUMP_DEFLECT_SPEED;
+			vy = vy > 0 ? -MARIO_JUMP_DEFLECT_SPEED : -MARIO_JUMP_DEFLECT_SPEED * 1.5f;
 		}
 	}
 	else if (untouchable == 0 && !goomba->IsDeadState()) // hit by ???

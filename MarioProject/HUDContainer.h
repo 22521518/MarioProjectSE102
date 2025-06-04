@@ -2,7 +2,6 @@
 #include "HUDObject.h"
 #include "vector"
 #include "HUDConfig.h"
-#include "HUDScoreboard.h"
 
 using namespace std;
 
@@ -11,9 +10,9 @@ protected:
 	const float height = HUD_CONTAINER_HEIGHT;
 	vector<LPHUDOBJECT> items{};
 public:
-	CHUDContainer(ULONGLONG* time, ULONGLONG* score, ULONGLONG* life, ULONGLONG* coin);
+	CHUDContainer(float offX = 0, float offY = 16 * 10.8) : CHUDObject(offX, offY) {};
+	CHUDContainer(UINT* time, ULONG* score, UINT* life, UINT* coin, UINT* world, float offX = 0, float offY = 16 * 10.8);
 
-	void GetBoundingBox(float& left, float& top, float& right, float& bottom) override {};
 	void Render() override;
 
 	~CHUDContainer() { items.clear(); };
