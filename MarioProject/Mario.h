@@ -73,6 +73,9 @@ public:
 	int GetLevel() const { return level; };
 	void StartUntouchable();
 	bool IsUntouchable() const { return this->untouchable != 0; }
+
+	// power p
+	float GetPowerP() const;
 	
 	// release item with LPHOLDABLEWITHMARIO
 	void ReleaseHoldingItem();
@@ -80,9 +83,11 @@ public:
 
 	// fly mario method
 	bool IsFlapping() const;
-	void StartFlap();
+	ULONGLONG GetFlapStart() const { return flap_start; }
+	ULONGLONG GetPowerPStart() const { return power_p_start; }
 	bool CanFly() const;
 	bool IsAttacking() const;
+	void StartFlap();
 	void StartAttack();
 
 	// mario with collidable mario obj

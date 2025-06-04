@@ -23,3 +23,4 @@ height	240
 30	textures\grassland_enemies.png
 40	textures\Floor.png
 50	textures\stage_tile.png
+60	textures\hud.png

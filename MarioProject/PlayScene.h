@@ -14,6 +14,7 @@
 #include "stringUtil.h"
 #include "debug.h"
 
+
 #include "GameParser.h"
 #include "FileConfig.h"
 using namespace std;
@@ -29,9 +30,18 @@ constexpr int ASSETS_SECTION_ANIMATIONS = 2;
 constexpr int MAX_SCENE_LINE = 1024;
 
 class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
+class CHUDContainer;  typedef CHUDContainer* LPHUDCONTAINER;
+
 class CPlayScene :
     public CScene
 {
+private:
+	ULONGLONG coins = 0;
+	ULONGLONG time_remaining = 0;
+	ULONGLONG scores = 0;
+	ULONGLONG lives = 0;
+	LPHUDCONTAINER hud;	
+
 protected:
 	static LPGAMEOBJECT mainPlayer;
 	vector<LPGAMEOBJECT> objects;

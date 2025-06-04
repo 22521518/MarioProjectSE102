@@ -181,6 +181,15 @@
     <Filter Include="Header Files\GameObjectConcrete\HUDObject">
       <UniqueIdentifier>{76737947-5136-4755-b576-36ac12ff5063}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\HUDObject\HUDAsset">
+      <UniqueIdentifier>{01606dab-da37-4de5-866f-34b2c6a087c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjectConcrete\HUD">
+      <UniqueIdentifier>{aa0014c1-3f6d-4ac2-b666-a1c4507d24a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene\SceneConfig">
+      <UniqueIdentifier>{58f033b2-150a-4ed4-8933-a62df73576da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -363,6 +372,15 @@
     </ClCompile>
     <ClCompile Include="GameBackground9Sprite.cpp">
       <Filter>Source Files\GameObjectConcrete\BackgroundDecoration</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDContainer.cpp">
+      <Filter>Source Files\GameObjectConcrete\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDScoreboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDBackground9Sprite.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -728,6 +746,21 @@
     </ClInclude>
     <ClInclude Include="HUDObject.h">
       <Filter>Header Files\GameObjectAbstract</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDConfig.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject\HUDAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDScoreboard.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDSpriteIDs.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject\HUDAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDBackground9Sprite.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraConfig.h">
+      <Filter>Header Files\Scene\SceneConfig</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

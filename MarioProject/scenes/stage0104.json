@@ -1,5 +1,6 @@
 {
   "assets": [
+    "objects\\hud.txt",
     "objects\\BlockQ_BlockW_BlockF.txt",
     "objects\\platform.txt",
     "objects\\super_items.txt",

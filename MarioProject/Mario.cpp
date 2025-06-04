@@ -77,6 +77,11 @@ void CMario::StartUntouchable() {
 	this->untouchable_start = GetTickCount64();
 }
 
+float CMario::GetPowerP() const
+{
+	return 0.0f;
+}
+
 void CMario::ReleaseHoldingItem()
 {
 	if (!this->holdingItem) return;

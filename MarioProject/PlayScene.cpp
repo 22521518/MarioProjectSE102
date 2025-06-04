@@ -5,6 +5,8 @@
 #include"debug.h"
 #include "GameDecor.h"
 #include "PhysicalObject.h"
+#include "HUDContainer.h"
+#include "CameraConfig.h"
 
 using namespace std;
 
@@ -15,6 +17,7 @@ LPGAMEOBJECT CPlayScene::GetPlayer() { return mainPlayer; }
 CPlayScene::CPlayScene(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
 	this->keyHandler = new CMarioPlayerKeyHandler(this);
+	this->hud = new CHUDContainer(&time_remaining, &scores, &lives, &coins);
 }
 
 void CPlayScene::InitPlayer(LPGAMEOBJECT player) {
@@ -74,9 +77,6 @@ void CPlayScene::_ParseSection_OBJECTS(const vector<GameObjectConfig>& gameObjec
 	for (const GameObjectConfig gameObject : gameObjects)
 	{
 		LPGAMEOBJECT obj = CGameObject::CreateGameObject(gameObject.typeID, gameObject.x, gameObject.y, gameObject.additionalFieldInfo, CPlayScene::mainPlayer);
-
-		//if (!gameObject.typeID) return;
-		DebugOut(L"[DUMMY] Object Type: %d!\n", gameObject.typeID);
 
 		if (obj == nullptr) {
 			DebugOut(L"[ERROR] Failed to create player object!\n");
@@ -138,14 +138,27 @@ void CPlayScene::Update(DWORD dt)
 	float screenHeight = static_cast<float>(CGame::GetInstance()->GetBackBufferHeight());
 	float px, py;
 	CPlayScene::mainPlayer->GetPosition(px, py);
-	CPlayScene::mainPlayer->GetPosition(px, py);
-	//player->SetPosition(px < 0 ? 0 : px, py);
+	CPlayScene::mainPlayer->SetPosition(max(CAM_BOUND_LEFT + 10.0f, px), py);
 
+	LPMARIO mario = dynamic_cast<LPMARIO>(CPlayScene::mainPlayer);
+
+	float cx, cy;
+	CGame::GetInstance()->GetCamPos(cx, cy);
+
+	if (((mario->GetPowerPStart() > 0) || (mario->CanFly() && mario->IsFlapping())) ||
+		(cy < CAM_BOUND_BOTTOM))
+	{
+		py += -screenHeight / 2;
+	}
+	else {
+		py = max(CAM_BOUND_TOP, py);
+	}
+
+	py = min(CAM_BOUND_BOTTOM, py);
 	px += -screenWidth / 2;
-	py += -screenHeight / 2;
-	px = max(0, px);
-	py = max(0, py); 
+	px = max(CAM_BOUND_LEFT, px);
 
+	hud->SetPosition(px, py);
 	//CGame::GetInstance()->SetCamPos(px, 0);
 	CGame::GetInstance()->SetCamPos(px, py);
 	PurgeDeletedObjects();
@@ -196,6 +209,7 @@ void CPlayScene::Render()
 		objects[i]->Render();
 	}
 	CPlayScene::mainPlayer->Render();
+	hud->Render();
 }
 
 void CPlayScene::Unload()
@@ -207,6 +221,7 @@ void CPlayScene::Unload()
 	}
 
 	objects.clear();
+	delete hud;
 
 	// Beside objects, we need to clean up sprites, animations
 	CSprites::GetInstance()->Clear();

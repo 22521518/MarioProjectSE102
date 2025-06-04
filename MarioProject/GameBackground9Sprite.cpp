@@ -1,6 +1,12 @@
 #include "GameBackground9Sprite.h"
 #include "Sprites.h"
 
+CGameBackground9Sprite* CGameBackground9Sprite::FromSingleSprite(float x, float y, int length, int height, float cell_width, float cell_height, int sprite_id)
+{
+	return new CGameBackground9Sprite(x, y, length, height, cell_width, cell_height,
+		sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id);
+}
+
 CGameBackground9Sprite::CGameBackground9Sprite(float x, float y, int length, int height, float cell_width, float cell_height, int sprite_id_top_begin, int sprite_id_top_middle, int sprite_id_top_end, int sprite_id_mid_begin, int sprite_id_mid_middle, int sprite_id_mid_end, int sprite_id_bot_begin, int sprite_id_bot_middle, int sprite_id_bot_end)
 {
 	this->length = length;

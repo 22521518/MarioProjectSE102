@@ -1,5 +1,6 @@
 {
   "assets": [
+    "objects\\hud.txt",
     "objects\\BlockQ_BlockW_BlockF.txt",
     "objects\\Plant_Enemy.txt",
     "objects\\platform.txt",
@@ -7888,6 +7889,84 @@
       "y": 352
     },
     {
+      "height": 480,
+      "id": 1657,
+      "name": "bg_black",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 27
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 176
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 5000903
+        }
+      ],
+      "rotation": 0,
+      "type": "5000900",
+      "visible": true,
+      "width": 2816,
+      "x": 4.54747350886464e-13,
+      "y": 0
+    },
+    {
       "height": 432,
       "id": 1655,
       "name": "bg_blue",
@@ -8041,84 +8120,6 @@
       "visible": true,
       "width": 16,
       "x": 2480,
-      "y": 0
-    },
-    {
-      "height": 432,
-      "id": 1657,
-      "name": "bg_black",
-      "properties": [
-        {
-          "name": "cell_height",
-          "type": "float",
-          "value": 16
-        },
-        {
-          "name": "cell_width",
-          "type": "float",
-          "value": 16
-        },
-        {
-          "name": "height",
-          "type": "float",
-          "value": 27
-        },
-        {
-          "name": "length",
-          "type": "float",
-          "value": 155
-        },
-        {
-          "name": "sprite_id_bot_begin",
-          "type": "float",
-          "value": 5000903
-        },
-        {
-          "name": "sprite_id_bot_end",
-          "type": "float",
-          "value": 5000903
-        },
-        {
-          "name": "sprite_id_bot_middle",
-          "type": "float",
-          "value": 5000903
-        },
-        {
-          "name": "sprite_id_mid_begin",
-          "type": "float",
-          "value": 5000903
-        },
-        {
-          "name": "sprite_id_mid_end",
-          "type": "float",
-          "value": 5000903
-        },
-        {
-          "name": "sprite_id_mid_middle",
-          "type": "float",
-          "value": 5000903
-        },
-        {
-          "name": "sprite_id_top_begin",
-          "type": "float",
-          "value": 5000903
-        },
-        {
-          "name": "sprite_id_top_end",
-          "type": "float",
-          "value": 5000903
-        },
-        {
-          "name": "sprite_id_top_middle",
-          "type": "float",
-          "value": 5000903
-        }
-      ],
-      "rotation": 0,
-      "type": "5000900",
-      "visible": true,
-      "width": 320,
-      "x": 2496,
       "y": 0
     },
     {

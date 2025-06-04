@@ -148,6 +148,9 @@
     <ClCompile Include="GreenKoopa.cpp" />
     <ClCompile Include="GreenKoopaParatroopa.cpp" />
     <ClCompile Include="GreenKoopaParatroopaState.cpp" />
+    <ClCompile Include="HUDBackground9Sprite.cpp" />
+    <ClCompile Include="HUDContainer.cpp" />
+    <ClCompile Include="HUDScoreboard.cpp" />
     <ClCompile Include="JsonGameParser.cpp" />
     <ClCompile Include="Koopa.cpp" />
     <ClCompile Include="KoopaShellState.cpp" />
@@ -205,6 +208,7 @@
     <ClInclude Include="BrickAniIDs.h" />
     <ClInclude Include="BrickItem.h" />
     <ClInclude Include="BrickSuperItem.h" />
+    <ClInclude Include="CameraConfig.h" />
     <ClInclude Include="GameBackground9Sprite.h" />
     <ClInclude Include="CBonusScene.h" />
     <ClInclude Include="CheckingSideObject.h" />
@@ -232,8 +236,12 @@
     <ClInclude Include="BlockCoin.h" />
     <ClInclude Include="Block1Up.h" />
     <ClInclude Include="HoldableWithMario.h" />
+    <ClInclude Include="HUDBackground9Sprite.h" />
+    <ClInclude Include="HUDConfig.h" />
     <ClInclude Include="HUDContainer.h" />
     <ClInclude Include="HUDObject.h" />
+    <ClInclude Include="HUDScoreboard.h" />
+    <ClInclude Include="HUDSpriteIDs.h" />
     <ClInclude Include="mapUtil.h" />
     <ClInclude Include="RedGoomba.h" />
     <ClInclude Include="RedParagoomba.h" />
