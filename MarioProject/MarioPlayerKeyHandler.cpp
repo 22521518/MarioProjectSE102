@@ -83,6 +83,7 @@ void CMarioPlayerKeyHandler::KeyState(BYTE* states)
 		return;
 	}
 
+	// mario attack, or speciall ability
 	if (keyMap->IsActionPressed(states, ActionKey::Run)) {
 		if (mario->level == MARIO_LEVEL_FLY && !mario->IsAttacking() && !mario->IsRunning())
 		{

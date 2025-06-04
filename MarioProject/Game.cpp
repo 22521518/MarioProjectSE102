@@ -23,7 +23,7 @@ void CGame::_ParseSection_TEXTURES(vector<TextureConfig> textures)
 	for (const TextureConfig tex : textures)
 	{
 		CTextures::GetInstance()->Add(tex.textureID, ToWSTR(tex.texturePath).c_str());
-		DebugOut(L"[INFO] Done loading texture %d, %s\n", tex.textureID, tex.texturePath.c_str());
+		DebugOut(L"[INFO] Done loading texture %d, %s\n", tex.textureID, ToWSTR(tex.texturePath));
 	}
 }
 // Load game file

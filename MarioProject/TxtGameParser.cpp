@@ -234,7 +234,7 @@ TextureConfig TxtGameParser::_ParseSection_TEXTURE(const string& line)
     texture.texturePath = tokens[1];
 
     DebugOut(L"[INFO] Done loading texture %d, %s\n",
-        texture.textureID, ToWSTR(texture.texturePath).c_str());
+        texture.textureID, ToWSTR(texture.texturePath));
 
     return texture;
 }

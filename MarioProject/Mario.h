@@ -38,6 +38,7 @@ class CMario : public CCharacter
 	ULONGLONG untouchable_start;
 	ULONGLONG kick_start;
 	ULONGLONG attack_start;
+	ULONGLONG power_p_start;
 
 	// score
 	int coin = 0;
@@ -80,7 +81,7 @@ public:
 	// fly mario method
 	bool IsFlapping() const;
 	void StartFlap();
-	bool CanFly();
+	bool CanFly() const;
 	bool IsAttacking() const;
 	void StartAttack();
 

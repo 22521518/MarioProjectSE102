@@ -19,25 +19,27 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath) : CScene(id, filePath)
 
 void CPlayScene::InitPlayer(LPGAMEOBJECT player) {
 	LPMARIO mario = dynamic_cast<LPMARIO>(player);
-	if (mario == NULL) {
+	if (mario == nullptr) {
 		DebugOut(L"[ERROR] Player object is not a Mario object!\n");
 		return;
 	}
 
 	LPMARIOPLAYERKEYHANDLER marioKeyHandler = dynamic_cast<LPMARIOPLAYERKEYHANDLER>(this->keyHandler);
-	if (marioKeyHandler == NULL) {
-		DebugOut(L"[ERROR] Mario key handler is NULL\n");
+	if (marioKeyHandler == nullptr) {
+		DebugOut(L"[ERROR] Mario key handler is nullptr\n");
 		return;
 	}
 
-	if (CPlayScene::mainPlayer == NULL) {
+	if (CPlayScene::mainPlayer == nullptr) {
 		DebugOut(L"[INFO] Player object has been created!\n");
 		CPlayScene::mainPlayer = mario;
 	}
-	
-	marioKeyHandler->SetMario(dynamic_cast<LPMARIO>(CPlayScene::mainPlayer));
-	this->keyHandler = marioKeyHandler;
-	DebugOut(L"[INFO] Player object has been created!\n");
+
+	if (CPlayScene::mainPlayer != nullptr) {
+		marioKeyHandler->SetMario(dynamic_cast<LPMARIO>(CPlayScene::mainPlayer));
+		this->keyHandler = marioKeyHandler;
+		DebugOut(L"[INFO] Player object has been created!\n");
+	}
 }
 #pragma endregion
 
@@ -49,7 +51,7 @@ void CPlayScene::_ParseSection_SPRITES(const vector<SpriteConfig>& sprites)
 	for (const SpriteConfig& sprite : sprites)
 	{
 		LPTEXTURE tex = CTextures::GetInstance()->Get(sprite.textureID);
-		if (tex == NULL) continue;
+		if (tex == nullptr) continue;
 		CSprites::GetInstance()->Add(sprite.spriteID, sprite.left, sprite.top, sprite.right, sprite.bottom, tex);
 	}
 }
@@ -74,10 +76,11 @@ void CPlayScene::_ParseSection_OBJECTS(const vector<GameObjectConfig>& gameObjec
 		LPGAMEOBJECT obj = CGameObject::CreateGameObject(gameObject.typeID, gameObject.x, gameObject.y, gameObject.additionalFieldInfo, CPlayScene::mainPlayer);
 
 		//if (!gameObject.typeID) return;
+		DebugOut(L"[DUMMY] Object Type: %d!\n", gameObject.typeID);
 
-		if (obj == NULL) {
+		if (obj == nullptr) {
 			DebugOut(L"[ERROR] Failed to create player object!\n");
-			return;
+			continue;
 		}
 
 		if (gameObject.typeID == OBJECT_TYPE_MARIO) {
@@ -115,9 +118,9 @@ void CPlayScene::Load()
 #pragma region SCENE_MANAGEMENT
 void CPlayScene::Update(DWORD dt)
 {
-	if (CPlayScene::mainPlayer == NULL)
+	if (CPlayScene::mainPlayer == nullptr)
 	{
-		DebugOut(L"[ERROR] Player object is NULL\n");
+		DebugOut(L"[ERROR] Player object is nullptr\n");
 		exit(0);
 		return;
 	};
@@ -125,7 +128,7 @@ void CPlayScene::Update(DWORD dt)
 	// TO-DO: This is a "dirty" way, need a more organized way 
 	vector<LPPHYSICALOBJECT> coObjects;
 	CheckObjectInPlayerArea(&coObjects);
-	
+
 	dynamic_cast<LPPHYSICALOBJECT>(CPlayScene::mainPlayer)->Update(dt, &coObjects);
 	for (auto phys : coObjects) {
 		phys->Update(dt, &coObjects);
@@ -141,6 +144,7 @@ void CPlayScene::Update(DWORD dt)
 	px += -screenWidth / 2;
 	py += -screenHeight / 2;
 	px = max(0, px);
+	py = max(0, py); 
 
 	//CGame::GetInstance()->SetCamPos(px, 0);
 	CGame::GetInstance()->SetCamPos(px, py);
@@ -230,7 +234,7 @@ void CPlayScene::PurgeDeletedObjects() {
 		LPGAMEOBJECT currentObj = *it;
 		if (CBaseObject::IsDeleted(currentObj) && currentObj != CPlayScene::mainPlayer) {
 			delete currentObj;
-			*it = NULL;
+			*it = nullptr;
 		}
 	}
 
@@ -239,5 +243,5 @@ void CPlayScene::PurgeDeletedObjects() {
 		objects.end());
 }
 
-bool CPlayScene::IsGameObjectDeleted(const LPGAMEOBJECT& o) { return o == NULL; }
+bool CPlayScene::IsGameObjectDeleted(const LPGAMEOBJECT& o) { return o == nullptr; }
 #pragma endregion

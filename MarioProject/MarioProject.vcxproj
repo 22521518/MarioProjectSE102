@@ -232,6 +232,8 @@
     <ClInclude Include="BlockCoin.h" />
     <ClInclude Include="Block1Up.h" />
     <ClInclude Include="HoldableWithMario.h" />
+    <ClInclude Include="HUDContainer.h" />
+    <ClInclude Include="HUDObject.h" />
     <ClInclude Include="mapUtil.h" />
     <ClInclude Include="RedGoomba.h" />
     <ClInclude Include="RedParagoomba.h" />

@@ -6,6 +6,7 @@ class CFlyMarioState :
 {
 protected:
 	void OnRun (bool isLeft) override;
+	void OnWalk(bool isLeft) override;
 	void OnJump() override;
 	void OnReleaseJump() override;
 public:

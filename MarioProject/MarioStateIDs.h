@@ -14,7 +14,7 @@ constexpr int MARIO_STATE_SIT_RELEASE	= 601;
 
 constexpr int MARIO_FLY_STATE_ATTACK		= static_cast<int>(7e3);
 constexpr int MARIO_FLY_RELEASE			= static_cast<int>(31e3);
-constexpr int MARIO_FLY_FLAPPING		= static_cast<int>(1e7 + 1);
+//constexpr int MARIO_FLY_FLAPPING		= static_cast<int>(1e7 + 1);
 #pragma endregion
 
 #pragma region MARIO_LEVEL

@@ -30,6 +30,7 @@ void CKeyMap::LoadDefault()
     SetKey(ActionKey::MoveRight, DIK_D);
     SetKey(ActionKey::Sit, DIK_S);
     SetKey(ActionKey::Jump, DIK_SPACE);
+    SetKey(ActionKey::Jump, DIK_J);
     SetKey(ActionKey::Run, DIK_K);
     
     SetKey(ActionKey::SetSmall, DIK_1);

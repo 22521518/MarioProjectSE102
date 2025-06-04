@@ -10,7 +10,7 @@ constexpr float MARIO_ACCEL_RUN_X			= 0.000546875f * 0.75f;// 7.5e-3f; //0.0007
 constexpr float MARIO_BRAKE_RUN_ACCEL_X		= 0.0007f;
 constexpr float MARIO_JUMP_RUN_SPEED_Y		= 4.5f * 0.0625f; // 300e-3f;	//0.6f;
 
-constexpr float MARIO_TIME_POWER_P			= 2000.f;
+constexpr float MARIO_TIME_POWER_P			= 1800.f;
 constexpr float MARIO_COOLDOWN_POWER_P		= 1000.f;
 constexpr float MARIO_DURATION_POWER_P		= 5000.f;
 constexpr float MARIO_SPRINTNIG_SPEED		= 3.5f * 0.0625f; //210e-3f; // using power meter

@@ -12,9 +12,13 @@ void CMarioState::OnRun(bool isLeft)
 		mario->nx = dir;
 		mario->maxVx = normX * MARIO_WALKING_SPEED;
 	}
-	else if (mario->running_start != 0 && GetTickCount64() - mario->running_start >= MARIO_TIME_POWER_P)
+	else if ((mario->running_start != 0 && GetTickCount64() - mario->running_start >= MARIO_TIME_POWER_P))	
 	{
 		mario->maxVx = MARIO_SPRINTNIG_SPEED * normX;
+		if (mario->power_p_start == 0 || (GetTickCount64() - mario->power_p_start > MARIO_DURATION_POWER_P + MARIO_COOLDOWN_POWER_P)) 
+		{
+			mario->power_p_start = GetTickCount64();
+		}
 	}
 	else {
 		mario->maxVx = normX * MARIO_RUNNING_SPEED;

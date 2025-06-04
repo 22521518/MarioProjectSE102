@@ -178,6 +178,9 @@
     <Filter Include="Source Files\GameObjectConcrete\BackgroundDecoration">
       <UniqueIdentifier>{1f741b62-2998-4333-bd3d-6595924bd8e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\HUDObject">
+      <UniqueIdentifier>{76737947-5136-4755-b576-36ac12ff5063}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -719,6 +722,12 @@
     </ClInclude>
     <ClInclude Include="GameDecor.h">
       <Filter>Header Files\GameObjectConcrete\BackgroundDecoration</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDContainer.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDObject.h">
+      <Filter>Header Files\GameObjectAbstract</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

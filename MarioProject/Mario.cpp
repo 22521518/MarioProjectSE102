@@ -94,7 +94,7 @@ void CMario::StartFlap()
 {
 	if (this->level != MARIO_LEVEL_FLY) return;
 	flap_start = GetTickCount64();
-	this->SetState(MARIO_FLY_FLAPPING);
+	//this->SetState(MARIO_FLY_FLAPPING); handle by the property, not the state
 }
 
 void CMario::StartAttack() {
@@ -102,9 +102,10 @@ void CMario::StartAttack() {
 	attack_start = GetTickCount64();
 }
 
-bool CMario::CanFly()
+bool CMario::CanFly() const
 {
-	return vx >= MARIO_SPRINTNIG_SPEED || (running_start > 0 && GetTickCount64() - running_start > MARIO_TIME_POWER_P + MARIO_DURATION_POWER_P);
+	//return vx >= MARIO_SPRINTNIG_SPEED || (running_start > 0 && GetTickCount64() - running_start > MARIO_TIME_POWER_P + MARIO_DURATION_POWER_P);
+	return (power_p_start > 0 && GetTickCount64() - power_p_start < MARIO_DURATION_POWER_P);
 }
 
 bool CMario::IsAttacking() const
@@ -277,7 +278,9 @@ void CMario::OnNoCollision(DWORD dt)
 void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 {
 	LPDESTROYABLEOBJECT destroyableObj = dynamic_cast<LPDESTROYABLEOBJECT>(e->obj);
-	if (destroyableObj && e->normalY == DirectionYAxisType::Bottom && this->GetLevel() > MARIO_LEVEL_SMALL && dynamic_cast<LPBRICK>(destroyableObj))
+	if (destroyableObj && (
+		(e->normalY == DirectionYAxisType::Bottom && this->GetLevel() > MARIO_LEVEL_SMALL && dynamic_cast<LPBRICK>(destroyableObj)) 
+			|| this->IsAttacking()))
 	{
 		destroyableObj->OnDestroy(e);
 	}
@@ -287,6 +290,7 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		vy = 0;
 		isOnPlatform = (e->normalY == DirectionYAxisType::Top) ? true : isOnPlatform;
 		this->flap_start = 0;
+		this->power_p_start = 0;
 	}
 
 	if (e->normalX != DirectionXAxisType::None && e->obj->IsBlocking())
@@ -305,7 +309,7 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		}
 
 		LPDESTROYABLEOBJECT desObj = dynamic_cast<LPDESTROYABLEOBJECT>(obj);
-		if (this->IsAttacking() && obj != nullptr) {
+		if (this->IsAttacking() && desObj != nullptr) {
 			desObj->OnDestroy(e);
 		}
 		else
@@ -335,13 +339,14 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 	{
 		if (CanFly()) {
 			//DebugOut(L"I can fly!!\n");
-			vy = -MARIO_FLAP_BOOST * 6;
-			ay = MARIO_GRAVITY * 0.5f;
+			vy = -MARIO_FLAP_BOOST * 4;
+			ay = MARIO_GRAVITY * 0.375f;
+			maxVx = MARIO_WALKING_SPEED * 1.05f * static_cast<int>(nx);
 		}
 		else if (vy > 0)
 		{
 			//DebugOut(L"I dropping!!\n");
-			ay = MARIO_FALL_GRAVITY * 0.65f;
+			ay = MARIO_FALL_GRAVITY * 0.4f;
 		}
 		else {
 			this->ay = vy > 0 ? MARIO_FALL_GRAVITY : MARIO_GRAVITY;

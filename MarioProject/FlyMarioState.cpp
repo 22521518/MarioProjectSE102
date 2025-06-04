@@ -5,16 +5,28 @@
 
 void CFlyMarioState::OnRun(bool isLeft)
 {
-	if (!mario->isOnPlatform) return;
 	CMarioState::OnRun(isLeft);
+
+	DirectionXAxisType dir = isLeft ?
+		DirectionXAxisType::Left : DirectionXAxisType::Right;
+	int normX = static_cast<int>(dir);
+
+	if (mario->IsFlapping() && mario->CanFly())
+	{
+		mario->maxVx = MARIO_WALKING_SPEED * 1.05f * normX;
+		mario->nx = dir;
+	}
+}
+
+void CFlyMarioState::OnWalk(bool isLeft)
+{
+	CMarioState::OnWalk(isLeft);
 }
 
 void CFlyMarioState::OnJump()
 {
 	CMarioState::OnJump();
-	if (!mario->isOnPlatform) return;
 	mario->StartFlap();
-
 }
 
 void CFlyMarioState::OnReleaseJump()
@@ -37,14 +49,14 @@ int CFlyMarioState::GetAniId()
 
 	if (!mario->isOnPlatform)
 	{
-		if (mario->IsFlapping() && mario->vy < 0) // Power P mode
+		if (mario->IsFlapping() && (mario->CanFly() || mario->power_p_start != 0)) // Power P mode
 		{
 			aniId = isRight ?
 				ID_ANI_MARIO_FLY_JUMP_RUN_FLAPPING_RIGHT :
 				ID_ANI_MARIO_FLY_JUMP_RUN_FLAPPING_LEFT;
 			
 		}
-		else if (mario->vy > 0) {
+		else if (!mario->CanFly() && mario->power_p_start == 0) {
 			if (mario->IsFlapping())
 			{
 				aniId = isRight ?
