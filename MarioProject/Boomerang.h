@@ -79,9 +79,11 @@ public:
 	{
 		CInteractiveObject::SetState(state);
 	};
-	void WhereToShoot(LPBOOMERANGBROTHER plant) {
+	void WhereToShoot(float &Fx, float &Fy) {
 		float Mx, My, Px, Py;
-		plant->GetPosition(Px, Py);
+		//plant->GetPosition(Px, Py);
+		Px = Fx;
+		Py = Fy;
 		mario->GetPosition(Mx, My);
 		float GOx = Mx - Px, GOy = Py - My;
 		float rate = GOx / GOy;
@@ -90,10 +92,25 @@ public:
 		if (Py <= My)this->SetSpeed(-BX, BY);
 		else if (Py > My)this->SetSpeed(BX, -BY);
 	};
-	float Distant(LPBOOMERANGBROTHER plant) {
+	void BoomerangReturn(float& Fx, float& Fy) {
+		float Mx, My;
+		//plant->GetOldPosition(Mx, My);
+		Mx = Fx;
+		My = Fy;
+		float GOx = Mx - x, GOy = y - My;
+		float rate = GOx / GOy;
+		float BY = sqrt(powf(BOOMERANG_SPEED, (float)2) / (powf(rate, (float)2) + 1));
+		float BX = BY * rate;
+		if (y <= My)this->SetSpeed(-BX, BY);
+		else if (y > My)this->SetSpeed(BX, -BY);
+	};
+	float DistantOld(float& Fx, float& Fy) {
 		float Px, Py;
-		plant->GetPosition(Px, Py);
+		//plant->GetOldPosition(Px, Py);
+		Px = Fx;
+		Py = Fy;
 		return sqrt(powf((x - Px), (float)2) + powf((Py - y), (float)2));
 	};
 };
+
 typedef CBoomerang* LPBOOMERANG;

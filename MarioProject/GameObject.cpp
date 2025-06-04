@@ -25,6 +25,7 @@
 #include "PlantRedVenusFire.h"
 #include "BlockQ.h"
 #include "BrickStateIDs.h"
+#include "BoomerangBrother.h"
 
 #include "AssetIDs.h"
 #include "mapUtil.h"
@@ -126,6 +127,7 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	case OBJECT_TYPE_PLANT_RVF: return new CPlantRedVenusFire(player, x, y);
 	case OBJECT_TYPE_BLOCK_Q_COIN: return new CBlockQ(player, BRICK_STATE_COIN, x, y);
 	case OBJECT_TYPE_BLOCK_Q_ITEM: return new CBlockQ(player, BRICK_STATE_1UP, x, y);
+	case OBJECT_TYPE_BOOMMERANG_BROTHER: return new CBoomerangBrother(player, x, y);
 	default:
 		DebugOut(L"[ERROR] Invalid object type: %d\n", object_type);
 		return NULL;

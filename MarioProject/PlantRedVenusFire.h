@@ -29,7 +29,6 @@ public:
 		if(IsFire) fire->Render();
 		CAnimations* animations = CAnimations::GetInstance();
 		mario->GetPosition(Mx, My);
-		float XA = Mx - x;
 		if (x > Mx) {
 			if (y < My) animations->Get(ID_ANI_PLANT_RVF_L_D)->Render(x, y);
 			else animations->Get(ID_ANI_PLANT_RVF_L_U)->Render(x, y);

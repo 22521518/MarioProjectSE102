@@ -15,34 +15,34 @@ protected:
 	//float upperX, lowerX;
 	LPBOOMERANG fire;
 	LPMARIO mm;
-	bool IsFire;
+	bool BThow;
 public:
-	CBoomerangBrother(LPGAMEOBJECT mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0, DirectionXAxisType nx = DirectionXAxisType::Left, int state = PLANT_STATE_HIDE)
+	float oldx, oldy;
+	float Fx, Fy;
+	CBoomerangBrother(LPGAMEOBJECT mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0, DirectionXAxisType nx = DirectionXAxisType::Left, int state = 0)
 		: CEnemy(x, y, vx, vy, ax, ay, nx, state)
 	{
-		this->mario = mario;
+		mm = (LPMARIO)mario;
 		SetState(BB_STATE_NO_HIT);
+		fire = new CBoomerang(mario, x + BOOMERANG_X_OFFSET, y - BOOMERANG_Y_OFFSET);
+		BThow = false;
+		Fx = x; Fy = y;
 	};
 
 	// game object method
 	virtual void Render() override {
 		if (!IsDeadState()) {
-			if (IsFire) fire->Render();
+			fire->Render();
 			CAnimations* animations = CAnimations::GetInstance();
 			mario->GetPosition(Mx, My);
-			float XA = Mx - x;
-			if (x > Mx) {
-				animations->Get(ID_ANI_BOOMMERANG_BROTHER_L)->Render(x, y);
-			}
-			else {
-				animations->Get(ID_ANI_BOOMMERANG_BROTHER_R)->Render(x, y);
-			}
+			if (x > Mx) animations->Get(ID_ANI_BOOMMERANG_BROTHER_L)->Render(x, y);
+			else animations->Get(ID_ANI_BOOMMERANG_BROTHER_R)->Render(x, y);
 		}
 	};
 
 	// physical object method
 	virtual int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) override { return 1; };
-	virtual int IsBlocking() override { return 0; };
+	virtual int IsBlocking() override { return 1; };
 	virtual int IsCollidable() override { return 1; };
 
 	// interactive object method
@@ -69,7 +69,7 @@ public:
 			vx = -vx;
 		}
 	};
-	virtual bool IsHitState1() { return this->state == BB_STATE_HIT_ONE; }
+	bool IsHitState1() { return this->state == BB_STATE_HIT_ONE; }
 	virtual bool IsDeadState() override { return this->state == BB_STATE_DIE; }
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom) override
 	{
@@ -82,45 +82,35 @@ public:
 	};
 	virtual void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override
 	{
-		this->vy += this->ay * dt;
-		this->vx += this->ax * dt;
-		this->x += this->vx * dt;
-		this->y += this->vy * dt;
-		if (IsFire) mm->CollideBullet(fire);
-		if (this->state == PLANT_STATE_HIDE) {
-			if (abs(this->x - Mx) < PLANT_HIDE_DISTANT && (fire->Distant(this) > FIREBALL_COMEBACK || !IsFire)) {
-				SetState(PLANT_STATE_GO_UP);
-				this->vy = -PLANT_SPEED_R;
-			}
-		}
-		else if (this->state == PLANT_STATE_GO_UP && this->y <= upperY) {
-			SetState(PLANT_STATE_UP);
-			this->vy = 0;
-			this->y = upperY;
-		}
-		else if (this->state == PLANT_STATE_UP) {
-			if (fire->Distant(this) > FIREBALL_COMEBACK || !IsFire) {
-				fire->SetPosition(x, y);
-				fire->WhereToShoot(this);
-				IsFire = true;
-			}
+		if (!IsDeadState()) {
+			this->vy += this->ay * dt;
+			this->vx += this->ax * dt;
+			this->x += this->vx * dt;
+			this->y += this->vy * dt;
 			mario->GetPosition(Mx, My);
-			if (abs(this->x - Mx) > PLANT_HIDE_DISTANT || fire->Distant(this) > PLANT_FIREBALL_HIDE_DISTANT) {
-				SetState(PLANT_STATE_GO_HIDE);
-				this->vy = PLANT_SPEED_R;
+			Fx = x; Fy = y;
+			if (x > Mx) vx = -BOOMERANG_BROTHER_SPEED;
+			else vx = BOOMERANG_BROTHER_SPEED;
+			mm->CollideBullet(fire);
+			fire->SetPosition(x, y);
+			if (!BThow) {
+				fire->WhereToShoot(Fx, Fy);
+				oldx = this->x;
+				oldy = this->y;
+				BThow = true;
 			}
+			if (fire->DistantOld(oldx, oldy) > BOOMMERANG_COMEBACK) fire->BoomerangReturn(oldx, oldy);
+			if (fire->DistantOld(oldx, oldy) < BOOMMERANG_SNAP_COMEBACK) {
+				if (x > Mx) fire->SetPosition(this->x - BOOMERANG_X_OFFSET, this->y - BOOMERANG_Y_OFFSET);
+				else fire->SetPosition(this->x + BOOMERANG_X_OFFSET, this->y - BOOMERANG_Y_OFFSET);
+				fire->SetSpeed(0, 0);
+				BThow = false;
+			}
+			fire->Update(dt, coObjects);
+			CEnemy::Update(dt, coObjects);
 		}
-		else if (this->state == PLANT_STATE_GO_HIDE && this->y >= lowerY) {
-			SetState(PLANT_STATE_HIDE);
-			this->vy = 0;
-			this->y = lowerY;
-			//fire->SetPosition(x, y);
-			//IsFire = false;
-		}
-		fire->Update(dt, coObjects);
-		CEnemy::Update(dt, coObjects);
 	};
-	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
+	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e) override
 	{
 		if (!IsDeadState()) {
 			// jump on top >> kill ___ and deflect a bit 
@@ -137,5 +127,7 @@ public:
 			}
 		}
 	};
+	virtual void GetOldPosition(float& x, float& y) const { x = this->oldx; y = this->oldy; };
 };
+
 typedef CBoomerangBrother* LPBOOMERANGBROTHER;

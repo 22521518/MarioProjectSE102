@@ -56,4 +56,5 @@ constexpr int OBJECT_TYPE_BLOCK_Q_COIN = 11;
 constexpr int OBJECT_TYPE_BLOCK_Q_ITEM = 12;
 constexpr int OBJECT_TYPE_BLOCK_W = 13;
 constexpr int OBJECT_TYPE_BLOCK_F = 14;
+constexpr int OBJECT_TYPE_BOOMMERANG_BROTHER = 610;
 #pragma endregion

@@ -14,6 +14,8 @@ class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
 class CBlockQ; typedef CBlockQ* LPBLOCKQ;
 class CPlantEnemy; typedef CPlantEnemy* LPPLANTENEMY;
 class CEnemy; typedef CEnemy* LPENEMY;
+class CBoomerangBrother; typedef CBoomerangBrother* LPBOOMERANGBROTHER;
+class CBoomerang; typedef CBoomerang* LPBOOMERANG;
 class CPlantFireBall; typedef CPlantFireBall* LPPLANTFIREBALL;
 class CBlock1Up; typedef CBlock1Up* LPBLOCK1UP;
 class CSuperMushroom; typedef CSuperMushroom* LPSUPERMUSHROOM;
