@@ -8,6 +8,7 @@
 class CBoomerang : public CInteractiveObject, public CCollidableWithMario {
 protected:
 	LPGAMEOBJECT mario;
+	bool trow_LR = false;
 public:
 	CBoomerang(LPGAMEOBJECT mario, int state, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left)
@@ -18,11 +19,18 @@ public:
 	virtual void Render() override {
 		CAnimations* animations = CAnimations::GetInstance();
 		if (this->GetState() < BOOMERANG_STATE_TROWING) {
-			if(this->GetState() == BOOMERANG_STATE_NO_TROW_L) animations->Get(ID_ANI_BOOMMERANG_L)->Render(x, y);
-			else animations->Get(ID_ANI_BOOMMERANG_R)->Render(x, y);
+			if (this->GetState() == BOOMERANG_STATE_NO_TROW_L) {
+				animations->Get(ID_ANI_BOOMMERANG_L)->Render(x, y);
+				trow_LR = true;
+			}
+			else {
+				animations->Get(ID_ANI_BOOMMERANG_R)->Render(x, y);
+				trow_LR = false;
+			}
 		}
 		else {
-			animations->Get(ID_ANI_BOOMMERANG_TROW)->Render(x, y);
+			if (trow_LR) animations->Get(ID_ANI_BOOMMERANG_TROW_L)->Render(x, y);
+			else animations->Get(ID_ANI_BOOMMERANG_TROW_R)->Render(x, y);
 		}
 	};
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
