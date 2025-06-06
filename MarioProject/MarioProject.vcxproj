@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="cpp.hint" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +180,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MarioPlayerKeyHandler.cpp" />
     <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="PortConfig.h" />
     <ClCompile Include="RedGoomba.cpp" />
     <ClCompile Include="RedKoopa.cpp" />
     <ClCompile Include="RedKoopaParatroopa.cpp" />

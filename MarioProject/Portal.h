@@ -7,6 +7,8 @@ class CPortal :
 {
 protected:
 	int scene_id;	// target scene to switch to 
+
+	ULONGLONG time_start = 0;
 	
 	// animation
 	bool isPipePort;
@@ -21,9 +23,11 @@ public:
 	CPortal(float l, float t, float r, float b, int scene_id, bool isPipe = false, bool isReturnToExist = false, int px = 0, int py = 0);
 
 	static unordered_map<string, float> GetAdditionalFieldInfo(vector<string> tokens);
+	bool TimeToMove() const;
 
 	// game object method
-	virtual void Render();
+	void Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects) override;
+	void Render() override;
 
 	// physical object method
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);

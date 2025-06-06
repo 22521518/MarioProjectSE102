@@ -1,6 +1,7 @@
 #include "Portal.h"
 
 CPortal::CPortal(float l, float t, float r, float b, int scene_id, bool isPipe, bool isReturnToExist, int px, int py)
+	: isPipePort(isPipe), isReturnToExisting(isReturnToExist), px(px), py(py)
 {
 	this->scene_id = scene_id;
 	x = l;
@@ -20,10 +21,16 @@ unordered_map<string, float> CPortal::GetAdditionalFieldInfo(vector<string> toke
 	return fieldInfo;
 }
 
+bool CPortal::TimeToMove() const
+{
+	ULONGLONG now = GetTickCount64();
+	return time_start > 0 && (!isPipePort || (now - time_start));
+}
+
 #pragma region COLLIDABLE_MARIO_METHOD
 void CPortal::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 {
-	CGame::GetInstance()->InitiateSwitchScene(this->GetSceneId());
+	time_start = GetTickCount64();
 	//mario->OnCollisionWithPortal(this, e);
 }
 #pragma endregion
@@ -50,8 +57,17 @@ void CPortal::RenderBoundingBox()
 	CGame::GetInstance()->Draw(x - cx, y - cy, bbox, nullptr, BBOX_ALPHA, rect.right - 1, rect.bottom - 1);
 }
 
+void CPortal::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
+{
+	if (TimeToMove()) 
+	{
+		CGame::GetInstance()->InitiateSwitchScene(scene_id);
+	}
+}
+
 void CPortal::Render()
 {
+	//if (isPipePort)
 	RenderBoundingBox();
 }
 

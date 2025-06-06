@@ -125,50 +125,68 @@ void CPlayScene::Load()
 
 #pragma region SCENE_MANAGEMENT
 void CPlayScene::Update(DWORD dt)  
-{  
-   time_remaining = static_cast<UINT>(MAX_TIME_SCENE - (GetTickCount64() - time_start)) / 1000;  
+{
+	static bool isReloading = false;
 
-   LPMARIO mainMario = dynamic_cast<LPMARIO>(CPlayScene::mainPlayer);
-   if (CPlayScene::mainPlayer == nullptr || !mainMario)
-   {  
-       DebugOut(L"[ERROR] Player object is nullptr\n");  
-       Reload();  
-       return;  
-   }
-   else if (mainMario->IsMarioDieAndReload())
-   {
-	   CMario::lives = CMario::lives - 1 > CMario::lives ? 0 : CMario::lives - 1;
-	   CMario::lives = min(0, CMario::lives);
-	   Reload();
-	   return;
-   }
-   else {
-	   // TO-DO: This is a "dirty" way, need a more organized way  
-	   vector<LPPHYSICALOBJECT> coObjects;
-	   coObjects.push_back(mainMario);
-	   CheckObjectInPlayerArea(&coObjects);
+	if (isReloading) {
+		return; // Skip update if already reloading
+	}
 
-	   for (auto phys : coObjects) {
-		   try {
-			   //if (dynamic_cast<LPPHYSICALOBJECT>(phys)) phys->Update(dt, &coObjects);
-			   if (phys)
-			   {
-				   auto physCast = dynamic_cast<LPPHYSICALOBJECT>(phys);
-				   if (physCast) {
-					   physCast->Update(dt, &coObjects);
-				   }
-			   }
-		   }
-		   catch (const std::exception& e) {
-			   DebugOutObjectClassName(phys);
-			   DebugOut(L"[ERROR] Exception caught: %s\n", e.what());
-		   }
-	   }
-	   UpdateCamera(dt);
-	   coObjects.clear();
-   }
+	time_remaining = static_cast<UINT>(MAX_TIME_SCENE - (GetTickCount64() - time_start)) / 1000;  
 
-   PurgeDeletedObjects();
+	LPMARIO mainMario = dynamic_cast<LPMARIO>(CPlayScene::mainPlayer);
+	if (CPlayScene::mainPlayer == nullptr || !mainMario)
+	{
+		DebugOut(L"[ERROR] Player object is nullptr\n");
+		isReloading = true;
+		Reload();
+		isReloading = false;
+		return;
+	}
+	else if (mainMario->IsMarioDieAndReload())
+	{
+		CMario::lives = CMario::lives - 1 > CMario::lives ? 0 : CMario::lives - 1;
+		CMario::lives = max(0, CMario::lives);
+		isReloading = true;
+		Reload();
+		isReloading = false;
+		return;
+	}
+	else {
+		float px, py;
+		CPlayScene::mainPlayer->GetPosition(px, py);
+		float screenHeight = static_cast<float>(CGame::GetInstance()->GetBackBufferHeight());
+
+		// exclude the bonus
+		if (py > CAM_BOUND_BOTTOM + 20 + screenHeight && id != 1001) {
+			mainMario->SetDie();
+		}
+
+		// TO-DO: This is a "dirty" way, need a more organized way  
+		vector<LPPHYSICALOBJECT> coObjects;
+		coObjects.push_back(mainMario);
+		CheckObjectInPlayerArea(&coObjects);
+
+		for (auto phys : coObjects) {
+			try {
+				//if (dynamic_cast<LPPHYSICALOBJECT>(phys)) phys->Update(dt, &coObjects);
+				if (phys)
+				{
+					auto physCast = dynamic_cast<LPPHYSICALOBJECT>(phys);
+					if (physCast) {
+						physCast->Update(dt, &coObjects);
+					}
+				}
+			}
+			catch (const std::exception& e) {
+				DebugOutObjectClassName(phys);
+				DebugOut(L"[ERROR] Exception caught: %s\n", e.what());
+			}
+		}
+		UpdateCamera(dt);
+		coObjects.clear();
+	}
+	PurgeDeletedObjects();
 }
 
 void CPlayScene::UpdateCamera(DWORD dt)
@@ -178,14 +196,13 @@ void CPlayScene::UpdateCamera(DWORD dt)
 	float px, py;
 	CPlayScene::mainPlayer->GetPosition(px, py);
 	CPlayScene::mainPlayer->SetPosition(max(CAM_BOUND_LEFT + 10.0f, px), py);
-
 	LPMARIO mario = dynamic_cast<LPMARIO>(CPlayScene::mainPlayer);
 
 	float cx, cy;
 	CGame::GetInstance()->GetCamPos(cx, cy);
 
 	if (((mario->GetPowerPStart() > 0) || (mario->CanFly() && mario->IsFlapping() && py > cy + screenWidth / 2)) ||
-		(cy < CAM_BOUND_BOTTOM + 20))
+		(cy < CAM_BOUND_BOTTOM + 60))
 	{
 		py += -screenHeight / 2;
 	}
@@ -291,11 +308,20 @@ void CPlayScene::Unload()
 }
 void CPlayScene::Reload()
 {
+	static bool isCurrentlyReloading = false;
+	if (isCurrentlyReloading) {
+		DebugOut(L"[WARNING] Reload already in progress, skipping duplicate reload request\n");
+		return;
+	}
+	isCurrentlyReloading = true;
+
 	time_start = GetTickCount64();
 	Clear();
 	DeletePlayer();
 	DebugOut(L"[INFO] Mario existed: %d, Scene %d reloaded!\n", id, CPlayScene::mainPlayer != nullptr);
 	Load();
+
+	isCurrentlyReloading = false;
 }
 #pragma endregion
 

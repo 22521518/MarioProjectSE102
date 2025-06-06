@@ -60,7 +60,7 @@ public:
 	CMario(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = MARIO_GRAVITY, DirectionXAxisType nx = DirectionXAxisType::Left, int state = -1);
 	void Init(float x, float y);
 	static void OnGameReset();
-	boolean IsMarioDieAndReload();
+	bool IsMarioDieAndReload();
 
 	// game object method
 	virtual void Render();
@@ -79,6 +79,7 @@ public:
 
 	// character object mehtod
 	virtual bool IsDeadState() override { return this->state == MARIO_STATE_DIE; }
+	void SetDie() { SetState(MARIO_STATE_DIE); }
 
 	// mario method
 	bool IsRunning() const { return this->isRunning; }

@@ -203,6 +203,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="ClassDiagram.cd" />
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -402,6 +403,9 @@
     </ClCompile>
     <ClCompile Include="HUDObject.cpp">
       <Filter>Source Files\GameObjectConcrete\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="PortConfig.h">
+      <Filter>Header Files\GameObjectConcrete\Portal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -52,6 +52,8 @@ void CGame::SwitchScene() {
 	LPSCENE s = scenes[currentScene];
 	this->SetKeyHandler(s->GetKeyEventHandler());
 	s->Load();
+
+	isReturnToExisting = false;
 }
 
 LPSCENE CGame::GetCurrentScene() const
@@ -65,6 +67,13 @@ LPSCENE CGame::GetCurrentScene() const
 
 void CGame::InitiateSwitchScene(int sceneId) {
 	nextScene = sceneId;
+}
+void CGame::InitiateSwitchSceneFromBonus(int sceneId, int px, int py)
+{
+	InitiateSwitchScene(sceneId);
+	this->px = px;
+	this->py = py;
+	isReturnToExisting = true;
 }
 #pragma endregion
 

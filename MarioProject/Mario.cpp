@@ -24,7 +24,7 @@
 std::vector<int> CMario::stageItem;
 UINT CMario::coins = 0;
 ULONG CMario::scores = 0;
-UINT CMario::lives = 1;
+UINT CMario::lives = 4;
 
 void CMario::AddCoin(int c)
 {
@@ -60,8 +60,6 @@ CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, Directi
 	this->stateHandler = new CSmallMarioState(this);
 	this->holdingItem = nullptr;
 
-	DebugOut(L"[DUMB-SS]Mario reborn, state_handler: ");
-	DebugOutObjectClassName(stateHandler);
 }
 void CMario::Init(float x, float y)
 {
@@ -77,7 +75,7 @@ void CMario::OnGameReset()
 	CMario::lives = 1;
 }
 
-boolean CMario::IsMarioDieAndReload()
+bool CMario::IsMarioDieAndReload()
 {
 	ULONGLONG time_now = GetTickCount64();
 	return state == MARIO_STATE_DIE && die_start > 0 && time_now - die_start >= MARIO_DIE_TIME_DELAY;
@@ -422,9 +420,9 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 	//DebugOutTitle(L"speed: %f, max: %f, acc: %f, dir: %d, times %llu\n", vy, maxVx, ay, IsFlapping(), die_start);
 	////(time_now - running_start) % static_cast<int>(MARIO_TIME_POWER_P / 7)
 	//DebugOutTitle(L"coins: %u, lives: %u, scores: %lu, die_time: %llu, power_p: %f\n", CMario::coins, CMario::lives, CMario::scores, power_p_start, powerPBar);
-	DebugOutTitle(L"running: %llu, power_p: %llu ", 
+	/*DebugOutTitle(L"running: %llu, power_p: %llu ", 
 		running_start > 0 ? (time_now - running_start) / 1000 : 0,
-		power_p_start > 0 ? (time_now - power_p_start) / 1000 : 0);
+		power_p_start > 0 ? (time_now - power_p_start) / 1000 : 0);*/
 
 	vy += ay * dt;
 	vx += ax * dt;
