@@ -15,7 +15,8 @@ protected:
 	//float upperX, lowerX;
 	LPBOOMERANG fire;
 	LPMARIO mm;
-	bool BThow;
+	//int BThow;
+	ULONGLONG trow_start = 0;
 public:
 	float oldx, oldy;
 	float Fx, Fy;
@@ -24,8 +25,8 @@ public:
 	{
 		mm = (LPMARIO)mario;
 		SetState(BB_STATE_NO_HIT);
-		fire = new CBoomerang(mario, x + BOOMERANG_X_OFFSET, y - BOOMERANG_Y_OFFSET);
-		BThow = false;
+		fire = new CBoomerang(mario, BOOMERANG_STATE_NO_TROW_R, x + BOOMERANG_X_OFFSET, y - BOOMERANG_Y_OFFSET);
+		//BThow = BOOMERANG_STATE_NO_TROW;
 		Fx = x; Fy = y;
 	};
 
@@ -35,8 +36,14 @@ public:
 			fire->Render();
 			CAnimations* animations = CAnimations::GetInstance();
 			mario->GetPosition(Mx, My);
-			if (x > Mx) animations->Get(ID_ANI_BOOMMERANG_BROTHER_L)->Render(x, y);
-			else animations->Get(ID_ANI_BOOMMERANG_BROTHER_R)->Render(x, y);
+			if (fire->GetState() == BOOMERANG_STATE_TROWING) {
+				if (x > Mx) animations->Get(ID_ANI_BOOMMERANG_BROTHER_L_TROWING)->Render(x, y);
+				else animations->Get(ID_ANI_BOOMMERANG_BROTHER_R_TROWING)->Render(x, y);
+			}
+			else {
+				if (x > Mx) animations->Get(ID_ANI_BOOMMERANG_BROTHER_L)->Render(x, y);
+				else animations->Get(ID_ANI_BOOMMERANG_BROTHER_R)->Render(x, y);
+			}
 		}
 	};
 
@@ -93,18 +100,23 @@ public:
 			else vx = BOOMERANG_BROTHER_SPEED;
 			mm->CollideBullet(fire);
 			fire->SetPosition(x, y);
-			if (!BThow) {
+			if ((fire->GetState() == BOOMERANG_STATE_NO_TROW_L) || (fire->GetState() == BOOMERANG_STATE_NO_TROW_R)) {
 				fire->WhereToShoot(Fx, Fy);
 				oldx = this->x;
 				oldy = this->y;
-				BThow = true;
+				fire->SetState(BOOMERANG_STATE_TROWING);
+				trow_start = GetTickCount64();
 			}
-			if (fire->DistantOld(oldx, oldy) > BOOMMERANG_COMEBACK) fire->BoomerangReturn(oldx, oldy);
-			if (fire->DistantOld(oldx, oldy) < BOOMMERANG_SNAP_COMEBACK) {
+			if (fire->DistantOld(oldx, oldy) > BOOMERANG_COMEBACK) fire->BoomerangReturn(oldx, oldy);
+			if (fire->DistantOld(oldx, oldy) < BOOMERANG_SNAP_COMEBACK) {
 				if (x > Mx) fire->SetPosition(this->x - BOOMERANG_X_OFFSET, this->y - BOOMERANG_Y_OFFSET);
 				else fire->SetPosition(this->x + BOOMERANG_X_OFFSET, this->y - BOOMERANG_Y_OFFSET);
 				fire->SetSpeed(0, 0);
-				BThow = false;
+				if (x > Mx) fire->SetState(BOOMERANG_STATE_NO_TROW_L);
+				else fire->SetState(BOOMERANG_STATE_NO_TROW_R);
+			}
+			if ((fire->GetState() == BOOMERANG_STATE_TROWING) && (GetTickCount64() - trow_start > BOOMERANG_TROW_TIME)) {
+				fire->SetState(BOOMERANG_STATE_TROW);
 			}
 			fire->Update(dt, coObjects);
 			CEnemy::Update(dt, coObjects);
