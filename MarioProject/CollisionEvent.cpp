@@ -13,7 +13,7 @@ CCollisionEvent::CCollisionEvent(float t, DirectionXAxisType nx, DirectionYAxisT
 }
 
 int CCollisionEvent::WasCollided() {
-	if (obj == NULL) return 0;
+	if (obj == nullptr) return 0;
 	return
 		time >= 0.0f && time <= 1.0f && obj->IsDirectionColliable(normalX, normalY) == 1;
 }

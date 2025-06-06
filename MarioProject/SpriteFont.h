@@ -9,7 +9,7 @@ class CSpriteFont {
     map<char, LPSPRITE> charMap;
     float width = 8.f;
     float height = 8.f;
-    CSpriteFont() {};
+    CSpriteFont() { this->Load(); };
 
     static CSpriteFont* __instance;
 public:
@@ -18,6 +18,8 @@ public:
     void DrawFontText(string text, float x, float y);
     void DrawFontNumber(int number, int digits, float x, float y);
     void DrawFontNumber(int number, int digits, float x, float y, bool zeroBefore);   
+
+    ~CSpriteFont() { charMap.clear(); }
 };
 
 typedef CSpriteFont* LPSPRITEFONT;

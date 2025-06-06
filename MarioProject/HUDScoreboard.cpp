@@ -10,6 +10,7 @@ CHUDScoreboard::CHUDScoreboard(UINT* time, ULONG* score, UINT* life, UINT* coin,
 	items.push_back(CHUDObject::CreateHUDScores(score));
 	items.push_back(CHUDObject::CreateHUDTimes(time));
 	items.push_back(CHUDObject::CreateHUDCoins(coin));
+	items.push_back(CHUDObject::CreateHUDPowerP());
 }
 
 void CHUDScoreboard::Render()

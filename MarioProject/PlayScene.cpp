@@ -18,7 +18,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath) : CScene(id, filePath)
 {
 	this->time_start = GetTickCount64();
 	this->keyHandler = new CMarioPlayerKeyHandler(this);
-	this->hud = new CHUDContainer(&time_remaining, &scores, &lives, &coins, &world);
+	this->hud = new CHUDContainer(&time_remaining, &CMario::scores, &CMario::lives, &CMario::coins, &world);
 }
 
 void CPlayScene::InitPlayer(LPGAMEOBJECT player) {
@@ -42,8 +42,13 @@ void CPlayScene::InitPlayer(LPGAMEOBJECT player) {
 	if (CPlayScene::mainPlayer != nullptr) {
 		marioKeyHandler->SetMario(dynamic_cast<LPMARIO>(CPlayScene::mainPlayer));
 		this->keyHandler = marioKeyHandler;
-		DebugOut(L"[INFO] Player object has been created!\n");
+		DebugOut(L"[INFO] Player object has been inserted, lives: %u!\n", CMario::lives);
 	}
+}
+void CPlayScene::DeletePlayer()
+{
+	delete CPlayScene::mainPlayer;
+	CPlayScene::mainPlayer = nullptr;
 }
 #pragma endregion
 
@@ -86,10 +91,9 @@ void CPlayScene::_ParseSection_OBJECTS(const vector<GameObjectConfig>& gameObjec
 
 		if (gameObject.typeID == OBJECT_TYPE_MARIO) {
 			this->InitPlayer(obj);
-			CPlayScene::mainPlayer->SetPosition(gameObject.x, gameObject.y);
+			dynamic_cast<LPMARIO>(CPlayScene::mainPlayer)->Init(gameObject.x, gameObject.y);
 			continue;
 		}
-
 		obj->SetPosition(gameObject.x, gameObject.y);
 
 		if (gameObject.typeID == OBJECT_TYPE_GAME_BACKGROUND_COLOR_9_SPRITE) colorBg.push_back(obj);
@@ -120,27 +124,51 @@ void CPlayScene::Load()
 #pragma endregion
 
 #pragma region SCENE_MANAGEMENT
-void CPlayScene::Update(DWORD dt)
-{
-	time_remaining = static_cast<int>(MAX_TIME_SCENE - (GetTickCount64() - time_start));
-	if (CPlayScene::mainPlayer == nullptr)
-	{
-		DebugOut(L"[ERROR] Player object is nullptr\n");
-		exit(0);
-		return;
-	};
+void CPlayScene::Update(DWORD dt)  
+{  
+   time_remaining = static_cast<UINT>(MAX_TIME_SCENE - (GetTickCount64() - time_start)) / 1000;  
 
-	// TO-DO: This is a "dirty" way, need a more organized way 
-	LPPHYSICALOBJECT physMain = dynamic_cast<LPPHYSICALOBJECT>(CPlayScene::mainPlayer);
-	vector<LPPHYSICALOBJECT> coObjects;
-	coObjects.push_back(physMain);
-	CheckObjectInPlayerArea(&coObjects);
-	
-	for (auto phys : coObjects) {
-		phys->Update(dt, &coObjects);
-	}
-	UpdateCamera(dt);
-	PurgeDeletedObjects();
+   LPMARIO mainMario = dynamic_cast<LPMARIO>(CPlayScene::mainPlayer);
+   if (CPlayScene::mainPlayer == nullptr || !mainMario)
+   {  
+       DebugOut(L"[ERROR] Player object is nullptr\n");  
+       Reload();  
+       return;  
+   }
+   else if (mainMario->IsMarioDieAndReload())
+   {
+	   CMario::lives = CMario::lives - 1 > CMario::lives ? 0 : CMario::lives - 1;
+	   CMario::lives = min(0, CMario::lives);
+	   Reload();
+	   return;
+   }
+   else {
+	   // TO-DO: This is a "dirty" way, need a more organized way  
+	   vector<LPPHYSICALOBJECT> coObjects;
+	   coObjects.push_back(mainMario);
+	   CheckObjectInPlayerArea(&coObjects);
+
+	   for (auto phys : coObjects) {
+		   try {
+			   //if (dynamic_cast<LPPHYSICALOBJECT>(phys)) phys->Update(dt, &coObjects);
+			   if (phys)
+			   {
+				   auto physCast = dynamic_cast<LPPHYSICALOBJECT>(phys);
+				   if (physCast) {
+					   physCast->Update(dt, &coObjects);
+				   }
+			   }
+		   }
+		   catch (const std::exception& e) {
+			   DebugOutObjectClassName(phys);
+			   DebugOut(L"[ERROR] Exception caught: %s\n", e.what());
+		   }
+	   }
+	   UpdateCamera(dt);
+	   coObjects.clear();
+   }
+
+   PurgeDeletedObjects();
 }
 
 void CPlayScene::UpdateCamera(DWORD dt)
@@ -156,27 +184,35 @@ void CPlayScene::UpdateCamera(DWORD dt)
 	float cx, cy;
 	CGame::GetInstance()->GetCamPos(cx, cy);
 
-	if (((mario->GetPowerPStart() > 0) || (mario->CanFly() && mario->IsFlapping())) ||
+	if (((mario->GetPowerPStart() > 0) || (mario->CanFly() && mario->IsFlapping() && py > cy + screenWidth / 2)) ||
 		(cy < CAM_BOUND_BOTTOM + 20))
 	{
 		py += -screenHeight / 2;
 	}
-	else {
-		py = max(CAM_BOUND_TOP, py);
-	}
-
+	
+	py = max(CAM_BOUND_TOP, py);
 	py = min(CAM_BOUND_BOTTOM + 20, py);
 	px += -screenWidth / 2;
 	px = max(CAM_BOUND_LEFT, px);
+	int cam_bound_right = -screenWidth;
+	if (id == 1000) {
+		//cam_bound_right += 16 * 176;
+		px = min(px, cam_bound_right + 16 * 176);
+	}
+	else if (id == 666) {
+		//cam_bound_right += 16 * 123;
+		px = min(px, cam_bound_right + 16 * 123);
+	}
+	//DebugOutTitle(L"top: %f, bot: %f\n", px, py);
 
 	hud->SetPosition(px, py);
 	CGame::GetInstance()->SetCamPos(px, py);
 }
 
 void CPlayScene::CheckObjectInPlayerArea(vector<LPPHYSICALOBJECT>* coObjects) {
-	float screenWidth = static_cast<float>(CGame::GetInstance()->GetBackBufferWidth());
 	float screenHeight = static_cast<float>(CGame::GetInstance()->GetBackBufferHeight());
 	float px, py;
+	float screenWidth = static_cast<float>(CGame::GetInstance()->GetBackBufferWidth());
 	CPlayScene::mainPlayer->GetPosition(px, py);
 	for (auto obj : objects) {
 		float objLeft, objTop, objRight, objBottom;
@@ -209,7 +245,7 @@ void CPlayScene::CheckObjectInPlayerArea(vector<LPPHYSICALOBJECT>* coObjects) {
 }
 
 void CPlayScene::Render()
-{
+{	
 	for (size_t i = 0; i < colorBg.size(); i++) colorBg[i]->Render();
 	for (size_t i = 0; i < decors.size(); i++) decors[i]->Render();
 	for (size_t i = 0; i < objects.size(); i++)
@@ -217,7 +253,11 @@ void CPlayScene::Render()
 		if (objects[i]->IsDeleted() || !objects[i]->IsVisible()) continue;
 		objects[i]->Render();
 	}
-	CPlayScene::mainPlayer->Render();
+	if (CPlayScene::mainPlayer)
+	{
+		LPMARIO mr = dynamic_cast<LPMARIO>(CPlayScene::mainPlayer);
+		mr->Render();
+	}
 	hud->Render();
 }
 
@@ -229,27 +269,60 @@ void CPlayScene::Unload()
 		delete objects[i];
 	}
 
+	for (int i = 0; i < decors.size(); i++)
+	{
+		delete decors[i];
+	}
+
+	for (int i = 0; i < colorBg.size(); i++)
+	{
+		delete colorBg[i];
+	}
+
 	objects.clear();
-	delete hud;
+	decors.clear();
+	colorBg.clear();
 
 	// Beside objects, we need to clean up sprites, animations
-	CSprites::GetInstance()->Clear();
+	//CSprites::GetInstance()->Clear();
 	CAnimations::GetInstance()->Clear();
 
 	DebugOut(L"[INFO] Scene %d unloaded! \n", id);
+}
+void CPlayScene::Reload()
+{
+	time_start = GetTickCount64();
+	Clear();
+	DeletePlayer();
+	DebugOut(L"[INFO] Mario existed: %d, Scene %d reloaded!\n", id, CPlayScene::mainPlayer != nullptr);
+	Load();
 }
 #pragma endregion
 
 #pragma region OBJECT_MANAGEMENT
 void CPlayScene::Clear()
 {
-	vector<LPGAMEOBJECT>::iterator it;
-	for (it = objects.begin(); it != objects.end(); it++)
+	for (auto it = objects.begin(); it != objects.end(); it++)
 	{
 		if (*it == CPlayScene::mainPlayer) continue;
 		delete (*it);
 	}
+
+	for (auto it = decors.begin(); it != decors.end(); it++)
+	{
+		if (*it == CPlayScene::mainPlayer) continue;
+		delete (*it);
+	}
+
+	for (auto it = colorBg.begin(); it != colorBg.end(); it++)
+	{
+		if (*it == CPlayScene::mainPlayer) continue;
+		delete (*it);
+	}
+
 	objects.clear();
+	decors.clear();
+	colorBg.clear();
 }
 
 void CPlayScene::PurgeDeletedObjects() {

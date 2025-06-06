@@ -7,7 +7,7 @@ CGameBackground9Sprite* CGameBackground9Sprite::FromSingleSprite(float x, float 
 		sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id, sprite_id);
 }
 
-CGameBackground9Sprite::CGameBackground9Sprite(float x, float y, int length, int height, float cell_width, float cell_height, int sprite_id_top_begin, int sprite_id_top_middle, int sprite_id_top_end, int sprite_id_mid_begin, int sprite_id_mid_middle, int sprite_id_mid_end, int sprite_id_bot_begin, int sprite_id_bot_middle, int sprite_id_bot_end)
+CGameBackground9Sprite::CGameBackground9Sprite(float x, float y, int length, int height, float cell_width, float cell_height, int sprite_id_top_begin, int sprite_id_top_middle, int sprite_id_top_end, int sprite_id_mid_begin, int sprite_id_mid_middle, int sprite_id_mid_end, int sprite_id_bot_begin, int sprite_id_bot_middle, int sprite_id_bot_end) : CGameDecor(x, y)
 {
 	this->length = length;
 	this->height = height;

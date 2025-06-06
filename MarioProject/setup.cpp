@@ -28,10 +28,10 @@ HWND CreateGameWindow(HINSTANCE hInstance, int nCmdShow, int ScreenWidth, int Sc
 
 	// (Optional)
 	wc.hIcon = (HICON)LoadImage(hInstance, iconPath, IMAGE_ICON, 0, 0, LR_LOADFROMFILE); // Custom icon
-	wc.hCursor = LoadCursor(NULL, IDC_ARROW); // Custom cursor
+	wc.hCursor = LoadCursor(nullptr, IDC_ARROW); // Custom cursor
 	wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH); // Background color (DEFAULT: transparency)
-	wc.lpszMenuName = NULL; // Menu name
-	wc.hIconSm = NULL; // Small icon
+	wc.lpszMenuName = nullptr; // Menu name
+	wc.hIconSm = nullptr; // Small icon
 
 	// (Required)
 	RegisterClassEx(&wc); //Register with the system
@@ -44,10 +44,10 @@ HWND CreateGameWindow(HINSTANCE hInstance, int nCmdShow, int ScreenWidth, int Sc
 			CW_USEDEFAULT,
 			ScreenWidth,
 			ScreenHeight,
-			NULL,
-			NULL,
+			nullptr,
+			nullptr,
 			hInstance,
-			NULL
+			nullptr
 		);
 
 	// (Required) 

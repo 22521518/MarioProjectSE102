@@ -19,31 +19,6 @@ bool CKoopa::IsNearOutOfTime(ULONGLONG time)
 	return litmitTime < time  && time < KOOPA_DIE_TIMEOUT;
 }
 
-//#pragma region SIDE_COLLISION_BEHAVIOR
-//void CKoopa::OnSideCollisionBehavior(LPCOLLISIONEVENT e)
-//{
-//	if (!this->IsShellMove()) return;
-//	LPDESTROYABLEOBJECT destroyableObj = dynamic_cast<LPDESTROYABLEOBJECT>(e->obj);
-//	if (destroyableObj)
-//	{
-//		if (dynamic_cast<LPBRICKSUPERITEM>(destroyableObj)) destroyableObj->OnDestroy(e);
-//		if (dynamic_cast<LPBRICK>(destroyableObj) && e->normalX == DirectionXAxisType::None) return;
-//		destroyableObj->OnDestroy(e);
-//	}
-//	this->OnCollisionWith(e);
-//}
-//
-//void CKoopa::GetObjectBoundingBox(float& left, float& top, float& right, float& bottom)
-//{
-//	this->GetBoundingBox(left, top, right, bottom);
-//}
-//
-//DirectionXAxisType CKoopa::GetObjectCurrentDirectionX()
-//{
-//	return this->GetNX();
-//}
-//
-//#pragma endregion
 #pragma region COLLIDABLE_MARIO_METHOD
 void CKoopa::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 {

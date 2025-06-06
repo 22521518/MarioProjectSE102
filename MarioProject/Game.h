@@ -23,27 +23,27 @@ class CGameKeyHandler; typedef CGameKeyHandler* LPGAMEKEYHANDLER;
 class CGame
 {
 	static CGame* __instance;
-	HWND hWnd = NULL;
-	HINSTANCE hInstance = NULL;
+	HWND hWnd = nullptr;
+	HINSTANCE hInstance = nullptr;
 
 	// Backbuffer width & height, will be set during Direct3D initialization
 	int backBufferWidth = 0;
 	int backBufferHeight = 0;
 
 	// Direct3D graphics objects
-	ID3D10Device* pD3DDevice = NULL;
-	IDXGISwapChain* pSwapChain = NULL;
-	ID3D10RenderTargetView* pRenderTargetView = NULL;
-	ID3D10BlendState* pBlendStateAlpha = NULL;
-	ID3D10SamplerState* pPointSamplerState = NULL;
-	LPD3DX10SPRITE spriteObject = NULL;
+	ID3D10Device* pD3DDevice = nullptr;
+	IDXGISwapChain* pSwapChain = nullptr;
+	ID3D10RenderTargetView* pRenderTargetView = nullptr;
+	ID3D10BlendState* pBlendStateAlpha = nullptr;
+	ID3D10SamplerState* pPointSamplerState = nullptr;
+	LPD3DX10SPRITE spriteObject = nullptr;
 
 	// DirectInput related objects (DirectInput object, keyboard, keyboard state buffer, keyboard data)
-	LPDIRECTINPUT8 di = NULL;
-	LPDIRECTINPUTDEVICE8 didv = NULL;
+	LPDIRECTINPUT8 di = nullptr;
+	LPDIRECTINPUTDEVICE8 didv = nullptr;
 	BYTE keyStates[KEYBOARD_STATE_SIZE]{ 0 };
 	DIDEVICEOBJECTDATA keyEvents[KEYBOARD_BUFFER_SIZE]{ 0 };
-	LPGAMEKEYHANDLER keyHandler = NULL; // Our keyboard event handler
+	LPGAMEKEYHANDLER keyHandler = nullptr; // Our keyboard event handler
 
 	// Camera position
 	float cam_x = 0.0f;
@@ -70,7 +70,7 @@ public:
 	void SetPointSamplerState();
 
 	// Draw a portion or ALL the texture at position (x,y) on the screen. (x,y) is at the CENTER of the image
-	void Draw(float x, float y, LPTEXTURE tex, RECT* rect = NULL, float alpha = 1.0f, int sprite_width = 0, int sprite_height = 0);
+	void Draw(float x, float y, LPTEXTURE tex, RECT* rect = nullptr, float alpha = 1.0f, int sprite_width = 0, int sprite_height = 0);
 	void Draw(float x, float y, LPTEXTURE tex, int l, int t, int r, int b, float alpha = 1.0f, int sprite_width = 0, int sprite_height = 0);
 
 	// Keyboard related functions 

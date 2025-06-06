@@ -250,6 +250,7 @@
     <ClInclude Include="HUDContainer.h" />
     <ClInclude Include="HUDLives.h" />
     <ClInclude Include="HUDObject.h" />
+    <ClInclude Include="HUDPowerP.h" />
     <ClInclude Include="HUDScore.h" />
     <ClInclude Include="HUDScoreboard.h" />
     <ClInclude Include="HUDSpriteIDs.h" />

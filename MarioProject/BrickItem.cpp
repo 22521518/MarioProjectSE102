@@ -68,7 +68,7 @@ void CBrickItem::PurgeDeletedItems() {
 		LPITEM currentObj = *it;
 		if (currentObj->IsDeleted()) {
 			delete currentObj;
-			*it = NULL;
+			*it = nullptr;
 		}
 	}
 

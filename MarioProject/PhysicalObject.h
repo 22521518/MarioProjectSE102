@@ -16,8 +16,8 @@ class CPhysicalObject : public CGameObject {
 	const float originVX, originVY, originAX, originAY;
 	DirectionXAxisType originNX;
 protected:
-	float vx = 0.0f, vy = 0.0f;
-	float ax = 0.0f, ay = 0.0f;
+	float vx, vy;
+	float ax, ay;
 	DirectionXAxisType nx = DirectionXAxisType::Left;
 
 public:

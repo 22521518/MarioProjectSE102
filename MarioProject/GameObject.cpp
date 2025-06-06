@@ -130,9 +130,9 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	case OBJECT_TYPE_BOOMMERANG_BROTHER: return new CBoomerangBrother(player, x, y);
 	default:
 		DebugOut(L"[ERROR] Invalid object type: %d\n", object_type);
-		return NULL;
+		return nullptr;
 	}
-	return NULL;
+	return nullptr;
 }
 
 void CGameObject::GetBoundingBox(RECT& rect)

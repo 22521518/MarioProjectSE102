@@ -20,7 +20,7 @@ public:
 
 	virtual int IsActive() { return this->state == BRICK_STATE_ACTIVE; }
 	virtual void SetState(int state) { this->state = state; }
-	static bool IsItemsDeleted(const LPITEM& o) { return o == NULL; }
+	static bool IsItemsDeleted(const LPITEM& o) { return o == nullptr; }
 	void PurgeDeletedItems();
 
 	// game object method

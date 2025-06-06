@@ -9,6 +9,7 @@ typedef CCollisionEvent* LPCOLLISIONEVENT;
 class CInteractiveObject : public CPhysicalObject {
 	const int originState;
 protected:
+	int score = 0;
 	int state = -1;
 public:
 	CInteractiveObject(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0, DirectionXAxisType nx = DirectionXAxisType::Left, int state = -1)
@@ -27,6 +28,7 @@ public:
 	virtual void OnCollisionWith(LPCOLLISIONEVENT e) = 0;
 
 	int GetState() const { return this->state; }
+	int GetScore() const { return score; }
 	void ResetState() override
 	{
 		CPhysicalObject::ResetState();

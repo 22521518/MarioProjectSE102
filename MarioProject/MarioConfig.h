@@ -10,8 +10,8 @@ constexpr float MARIO_ACCEL_RUN_X			= 0.000546875f * 0.75f;// 7.5e-3f; //0.0007
 constexpr float MARIO_BRAKE_RUN_ACCEL_X		= 0.0007f;
 constexpr float MARIO_JUMP_RUN_SPEED_Y		= 4.5f * 0.0625f; // 300e-3f;	//0.6f;
 
-constexpr float MARIO_TIME_POWER_P			= 1800.f;
-constexpr float MARIO_COOLDOWN_POWER_P		= 1000.f;
+constexpr float MARIO_TIME_POWER_P			= 1750.f;
+constexpr float MARIO_COOLDOWN_POWER_P		= 3000.f;
 constexpr float MARIO_DURATION_POWER_P		= 5000.f;
 constexpr float MARIO_SPRINTNIG_SPEED		= 3.5f * 0.0625f; //210e-3f; // using power meter
 constexpr float MARIO_FLAP_BOOST			= 0.25f * 0.0625f * 1.15f; //240e-3f; //0.5f		
@@ -25,5 +25,7 @@ constexpr float MARIO_UNTOUCHABLE_TIME		= 1000.0f;
 constexpr float MARIO_FLAPPING_TIME			= 500.0f;
 constexpr float MARIO_MIN_VY				= MARIO_JUMP_RUN_SPEED_Y / 10.0f;
 constexpr float MARIO_KICK_TIME				= 500.0f;
-constexpr float MARIO_ATTACK_FRAME_TIME = 400.0f;
-constexpr float MARIO_ATTACK_CD_TIME = 50.0f;
+constexpr float MARIO_ATTACK_FRAME_TIME		= 400.0f;
+constexpr float MARIO_ATTACK_CD_TIME		= 50.0f;
+
+constexpr float MARIO_DIE_TIME_DELAY = 1000.f;

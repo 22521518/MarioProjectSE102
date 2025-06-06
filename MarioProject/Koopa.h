@@ -21,7 +21,7 @@ private:
 protected:
 	bool isHeld = false;
 	DirectionYAxisType ny = DirectionYAxisType::Bottom;
-	LPKOOPASTATE stateHandler = NULL;
+	LPKOOPASTATE stateHandler = nullptr;
 	ULONGLONG die_start = 0;
 
 public:

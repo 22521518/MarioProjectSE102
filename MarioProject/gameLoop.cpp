@@ -4,7 +4,7 @@
 
 void Update(DWORD dt)
 {
-	if (CGame::GetInstance()->GetCurrentScene() != NULL)
+	if (CGame::GetInstance()->GetCurrentScene() != nullptr)
 	{
 		CGame::GetInstance()->GetCurrentScene()->Update(dt);
 	}
@@ -25,7 +25,7 @@ void Render() {
 	FLOAT NewBlendFactor[4] = { 0,0,0,0 };
 	pD3DDevice->OMSetBlendState(g->GetAlphaBlending(), NewBlendFactor, 0xffffffff);
 
-	if (CGame::GetInstance()->GetCurrentScene() != NULL) 
+	if (CGame::GetInstance()->GetCurrentScene() != nullptr) 
 	{
 		CGame::GetInstance()->GetCurrentScene()->Render();
 	}
@@ -42,7 +42,7 @@ int Run() {
 
 	while (!done)
 	{
-		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
 		{
 			if (msg.message == WM_QUIT) done = 1;
 

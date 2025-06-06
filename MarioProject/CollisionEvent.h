@@ -26,7 +26,7 @@ struct CCollisionEvent
 
 	CCollisionEvent(float t, DirectionXAxisType nx = DirectionXAxisType::None, DirectionYAxisType ny = DirectionYAxisType::None,
 		float dx = 0, float dy = 0,
-		LPPHYSICALOBJECT obj = NULL, LPPHYSICALOBJECT src_obj = NULL);
+		LPPHYSICALOBJECT obj = nullptr, LPPHYSICALOBJECT src_obj = nullptr);
 	int WasCollided();
 	static bool compare(CCollisionEvent*& a, CCollisionEvent*& b);
 	void printInfo();

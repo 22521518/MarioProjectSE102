@@ -30,26 +30,36 @@ class CMario : public CCharacter
 	LPHOLDABLEWITHMARIO holdingItem = nullptr;
 	bool isRunning = false;
 	float maxVx;
+	float powerPBar = 0;
 
 	// mario state
 	BOOLEAN isSitting;
 	BOOLEAN isOnPlatform;
 	int level;
 	int untouchable;
+	ULONGLONG untouchable_start;
+	ULONGLONG die_start;
 	ULONGLONG running_start;
 	ULONGLONG flap_start;
-	ULONGLONG untouchable_start;
 	ULONGLONG kick_start;
 	ULONGLONG attack_start;
 	ULONGLONG power_p_start;
+	ULONGLONG lastIncreaseTime = 0;
+	ULONGLONG lastDecreaseTime = 0;
 
 	// score
-	int coin = 0;
 	LPMARIOSTATE stateHandler;
-
-
 public:
+	static UINT coins;
+	static ULONG scores;
+	static UINT lives;
+	static void AddCoin(int c);
+	static void AddScore(int c);
+
 	CMario(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = MARIO_GRAVITY, DirectionXAxisType nx = DirectionXAxisType::Left, int state = -1);
+	void Init(float x, float y);
+	static void OnGameReset();
+	boolean IsMarioDieAndReload();
 
 	// game object method
 	virtual void Render();
@@ -82,7 +92,7 @@ public:
 	
 	// release item with LPHOLDABLEWITHMARIO
 	void ReleaseHoldingItem();
-	virtual void OnKick() { this->kick_start = GetTickCount64(); };
+	virtual void OnKick() { this->kick_start = GetTickCount64(); untouchable_start = MARIO_UNTOUCHABLE_TIME - 100; };
 
 	// fly mario method
 	bool IsFlapping() const;
@@ -119,6 +129,19 @@ public:
 	friend class CMarioPlayerKeyHandler;
 
 	friend class CCollidableWithMario;
+	~CMario() { 
+		DebugOut(L"Delete Marioo!\n");
+		if (stateHandler != nullptr)
+		{
+			delete stateHandler;
+			stateHandler = nullptr;
+		}
+		if (holdingItem != nullptr)
+		{
+			delete holdingItem;
+			holdingItem = nullptr;
+		}
+	}
 };
 
 typedef CMario* LPMARIO;

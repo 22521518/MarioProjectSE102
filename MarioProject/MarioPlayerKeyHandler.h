@@ -13,7 +13,7 @@ typedef CMario* LPMARIO;
 
 class CMarioPlayerKeyHandler : public CSceneKeyHandler
 {
-	LPMARIO mario = NULL;
+	LPMARIO mario = nullptr;
 public:
     CMarioPlayerKeyHandler(LPPLAYSCENE s);
 

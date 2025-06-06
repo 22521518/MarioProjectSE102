@@ -10,12 +10,12 @@ class CGameKeyHandler :
 {
 	static CGameKeyHandler* __instance;
 
-	LPKEYEVENTHANDLER currentHandler = NULL;
-	LPKEYMAP keyMap = NULL;
+	LPKEYEVENTHANDLER currentHandler = nullptr;
+	LPKEYMAP keyMap = nullptr;
 
 	CGameKeyHandler(LPKEYMAP keyMap) {
 		this->keyMap = keyMap;
-		this->currentHandler = NULL;
+		this->currentHandler = nullptr;
 	}
 	CGameKeyHandler(LPKEYMAP keyMap, LPKEYEVENTHANDLER handler) : keyMap(keyMap), currentHandler(handler) {}
 	static LPKEYMAP LoadKeyMapFromFile(const wchar_t* fileName = KEYMAP_FILE);

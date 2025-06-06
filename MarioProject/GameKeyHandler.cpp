@@ -1,6 +1,6 @@
 #include "GameKeyHandler.h"
 
-CGameKeyHandler* CGameKeyHandler::__instance = NULL;
+CGameKeyHandler* CGameKeyHandler::__instance = nullptr;
 
 LPKEYMAP CGameKeyHandler::LoadKeyMapFromFile(const wchar_t* fileName)
 {
@@ -12,7 +12,7 @@ LPKEYMAP CGameKeyHandler::LoadKeyMapFromFile(const wchar_t* fileName)
 
 CGameKeyHandler* CGameKeyHandler::GetInstance()
 {    
-	if (__instance == NULL)
+	if (__instance == nullptr)
 	{
 		LPKEYMAP keyMap = LoadKeyMapFromFile();
 		__instance = new CGameKeyHandler(keyMap);
@@ -24,7 +24,7 @@ CGameKeyHandler* CGameKeyHandler::GetInstance()
 void CGameKeyHandler::KeyState(BYTE* state)
 {
 	//Handle Global Key Event (pause, escape....)
-	if (currentHandler != NULL)
+	if (currentHandler != nullptr)
 	{
 		currentHandler->KeyState(state);
 	}
@@ -32,7 +32,7 @@ void CGameKeyHandler::KeyState(BYTE* state)
 
 void CGameKeyHandler::OnKeyDown(int keyCode)
 {
-	if (currentHandler != NULL)
+	if (currentHandler != nullptr)
 	{
 		currentHandler->OnKeyDown(keyCode);
 	}
@@ -40,7 +40,7 @@ void CGameKeyHandler::OnKeyDown(int keyCode)
 
 void CGameKeyHandler::OnKeyUp(int keyCode)
 {
-	if (currentHandler != NULL)
+	if (currentHandler != nullptr)
 	{
 		currentHandler->OnKeyUp(keyCode);
 	}

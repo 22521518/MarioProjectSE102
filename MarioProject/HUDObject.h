@@ -15,6 +15,7 @@ public:
 	static CHUDObject* CreateHUDScores(ULONG* pScore, float offX = 62.f, float offY = 7.f / 16.f + 8.f);
 	static CHUDObject* CreateHUDTimes(UINT* pTimes, float offX = 62.f + 62.f, float offY = 7.f / 16.f + 8.f);
 	static CHUDObject* CreateHUDCoins(UINT* pCoins, float offX = 140.f, float offY = 7.f / 16.f);
+	static CHUDObject* CreateHUDPowerP(float offX = 62.f, float offY = 7.f / 16.f);
 };
 
 typedef CHUDObject* LPHUDOBJECT;

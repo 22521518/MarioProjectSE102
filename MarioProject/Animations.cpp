@@ -1,17 +1,17 @@
 #include "Animations.h"
 
-CAnimations* CAnimations::__instance = NULL;
+CAnimations* CAnimations::__instance = nullptr;
 
 CAnimations* CAnimations::GetInstance()
 {
-	if (__instance == NULL) __instance = new CAnimations();
+	if (__instance == nullptr) __instance = new CAnimations();
 	return __instance;
 }
 
 void CAnimations::Add(int id, LPANIMATION ani)
 {
-	if (animations[id] != NULL)
-		DebugOut(L"[WARNING] Animation %d already exists\n", id);
+	if (animations[id] != nullptr) return;
+		//DebugOut(L"[WARNING] Animation %d already exists\n", id);
 
 	animations[id] = ani;
 }
@@ -19,7 +19,7 @@ void CAnimations::Add(int id, LPANIMATION ani)
 LPANIMATION CAnimations::Get(int id)
 {
 	LPANIMATION ani = animations[id];
-	if (ani == NULL)
+	if (ani == nullptr)
 		DebugOut(L"[ERROR] Animation ID %d not found\n", id);
 	return ani;
 }

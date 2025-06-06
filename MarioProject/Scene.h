@@ -5,7 +5,7 @@
 class CScene
 {
 protected:
-	LPKEYEVENTHANDLER keyHandler = NULL;
+	LPKEYEVENTHANDLER keyHandler = nullptr;
 	int id;
 	LPCWSTR sceneFilePath;
 
@@ -17,6 +17,8 @@ public:
 	virtual void Update(DWORD dt) = 0;
 	virtual void UpdateCamera(DWORD dt) = 0;
 	virtual void Render() = 0;
+
+	virtual void Reload() { Unload(); Load(); };
 
 	LPKEYEVENTHANDLER GetKeyEventHandler() const { return keyHandler; }
 };

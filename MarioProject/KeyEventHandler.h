@@ -9,7 +9,7 @@
 class CKeyEventHandler
 {
 protected:
-	LPKEYMAP keyMap = NULL;
+	LPKEYMAP keyMap = nullptr;
 
 public:
 	virtual void KeyState(BYTE* state) = 0;

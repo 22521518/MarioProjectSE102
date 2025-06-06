@@ -12,7 +12,8 @@ void CMarioState::OnRun(bool isLeft)
 		mario->nx = dir;
 		mario->maxVx = normX * MARIO_WALKING_SPEED;
 	}
-	else if ((mario->running_start != 0 && GetTickCount64() - mario->running_start >= MARIO_TIME_POWER_P))	
+	//else if ((mario->running_start != 0 && GetTickCount64() - mario->running_start >= MARIO_TIME_POWER_P))	
+	else if ((mario->running_start != 0 && mario->GetPowerP() >= 7))	
 	{
 		mario->maxVx = MARIO_SPRINTNIG_SPEED * normX;
 		if (mario->power_p_start == 0 || (GetTickCount64() - mario->power_p_start > MARIO_DURATION_POWER_P + MARIO_COOLDOWN_POWER_P)) 
@@ -95,6 +96,7 @@ void CMarioState::OnIdle()
 }
 void CMarioState::OnDie()
 {
+	mario->die_start = GetTickCount64();
 	mario->vy = -MARIO_JUMP_DEFLECT_SPEED;
 	mario->vx = 0;
 	mario->ax = 0;
@@ -145,7 +147,6 @@ void CMarioState::HandleStateChange(int state)
 	}
 	case MARIO_STATE_DIE:
 	{
-		return;
 		DebugOut(L">>> Mario DIE >>> \n");
 		this->OnDie();
 		break;

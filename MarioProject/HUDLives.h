@@ -12,8 +12,9 @@ public:
 		this->pLives = pLives;
 	}
 	void Render() override {
-		int lives = static_cast<int>(pLives ? *pLives : 0);
+		int lives = max(static_cast<int>(pLives ? *pLives : 0), 0);
+		int len = lives > 0 ? static_cast<int>(log10(lives) + 0.5) : 1;
 		CSpriteFont::GetInstance()
-			->DrawFontNumber(lives, static_cast<int>(log10(lives) + 0.5), x + offsetX, y + offsetY);
+			->DrawFontNumber(lives, len, x + offsetX, y + offsetY);
 	}
 };

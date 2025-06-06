@@ -4,6 +4,7 @@
 #include "HUDScore.h"
 #include "HUDTime.h"
 #include "HUDCoin.h"
+#include "HUDPowerP.h"
 
 CHUDObject* CHUDObject::CreateHUDWorld(UINT* pWorld, float offX, float offY)
 {
@@ -29,3 +30,9 @@ CHUDObject* CHUDObject::CreateHUDCoins(UINT* pCoins, float offX, float offY)
 {
     return new CHUDCoin(pCoins, offX, offY);;
 }
+
+CHUDObject* CHUDObject::CreateHUDPowerP(float offX, float offY)
+{
+    return new HUDPowerP(offX, offY);;
+}
+

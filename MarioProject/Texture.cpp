@@ -13,6 +13,6 @@ CTexture::CTexture(ID3D10Texture2D* tex, ID3D10ShaderResourceView* rsview)
 
 CTexture::~CTexture()
 {
-	if (_rsview != NULL) this->_rsview->Release();
-	if (_tex != NULL) this->_tex->Release();
+	if (_rsview != nullptr) this->_rsview->Release();
+	if (_tex != nullptr) this->_tex->Release();
 }

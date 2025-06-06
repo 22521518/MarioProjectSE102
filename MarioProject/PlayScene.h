@@ -36,13 +36,9 @@ class CPlayScene :
     public CScene
 {
 private:
-	UINT coins = 0;
 	UINT time_remaining = 300;
-	ULONG scores = 0;
-	UINT lives = 10;
 	UINT world = 1;
 	LPHUDCONTAINER hud;
-	
 	ULONGLONG time_start;
 
 protected:
@@ -63,8 +59,10 @@ public:
 	void UpdateCamera(DWORD dt) override;
 	void Render() override;
 	void Unload() override;
+	void Reload() override;
 
 	void InitPlayer(LPGAMEOBJECT player);
+	void DeletePlayer();
 
 	// Object management
 	void CheckObjectInPlayerArea(vector<LPPHYSICALOBJECT>* coObjects);
@@ -72,6 +70,9 @@ public:
 	void PurgeDeletedObjects();
 	void Clear();
 
+	~CPlayScene() {
+		if (hud != nullptr) { delete hud; hud = nullptr; }
+	}
 	static LPGAMEOBJECT GetPlayer();
 
 };

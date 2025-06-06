@@ -7,7 +7,6 @@ CSpriteFont* CSpriteFont::GetInstance()
 {
     if (__instance == nullptr) {
         __instance = new CSpriteFont();
-        __instance->Load();
     }
     return __instance;
 }

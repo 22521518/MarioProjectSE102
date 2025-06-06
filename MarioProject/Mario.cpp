@@ -14,10 +14,31 @@
 #include "CollidableWithMario.h"
 #include "DestroyableObject.h"
 #include "BrickSuperItem.h"
+#include"SuperMushroom.h"
+#include"OneUpMushroom.h"
 
 #include "PlantEnemy.h"
 #include "PlantFireBall.h"
 #include "Block1Up.h"
+
+UINT CMario::coins = 0;
+ULONG CMario::scores = 0;
+UINT CMario::lives = 1;
+
+void CMario::AddCoin(int c)
+{
+	int remainsLives = ((CMario::coins + c) / 100) - (CMario::coins / 100);
+	CMario::lives += remainsLives > 0 ? 1 : 0;
+	int remainsScore = ((CMario::coins + c) / 50) - (CMario::coins / 50);
+	CMario::AddScore(remainsScore * 50);
+
+	CMario::coins += c;
+}
+
+void CMario::AddScore(int c)
+{
+	CMario::scores += c;
+}
 
 CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, DirectionXAxisType nx, int state) : CCharacter(x, y, vx, vy, ax, ay, nx, state)
 {
@@ -26,22 +47,45 @@ CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, Directi
 	this->isOnPlatform = false;
 
 	this->untouchable = 0;
-	this->running_start = 0;
+	this->die_start = 0;
 	this->untouchable_start = 0;
+	this->running_start = 0;
 	this->flap_start = 0;
 	this->kick_start = 0;
 	this->attack_start = 0;
 	this->power_p_start = 0;
 
-	this->coin = 0;
 	this->level = MARIO_LEVEL_SMALL;
 	this->stateHandler = new CSmallMarioState(this);
-};
+	this->holdingItem = nullptr;
+
+	DebugOut(L"[DUMB-SS]Mario reborn, state_handler: ");
+	DebugOutObjectClassName(stateHandler);
+}
+void CMario::Init(float x, float y)
+{
+	this->x = x, this->y = y;
+	this->stateHandler = new CSmallMarioState(this);
+	this->holdingItem = nullptr;
+}
+
+void CMario::OnGameReset()
+{
+	CMario::coins = 0;
+	CMario::scores = 0;
+	CMario::lives = 1;
+}
+
+boolean CMario::IsMarioDieAndReload()
+{
+	ULONGLONG time_now = GetTickCount64();
+	return state == MARIO_STATE_DIE && die_start > 0 && time_now - die_start >= MARIO_DIE_TIME_DELAY;
+}
 
 void CMario::SetLevel(int level)	
 {
 	StartUntouchable();
-	if (this->level > MARIO_LEVEL_BIG) return;
+	//if (this->level > MARIO_LEVEL_BIG) return;
 	float left, top, right, bottom;
 	this->GetBoundingBox(left, top, right, bottom);
 	switch (level) {
@@ -80,7 +124,15 @@ void CMario::StartUntouchable() {
 
 float CMario::GetPowerP() const
 {
-	return 0.0f;
+	ULONGLONG now = GetTickCount64();
+
+	if (power_p_start > 0 &&
+		now - power_p_start < MARIO_DURATION_POWER_P)
+	{
+		return 7;
+	}
+
+	return powerPBar;
 }
 
 void CMario::ReleaseHoldingItem()
@@ -99,6 +151,7 @@ bool CMario::IsFlapping() const
 void CMario::StartFlap()
 {
 	if (this->level != MARIO_LEVEL_FLY) return;
+	if (CanFly() || vy > 0)
 	flap_start = GetTickCount64();
 	//this->SetState(MARIO_FLY_FLAPPING); handle by the property, not the state
 }
@@ -110,8 +163,8 @@ void CMario::StartAttack() {
 
 bool CMario::CanFly() const
 {
-	//return vx >= MARIO_SPRINTNIG_SPEED || (running_start > 0 && GetTickCount64() - running_start > MARIO_TIME_POWER_P + MARIO_DURATION_POWER_P);
-	return (power_p_start > 0 && GetTickCount64() - power_p_start < MARIO_DURATION_POWER_P);
+	ULONGLONG now = GetTickCount64();
+	return (power_p_start > 0 && now - power_p_start < MARIO_DURATION_POWER_P);
 }
 
 bool CMario::IsAttacking() const
@@ -189,49 +242,7 @@ void CMario::CollideBullet(LPINTERACTIVEOBJECT fire)
 		}
 	}
 };
-//void CMario::OnCollisionWithPlant(LPPLANTENEMY plant, LPCOLLISIONEVENT e)
-//{
-//	// jump on top >> kill ___ and deflect a bit 
-//	if (e->normalY == DirectionYAxisType::Top)
-//	{
-//		if (!plant->IsDeadState())
-//		{
-//			vy = vy > 0 ? -MARIO_JUMP_DEFLECT_SPEED : vy - MARIO_JUMP_DEFLECT_SPEED;
-//		}
-//	}
-//	else if (untouchable == 0 && !plant->IsDeadState()) // hit by ___
-//	{
-//		if (level > MARIO_LEVEL_BIG)
-//		{
-//			this->SetLevel(MARIO_LEVEL_BIG);
-//		}
-//		else if (level > MARIO_LEVEL_SMALL)
-//		{
-//			this->SetLevel(MARIO_LEVEL_SMALL);
-//		}
-//		else
-//		{
-//			SetState(MARIO_STATE_DIE);
-//		}
-//	}
-//}
-//void CMario::CollideFireBall(LPPLANTFIREBALL fire)
-//{
-//	if (this->IsOverLapping(static_cast<LPINTERACTIVEOBJECT>(fire)) && untouchable == 0) {
-//		if (level > MARIO_LEVEL_BIG)
-//		{
-//			this->SetLevel(MARIO_LEVEL_BIG);
-//		}
-//		else if (level > MARIO_LEVEL_SMALL)
-//		{
-//			this->SetLevel(MARIO_LEVEL_SMALL);
-//		}
-//		else
-//		{
-//			SetState(MARIO_STATE_DIE);
-//		}
-//	}
-//};
+
 void CMario::Collide1UP(LPBLOCK1UP fire)
 {
 	if (this->IsOverLapping(static_cast<LPINTERACTIVEOBJECT>(fire))) {
@@ -253,10 +264,7 @@ bool CMario::IsOverLapping(LPINTERACTIVEOBJECT a) {
 }
 
 void CMario::OnCollisionWithCoin(LPCOIN coin, LPCOLLISIONEVENT e) {
-	coin++;
-	//DebugOut(L"I GOT MORE COIN! \n");
-	if (this->coin >= 100)
-		return;
+	CMario::AddCoin(1);
 }
 
 void CMario::OnCollisionWithSuperLeaf(LPSUPERLEAF leaf, LPCOLLISIONEVENT e)
@@ -271,7 +279,8 @@ void CMario::OnCollisionWithSuperMushroom(LPSUPERMUSHROOM mushroom, LPCOLLISIONE
 
 void CMario::OnCollisionWithOneUpMushroom(LPONEUPMUSHROOM mushroom, LPCOLLISIONEVENT e)
 {
-	this->SetLevel(MARIO_LEVEL_FLY);
+	CMario::lives++;
+	CMario::AddScore(mushroom->GetScore());
 }
 
 void CMario::OnCollisionWithSuperItemBrick(LPBRICKSUPERITEM brick, LPCOLLISIONEVENT e)
@@ -385,6 +394,7 @@ void CMario::GetBoundingBox(float& left, float& top, float& right, float& bottom
 
 void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
+	ULONGLONG time_now = GetTickCount64();
 	if (IsFlapping()) 
 	{
 		if (CanFly()) {
@@ -396,6 +406,7 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		else if (vy > 0)
 		{
 			//DebugOut(L"I dropping!!\n");
+			running_start = 0;
 			ay = MARIO_FALL_GRAVITY * 0.4f;
 		}
 		else {
@@ -407,7 +418,13 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		this->ay = vy > 0 ? MARIO_FALL_GRAVITY : MARIO_GRAVITY;
 	}
 
-	DebugOutTitle(L"speed: %f, max: %f, acc: %f, dir: %d, times %llu\n", vy, maxVx, ay, IsFlapping(), running_start);
+	//DebugOutTitle(L"speed: %f, max: %f, acc: %f, dir: %d, times %llu\n", vy, maxVx, ay, IsFlapping(), die_start);
+	////(time_now - running_start) % static_cast<int>(MARIO_TIME_POWER_P / 7)
+	//DebugOutTitle(L"coins: %u, lives: %u, scores: %lu, die_time: %llu, power_p: %f\n", CMario::coins, CMario::lives, CMario::scores, power_p_start, powerPBar);
+	DebugOutTitle(L"running: %llu, power_p: %llu ", 
+		running_start > 0 ? (time_now - running_start) / 1000 : 0,
+		power_p_start > 0 ? (time_now - power_p_start) / 1000 : 0);
+
 	vy += ay * dt;
 	vx += ax * dt;
 
@@ -417,8 +434,8 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 	}
 
 	if (abs(vx) >= MARIO_RUNNING_SPEED) {
-		running_start = running_start == 0 ? GetTickCount64() : running_start;
-		if (GetTickCount64() - running_start > MARIO_TIME_POWER_P + MARIO_DURATION_POWER_P)
+		running_start = running_start == 0 ? time_now : running_start;
+		if (time_now - running_start > MARIO_TIME_POWER_P + MARIO_DURATION_POWER_P)
 			running_start = 0;
 	}
 	else {
@@ -426,21 +443,20 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 	}
 
 	// reset untouchable timer if untouchable time has passed
-	if (GetTickCount64() - untouchable_start > MARIO_UNTOUCHABLE_TIME && untouchable_start > 0)
+	if (time_now - untouchable_start > MARIO_UNTOUCHABLE_TIME && untouchable_start > 0)
 	{
 		untouchable_start = 0;
 		untouchable = 0;
 	}
 
 	CCollision::GetInstance()->Process(this, dt, coObjects);
-	//CCharacter::Update(dt, coObjects);
 
-	if (this->holdingItem)
+	if (this->holdingItem != nullptr && this->stateHandler != nullptr)
 	{
 		float bboxWidth = 0;
 		float bboxHeight = 0;
 		this->stateHandler->GetBoundingBox(bboxWidth, bboxHeight);
-
+			
 		int dir = static_cast<int>(this->nx);
 		this->holdingItem->SetObjectPosision(this->x + (bboxWidth - 2.0f) * dir, this->y);
 		if (!this->holdingItem->IsHoldableState())
@@ -455,11 +471,31 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		}
 	}
 
-	if (flap_start > 1 && (GetTickCount64() - flap_start) >= MARIO_FLAPPING_TIME)
+	if (flap_start > 1 && (time_now - flap_start) >= MARIO_FLAPPING_TIME)
 	{
 		flap_start = 2;
 	}
-}
+	constexpr int POWERP_INCREASE_INTERVAL = static_cast<int>(MARIO_TIME_POWER_P / 7);
+	constexpr int POWERP_DECREASE_INTERVAL = static_cast<int>(POWERP_INCREASE_INTERVAL * 0.6);
+
+	// 1800 / 7 ~~ 250
+	
+	if(running_start > 0 && time_now - lastIncreaseTime >= POWERP_INCREASE_INTERVAL && !IsFlapping()) {
+		powerPBar = min(powerPBar + 1, 7);
+		lastIncreaseTime = time_now;
+	}
+	else if ((running_start <= 0 || 
+		(power_p_start > 0 && time_now - power_p_start > MARIO_DURATION_POWER_P + MARIO_COOLDOWN_POWER_P)) &&
+		time_now - lastDecreaseTime >= POWERP_DECREASE_INTERVAL) {
+		lastDecreaseTime = time_now;
+		powerPBar = max(powerPBar - 1, 0);
+	}
+
+	if ((!CanFly() && IsFlapping() && !isOnPlatform))
+	{
+		running_start = 0;
+	}
+}	
 #pragma endregion
 
 #pragma region GAME_OBJECT_METHOD

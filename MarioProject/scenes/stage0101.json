@@ -7906,7 +7906,7 @@
         {
           "name": "height",
           "type": "float",
-          "value": 27
+          "value": 30
         },
         {
           "name": "length",
@@ -7963,7 +7963,7 @@
       "type": "5000900",
       "visible": true,
       "width": 2816,
-      "x": 4.54747350886464e-13,
+      "x": 4.54747e-13,
       "y": 0
     },
     {
@@ -8067,7 +8067,7 @@
         {
           "name": "length",
           "type": "float",
-          "value": 155
+          "value": 1
         },
         {
           "name": "sprite_id_bot_begin",

@@ -205,7 +205,7 @@ void CCollision::Filter(LPPHYSICALOBJECT objSrc, vector<LPCOLLISIONEVENT>& coEve
 }
 
 void CCollision::ProcessCollisionX(LPINTERACTIVEOBJECT objSrc, float& positionX, float& positionY, float distanceX, LPCOLLISIONEVENT colX, bool setPosFlag) {
-	if (colX == NULL) {
+	if (colX == nullptr) {
 		positionX += distanceX;
 		return;
 	}
@@ -221,7 +221,7 @@ void CCollision::ProcessCollisionX(LPINTERACTIVEOBJECT objSrc, float& positionX,
 
 void CCollision::ProcessCollisionY(LPINTERACTIVEOBJECT objSrc, float& positionX, float& positionY, float distanceY, LPCOLLISIONEVENT colY, bool setPosFlag) {
 
-	if (colY == NULL) {
+	if (colY == nullptr) {
 		positionY += distanceY;
 		return;
 	}
@@ -239,8 +239,8 @@ void CCollision::Process(LPINTERACTIVEOBJECT objSrc, DWORD dt, vector<LPPHYSICAL
 {
 	if (!objSrc) return;
 	vector<LPCOLLISIONEVENT> coEvents;
-	LPCOLLISIONEVENT colX = NULL;
-	LPCOLLISIONEVENT colY = NULL;
+	LPCOLLISIONEVENT colX = nullptr;
+	LPCOLLISIONEVENT colY = nullptr;
 	coEvents.clear();
 	if (objSrc->IsCollidable())
 	{
@@ -266,14 +266,14 @@ void CCollision::Process(LPINTERACTIVEOBJECT objSrc, DWORD dt, vector<LPPHYSICAL
 
 		
 
-		if (colX != NULL && colY != NULL)
+		if (colX != nullptr && colY != nullptr)
 		{
 			if (colY->time < colX->time)
 			{
 				ProcessCollisionY(objSrc, x, y, distanceY, colY, true);
 				
 				// Check if there is still a collision on X after Y correction
-				LPCOLLISIONEVENT colX_other = NULL;
+				LPCOLLISIONEVENT colX_other = nullptr;
 				colX->isDeleted = true;	// remove current collision event on X
 				coEvents.push_back(SweptAABB(objSrc, dt, colX->obj)); // replace with a new collision event using corrected location 
 				Filter(objSrc, coEvents, colX_other, colY, 1, 1, 0); // re-filter on X only
@@ -286,7 +286,7 @@ void CCollision::Process(LPINTERACTIVEOBJECT objSrc, DWORD dt, vector<LPPHYSICAL
 				ProcessCollisionX(objSrc, x, y, distanceX, colX, true);
 
 				// see if after correction on X, is there still a collision on Y ? 
-				LPCOLLISIONEVENT colY_other = NULL;
+				LPCOLLISIONEVENT colY_other = nullptr;
 				colY->isDeleted = true;	// remove current collision event on Y
 				coEvents.push_back(SweptAABB(objSrc, dt, colY->obj)); // replace with a new collision event using corrected location 
 				Filter(objSrc, coEvents, colX, colY_other, 1, 0, 1); // re-filter on Y only
@@ -317,10 +317,10 @@ void CCollision::Process(LPINTERACTIVEOBJECT objSrc, DWORD dt, vector<LPPHYSICAL
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 }
 
-CCollision* CCollision::__instance = NULL;
+CCollision* CCollision::__instance = nullptr;
 
 CCollision* CCollision::GetInstance()
 {
-	if (__instance == NULL) __instance = new CCollision();
+	if (__instance == nullptr) __instance = new CCollision();
 	return __instance;
 }

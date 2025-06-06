@@ -21,13 +21,13 @@ public:
 	// physical object method
 	virtual void GetBoundingBox(float& l, float& t, float& r, float& b);
 	int IsBlocking() { return 0; }
-	virtual void  RenderBoundingBox() override;
+	virtual void RenderBoundingBox() override;
 
 	// collidable with mario interface
 	virtual void OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e) override;
 
 	// portal method
-	int GetSceneId() { return scene_id; }
+	int GetSceneId() const { return scene_id; }
 };
 
 typedef CPortal* LPPORTAL;
