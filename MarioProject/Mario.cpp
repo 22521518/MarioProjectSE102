@@ -21,6 +21,7 @@
 #include "PlantFireBall.h"
 #include "Block1Up.h"
 
+std::vector<int> CMario::stageItem;
 UINT CMario::coins = 0;
 ULONG CMario::scores = 0;
 UINT CMario::lives = 1;

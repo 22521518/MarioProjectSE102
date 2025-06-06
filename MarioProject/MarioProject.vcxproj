@@ -248,6 +248,7 @@
     <ClInclude Include="HUDCoin.h" />
     <ClInclude Include="HUDConfig.h" />
     <ClInclude Include="HUDContainer.h" />
+    <ClInclude Include="HUDItems.h" />
     <ClInclude Include="HUDLives.h" />
     <ClInclude Include="HUDObject.h" />
     <ClInclude Include="HUDPowerP.h" />

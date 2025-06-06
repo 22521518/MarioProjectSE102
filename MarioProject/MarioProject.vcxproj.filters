@@ -193,6 +193,12 @@
     <Filter Include="Header Files\GameInstance\FontConfig">
       <UniqueIdentifier>{eaea2398-1a4a-40c6-8fa2-277f159bf552}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\HUDObject\HUDScoreboard">
+      <UniqueIdentifier>{c061dc9b-bfb8-4534-ad16-8d201d6e3e05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\HUDObject\HUDItems">
+      <UniqueIdentifier>{8d929e31-e593-4ccf-9bea-f570e44e2ca0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -382,9 +388,6 @@
     <ClCompile Include="FontSpriteIDs.h">
       <Filter>Header Files\GameInstance\FontConfig</Filter>
     </ClCompile>
-    <ClCompile Include="HUDWorld.h">
-      <Filter>Header Files\GameObjectConcrete\HUDObject</Filter>
-    </ClCompile>
     <ClCompile Include="SpriteFont.cpp">
       <Filter>Source Files\GameInstance</Filter>
     </ClCompile>
@@ -394,8 +397,11 @@
     <ClCompile Include="HUDScoreboard.cpp">
       <Filter>Source Files\GameObjectConcrete\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="HUDWorld.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject\HUDScoreboard</Filter>
+    </ClCompile>
     <ClCompile Include="HUDObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\GameObjectConcrete\HUD</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -765,9 +771,6 @@
     <ClInclude Include="HUDConfig.h">
       <Filter>Header Files\GameObjectConcrete\HUDObject\HUDAsset</Filter>
     </ClInclude>
-    <ClInclude Include="HUDScoreboard.h">
-      <Filter>Header Files\GameObjectConcrete\HUDObject</Filter>
-    </ClInclude>
     <ClInclude Include="HUDSpriteIDs.h">
       <Filter>Header Files\GameObjectConcrete\HUDObject\HUDAsset</Filter>
     </ClInclude>
@@ -777,23 +780,11 @@
     <ClInclude Include="CameraConfig.h">
       <Filter>Header Files\Scene\SceneConfig</Filter>
     </ClInclude>
-    <ClInclude Include="HUDCoin.h">
-      <Filter>Header Files\GameObjectConcrete\HUDObject</Filter>
-    </ClInclude>
-    <ClInclude Include="HUDLives.h">
-      <Filter>Header Files\GameObjectConcrete\HUDObject</Filter>
-    </ClInclude>
-    <ClInclude Include="HUDScore.h">
-      <Filter>Header Files\GameObjectConcrete\HUDObject</Filter>
-    </ClInclude>
     <ClInclude Include="FontConfig.h">
       <Filter>Header Files\GameInstance\FontConfig</Filter>
     </ClInclude>
     <ClInclude Include="SpriteFont.h">
       <Filter>Header Files\GameInstance</Filter>
-    </ClInclude>
-    <ClInclude Include="HUDTime.h">
-      <Filter>Header Files\GameObjectConcrete\HUDObject</Filter>
     </ClInclude>
     <ClInclude Include="BoomerangBrother.h">
       <Filter>Header Files</Filter>
@@ -804,8 +795,26 @@
     <ClInclude Include="BoomerangBrotherConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HUDTime.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject\HUDScoreboard</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDScoreboard.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject\HUDScoreboard</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDScore.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject\HUDScoreboard</Filter>
+    </ClInclude>
     <ClInclude Include="HUDPowerP.h">
-      <Filter>Header Files\GameObjectConcrete\HUDObject</Filter>
+      <Filter>Header Files\GameObjectConcrete\HUDObject\HUDScoreboard</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDLives.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject\HUDScoreboard</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDItems.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject\HUDItems</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDCoin.h">
+      <Filter>Header Files\GameObjectConcrete\HUDObject\HUDScoreboard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

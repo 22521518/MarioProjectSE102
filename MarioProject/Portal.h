@@ -7,11 +7,18 @@ class CPortal :
 {
 protected:
 	int scene_id;	// target scene to switch to 
+	
+	// animation
+	bool isPipePort;
+
+	// from bonus
+	bool isReturnToExisting;
+	int px, py;
 
 	float width;
 	float height;
 public:	
-	CPortal(float l, float t, float r, float b, int scene_id);
+	CPortal(float l, float t, float r, float b, int scene_id, bool isPipe = false, bool isReturnToExist = false, int px = 0, int py = 0);
 
 	static unordered_map<string, float> GetAdditionalFieldInfo(vector<string> tokens);
 

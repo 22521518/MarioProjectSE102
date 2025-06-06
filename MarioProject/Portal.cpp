@@ -1,6 +1,6 @@
 #include "Portal.h"
 
-CPortal::CPortal(float l, float t, float r, float b, int scene_id)
+CPortal::CPortal(float l, float t, float r, float b, int scene_id, bool isPipe, bool isReturnToExist, int px, int py)
 {
 	this->scene_id = scene_id;
 	x = l;

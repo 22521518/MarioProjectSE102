@@ -50,6 +50,7 @@ class CMario : public CCharacter
 	// score
 	LPMARIOSTATE stateHandler;
 public:
+	static vector<int> stageItem;
 	static UINT coins;
 	static ULONG scores;
 	static UINT lives;
