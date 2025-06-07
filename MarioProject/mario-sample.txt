@@ -1,5 +1,5 @@
 [SETTINGS]
-start	4000
+start	4001
 width	320
 height	240
 

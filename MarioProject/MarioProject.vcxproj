@@ -133,6 +133,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AchievementObject.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationFrame.cpp" />
     <ClCompile Include="Animations.cpp" />
@@ -203,6 +204,8 @@
     <ClCompile Include="TxtGameParser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AchievementConfig.h" />
+    <ClInclude Include="AchievementObject.h" />
     <ClInclude Include="ActionIDs.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationFrame.h" />

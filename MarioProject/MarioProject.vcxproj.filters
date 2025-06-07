@@ -199,6 +199,9 @@
     <Filter Include="Source Files\GameObjectConcrete\Mario\MarioState\Platform">
       <UniqueIdentifier>{dc16b97c-db33-447e-900f-4269416731da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjectConcrete\Achivement">
+      <UniqueIdentifier>{e2b5dcde-074e-43eb-a8fe-489879daa6d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -408,6 +411,9 @@
       <Filter>Header Files\GameObjectConcrete\Portal</Filter>
     </ClCompile>
     <ClCompile Include="SemisolidFlimsyLiftPlatform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AchievementObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -831,6 +837,12 @@
     </ClInclude>
     <ClInclude Include="PlatformConfig.h">
       <Filter>Header Files\GameObjectConcrete\Platform\PlatformAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="AchievementConfig.h">
+      <Filter>Header Files\GameObjectConcrete\Achivement</Filter>
+    </ClInclude>
+    <ClInclude Include="AchievementObject.h">
+      <Filter>Header Files\GameObjectConcrete\Achivement</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

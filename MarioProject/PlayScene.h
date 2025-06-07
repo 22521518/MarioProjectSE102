@@ -63,6 +63,9 @@ public:
 	void Unload() override;
 	void Reload() override;
 
+	void UpdateMovingCamera(DWORD dt);
+	void ReloadMovingCameraScene();
+
 	void InitPlayer(LPGAMEOBJECT player);
 	void DeletePlayer();
 

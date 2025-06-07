@@ -8598,8 +8598,86 @@
       "type": "50",
       "visible": true,
       "width": 16,
-      "x": 2810.75,
-      "y": 308.875
+      "x": 2804.75,
+      "y": 310.375
+    },
+    {
+      "height": 47.75,
+      "id": 1895,
+      "name": "achievement_box",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 4000213
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 4000219
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 4000216
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 4000212
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 4000218
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 4000215
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 4000211
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 4000217
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 4000214
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 47.5,
+      "x": 2672.39772727273,
+      "y": 320.136363636364
     }
   ]
 }

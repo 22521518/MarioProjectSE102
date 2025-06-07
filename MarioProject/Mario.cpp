@@ -121,7 +121,6 @@ void CMario::StartUntouchable() {
 
 float CMario::GetPowerP() const
 {
-	return 7;
 	ULONGLONG now = GetTickCount64();
 
 	if (power_p_start > 0 &&

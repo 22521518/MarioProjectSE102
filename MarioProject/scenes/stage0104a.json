@@ -2208,7 +2208,7 @@
     {
       "height": 16,
       "id": 357,
-      "name": "destroyable-brick",
+      "name": "super-item-brick",
       "properties": [
         {
           "name": "ani_id_active",
@@ -2968,17 +2968,6 @@
       "width": 16,
       "x": 39.75,
       "y": 330
-    },
-    {
-      "height": 16,
-      "id": 431,
-      "name": "mario",
-      "rotation": 0,
-      "type": "0",
-      "visible": true,
-      "width": 16,
-      "x": 432.5,
-      "y": 316.666666666667
     },
     {
       "height": 235,

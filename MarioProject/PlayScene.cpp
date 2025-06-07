@@ -246,6 +246,11 @@ void CPlayScene::Update(DWORD dt)
 
 void CPlayScene::UpdateCamera(DWORD dt)
 {
+	if (id == 4000) 
+	{
+		UpdateMovingCamera(dt);
+		return;
+	}
 
 	float screenWidth = static_cast<float>(CGame::GetInstance()->GetBackBufferWidth());
 	float screenHeight = static_cast<float>(CGame::GetInstance()->GetBackBufferHeight());
@@ -359,6 +364,12 @@ void CPlayScene::Unload()
 }
 void CPlayScene::Reload()
 {
+	if (id == 4000) {
+
+		ReloadMovingCameraScene();
+		return;
+	}
+
 	static bool isCurrentlyReloading = false;
 	if (isCurrentlyReloading) {
 		DebugOut(L"[WARNING] Reload already in progress, skipping duplicate reload request\n");
@@ -374,6 +385,83 @@ void CPlayScene::Reload()
 
 	isCurrentlyReloading = false;
 }
+void CPlayScene::UpdateMovingCamera(DWORD dt)
+{
+	float screenWidth = static_cast<float>(CGame::GetInstance()->GetBackBufferWidth());
+	float screenHeight = static_cast<float>(CGame::GetInstance()->GetBackBufferHeight());
+
+	// Base autoscroll speed (adjust according to level needs)
+	const float BASE_SCROLL_SPEED = 0.08f * 0.15;
+	float scrollSpeed = BASE_SCROLL_SPEED;
+
+	// Get current camera position
+	float cx, cy;
+	CGame::GetInstance()->GetCamPos(cx, cy);
+
+	// Calculate new camera position
+	float new_cx = cx + (scrollSpeed * dt);
+
+	DebugOutTitle(L"x: %f, y: %f", cx, cy);
+	// Apply camera bounds
+	float cam_bound_right = camBoundRight - screenWidth;
+	new_cx = max(camBoundLeft, min(new_cx, cam_bound_right));
+	
+	// Handle player position relative to scrolling
+	float px, py;
+	CPlayScene::mainPlayer->GetPosition(px, py);
+
+	// Push player right if camera moves beyond 
+	float pushAmountX = 0, pushAmountY = 0;
+	if (px < new_cx + HORIZONTAL_DEADZONE)
+	{
+		float targetX = new_cx + HORIZONTAL_DEADZONE;
+		pushAmountX = (targetX - px) ;
+	}
+	// Never push left in autoscroll levels - let player move ahead freely
+
+	// Vertical containment (prevent falling below camera)
+	float verticalThreshold = cy + VERTICAL_DEADZONE;
+	if (py < verticalThreshold)
+	{
+		pushAmountY = (verticalThreshold - py) ;
+	}
+
+	CPlayScene::mainPlayer->SetPosition(px + pushAmountX, py + pushAmountY);
+
+	// Update camera position
+	CGame::GetInstance()->SetCamPos(new_cx, cy);
+
+	// Maintain vertical camera logic from original UpdateCamera
+	py = max(camBoundTop, py);
+	py = min(camBoundBot, py);
+
+	// Update HUD position
+	hud->SetPosition(new_cx, py);
+	CGame::GetInstance()->SetCamPos(new_cx, py);
+}
+
+void CPlayScene::ReloadMovingCameraScene()
+{
+	static bool isCurrentlyReloading = false;
+	if (isCurrentlyReloading) {
+		DebugOut(L"[WARNING] Moving camera reload already in progress\n");
+		return;
+	}
+	isCurrentlyReloading = true;
+		
+	float initialCamX = camBoundLeft;
+	float initialCamY = (camBoundTop + camBoundBot) / 2;  // Center vertically
+	CGame::GetInstance()->SetCamPos(initialCamX, initialCamY);
+	hud->SetPosition(initialCamX, initialCamY);
+
+	// Standard reload sequence
+	Clear();
+	DeletePlayer();
+	Load();  // Reloads level layout and entities
+	DebugOut(L"[INFO] Autoscroll scene %d reloaded (Camera X: %f)\n", id, initialCamX);
+	isCurrentlyReloading = false;
+}
+
 #pragma endregion
 
 #pragma region OBJECT_MANAGEMENT

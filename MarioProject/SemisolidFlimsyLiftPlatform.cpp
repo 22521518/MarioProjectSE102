@@ -84,8 +84,8 @@ void CSemisolidFlimsyLiftPlatform::Update(DWORD dt, vector<LPPHYSICALOBJECT>* co
 	}
 
 
-	x += vx;
-	y += vy;
+	x += vx * dt;
+	y += vy * dt;
 }
 
 void CSemisolidFlimsyLiftPlatform::OnCollisionWith(LPCOLLISIONEVENT e)
