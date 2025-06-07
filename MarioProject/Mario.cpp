@@ -121,6 +121,7 @@ void CMario::StartUntouchable() {
 
 float CMario::GetPowerP() const
 {
+	return 7;
 	ULONGLONG now = GetTickCount64();
 
 	if (power_p_start > 0 &&
@@ -135,9 +136,10 @@ float CMario::GetPowerP() const
 void CMario::ReleaseHoldingItem()
 {
 	if (!this->holdingItem) return;
+
 	this->OnKick();
 	this->holdingItem->OnMarioRelease(this);
-	this->holdingItem = nullptr;
+	holdingDummy = false;
 }
 
 bool CMario::IsFlapping() const
@@ -282,6 +284,10 @@ void CMario::OnCollisionWithOneUpMushroom(LPONEUPMUSHROOM mushroom, LPCOLLISIONE
 
 void CMario::OnCollisionWithSuperItemBrick(LPBRICKSUPERITEM brick, LPCOLLISIONEVENT e)
 {
+	if (brick->IsOneUpBrick()) {
+		brick->CreateOneUpMushroom(e);
+		return;
+	}
 	if (this->level > MARIO_LEVEL_SMALL)
 	{
 		brick->CreateSuperLeaf(e);
@@ -348,8 +354,9 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 	LPDESTROYABLEOBJECT destroyableObj = dynamic_cast<LPDESTROYABLEOBJECT>(e->obj);
 	if (destroyableObj && (
 		(e->normalY == DirectionYAxisType::Bottom && this->GetLevel() > MARIO_LEVEL_SMALL && dynamic_cast<LPBRICK>(destroyableObj))
-		|| this->IsAttacking()))
+		|| (this->IsAttacking() && dynamic_cast<LPBRICK>(destroyableObj) && !(e->normalY == DirectionYAxisType::Top || e->normalY == DirectionYAxisType::Bottom))))
 	{
+
 		destroyableObj->OnDestroy(e);
 	}
 
@@ -360,6 +367,7 @@ void CMario::OnCollisionWith(LPCOLLISIONEVENT e)
 		{
 			holdableObj->OnMarioHold(this, e);
 			this->holdingItem = holdableObj;
+			holdingDummy = true;
 			return;
 		}
 
@@ -416,17 +424,9 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		this->ay = vy > 0 ? MARIO_FALL_GRAVITY : MARIO_GRAVITY;
 	}
 
-	//DebugOutTitle(L"speed: %f, max: %f, acc: %f, dir: %d, times %llu\n", vy, maxVx, ay, IsFlapping(), die_start);
-	////(time_now - running_start) % static_cast<int>(MARIO_TIME_POWER_P / 7)
-	//DebugOutTitle(L"coins: %u, lives: %u, scores: %lu, die_time: %llu, power_p: %f\n", CMario::coins, CMario::lives, CMario::scores, power_p_start, powerPBar);
-	/*DebugOutTitle(L"running: %llu, power_p: %llu ", 
-		running_start > 0 ? (time_now - running_start) / 1000 : 0,
-		power_p_start > 0 ? (time_now - power_p_start) / 1000 : 0);*/
-
 	vy += ay * dt;
 	vx += ax * dt;
 
-	
 	if (maxVx != 0 && (vx >= maxVx && static_cast<int>(nx) > 0) || (vx <= maxVx && static_cast<int>(nx) < 0)) {
 		vx = maxVx;
 	}
@@ -451,22 +451,19 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 
 	if (this->holdingItem != nullptr && this->stateHandler != nullptr)
 	{
+
 		float bboxWidth = 0;
 		float bboxHeight = 0;
 		this->stateHandler->GetBoundingBox(bboxWidth, bboxHeight);
 			
 		int dir = static_cast<int>(this->nx);
-		this->holdingItem->SetObjectPosision(this->x + (bboxWidth - 2.0f) * dir, this->y);
+		this->holdingItem->SetObjectPosision(this->x + (bboxWidth - 2.5f) * dir, this->y);
 		if (!this->holdingItem->IsHoldableState())
 		{
-
-			untouchable_start = static_cast<ULONGLONG>(MARIO_UNTOUCHABLE_TIME - 200);
-			untouchable = 1;
-			int dir = static_cast<int>(this->nx);
-			this->holdingItem->SetObjectPosision(this->x + (bboxWidth + 20.0f) * dir, this->y);
-			//this->holdingItem->SetObjectPosision(this->x + (bboxWidth + 12.0f) * dir, this->y);
-			this->ReleaseHoldingItem();
+			this->ReleaseHoldingItem();	
 		}
+
+		if (!holdingDummy) this->holdingItem = nullptr;
 	}
 
 	if (flap_start > 1 && (time_now - flap_start) >= MARIO_FLAPPING_TIME)

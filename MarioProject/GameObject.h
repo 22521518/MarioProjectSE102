@@ -10,10 +10,10 @@
 using namespace std;
 
 class CGameObject : public CBaseObject {
+protected:
 	float originX;
 	float originY;
 
-protected:
 	float x;
 	float y;
 

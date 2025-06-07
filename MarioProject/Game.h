@@ -55,6 +55,8 @@ class CGame
 
 	// Scene management
 	unordered_map<int, LPSCENE> scenes;
+	LPCWSTR gameFile = nullptr;
+	int firstScene;
 	int currentScene;
 	int nextScene = -1;
 
@@ -86,6 +88,7 @@ public:
 	// Scene management
 	void SwitchScene();
 	LPSCENE GetCurrentScene() const;
+	void PlayFromStart();
 	void InitiateSwitchScene(int sceneId, bool fromPipe = false);
 	void InitiateSwitchSceneFromBonus(int sceneId, int px, int py, bool fromPipe = false);
 	bool IsTransition() const { return nextScene != currentScene; };

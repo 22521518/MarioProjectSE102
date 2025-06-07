@@ -1,6 +1,7 @@
 #include "BrickSuperItem.h"
 #include "SuperLeaf.h"
 #include "SuperMushroom.h"
+#include "OneUpMushroom.h"
 #include "CollisionEvent.h"
 #include "BrickConfig.h"
 
@@ -27,6 +28,15 @@ void CBrickSuperItem::CreateSuperMushroom(LPCOLLISIONEVENT e)
 	DirectionXAxisType directionX = targetX > this->x ?
 		DirectionXAxisType::Left : DirectionXAxisType::Right;
 	items.push_back(new CSuperMushroom(this->x, this->y, directionX));
+}
+
+void CBrickSuperItem::CreateOneUpMushroom(LPCOLLISIONEVENT e)
+{
+	float targetX, targetY;
+	e->obj->GetPosition(targetX, targetY);
+	DirectionXAxisType directionX = targetX > this->x ?
+		DirectionXAxisType::Left : DirectionXAxisType::Right;
+	items.push_back(new COneUpMushroom(this->x, this->y, directionX));
 }
 
 void CBrickSuperItem::Render()
@@ -57,7 +67,9 @@ void CBrickSuperItem::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 void CBrickSuperItem::OnDestroy(LPCOLLISIONEVENT e)
 {
 	if (!this->IsActive()) return;
-	mario->OnCollisionWithSuperItemBrick(this, e);
+	LPPLAYSCENE ps = dynamic_cast<LPPLAYSCENE>(CGame::GetInstance()->GetCurrentScene());
+	LPMARIO mario = dynamic_cast<LPMARIO>(ps->GetPlayer());
+	if (mario) mario->OnCollisionWithSuperItemBrick(this, e);
 	CBrickItem::OnMarioCollide(mario, e);
 }
 

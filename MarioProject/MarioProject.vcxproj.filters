@@ -103,9 +103,6 @@
     <Filter Include="Header Files\GameObjectConcrete\Platform">
       <UniqueIdentifier>{a992344f-22f9-4acf-939b-72d4408b42c4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GameObjectConcrete\Platform">
-      <UniqueIdentifier>{dc16b97c-db33-447e-900f-4269416731da}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\KeyEventHandler">
       <UniqueIdentifier>{23c715c8-0588-479d-8ad5-c1d79ac540d2}</UniqueIdentifier>
     </Filter>
@@ -199,6 +196,9 @@
     <Filter Include="Header Files\GameObjectConcrete\HUDObject\HUDItems">
       <UniqueIdentifier>{8d929e31-e593-4ccf-9bea-f570e44e2ca0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObjectConcrete\Mario\MarioState\Platform">
+      <UniqueIdentifier>{dc16b97c-db33-447e-900f-4269416731da}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -279,7 +279,7 @@
       <Filter>Source Files\GameObjectConcrete\Coin</Filter>
     </ClCompile>
     <ClCompile Include="Platform.cpp">
-      <Filter>Source Files\GameObjectConcrete\Platform</Filter>
+      <Filter>Source Files\GameObjectConcrete\Mario\MarioState\Platform</Filter>
     </ClCompile>
     <ClCompile Include="Portal.cpp">
       <Filter>Source Files\GameObjectConcrete\Portal</Filter>
@@ -369,7 +369,7 @@
       <Filter>Source Files\GameFileParser</Filter>
     </ClCompile>
     <ClCompile Include="Platform9Sprite.cpp">
-      <Filter>Source Files\GameObjectConcrete\Platform</Filter>
+      <Filter>Source Files\GameObjectConcrete\Mario\MarioState\Platform</Filter>
     </ClCompile>
     <ClCompile Include="mapUtil.cpp">
       <Filter>Source Files\Utility</Filter>
@@ -406,6 +406,9 @@
     </ClCompile>
     <ClCompile Include="PortConfig.h">
       <Filter>Header Files\GameObjectConcrete\Portal</Filter>
+    </ClCompile>
+    <ClCompile Include="SemisolidFlimsyLiftPlatform.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -822,6 +825,12 @@
     </ClInclude>
     <ClInclude Include="PortSpriteIDs.h">
       <Filter>Header Files\GameObjectConcrete\Portal</Filter>
+    </ClInclude>
+    <ClInclude Include="SemisolidFlimsyLiftPlatform.h">
+      <Filter>Header Files\GameObjectConcrete\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformConfig.h">
+      <Filter>Header Files\GameObjectConcrete\Platform\PlatformAsset</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

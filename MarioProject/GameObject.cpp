@@ -44,7 +44,10 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	case OBJECT_TYPE_ITEM_BRICK: {
 		LPMARIO mario = dynamic_cast<LPMARIO>(player);
 		int ani_id_active = static_cast<int>(getOrDefault(additionalFieldInfo, "ani_id_active", ID_ANI_ITEM_BRICK));
-		if (mario) return new CBrickSuperItem(mario, x, y);
+		int ani_id_empty = static_cast<int>(getOrDefault(additionalFieldInfo, "ani_id_empty", ID_ANI_EMPTY_ITEM_BRICK));
+		bool is_one_up = static_cast<float>(getOrDefault(additionalFieldInfo, "is_one_up", 0.f)) != 0.f;
+
+		return new CBrickSuperItem(x, y, ani_id_active, ani_id_empty, is_one_up);
 		break;
 	}
 	case OBJECT_TYPE_SUPER_LEAF_ITEM: return new CSuperLeaf(x, y);

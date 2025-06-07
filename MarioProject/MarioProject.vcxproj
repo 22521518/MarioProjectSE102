@@ -187,6 +187,7 @@
     <ClCompile Include="RedKoopaParatroopaState.cpp" />
     <ClCompile Include="RedKoopaState.cpp" />
     <ClCompile Include="RedParagoomba.cpp" />
+    <ClCompile Include="SemisolidFlimsyLiftPlatform.cpp" />
     <ClCompile Include="setup.cpp" />
     <ClCompile Include="BreakBrickEffect.cpp" />
     <ClCompile Include="SmallMarioState.cpp" />
@@ -259,9 +260,11 @@
     <ClInclude Include="HUDSpriteIDs.h" />
     <ClInclude Include="HUDTime.h" />
     <ClInclude Include="mapUtil.h" />
+    <ClInclude Include="PlatformConfig.h" />
     <ClInclude Include="PortSpriteIDs.h" />
     <ClInclude Include="RedGoomba.h" />
     <ClInclude Include="RedParagoomba.h" />
+    <ClInclude Include="SemisolidFlimsyLiftPlatform.h" />
     <ClInclude Include="SolidPlatform.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemAniIDs.h" />

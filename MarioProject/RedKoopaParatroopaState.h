@@ -4,7 +4,6 @@
 #include "Koopa.h"
 
 class CRedKoopaParatroopaState : public CKoopaState {
-	float maxVy = KOOPA_MAX_VY;
 public:
 	CRedKoopaParatroopaState(LPKOOPA koopa);
 	virtual void ChangeDirection(LPKOOPA koopa, float speed) override;

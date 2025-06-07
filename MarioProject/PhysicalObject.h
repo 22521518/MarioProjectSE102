@@ -13,9 +13,9 @@ constexpr int ID_TEX_BBOX = -100;		// special texture to draw object bounding bo
 constexpr float BBOX_ALPHA = 0.25f;		// Bounding box transparency
 
 class CPhysicalObject : public CGameObject {
-	const float originVX, originVY, originAX, originAY;
-	DirectionXAxisType originNX;
 protected:
+	float originVX, originVY, originAX, originAY;
+	DirectionXAxisType originNX;
 	float vx, vy;
 	float ax, ay;
 	DirectionXAxisType nx = DirectionXAxisType::Left;
@@ -35,11 +35,16 @@ public:
 	virtual int IsDirectionColliable(DirectionXAxisType nx, DirectionYAxisType ny) = 0;
 
 
-	DirectionXAxisType GetNX() { return this->nx; }
+	DirectionXAxisType GetNX() const { return this->nx; }
 	void SetAcceleration(float ax, float ay) { this->ax = ax, this->ay = ay; }
 	void GetAcceleration(float& ax, float& ay) const { ax = this->ax; ay = this->ay; }
 	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
 	void GetSpeed(float& vx, float& vy) const { vx = this->vx; vy = this->vy; }
+
+	void SetOriginAcceleration(float ax, float ay) { this->originAX = ax, this->originAY = ay; }
+	void GetOriginAcceleration(float& ax, float& ay) const { ax = this->originAX; ay = this->originAY; }
+	void SetOriginSpeed(float vx, float vy) { this->originVX = vx, this->originVY = vy; }
+	void GetOriginSpeed(float& vx, float& vy) const { vx = this->originVX; vy = this->originVY; }
 
 	void ResetState() override
 	{ 

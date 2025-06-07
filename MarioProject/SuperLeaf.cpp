@@ -33,7 +33,14 @@ void CSuperLeaf::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 	this->nx = sway > 0 ?
 		DirectionXAxisType::Right : DirectionXAxisType::Left;
 
-	CCollision::GetInstance()->Process(this, dt, coObjects);
+	LPPLAYSCENE ps = dynamic_cast<LPPLAYSCENE>(CGame::GetInstance()->GetCurrentScene());
+	LPMARIO mario = dynamic_cast<LPMARIO>(ps->GetPlayer());
+	if (mario) {
+		vector<LPPHYSICALOBJECT> cObj;
+		cObj.push_back(mario);
+		CCollision::GetInstance()->Process(this, dt, &cObj);
+	}
+
 }
 
 void CSuperLeaf::OnCollisionWith(LPCOLLISIONEVENT e)
@@ -43,8 +50,8 @@ void CSuperLeaf::OnCollisionWith(LPCOLLISIONEVENT e)
 	
 	if (mario || CPlayScene::GetPlayer() == e->obj)
 	{
-		this->Delete();
 		this->OnMarioCollide(mario, e);
+		this->Delete();
 		return;
 	}
 }

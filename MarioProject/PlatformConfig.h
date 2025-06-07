@@ -1,0 +1,6 @@
+#pragma once
+
+constexpr float LIFT_PLATFORM_VERTICAL_FALL_DELAY = 350.f;
+constexpr float LIFT_PLATFORM_VERTICAL_SPEED = 4 * 0.0625f;
+constexpr float LIFT_PLATFORM_HORIZONTIAL_SPEED = 1 * 0.0625f;
+constexpr float LIFT_PLATFORM_RANGE_HORIZONTIAL_MOVEMENT = 16.f * 15;

@@ -9,14 +9,13 @@
 class CBrickItem
 	: public CStaticObject, public CCollidableWithMario, public CDestroyableObject{
 protected:
-	LPMARIO mario;
 	float startY;
 	int state;
 	int numberOfCollision = 1;
 	vector<LPITEM> items;
 
 public:
-	CBrickItem(LPMARIO mario, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0, DirectionXAxisType nx = DirectionXAxisType::Left, int state = BRICK_STATE_ACTIVE, int numberOfCollision = 1) : CStaticObject(x, y, vx, vy, ax, ay, nx), startY(y), state(state), numberOfCollision(numberOfCollision), mario(mario) {}
+	CBrickItem(float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0, DirectionXAxisType nx = DirectionXAxisType::Left, int state = BRICK_STATE_ACTIVE, int numberOfCollision = 1) : CStaticObject(x, y, vx, vy, ax, ay, nx), startY(y), state(state), numberOfCollision(numberOfCollision) {}
 
 	virtual int IsActive() { return this->state == BRICK_STATE_ACTIVE; }
 	virtual void SetState(int state) { this->state = state; }

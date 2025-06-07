@@ -24,17 +24,33 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath) : CScene(id, filePath)
 	case 1000:
 	{
 		camBoundLeft = CAM_BOUND_LEFT; 
-		camBoundRight = 16 * 175;
+		camBoundRight = 16.f * 175;
 		camBoundTop = CAM_BOUND_TOP;
 		camBoundBot = CAM_BOUND_BOTTOM + 20;
 		break;
 	}
 	case 1001:
 	{
-		camBoundLeft = 16 * 123; 
-		camBoundRight = 16 * 32; 
+		camBoundLeft = 16.f * 123; 
+		camBoundRight = camBoundRight + 16.f * 32;
 		camBoundTop = CAM_BOUND_TOP_BONUS;
 		camBoundBot = CAM_BOUND_BOTTOM_BONUS;
+		break;
+	}
+	case 4000:
+	{
+		camBoundLeft = CAM_BOUND_LEFT;
+		camBoundRight = 128 * 16.f;
+		camBoundTop = CAM_BOUND_TOP + 16.f * 2;
+		camBoundBot = 224.f + 16.f * 2;
+		break;
+	}
+	case 4001:
+	{
+		camBoundLeft = 129 * 16.f;
+		camBoundRight = camBoundLeft + 16 * 31.f;
+		camBoundTop = CAM_BOUND_TOP + 16.f * 2;
+		camBoundBot = 224.f + 16.f * 2;
 		break;
 	}
 	default: 
@@ -173,15 +189,24 @@ void CPlayScene::Update(DWORD dt)
 	}
 	else if (mainMario->IsMarioDieAndReload())
 	{
+		if (CMario::lives - 1 > CMario::lives)
+		{
+			DeletePlayer();
+			Unload();
+			CGame::GetInstance()->PlayFromStart();
+			CMario::OnGameReset();
+		}
+		else 
+		{
 		CMario::lives = CMario::lives - 1 > CMario::lives ? 0 : CMario::lives - 1;
-		CMario::lives = max(0, CMario::lives);
-		isReloading = true;
-		Reload();
-		isReloading = false;
+			isReloading = true;
+			Reload();
+			isReloading = false;
+		}
 		return;
 	}
 	else {
-		if (mainMario->IsPipeMoving()) return;
+		if (mainMario->IsPipeMoving() || CGame::GetInstance()->IsTransition()) return;
 
 		float px, py;
 		CPlayScene::mainPlayer->GetPosition(px, py);
@@ -244,12 +269,8 @@ void CPlayScene::UpdateCamera(DWORD dt)
 	px += -screenWidth / 2;
 	px = max(camBoundLeft, px);
 	float cam_bound_right = camBoundRight - screenWidth;
-	if (id == 1000) {
-		px = min(px, cam_bound_right);
-	}
-	else if (id == 666) {
-		px = min(px, cam_bound_right);
-	}
+	px = min(px, cam_bound_right);
+
 	//DebugOutTitle(L"top: %f, bot: %f\n", px, py);
 
 	hud->SetPosition(px, py);
@@ -313,7 +334,6 @@ void CPlayScene::Unload()
 {
 	for (int i = 0; i < objects.size(); i++)
 	{
-		if (objects[i] == CPlayScene::mainPlayer) continue;
 		delete objects[i];
 	}
 
@@ -361,19 +381,16 @@ void CPlayScene::Clear()
 {
 	for (auto it = objects.begin(); it != objects.end(); it++)
 	{
-		if (*it == CPlayScene::mainPlayer) continue;
 		delete (*it);
 	}
 
 	for (auto it = decors.begin(); it != decors.end(); it++)
 	{
-		if (*it == CPlayScene::mainPlayer) continue;
 		delete (*it);
 	}
 
 	for (auto it = colorBg.begin(); it != colorBg.end(); it++)
 	{
-		if (*it == CPlayScene::mainPlayer) continue;
 		delete (*it);
 	}
 

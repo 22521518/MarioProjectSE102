@@ -7068,8 +7068,15 @@
       "height": 16,
       "id": 1602,
       "name": "one-up-block",
+      "properties": [
+        {
+          "name": "is_one_up",
+          "type": "float",
+          "value": 12
+        }
+      ],
       "rotation": 0,
-      "type": "12",
+      "type": "2020000",
       "visible": true,
       "width": 16,
       "x": 1440,
@@ -7538,7 +7545,7 @@
       ],
       "rotation": 0,
       "type": "50",
-      "visible": true,
+      "visible": false,
       "width": 16,
       "x": 2807,
       "y": -7.10543e-15
@@ -8525,8 +8532,8 @@
       "type": "0",
       "visible": true,
       "width": 16,
-      "x": 2244.25,
-      "y": 96.75
+      "x": 1441.75,
+      "y": 165.25
     },
     {
       "height": 16,
@@ -8565,6 +8572,34 @@
       "width": 16,
       "x": 1856,
       "y": 80
+    },
+    {
+      "height": 122.25,
+      "id": 1894,
+      "name": "port",
+      "properties": [
+        {
+          "name": "bottom",
+          "type": "float",
+          "value": 415
+        },
+        {
+          "name": "right",
+          "type": "float",
+          "value": 2817.75
+        },
+        {
+          "name": "scene_id",
+          "type": "float",
+          "value": 4000
+        }
+      ],
+      "rotation": 0,
+      "type": "50",
+      "visible": true,
+      "width": 16,
+      "x": 2810.75,
+      "y": 308.875
     }
   ]
 }

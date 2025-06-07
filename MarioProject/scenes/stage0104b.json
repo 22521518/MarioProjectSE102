@@ -1,0 +1,1103 @@
+{
+  "assets": [
+    "objects\\hud.txt",
+    "objects\\port.txt",
+    "objects\\BlockQ_BlockW_BlockF.txt",
+    "objects\\Plant_Enemy.txt",
+    "objects\\platform.txt",
+    "objects\\super_items.txt",
+    "objects\\destroyable_brick.txt",
+    "objects\\pipe.txt",
+    "objects\\coin.txt",
+    "objects\\goomba.txt",
+    "objects\\green_koopa.txt",
+    "objects\\red_koopa.txt",
+    "objects\\red_goomba.txt",
+    "objects\\background.txt",
+    "objects\\mario.txt"
+  ],
+  "objects": [
+    {
+      "height": 432,
+      "id": 25,
+      "name": "bg_black",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 27
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 19
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 5000903
+        }
+      ],
+      "rotation": 0,
+      "type": "5000900",
+      "visible": true,
+      "width": 304,
+      "x": 2272,
+      "y": 0
+    },
+    {
+      "height": 432,
+      "id": 26,
+      "name": "bg_blue_black",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 27
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000902
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000902
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 5000902
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000902
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000902
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 5000902
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000902
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000902
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 5000902
+        }
+      ],
+      "rotation": 0,
+      "type": "5000900",
+      "visible": true,
+      "width": 16,
+      "x": 2256,
+      "y": 0
+    },
+    {
+      "height": 432,
+      "id": 27,
+      "name": "bg_blue",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 27
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 12
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000901
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000901
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 5000901
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000901
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000901
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 5000901
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000901
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000901
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 5000901
+        }
+      ],
+      "rotation": 0,
+      "type": "5000900",
+      "visible": true,
+      "width": 192,
+      "x": 2064,
+      "y": 0
+    },
+    {
+      "height": 16,
+      "id": 28,
+      "name": "bg_small_bush_single",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000809
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000809
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 5000809
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 32,
+      "x": 2080,
+      "y": 400
+    },
+    {
+      "height": 48,
+      "id": 29,
+      "name": "bg_bush_mid_outline",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000805
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000805
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000802
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000804
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000801
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000803
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 32,
+      "x": 2128,
+      "y": 368
+    },
+    {
+      "height": 32,
+      "id": 30,
+      "name": "bg_bush_mid_outline",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000805
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000805
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000802
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000804
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000801
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000803
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 32,
+      "x": 2144,
+      "y": 384
+    },
+    {
+      "height": 16,
+      "id": 31,
+      "name": "bg_bush_mid_outline",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000805
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000805
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000802
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000804
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000801
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000803
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 32,
+      "x": 2112,
+      "y": 400
+    },
+    {
+      "height": 96,
+      "id": 32,
+      "name": "bg-black_bush_mid_outline",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 6
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000815
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000815
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000812
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000814
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000811
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000813
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 32,
+      "x": 2352,
+      "y": 321
+    },
+    {
+      "height": 64,
+      "id": 33,
+      "name": "bg_black_bush_right_outline",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 4
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000815
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000814
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000815
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000814
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000811
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000813
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 32,
+      "x": 2368,
+      "y": 353
+    },
+    {
+      "height": 32,
+      "id": 34,
+      "name": "bg_black_bush_right_outline",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000815
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000814
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000815
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000814
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000811
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000813
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 32,
+      "x": 2384,
+      "y": 385
+    },
+    {
+      "height": 48,
+      "id": 35,
+      "name": "bg-black_bush_mid_outline",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000815
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000814
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000812
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000814
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000811
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000813
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 32,
+      "x": 2528,
+      "y": 369
+    },
+    {
+      "height": 16,
+      "id": 36,
+      "name": "bg-black_bush_mid_outline",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000815
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000815
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000812
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000814
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000811
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000813
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 32,
+      "x": 2512,
+      "y": 401
+    },
+    {
+      "height": 16,
+      "id": 37,
+      "name": "bg_black_bush_right_outline",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000815
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000814
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000815
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000814
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000811
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000813
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 32,
+      "x": 2336,
+      "y": 401
+    },
+    {
+      "height": 32,
+      "id": 414,
+      "name": "bg_cloud",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000822
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000826
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 5000824
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000821
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000825
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 5000823
+        }
+      ],
+      "rotation": 0,
+      "type": "5000800",
+      "visible": true,
+      "width": 48,
+      "x": 2112,
+      "y": 288
+    },
+    {
+      "height": 16,
+      "id": 51,
+      "name": "ground-platform",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 32
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000002
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000006
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000004
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000005
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000003
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 512,
+      "x": 2064,
+      "y": 416
+    },
+    {
+      "height": 26.8409,
+      "id": 432,
+      "name": "port_null",
+      "properties": [
+        {
+          "name": "bottom",
+          "type": "float",
+          "value": 390.55
+        },
+        {
+          "name": "is_pipe",
+          "type": "float",
+          "value": -1
+        },
+        {
+          "name": "right",
+          "type": "float",
+          "value": 2344.36
+        },
+        {
+          "name": "scene_id",
+          "type": "float",
+          "value": -999
+        }
+      ],
+      "rotation": 0,
+      "type": "50",
+      "visible": true,
+      "width": 16,
+      "x": 2200.64772727273,
+      "y": 373.920459090909
+    },
+    {
+      "height": 32,
+      "id": 426,
+      "name": "pipe",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3005003
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3005004
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3005003
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3005004
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3005001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3005002
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 32,
+      "x": 2192,
+      "y": 384
+    },
+    {
+      "height": 16,
+      "id": 433,
+      "name": "mario",
+      "rotation": 0,
+      "type": "0",
+      "visible": true,
+      "width": 16,
+      "x": 2201,
+      "y": 367.75
+    }
+  ]
+}

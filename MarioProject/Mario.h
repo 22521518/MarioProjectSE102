@@ -28,6 +28,8 @@ struct CCollisionEvent; typedef CCollisionEvent* LPCOLLISIONEVENT;
 
 class CMario : public CCharacter
 {
+	bool holdingDummy = false;
+
 	LPHOLDABLEWITHMARIO holdingItem = nullptr;
 	bool isRunning = false;
 	float maxVx;
@@ -64,7 +66,7 @@ public:
 	static void OnGameReset();
 	bool IsMarioDieAndReload();
 	void StartPipeMove(int delay = 0) { pipe_move_start = GetTickCount64() - delay; }
-	bool IsPipeMoving() const { return pipe_move_start > 0 && GetTickCount64() - pipe_move_start < PORT_MOVE_TIME + 160;  }
+	bool IsPipeMoving() const { return pipe_move_start > 0 && GetTickCount64() - pipe_move_start < PORT_MOVE_TIME + 190;  }
 
 	// game object method
 	virtual void Render();

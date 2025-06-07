@@ -17,21 +17,24 @@ void CRedKoopaParatroopaState::ChangeDirection(LPKOOPA koopa, float speed = KOOP
 
 void CRedKoopaParatroopaState::OnNoCollision(LPKOOPA koopa, DWORD dt)
 {
-	CKoopaState::OnNoCollision(koopa, dt);
-	if (koopa->vy > maxVy)
+	DebugOutTitle(L"vy: %f, ay: %f", koopa->vy, koopa->ay);
+	koopa->ay = -KOOPA_PARATROOPA_ACCELERATION_Y;
+	if (koopa->vy > KOOPA_MAX_VY)
 	{
-		koopa->vy = maxVy;
+		koopa->vy = KOOPA_MAX_VY;
 		koopa->ay = -KOOPA_PARATROOPA_ACCELERATION_Y;
 	}
-	else if (koopa->vy < -maxVy)
+	else if (koopa->vy < -KOOPA_MAX_VY)
 	{
-		koopa->vy = -maxVy;
+		koopa->vy = -KOOPA_MAX_VY;
 		koopa->ay = KOOPA_PARATROOPA_ACCELERATION_Y;
 	}
+	CKoopaState::OnNoCollision(koopa, dt);
 }
 
 void CRedKoopaParatroopaState::OnCollisionWith(LPKOOPA koopa, LPCOLLISIONEVENT e)
 {
+	koopa->ay = -KOOPA_PARATROOPA_ACCELERATION_Y;
 	if (!e->obj->IsBlocking()) return;
 	if (dynamic_cast<LPKOOPA>(e->obj)) return;
 

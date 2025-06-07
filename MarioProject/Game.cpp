@@ -11,7 +11,7 @@ CGame* CGame::__instance = nullptr;
 #pragma region LOAD_RESOURCE
 void CGame::_ParseSection_SETTINGS(SettingConfig setting)
 {
-	nextScene = setting.start;
+	firstScene = nextScene = setting.start;
 }
 void CGame::_ParseSection_SCENES(vector<SceneConfig> scenes)
 {
@@ -30,6 +30,7 @@ void CGame::_ParseSection_TEXTURES(vector<TextureConfig> textures)
 }
 // Load game file
 void CGame::Load(LPCWSTR gameFile) {
+	this->gameFile = gameFile;
 	DebugOut(L"[INFO] Start loading game file : %s\n", gameFile);
 
 	auto parser = GameParserFactory::Create(WSTRToString(gameFile));
@@ -58,7 +59,6 @@ void CGame::SwitchScene() {
 	LPPLAYSCENE ps = dynamic_cast<LPPLAYSCENE>(s);
 	if (isReturnToExisting && ps && ps->GetPlayer())
 	{
-		DebugOutTitle(L"px: %d, py: %f", px, py);
 		LPMARIO mario = dynamic_cast<LPMARIO>(ps->GetPlayer());
 		if (mario) mario->Init(px, py);
 	}
@@ -79,6 +79,13 @@ LPSCENE CGame::GetCurrentScene() const
 		return it->second;
 	}
 	return nullptr;
+}
+
+void CGame::PlayFromStart()
+{
+	//InitiateSwitchScene(firstScene);
+	Load(gameFile);
+	InitiateSwitchScene(1000);
 }
 
 void CGame::InitiateSwitchScene(int sceneId, bool fromPipe) {

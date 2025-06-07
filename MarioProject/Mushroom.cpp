@@ -2,6 +2,8 @@
 #include "Collision.h"
 #include "ItemConfig.h"
 #include "Enemy.h"
+#include "PhysicalObject.h"
+#include "Mario.h"
 
 void CMushroom::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -14,6 +16,14 @@ void CMushroom::GetBoundingBox(float& left, float& top, float& right, float& bot
 void CMushroom::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
 	if (this->state == MUSHROOM_STATE_IDLE) {
+		LPPLAYSCENE ps = dynamic_cast<LPPLAYSCENE>(CGame::GetInstance()->GetCurrentScene());
+		LPMARIO mario = dynamic_cast<LPMARIO>(ps->GetPlayer());
+		if (mario) {
+			vector<LPPHYSICALOBJECT> cObj;
+			cObj.push_back(mario);
+			CCollision::GetInstance()->Process(this, dt, &cObj);
+		}
+
 		if (this->isGrowing) {
 			this->y -= MUSHROOM_GROW_SPEED * dt; // rising
 

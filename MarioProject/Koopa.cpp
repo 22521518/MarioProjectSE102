@@ -52,8 +52,13 @@ void CKoopa::OnMarioRelease(LPMARIO mario)
 		int curDir = static_cast<int>(mario->GetNX());
 		LPCOLLISIONEVENT e = new CCollisionEvent(0, static_cast<DirectionXAxisType>(-curDir), DirectionYAxisType::None, 0, 0,
 			nullptr, nullptr);
+		float l, t, r, b;
+		mario->GetBoundingBox(l, t, r, b);
+		float h = b - t, w = r - l;
+		float px = l + w / 2, py = t + h / 2;
+
+		this->x = px + (w * 1.5f) * curDir;
 		this->SetState(KOOPA_STATE_SHELL_MOVE, e);
-		delete e;
 	}
 
 	this->die_start = 0;
