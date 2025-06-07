@@ -36,7 +36,7 @@ class CPlayScene :
     public CScene
 {
 private:
-	float camBoundTop, camBoundBot, camBoundLeft, camBoundRight;
+	float camBoundTop, camBoundBot, camBoundLeft, camBoundRight = 0;
 
 	UINT time_remaining = 300;
 	UINT world = 1;

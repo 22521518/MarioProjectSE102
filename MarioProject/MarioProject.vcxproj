@@ -153,6 +153,7 @@
     <ClCompile Include="GreenKoopaParatroopaState.cpp" />
     <ClCompile Include="HUDBackground9Sprite.cpp" />
     <ClCompile Include="HUDContainer.cpp" />
+    <ClCompile Include="HUDItems.cpp" />
     <ClCompile Include="HUDObject.cpp" />
     <ClCompile Include="HUDScoreboard.cpp" />
     <ClCompile Include="HUDWorld.h" />

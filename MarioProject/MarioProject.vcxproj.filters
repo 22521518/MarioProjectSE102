@@ -416,6 +416,9 @@
     <ClCompile Include="AchievementObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HUDItems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="setup.h">

@@ -98,7 +98,6 @@ void CPortal::Render()
 		CSprites::GetInstance()->Get(animation_id)->Draw(xx, yy);
 
 	}
-	RenderBoundingBox();
 }
 
 void CPortal::GetBoundingBox(float& l, float& t, float& r, float& b)

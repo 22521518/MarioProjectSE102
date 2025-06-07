@@ -24,7 +24,7 @@ class CGame
 {
 	// for moving object from bonus
 	bool isReturnToExisting = false, fromPipe = false;
-	int px = 0, py = 0;
+	float px = 0, py = 0;
 
 	static CGame* __instance;
 	HWND hWnd = nullptr;

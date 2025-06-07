@@ -24,6 +24,7 @@ constexpr int OBJECT_TYPE_SOLID_SEMISOLID_FLIMSY_LIFT_PLATFORM_9_SPRITE = static
 constexpr int OBJECT_TYPE_SOLID_SOLID_PLATFORM_9_SPRITE		= static_cast<int>(3e6 + 1e3);
 
 // item
+constexpr int OBJECT_TYPE_ACHIEVEMENT						= static_cast<int>(4e6);
 constexpr int OBJECT_TYPE_ITEM_BRICK						= static_cast<int>(2e6 + 2e4);
 constexpr int OBJECT_TYPE_ONE_UP_MUSHROOM_ITEM				= static_cast<int>(2e6 + 2e3);
 constexpr int OBJECT_TYPE_SUPER_MUSHROOM_ITEM				= static_cast<int>(2e6 + 1e3);

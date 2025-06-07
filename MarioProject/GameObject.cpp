@@ -6,6 +6,7 @@
 #include "CloudPlatform.h"
 #include "Portal.h"
 
+#include "AchievementObject.h"
 #include "SemisolidFlimsyLiftPlatform.h"
 #include "GameBackground9Sprite.h"
 #include "SemisolidPlatform.h"
@@ -37,6 +38,7 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 	switch (object_type)
 	{
 	case OBJECT_TYPE_MARIO: return new CMario(x, y);
+	case OBJECT_TYPE_ACHIEVEMENT: return new CAchievementObject(x, y);
 	case OBJECT_TYPE_GOOMBA: return new CGoomba(x, y);
 	case OBJECT_TYPE_RED_PARAGOOMBA: return new CRedParagoomba(x, y);
 	case OBJECT_TYPE_BRICK: return new CBrick(x, y);

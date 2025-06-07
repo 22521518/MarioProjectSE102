@@ -10,7 +10,7 @@ class CBoomerangBrother :
 	public CEnemy, public CCollidableWithMario
 {
 protected:
-	LPGAMEOBJECT mario;
+	//LPGAMEOBJECT mario;
 	float Mx, My;
 	//float upperX, lowerX;
 	LPBOOMERANG fire;
@@ -35,6 +35,14 @@ public:
 		if (!IsDeadState()) {
 			fire->Render();
 			CAnimations* animations = CAnimations::GetInstance();
+			LPPLAYSCENE ps = dynamic_cast<LPPLAYSCENE>(CGame::GetInstance()->GetCurrentScene());
+			LPMARIO mario = dynamic_cast<LPMARIO> (ps->GetPlayer());
+
+			if (!mario) {
+				animations->Get(ID_ANI_BOOMMERANG_BROTHER_L_TROWED)->Render(x, y);
+				return;
+			}
+
 			mario->GetPosition(Mx, My);
 			//if (x > Mx) animations->Get(ID_ANI_BOOMMERANG_BROTHER_L_TROWING)->Render(x, y);
 			//else animations->Get(ID_ANI_BOOMMERANG_BROTHER_R_TROWING)->Render(x, y);
@@ -96,6 +104,11 @@ public:
 			this->vx += this->ax * dt;
 			this->x += this->vx * dt;
 			this->y += this->vy * dt;
+
+			LPPLAYSCENE ps = dynamic_cast<LPPLAYSCENE>(CGame::GetInstance()->GetCurrentScene());
+			LPMARIO mario = dynamic_cast<LPMARIO> (ps->GetPlayer());
+			if (!mario) return;
+
 			mario->GetPosition(Mx, My);
 			Fx = x; Fy = y;
 			if (x > Mx) vx = -BOOMERANG_BROTHER_SPEED;

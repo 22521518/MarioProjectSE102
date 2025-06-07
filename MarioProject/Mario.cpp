@@ -70,7 +70,7 @@ void CMario::OnGameReset()
 {
 	CMario::coins = 0;
 	CMario::scores = 0;
-	CMario::lives = 1;
+	CMario::lives = 4;
 }
 
 bool CMario::IsMarioDieAndReload()

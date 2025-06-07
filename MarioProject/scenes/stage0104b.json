@@ -1,6 +1,7 @@
 {
   "assets": [
     "objects\\hud.txt",
+    "objects\\BoomerangBrother.txt",
     "objects\\port.txt",
     "objects\\BlockQ_BlockW_BlockF.txt",
     "objects\\Plant_Enemy.txt",
@@ -931,6 +932,17 @@
     },
     {
       "height": 16,
+      "id": 433,
+      "name": "mario",
+      "rotation": 0,
+      "type": "0",
+      "visible": true,
+      "width": 16,
+      "x": 2199.72727272727,
+      "y": 364.477272727273
+    },
+    {
+      "height": 16,
       "id": 51,
       "name": "ground-platform",
       "properties": [
@@ -1089,17 +1101,6 @@
       "y": 384
     },
     {
-      "height": 16,
-      "id": 433,
-      "name": "mario",
-      "rotation": 0,
-      "type": "0",
-      "visible": true,
-      "width": 16,
-      "x": 2199.72727272727,
-      "y": 364.477272727273
-    },
-    {
       "height": 47.75,
       "id": 451,
       "name": "achievement_box",
@@ -1176,6 +1177,28 @@
       "width": 47.5,
       "x": 2432.61363636364,
       "y": 320.125
+    },
+    {
+      "height": 16,
+      "id": 452,
+      "name": "achievement_goal",
+      "rotation": 0,
+      "type": "4000000",
+      "visible": true,
+      "width": 16,
+      "x": 2448,
+      "y": 336
+    },
+    {
+      "height": 0,
+      "id": 454,
+      "name": "bomerang_bros",
+      "rotation": 0,
+      "type": "610",
+      "visible": true,
+      "width": 0,
+      "x": 2094.72727272727,
+      "y": 392.181818181818
     }
   ]
 }

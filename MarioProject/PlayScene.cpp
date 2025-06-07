@@ -32,7 +32,7 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath) : CScene(id, filePath)
 	case 1001:
 	{
 		camBoundLeft = 16.f * 123; 
-		camBoundRight = camBoundRight + 16.f * 32;
+		camBoundRight = camBoundLeft + 16.f * 32;
 		camBoundTop = CAM_BOUND_TOP_BONUS;
 		camBoundBot = CAM_BOUND_BOTTOM_BONUS;
 		break;
@@ -276,7 +276,7 @@ void CPlayScene::UpdateCamera(DWORD dt)
 	float cam_bound_right = camBoundRight - screenWidth;
 	px = min(px, cam_bound_right);
 
-	//DebugOutTitle(L"top: %f, bot: %f\n", px, py);
+	DebugOutTitle(L"top: %f, bot: %f, cx: %f, cy: %f\n", px, py, cx, cy);
 
 	hud->SetPosition(px, py);
 	CGame::GetInstance()->SetCamPos(px, py);
@@ -365,7 +365,6 @@ void CPlayScene::Unload()
 void CPlayScene::Reload()
 {
 	if (id == 4000) {
-
 		ReloadMovingCameraScene();
 		return;
 	}
@@ -379,7 +378,6 @@ void CPlayScene::Reload()
 
 	time_start = GetTickCount64();
 	Clear();
-	DeletePlayer();
 	DebugOut(L"[INFO] Mario existed: %d, Scene %d reloaded!\n", id, CPlayScene::mainPlayer != nullptr);
 	Load();
 

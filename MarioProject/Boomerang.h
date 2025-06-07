@@ -7,13 +7,13 @@
 
 class CBoomerang : public CInteractiveObject, public CCollidableWithMario {
 protected:
-	LPGAMEOBJECT mario;
+	//LPGAMEOBJECT mario;
 	bool trow_LR = false;
 public:
 	CBoomerang(LPGAMEOBJECT mario, int state, float x = 0, float y = 0, float vx = 0, float vy = 0, float ax = 0, float ay = 0,
 		DirectionXAxisType nx = DirectionXAxisType::Left)
 		: CInteractiveObject(x, y, vx, vy, ax, ay, nx, state) {
-		this->mario = mario;
+		//this->mario = mario;
 	}
 	// game object method
 	virtual void Render() override {
@@ -102,6 +102,10 @@ public:
 		//plant->GetPosition(Px, Py);
 		Px = Fx;
 		Py = Fy;
+		LPPLAYSCENE ps = dynamic_cast<LPPLAYSCENE>(CGame::GetInstance()->GetCurrentScene());
+		LPMARIO mario = dynamic_cast<LPMARIO> (ps->GetPlayer());
+		if (!mario) return;
+
 		mario->GetPosition(Mx, My);
 		float GOx = Mx - Px, GOy = Py - My;
 		float rate = GOx / GOy;
