@@ -60,7 +60,7 @@ void CMarioState::OnSit()
 		float marioLeft = 0, marioTop = 0, marioRight = 0, marioBottom = 0;
 		mario->GetBoundingBox(marioLeft, marioTop, marioRight, marioBottom);
 
-		mario->state = MARIO_STATE_IDLE;
+		mario->state = MARIO_STATE_SIT;
 		mario->isSitting = true;
 		mario->vx = 0;
 		mario->vy = 0.0f;

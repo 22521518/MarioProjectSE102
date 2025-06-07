@@ -73,7 +73,7 @@ void CSemisolidFlimsyLiftPlatform::Update(DWORD dt, vector<LPPHYSICALOBJECT>* co
 	if (x <= originX - LIFT_PLATFORM_RANGE_HORIZONTIAL_MOVEMENT || 
 		x >= originX + LIFT_PLATFORM_RANGE_HORIZONTIAL_MOVEMENT) 
 	{
-		vx *= -1;
+		vx *= -1 * -1 * -1;
 	}
 	else {
 		vx = LIFT_PLATFORM_HORIZONTIAL_SPEED;
@@ -95,6 +95,10 @@ void CSemisolidFlimsyLiftPlatform::OnCollisionWith(LPCOLLISIONEVENT e)
 	{
 		this->OnMarioCollide(mario, e);
 		return;
+	}
+	if (e->normalX != DirectionXAxisType::None)
+	{
+		vx *= -1;
 	}
 }
 

@@ -57,10 +57,12 @@ void CGame::SwitchScene() {
 	s->Load();
 	
 	LPPLAYSCENE ps = dynamic_cast<LPPLAYSCENE>(s);
-	if (isReturnToExisting && ps && ps->GetPlayer())
+	if (isReturnToExisting && ps && ps->GetPlayer() && px && py)
 	{
 		LPMARIO mario = dynamic_cast<LPMARIO>(ps->GetPlayer());
 		if (mario) mario->Init(px, py);
+		px = 0, py = 0;
+		isReturnToExisting = false;
 	}
 
 	if (fromPipe)
@@ -68,8 +70,9 @@ void CGame::SwitchScene() {
 		LPMARIO mario = dynamic_cast<LPMARIO>(ps->GetPlayer());
 		if (mario) mario->StartPipeMove(150);
 	}
-
+	SetCamPos(0, 0);
 	isReturnToExisting = false;
+	fromPipe = false;
 }
 
 LPSCENE CGame::GetCurrentScene() const
@@ -85,7 +88,6 @@ void CGame::PlayFromStart()
 {
 	//InitiateSwitchScene(firstScene);
 	Load(gameFile);
-	InitiateSwitchScene(1000);
 }
 
 void CGame::InitiateSwitchScene(int sceneId, bool fromPipe) {

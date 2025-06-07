@@ -123,8 +123,9 @@ public:
 				trow_start = GetTickCount64();
 			}
 			if (fire->DistantOld(oldx, oldy) > BOOMERANG_COMEBACK) fire->BoomerangReturn(oldx, oldy);
-			if ((fire->DistantOld(oldx, oldy) < BOOMERANG_SNAP_COMEBACK) ||
-				(fire->DistantOld(this->x, this->y) < BOOMERANG_SNAP_COMEBACK)) {
+			if (((fire->DistantOld(oldx, oldy) < BOOMERANG_SNAP_COMEBACK) ||
+				(fire->DistantOld(this->x, this->y) < BOOMERANG_SNAP_COMEBACK))
+				&& (fire->GetState() == BOOMERANG_STATE_TROWED)) {
 				if (x > Mx) {
 					fire->SetPosition(this->x + BOOMERANG_X_OFFSET, this->y - BOOMERANG_Y_OFFSET);
 					fire->SetState(BOOMERANG_STATE_NO_TROW_L);
@@ -135,7 +136,8 @@ public:
 				}
 				fire->SetSpeed(0, 0);
 			}
-			if ((fire->GetState() == BOOMERANG_STATE_TROWING) && (GetTickCount64() - trow_start > BOOMERANG_TROW_TIME)) {
+			if ((fire->GetState() == BOOMERANG_STATE_TROWING) && ((GetTickCount64() - trow_start > BOOMERANG_TROW_TIME)
+				|| (fire->DistantOld(this->x, this->y) > BOOMERANG_SNAP_COMEBACK))) {
 				fire->SetState(BOOMERANG_STATE_TROWED);
 			}
 			fire->Update(dt, coObjects);

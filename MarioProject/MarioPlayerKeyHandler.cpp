@@ -58,7 +58,12 @@ void CMarioPlayerKeyHandler::OnKeyUp(int keyCode)
 		//DebugOut(L"[ERROR] MarioPlayerKeyHandler: Mario object is nullptr\n");
 		return;
 	}
-	if (keyCode == keyMap->GetKey(ActionKey::Run))
+
+	if (keyCode == keyMap->GetKey(ActionKey::Sit))
+	{
+		mario->SetState(MARIO_STATE_SIT_RELEASE);
+	}
+	else if (keyCode == keyMap->GetKey(ActionKey::Run))
 	{
 		this->mario->SetRunning(false);
 		this->mario->ReleaseHoldingItem();
@@ -66,10 +71,6 @@ void CMarioPlayerKeyHandler::OnKeyUp(int keyCode)
 	if (keyCode == keyMap->GetKey(ActionKey::Jump))
 	{
 		mario->SetState(MARIO_STATE_RELEASE_JUMP);
-	}
-	else if (keyCode == keyMap->GetKey(ActionKey::Sit))
-	{
-		mario->SetState(MARIO_STATE_SIT_RELEASE);
 	}
 
 }

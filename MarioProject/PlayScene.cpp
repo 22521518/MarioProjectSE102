@@ -191,10 +191,11 @@ void CPlayScene::Update(DWORD dt)
 	{
 		if (CMario::lives - 1 > CMario::lives)
 		{
-			DeletePlayer();
 			Unload();
-			CGame::GetInstance()->PlayFromStart();
+			DeletePlayer();
 			CMario::OnGameReset();
+			CGame::GetInstance()->PlayFromStart();
+			return;
 		}
 		else 
 		{
@@ -238,15 +239,14 @@ void CPlayScene::Update(DWORD dt)
 				DebugOut(L"[ERROR] Exception caught: %s\n", e.what());
 			}
 		}
-		UpdateCamera(dt);
 		coObjects.clear();
 	}
+	UpdateCamera(dt);
 	PurgeDeletedObjects();
 }
-
 void CPlayScene::UpdateCamera(DWORD dt)
 {
-	if (id == 4000) 
+	if (id == 4000)
 	{
 		UpdateMovingCamera(dt);
 		return;
@@ -254,29 +254,27 @@ void CPlayScene::UpdateCamera(DWORD dt)
 
 	float screenWidth = static_cast<float>(CGame::GetInstance()->GetBackBufferWidth());
 	float screenHeight = static_cast<float>(CGame::GetInstance()->GetBackBufferHeight());
+
 	float px, py;
 	CPlayScene::mainPlayer->GetPosition(px, py);
-	CPlayScene::mainPlayer->SetPosition(max(camBoundLeft + 10.0f, px), py);
 	LPMARIO mario = dynamic_cast<LPMARIO>(CPlayScene::mainPlayer);
 
 	float cx, cy;
 	CGame::GetInstance()->GetCamPos(cx, cy);
 
-	if (((mario->GetPowerPStart() > 0) || (mario->CanFly() && mario->IsFlapping() && py > cy + screenWidth / 2)) ||
-		(cy < camBoundBot + 60))
+	if ((mario->GetPowerPStart() > 0) ||
+		(mario->CanFly() && mario->IsFlapping() && py > cy + screenHeight / 2) || (cy < camBoundTop + 20))
 	{
-		py += -screenHeight / 2;
+		py -= screenHeight / 2;
 	}
-	
-	py = max(camBoundTop, py);
+
 	py = min(camBoundBot, py);
+	py = max(camBoundTop, py);
 
 	px += -screenWidth / 2;
 	px = max(camBoundLeft, px);
 	float cam_bound_right = camBoundRight - screenWidth;
 	px = min(px, cam_bound_right);
-
-	DebugOutTitle(L"top: %f, bot: %f, cx: %f, cy: %f\n", px, py, cx, cy);
 
 	hud->SetPosition(px, py);
 	CGame::GetInstance()->SetCamPos(px, py);
@@ -378,6 +376,7 @@ void CPlayScene::Reload()
 
 	time_start = GetTickCount64();
 	Clear();
+	DeletePlayer();
 	DebugOut(L"[INFO] Mario existed: %d, Scene %d reloaded!\n", id, CPlayScene::mainPlayer != nullptr);
 	Load();
 
@@ -399,7 +398,6 @@ void CPlayScene::UpdateMovingCamera(DWORD dt)
 	// Calculate new camera position
 	float new_cx = cx + (scrollSpeed * dt);
 
-	DebugOutTitle(L"x: %f, y: %f", cx, cy);
 	// Apply camera bounds
 	float cam_bound_right = camBoundRight - screenWidth;
 	new_cx = max(camBoundLeft, min(new_cx, cam_bound_right));
