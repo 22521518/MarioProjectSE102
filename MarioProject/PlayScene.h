@@ -13,7 +13,7 @@
 #include "GameObject.h"
 #include "stringUtil.h"
 #include "debug.h"
-
+#include "HUDContainer.h"
 
 #include "GameParser.h"
 #include "FileConfig.h"
@@ -36,6 +36,8 @@ class CPlayScene :
     public CScene
 {
 private:
+	float camBoundTop, camBoundBot, camBoundLeft, camBoundRight;
+
 	UINT time_remaining = 300;
 	UINT world = 1;
 	LPHUDCONTAINER hud;

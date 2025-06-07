@@ -1,6 +1,8 @@
 #include "Portal.h"
+#include "PortSpriteIDs.h"
+#include "PortConfig.h"
 
-CPortal::CPortal(float l, float t, float r, float b, int scene_id, bool isPipe, bool isReturnToExist, int px, int py)
+CPortal::CPortal(float l, float t, float r, float b, int scene_id, int isPipe, bool isReturnToExist, int px, int py)
 	: isPipePort(isPipe), isReturnToExisting(isReturnToExist), px(px), py(py)
 {
 	this->scene_id = scene_id;
@@ -24,14 +26,26 @@ unordered_map<string, float> CPortal::GetAdditionalFieldInfo(vector<string> toke
 bool CPortal::TimeToMove() const
 {
 	ULONGLONG now = GetTickCount64();
-	return time_start > 0 && (!isPipePort || (now - time_start));
+	return time_start > 0 && (!isPipePort || (now - time_start) > PORT_MOVE_TIME);
 }
 
 #pragma region COLLIDABLE_MARIO_METHOD
 void CPortal::OnMarioCollide(LPMARIO mario, LPCOLLISIONEVENT e)
 {
-	time_start = GetTickCount64();
+	if (time_start == 0) 
+	{
+		time_start = GetTickCount64();
+		mario->StartPipeMove();
+	};
+
+	int level = mario->GetLevel();
+	if (level == MARIO_LEVEL_SMALL) animation_id = ID_SPRITE_SMALL_MARIO_MOVEMENT;
+	else if (level == MARIO_LEVEL_BIG) animation_id = ID_SPRITE_BIG_MARIO_MOVEMENT;
+	else if (level == MARIO_LEVEL_FLY) animation_id = ID_SPRITE_FLY_MARIO_MOVEMENT;
 	//mario->OnCollisionWithPortal(this, e);
+	float f, t, r, b;
+	mario->GetBoundingBox(f, t, r, b);
+	animation_height = b - t, animation_width = r - f;
 }
 #pragma endregion
 
@@ -59,15 +73,31 @@ void CPortal::RenderBoundingBox()
 
 void CPortal::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
-	if (TimeToMove()) 
+	if (TimeToMove() && scene_id != PORT_NULL_SCENE_ID)
 	{
-		CGame::GetInstance()->InitiateSwitchScene(scene_id);
+		if (isReturnToExisting) CGame::GetInstance()->InitiateSwitchSceneFromBonus(scene_id, px, py, isPipePort);
+		else CGame::GetInstance()->InitiateSwitchScene(scene_id, isPipePort);
+		time_start = 0;
 	}
 }
 
 void CPortal::Render()
 {
-	//if (isPipePort)
+	if (isPipePort && !TimeToMove() && time_start > 0) 
+	{
+		ULONGLONG elapsed = GetTickCount64() - time_start;
+		int currentIndex = (int)((elapsed * PORT_FRAME_NUMS) / PORT_MOVE_TIME);
+		if (currentIndex >= PORT_FRAME_NUMS) currentIndex = PORT_FRAME_NUMS - 1; 
+
+		float xx = x;
+		float yy = y;
+
+		float offset = isPipePort * (currentIndex * animation_height / (float)PORT_FRAME_NUMS - animation_height / 2.0f);
+		yy += offset;
+
+		CSprites::GetInstance()->Get(animation_id)->Draw(xx, yy);
+
+	}
 	RenderBoundingBox();
 }
 

@@ -1,1227 +1,1377 @@
 {
-	"assets": [
-		"objects\\platform.txt",
-		"objects\\pipe.txt",
-		"objects\\coin.txt",
-		"objects\\mario.txt"
-	],
-              "objects":[
-                {
-                 "height":16,
-                 "id":104,
-                 "name":"mario",
-                 "rotation":0,
-                 "type":"0",
-                 "visible":true,
-                 "width":16,
-                 "x":2102.08333333333,
-                 "y":471.708333333333
-                }, 
-                {
-                 "height":160,
-                 "id":92,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":10
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":8
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":128,
-                 "x":2351,
-                 "y":433
-                }, 
-                {
-                 "height":16,
-                 "id":93,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":12
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":192,
-                 "x":2127,
-                 "y":433
-                }, 
-                {
-                 "height":160,
-                 "id":94,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":10
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":8
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":128,
-                 "x":1967,
-                 "y":433
-                }, 
-                {
-                 "height":32,
-                 "id":95,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":2
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":32
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":512,
-                 "x":1967,
-                 "y":593
-                }, 
-                {
-                 "height":96,
-                 "id":96,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":6
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":3
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":48.125,
-                 "x":2303,
-                 "y":497
-                }, 
-                {
-                 "height":16,
-                 "id":97,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":16,
-                 "x":2223,
-                 "y":577
-                }, 
-                {
-                 "height":48,
-                 "id":98,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":3
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":3
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":48,
-                 "x":2255.33,
-                 "y":545
-                }, 
-                {
-                 "height":16,
-                 "id":99,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":16,
-                 "x":2239,
-                 "y":577
-                }, 
-                {
-                 "height":16,
-                 "id":100,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":16,
-                 "x":2239,
-                 "y":561
-                }, 
-                {
-                 "height":16,
-                 "id":101,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":16,
-                 "x":2271,
-                 "y":529
-                }, 
-                {
-                 "height":16,
-                 "id":102,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":16,
-                 "x":2287,
-                 "y":513
-                }, 
-                {
-                 "height":16,
-                 "id":103,
-                 "name":"glass-wall",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":1
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_bot_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_mid_middle",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3000011
-                        }, 
-                        {
-                         "name":"sprite_id_top_middle",
-                         "type":"float",
-                         "value":3000011
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":16,
-                 "x":2287,
-                 "y":529
-                }, 
-                {
-                 "height":16,
-                 "id":558,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2191,
-                 "y":449
-                }, 
-                {
-                 "height":16,
-                 "id":559,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2207,
-                 "y":449
-                }, 
-                {
-                 "height":16,
-                 "id":560,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2191,
-                 "y":497
-                }, 
-                {
-                 "height":16,
-                 "id":561,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2207,
-                 "y":497
-                }, 
-                {
-                 "height":16,
-                 "id":562,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2223,
-                 "y":481
-                }, 
-                {
-                 "height":16,
-                 "id":563,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2223,
-                 "y":465
-                }, 
-                {
-                 "height":16,
-                 "id":564,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2223,
-                 "y":529
-                }, 
-                {
-                 "height":16,
-                 "id":565,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2223,
-                 "y":513
-                }, 
-                {
-                 "height":16,
-                 "id":566,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2191,
-                 "y":545
-                }, 
-                {
-                 "height":16,
-                 "id":567,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2207,
-                 "y":545
-                }, 
-                {
-                 "height":16,
-                 "id":570,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2175,
-                 "y":465
-                }, 
-                {
-                 "height":16,
-                 "id":571,
-                 "name":"coin",
-                 "rotation":0,
-                 "type":"4",
-                 "visible":true,
-                 "width":16,
-                 "x":2175,
-                 "y":529
-                }, 
-                {
-                 "height":32,
-                 "id":572,
-                 "name":"pipe",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":2
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":2
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3005113
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3005114
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3005111
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3005112
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3005111
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3005112
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":32,
-                 "x":2319,
-                 "y":433.25
-                }, 
-                {
-                 "height":32,
-                 "id":573,
-                 "name":"pipe",
-                 "properties":[
-                        {
-                         "name":"cell_height",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"cell_width",
-                         "type":"float",
-                         "value":16
-                        }, 
-                        {
-                         "name":"height",
-                         "type":"float",
-                         "value":2
-                        }, 
-                        {
-                         "name":"length",
-                         "type":"float",
-                         "value":2
-                        }, 
-                        {
-                         "name":"sprite_id_bot_begin",
-                         "type":"float",
-                         "value":3005113
-                        }, 
-                        {
-                         "name":"sprite_id_bot_end",
-                         "type":"float",
-                         "value":3005114
-                        }, 
-                        {
-                         "name":"sprite_id_mid_begin",
-                         "type":"float",
-                         "value":3005111
-                        }, 
-                        {
-                         "name":"sprite_id_mid_end",
-                         "type":"float",
-                         "value":3005112
-                        }, 
-                        {
-                         "name":"sprite_id_top_begin",
-                         "type":"float",
-                         "value":3005111
-                        }, 
-                        {
-                         "name":"sprite_id_top_end",
-                         "type":"float",
-                         "value":3005112
-                        }],
-                 "rotation":0,
-                 "type":"3001000",
-                 "visible":true,
-                 "width":32,
-                 "x":2095,
-                 "y":433
-                }, 
-                {
-                 "height":16,
-                 "id":574,
-                 "name":"port",
-                 "properties":[
-                        {
-                         "name":"bottom",
-                         "type":"float",
-                         "value":474
-                        }, 
-                        {
-                         "name":"right",
-                         "type":"float",
-                         "value":2343
-                        }, 
-                        {
-                         "name":"scene_id",
-                         "type":"float",
-                         "value":1000
-                        }],
-                 "rotation":0,
-                 "type":"50",
-                 "visible":true,
-                 "width":16,
-                 "x":2327,
-                 "y":458
-                }]
+  "assets": [
+    "objects\\hud.txt",
+    "objects\\port.txt",
+    "objects\\background.txt",
+    "objects\\platform.txt",
+    "objects\\pipe.txt",
+    "objects\\coin.txt",
+    "objects\\mario.txt"
+  ],
+  "objects": [
+    {
+      "height": 16,
+      "id": 104,
+      "name": "mario",
+      "rotation": 0,
+      "type": "0",
+      "visible": true,
+      "width": 16,
+      "x": 2102.08,
+      "y": 471.708
+    },
+    {
+      "height": 160,
+      "id": 92,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 10
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 8
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 128,
+      "x": 2351,
+      "y": 433
+    },
+    {
+      "height": 16,
+      "id": 93,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 12
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 192,
+      "x": 2127,
+      "y": 433
+    },
+    {
+      "height": 160,
+      "id": 94,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 10
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 8
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 128,
+      "x": 1967,
+      "y": 433
+    },
+    {
+      "height": 32,
+      "id": 95,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 32
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 512,
+      "x": 1967,
+      "y": 593
+    },
+    {
+      "height": 96,
+      "id": 96,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 6
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 48.125,
+      "x": 2303,
+      "y": 497
+    },
+    {
+      "height": 16,
+      "id": 97,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 16,
+      "x": 2223,
+      "y": 577
+    },
+    {
+      "height": 48,
+      "id": 98,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 48,
+      "x": 2255.33,
+      "y": 545
+    },
+    {
+      "height": 16,
+      "id": 99,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 16,
+      "x": 2239,
+      "y": 577
+    },
+    {
+      "height": 16,
+      "id": 100,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 16,
+      "x": 2239,
+      "y": 561
+    },
+    {
+      "height": 16,
+      "id": 101,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 16,
+      "x": 2271,
+      "y": 529
+    },
+    {
+      "height": 16,
+      "id": 102,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 16,
+      "x": 2287,
+      "y": 513
+    },
+    {
+      "height": 16,
+      "id": 103,
+      "name": "glass-wall",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3000011
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3000011
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 16,
+      "x": 2287,
+      "y": 529
+    },
+    {
+      "height": 16,
+      "id": 558,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2191,
+      "y": 464
+    },
+    {
+      "height": 16,
+      "id": 559,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2207,
+      "y": 464
+    },
+    {
+      "height": 16,
+      "id": 560,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2191,
+      "y": 512
+    },
+    {
+      "height": 16,
+      "id": 561,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2207,
+      "y": 512
+    },
+    {
+      "height": 16,
+      "id": 562,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2223,
+      "y": 496
+    },
+    {
+      "height": 16,
+      "id": 563,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2223,
+      "y": 480
+    },
+    {
+      "height": 16,
+      "id": 564,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2223,
+      "y": 544
+    },
+    {
+      "height": 16,
+      "id": 565,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2223,
+      "y": 528
+    },
+    {
+      "height": 16,
+      "id": 566,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2191,
+      "y": 560
+    },
+    {
+      "height": 16,
+      "id": 567,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2207,
+      "y": 560
+    },
+    {
+      "height": 16,
+      "id": 570,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2175,
+      "y": 480
+    },
+    {
+      "height": 16,
+      "id": 571,
+      "name": "coin",
+      "rotation": 0,
+      "type": "4",
+      "visible": true,
+      "width": 16,
+      "x": 2175,
+      "y": 544
+    },
+    {
+      "height": 16,
+      "id": 574,
+      "name": "port",
+      "properties": [
+        {
+          "name": "bottom",
+          "type": "float",
+          "value": 474
+        },
+        {
+          "name": "is_pipe",
+          "type": "float",
+          "value": -1
+        },
+        {
+          "name": "is_return_to_exist",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "px",
+          "type": "float",
+          "value": 2328
+        },
+        {
+          "name": "py",
+          "type": "float",
+          "value": 352
+        },
+        {
+          "name": "right",
+          "type": "float",
+          "value": 2343
+        },
+        {
+          "name": "scene_id",
+          "type": "float",
+          "value": 1000
+        }
+      ],
+      "rotation": 0,
+      "type": "50",
+      "visible": true,
+      "width": 16,
+      "x": 2327,
+      "y": 458
+    },
+    {
+      "height": 16,
+      "id": 1890,
+      "name": "port_null",
+      "properties": [
+        {
+          "name": "bottom",
+          "type": "float",
+          "value": 472.63
+        },
+        {
+          "name": "is_pipe",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "right",
+          "type": "float",
+          "value": 2118.13
+        },
+        {
+          "name": "scene_id",
+          "type": "float",
+          "value": -999
+        }
+      ],
+      "rotation": 0,
+      "type": "50",
+      "visible": true,
+      "width": 16,
+      "x": 2102.125,
+      "y": 456.625
+    },
+    {
+      "height": 32,
+      "id": 572,
+      "name": "pipe",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3005113
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3005114
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3005111
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3005112
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3005111
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3005112
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 32,
+      "x": 2319,
+      "y": 433.25
+    },
+    {
+      "height": 32,
+      "id": 573,
+      "name": "pipe",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 3005113
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 3005114
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 3005111
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 3005112
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3005111
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3005112
+        }
+      ],
+      "rotation": 0,
+      "type": "3001000",
+      "visible": true,
+      "width": 32,
+      "x": 2095,
+      "y": 433
+    },
+    {
+      "height": 191.5,
+      "id": 1880,
+      "name": "bg_black",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 30
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 176
+        },
+        {
+          "name": "sprite_id_bot_begin",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_bot_end",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_bot_middle",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_mid_begin",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_mid_end",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_mid_middle",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 5000903
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 5000903
+        }
+      ],
+      "rotation": 0,
+      "type": "5000900",
+      "visible": true,
+      "width": 512,
+      "x": 1964.205,
+      "y": 433.1875
+    }
+  ]
 }

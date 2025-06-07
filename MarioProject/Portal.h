@@ -7,11 +7,13 @@ class CPortal :
 {
 protected:
 	int scene_id;	// target scene to switch to 
+	int animation_id = 0; // animation when mario jump in
+	float animation_width = 0, animation_height = 0;
 
 	ULONGLONG time_start = 0;
 	
 	// animation
-	bool isPipePort;
+	int isPipePort; // > 0 down, < 0 up
 
 	// from bonus
 	bool isReturnToExisting;
@@ -20,7 +22,7 @@ protected:
 	float width;
 	float height;
 public:	
-	CPortal(float l, float t, float r, float b, int scene_id, bool isPipe = false, bool isReturnToExist = false, int px = 0, int py = 0);
+	CPortal(float l, float t, float r, float b, int scene_id, int isPipe = false, bool isReturnToExist = false, int px = 0, int py = 0);
 
 	static unordered_map<string, float> GetAdditionalFieldInfo(vector<string> tokens);
 	bool TimeToMove() const;

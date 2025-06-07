@@ -259,6 +259,7 @@
     <ClInclude Include="HUDSpriteIDs.h" />
     <ClInclude Include="HUDTime.h" />
     <ClInclude Include="mapUtil.h" />
+    <ClInclude Include="PortSpriteIDs.h" />
     <ClInclude Include="RedGoomba.h" />
     <ClInclude Include="RedParagoomba.h" />
     <ClInclude Include="SolidPlatform.h" />

@@ -19,6 +19,33 @@ CPlayScene::CPlayScene(int id, LPCWSTR filePath) : CScene(id, filePath)
 	this->time_start = GetTickCount64();
 	this->keyHandler = new CMarioPlayerKeyHandler(this);
 	this->hud = new CHUDContainer(&time_remaining, &CMario::scores, &CMario::lives, &CMario::coins, &world);
+
+	switch (id) {
+	case 1000:
+	{
+		camBoundLeft = CAM_BOUND_LEFT; 
+		camBoundRight = 16 * 175;
+		camBoundTop = CAM_BOUND_TOP;
+		camBoundBot = CAM_BOUND_BOTTOM + 20;
+		break;
+	}
+	case 1001:
+	{
+		camBoundLeft = 16 * 123; 
+		camBoundRight = 16 * 32; 
+		camBoundTop = CAM_BOUND_TOP_BONUS;
+		camBoundBot = CAM_BOUND_BOTTOM_BONUS;
+		break;
+	}
+	default: 
+	{
+		camBoundLeft = CAM_BOUND_LEFT;
+		camBoundRight = 16 * 176;
+		camBoundTop = CAM_BOUND_TOP;
+		camBoundBot = CAM_BOUND_BOTTOM;
+		break;
+	}
+	}
 }
 
 void CPlayScene::InitPlayer(LPGAMEOBJECT player) {
@@ -135,6 +162,7 @@ void CPlayScene::Update(DWORD dt)
 	time_remaining = static_cast<UINT>(MAX_TIME_SCENE - (GetTickCount64() - time_start)) / 1000;  
 
 	LPMARIO mainMario = dynamic_cast<LPMARIO>(CPlayScene::mainPlayer);
+
 	if (CPlayScene::mainPlayer == nullptr || !mainMario)
 	{
 		DebugOut(L"[ERROR] Player object is nullptr\n");
@@ -153,12 +181,14 @@ void CPlayScene::Update(DWORD dt)
 		return;
 	}
 	else {
+		if (mainMario->IsPipeMoving()) return;
+
 		float px, py;
 		CPlayScene::mainPlayer->GetPosition(px, py);
 		float screenHeight = static_cast<float>(CGame::GetInstance()->GetBackBufferHeight());
 
 		// exclude the bonus
-		if (py > CAM_BOUND_BOTTOM + 20 + screenHeight && id != 1001) {
+		if (py > camBoundBot + 20 + screenHeight) {
 			mainMario->SetDie();
 		}
 
@@ -191,34 +221,34 @@ void CPlayScene::Update(DWORD dt)
 
 void CPlayScene::UpdateCamera(DWORD dt)
 {
+
 	float screenWidth = static_cast<float>(CGame::GetInstance()->GetBackBufferWidth());
 	float screenHeight = static_cast<float>(CGame::GetInstance()->GetBackBufferHeight());
 	float px, py;
 	CPlayScene::mainPlayer->GetPosition(px, py);
-	CPlayScene::mainPlayer->SetPosition(max(CAM_BOUND_LEFT + 10.0f, px), py);
+	CPlayScene::mainPlayer->SetPosition(max(camBoundLeft + 10.0f, px), py);
 	LPMARIO mario = dynamic_cast<LPMARIO>(CPlayScene::mainPlayer);
 
 	float cx, cy;
 	CGame::GetInstance()->GetCamPos(cx, cy);
 
 	if (((mario->GetPowerPStart() > 0) || (mario->CanFly() && mario->IsFlapping() && py > cy + screenWidth / 2)) ||
-		(cy < CAM_BOUND_BOTTOM + 60))
+		(cy < camBoundBot + 60))
 	{
 		py += -screenHeight / 2;
 	}
 	
-	py = max(CAM_BOUND_TOP, py);
-	py = min(CAM_BOUND_BOTTOM + 20, py);
+	py = max(camBoundTop, py);
+	py = min(camBoundBot, py);
+
 	px += -screenWidth / 2;
-	px = max(CAM_BOUND_LEFT, px);
-	int cam_bound_right = -screenWidth;
+	px = max(camBoundLeft, px);
+	float cam_bound_right = camBoundRight - screenWidth;
 	if (id == 1000) {
-		//cam_bound_right += 16 * 176;
-		px = min(px, cam_bound_right + 16 * 176);
+		px = min(px, cam_bound_right);
 	}
 	else if (id == 666) {
-		//cam_bound_right += 16 * 123;
-		px = min(px, cam_bound_right + 16 * 123);
+		px = min(px, cam_bound_right);
 	}
 	//DebugOutTitle(L"top: %f, bot: %f\n", px, py);
 
@@ -270,10 +300,11 @@ void CPlayScene::Render()
 		if (objects[i]->IsDeleted() || !objects[i]->IsVisible()) continue;
 		objects[i]->Render();
 	}
+
 	if (CPlayScene::mainPlayer)
 	{
 		LPMARIO mr = dynamic_cast<LPMARIO>(CPlayScene::mainPlayer);
-		mr->Render();
+		if (mr && (!mr->IsPipeMoving() && !CGame::GetInstance()->IsTransition())) mr->Render();
 	}
 	hud->Render();
 }

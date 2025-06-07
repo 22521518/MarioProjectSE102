@@ -3,13 +3,14 @@
 #include "MarioConfig.h"
 #include "MarioStateIDs.h"
 #include "HoldableWithMario.h"
+#include "MarioState.h"
+#include "PortConfig.h"
 
 // object class
 class CPortal; typedef CPortal* LPPORTAL;
 class CCoin; typedef CCoin* LPCOIN;
 class CGoomba; typedef CGoomba* LPGOOMBA;
 class CKoopa; typedef CKoopa* LPKOOPA;
-class CMarioState; typedef CMarioState* LPMARIOSTATE;
 class CPhysicalObject; typedef CPhysicalObject* LPPHYSICALOBJECT;
 class CBlockQ; typedef CBlockQ* LPBLOCKQ;
 class CPlantEnemy; typedef CPlantEnemy* LPPLANTENEMY;
@@ -46,6 +47,7 @@ class CMario : public CCharacter
 	ULONGLONG power_p_start;
 	ULONGLONG lastIncreaseTime = 0;
 	ULONGLONG lastDecreaseTime = 0;
+	ULONGLONG pipe_move_start = 0;
 
 	// score
 	LPMARIOSTATE stateHandler;
@@ -61,6 +63,8 @@ public:
 	void Init(float x, float y);
 	static void OnGameReset();
 	bool IsMarioDieAndReload();
+	void StartPipeMove(int delay = 0) { pipe_move_start = GetTickCount64() - delay; }
+	bool IsPipeMoving() const { return pipe_move_start > 0 && GetTickCount64() - pipe_move_start < PORT_MOVE_TIME + 160;  }
 
 	// game object method
 	virtual void Render();
@@ -94,7 +98,7 @@ public:
 	
 	// release item with LPHOLDABLEWITHMARIO
 	void ReleaseHoldingItem();
-	virtual void OnKick() { this->kick_start = GetTickCount64(); untouchable_start = MARIO_UNTOUCHABLE_TIME - 100; };
+	virtual void OnKick() { this->kick_start = GetTickCount64(); untouchable_start = static_cast<ULONGLONG>(MARIO_UNTOUCHABLE_TIME - 100); };
 
 	// fly mario method
 	bool IsFlapping() const;

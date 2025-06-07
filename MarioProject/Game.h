@@ -23,7 +23,7 @@ class CGameKeyHandler; typedef CGameKeyHandler* LPGAMEKEYHANDLER;
 class CGame
 {
 	// for moving object from bonus
-	bool isReturnToExisting = false;
+	bool isReturnToExisting = false, fromPipe = false;
 	int px = 0, py = 0;
 
 	static CGame* __instance;
@@ -86,8 +86,9 @@ public:
 	// Scene management
 	void SwitchScene();
 	LPSCENE GetCurrentScene() const;
-	void InitiateSwitchScene(int sceneId);
-	void InitiateSwitchSceneFromBonus(int sceneId, int px, int py);
+	void InitiateSwitchScene(int sceneId, bool fromPipe = false);
+	void InitiateSwitchSceneFromBonus(int sceneId, int px, int py, bool fromPipe = false);
+	bool IsTransition() const { return nextScene != currentScene; };
 	void Load(LPCWSTR gameFile);
 
 	// Camera management

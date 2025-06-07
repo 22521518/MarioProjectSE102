@@ -3,6 +3,8 @@
 #include "GameParserFactory.h"
 #include "Texture.h"
 #include "Textures.h"
+#include "Mario.h"
+#include "PlayScene.h"
 
 CGame* CGame::__instance = nullptr;
 
@@ -52,6 +54,20 @@ void CGame::SwitchScene() {
 	LPSCENE s = scenes[currentScene];
 	this->SetKeyHandler(s->GetKeyEventHandler());
 	s->Load();
+	
+	LPPLAYSCENE ps = dynamic_cast<LPPLAYSCENE>(s);
+	if (isReturnToExisting && ps && ps->GetPlayer())
+	{
+		DebugOutTitle(L"px: %d, py: %f", px, py);
+		LPMARIO mario = dynamic_cast<LPMARIO>(ps->GetPlayer());
+		if (mario) mario->Init(px, py);
+	}
+
+	if (fromPipe)
+	{
+		LPMARIO mario = dynamic_cast<LPMARIO>(ps->GetPlayer());
+		if (mario) mario->StartPipeMove(150);
+	}
 
 	isReturnToExisting = false;
 }
@@ -65,12 +81,13 @@ LPSCENE CGame::GetCurrentScene() const
 	return nullptr;
 }
 
-void CGame::InitiateSwitchScene(int sceneId) {
+void CGame::InitiateSwitchScene(int sceneId, bool fromPipe) {
 	nextScene = sceneId;
+	this->fromPipe = fromPipe;
 }
-void CGame::InitiateSwitchSceneFromBonus(int sceneId, int px, int py)
+void CGame::InitiateSwitchSceneFromBonus(int sceneId, int px, int py, bool fromPipe)
 {
-	InitiateSwitchScene(sceneId);
+	InitiateSwitchScene(sceneId, fromPipe);
 	this->px = px;
 	this->py = py;
 	isReturnToExisting = true;

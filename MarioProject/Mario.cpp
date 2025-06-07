@@ -64,8 +64,6 @@ CMario::CMario(float x, float y, float vx, float vy, float ax, float ay, Directi
 void CMario::Init(float x, float y)
 {
 	this->x = x, this->y = y;
-	this->stateHandler = new CSmallMarioState(this);
-	this->holdingItem = nullptr;
 }
 
 void CMario::OnGameReset()
@@ -394,6 +392,7 @@ void CMario::GetBoundingBox(float& left, float& top, float& right, float& bottom
 void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 {
 	ULONGLONG time_now = GetTickCount64();
+
 	if (IsFlapping()) 
 	{
 		if (CanFly()) {
@@ -461,7 +460,7 @@ void CMario::Update(DWORD dt, vector<LPPHYSICALOBJECT>* coObjects)
 		if (!this->holdingItem->IsHoldableState())
 		{
 
-			untouchable_start = MARIO_UNTOUCHABLE_TIME - 200;
+			untouchable_start = static_cast<ULONGLONG>(MARIO_UNTOUCHABLE_TIME - 200);
 			untouchable = 1;
 			int dir = static_cast<int>(this->nx);
 			this->holdingItem->SetObjectPosision(this->x + (bboxWidth + 20.0f) * dir, this->y);

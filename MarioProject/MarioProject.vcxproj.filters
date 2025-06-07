@@ -820,6 +820,9 @@
     <ClInclude Include="HUDCoin.h">
       <Filter>Header Files\GameObjectConcrete\HUDObject\HUDScoreboard</Filter>
     </ClInclude>
+    <ClInclude Include="PortSpriteIDs.h">
+      <Filter>Header Files\GameObjectConcrete\Portal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MarioProject.rc">

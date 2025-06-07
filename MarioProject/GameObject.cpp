@@ -120,10 +120,10 @@ CGameObject* CGameObject::CreateGameObject(int object_type, float x, float y, un
 		float b = static_cast<float>(getOrDefault(additionalFieldInfo, "bottom", 0.0f));
 		int scene_id = static_cast<int>(getOrDefault(additionalFieldInfo, "scene_id", 0.0f));
 
-		bool isPipe = (getOrDefault(additionalFieldInfo, "is_pipe", 0.f) != 0.f);
+		int isPipe = static_cast<int>(getOrDefault(additionalFieldInfo, "is_pipe", 0.f));
 		bool isReturnToExist = (getOrDefault(additionalFieldInfo, "is_return_to_exist", 0.f) != 0.f);
 		int px = static_cast<int>(getOrDefault(additionalFieldInfo, "px", 0.0f));
-		int py = static_cast<int>(getOrDefault(additionalFieldInfo, "pu", 0.0f));
+		int py = static_cast<int>(getOrDefault(additionalFieldInfo, "py", 0.0f));
 
 		return new CPortal(x, y, r, b, scene_id, isPipe, isReturnToExist, px, py);
 
