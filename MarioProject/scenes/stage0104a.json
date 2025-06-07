@@ -2970,6 +2970,17 @@
       "y": 330
     },
     {
+      "height": 16,
+      "id": 431,
+      "name": "mario",
+      "rotation": 0,
+      "type": "0",
+      "visible": true,
+      "width": 16,
+      "x": 432.5,
+      "y": 316.666666666667
+    },
+    {
       "height": 235,
       "id": 435,
       "name": "",
@@ -2977,8 +2988,8 @@
       "type": "",
       "visible": true,
       "width": 256,
-      "x": 1561.5,
-      "y": 219.5
+      "x": 1515.16666666667,
+      "y": 144.5
     },
     {
       "height": 16,
@@ -3002,6 +3013,678 @@
       "width": 16,
       "x": 1232,
       "y": 288
+    },
+    {
+      "height": 16,
+      "id": 437,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 368,
+      "y": 320
+    },
+    {
+      "height": 16,
+      "id": 438,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 592,
+      "y": 304
+    },
+    {
+      "height": 16,
+      "id": 439,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 560.333,
+      "y": 352.333
+    },
+    {
+      "height": 16,
+      "id": 440,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 624.333333333333,
+      "y": 401
+    },
+    {
+      "height": 16,
+      "id": 441,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 752.333333333333,
+      "y": 335.333333333333
+    },
+    {
+      "height": 16,
+      "id": 442,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 1088.33333333333,
+      "y": 384.666666666667
+    },
+    {
+      "height": 16,
+      "id": 443,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 1200.33333333333,
+      "y": 319.666666666667
+    },
+    {
+      "height": 16,
+      "id": 444,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 1407.66666666667,
+      "y": 335.666666666667
+    },
+    {
+      "height": 16,
+      "id": 445,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 1375.66666666667,
+      "y": 351.333333333333
+    },
+    {
+      "height": 16,
+      "id": 446,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 1421.66666666667,
+      "y": 339
+    },
+    {
+      "height": 16,
+      "id": 447,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 1552.66666666667,
+      "y": 304.333333333333
+    },
+    {
+      "height": 16,
+      "id": 448,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 1776.33333333333,
+      "y": 336.333333333333
+    },
+    {
+      "height": 16,
+      "id": 449,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 1743.66666666667,
+      "y": 384
+    },
+    {
+      "height": 16,
+      "id": 450,
+      "name": "semisolid-flimsy-lift",
+      "properties": [
+        {
+          "name": "cell_height",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "cell_width",
+          "type": "float",
+          "value": 16
+        },
+        {
+          "name": "height",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "length",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sprite_id_top_begin",
+          "type": "float",
+          "value": 3003001
+        },
+        {
+          "name": "sprite_id_top_end",
+          "type": "float",
+          "value": 3003003
+        },
+        {
+          "name": "sprite_id_top_middle",
+          "type": "float",
+          "value": 3003002
+        }
+      ],
+      "rotation": 0,
+      "type": "3003000",
+      "visible": true,
+      "width": 48,
+      "x": 1792,
+      "y": 415.666666666667
     }
   ]
 }
